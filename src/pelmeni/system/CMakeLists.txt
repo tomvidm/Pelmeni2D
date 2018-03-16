@@ -15,7 +15,7 @@ add_library(p2d-system
 )
 
 target_link_libraries(p2d-system
-    p2d-event
+    p2d-input
     ${SFML_LIBRARIES}
 )
 

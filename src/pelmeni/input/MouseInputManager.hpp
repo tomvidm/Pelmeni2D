@@ -6,7 +6,7 @@
 #include "MouseState.hpp"
 #include "InputEvent.hpp"
 
-namespace p2d { namespace event { namespace input {
+namespace p2d { namespace input {
     class MouseInputManager {
     public:
         InputEvent onEvent(const sf::Event& sfmlEvent);
@@ -18,5 +18,4 @@ namespace p2d { namespace event { namespace input {
         MouseState mouseState;
     }; // MouseInputManager
 } // namespace input
-} // namespace event
 } // namespace p2d

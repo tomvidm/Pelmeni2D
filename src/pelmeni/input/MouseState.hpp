@@ -5,9 +5,9 @@
 #include "MouseButtonEvent.hpp"
 #include "MouseMoveEvent.hpp"
 
-#include "../../math/vector.hpp"
+#include "../math/vector.hpp"
 
-namespace p2d { namespace event { namespace input {
+namespace p2d { namespace input {
     class MouseState {
     public:
         MouseButtonEvent onMouseButtonEvent(const sf::Event::EventType& sfmlEventType,
@@ -19,5 +19,4 @@ namespace p2d { namespace event { namespace input {
         MouseButtonState buttonState[static_cast<size_t>(MouseButton::NUM_BUTTONS)];
     }; // class MouseState
 } // namespace input
-} // namespace event
 } // namespace p2d

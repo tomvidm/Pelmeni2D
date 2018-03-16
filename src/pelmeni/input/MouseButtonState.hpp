@@ -5,7 +5,7 @@
 #include "Mouse.hpp"
 #include "MouseButtonEvent.hpp"
 
-namespace p2d { namespace event { namespace input {
+namespace p2d { namespace input {
     class MouseButtonState {
     public:
         MouseButtonState();
@@ -28,5 +28,4 @@ namespace p2d { namespace event { namespace input {
         sf::Clock pressTimer;
     }; // class MouseState
 } // namespace input
-} // namespace event
 } // namespace p2d

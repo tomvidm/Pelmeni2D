@@ -2,7 +2,7 @@
 
 #include "Mouse.hpp"
 
-namespace p2d { namespace event { namespace input {
+namespace p2d { namespace input {
     enum MouseButtonEventType {
         PRESS,
         CLICK,
@@ -13,7 +13,8 @@ namespace p2d { namespace event { namespace input {
     struct MouseButtonEvent {
         MouseButton button;
         MouseButtonEventType eventType;
+
+        bool operator == (const MouseButtonEvent& rhs) const;
     }; // struct MouseButtonEvent
 } // namespace input
-} // namespace event
 } // namespace p2d

@@ -2,4 +2,4 @@
 
 set -e
 
-cd build && make && ./test/p2d-ut && cd ..
+cd build && cmake -DTesting=ON .. && make && ./test/p2d-ut && cd ..

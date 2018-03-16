@@ -1,6 +1,6 @@
 #include "MouseState.hpp"
 
-namespace p2d { namespace event { namespace input {
+namespace p2d { namespace input {
     MouseButtonEvent MouseState::onMouseButtonEvent(const sf::Event::EventType& sfmlEventType,
                                                     const MouseButton& mouseButton) {
         MouseButtonEvent mouseButtonEvent;
@@ -28,5 +28,4 @@ namespace p2d { namespace event { namespace input {
         return event;
     } // onMouseMoveEvent
 } // namespace input
-} // namespace event
 } // namespace p2d

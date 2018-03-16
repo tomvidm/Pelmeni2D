@@ -1,6 +1,6 @@
 #include "MouseInputManager.hpp"
 
-namespace p2d { namespace event { namespace input {
+namespace p2d { namespace input {
     InputEvent MouseInputManager::onEvent(const sf::Event& sfmlEvent) {
         switch (sfmlEvent.type) {
             case sf::Event::EventType::MouseButtonPressed:
@@ -31,5 +31,4 @@ namespace p2d { namespace event { namespace input {
         inputEvent.mouseMoveEvent = mouseState.onMouseMoveEvent(x, y);
     } // onMouseButtonEvent
 } // namespace input
-} // namespace event
 } // namespace p2d

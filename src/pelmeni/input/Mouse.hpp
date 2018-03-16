@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../math/vector.hpp"
+#include "../math/vector.hpp"
 
-namespace p2d { namespace event { namespace input {
+namespace p2d { namespace input {
     enum MouseButton {
         LEFT        = 0,
         RIGHT       = 1,
@@ -12,5 +12,4 @@ namespace p2d { namespace event { namespace input {
         NUM_BUTTONS = 5
     }; // enum MouseButton
 } // namespace input
-} // namespace event
 } // namespace p2d

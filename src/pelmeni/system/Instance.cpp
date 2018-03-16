@@ -11,11 +11,7 @@ namespace p2d { namespace system {
         while (window.isOpen()) {
             state.update();
 
-            while (window.pollEvent(event)) {
-                if (event.type == sf::Event::Closed) {
-                    window.close();
-                } // if
-            } // while
+            inputManager.collectInputEvents(window);
 
             if (frameTimer.getElapsedTime() > framePeriod) {
                 frameTimer.restart();

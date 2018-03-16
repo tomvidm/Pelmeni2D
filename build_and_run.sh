@@ -2,4 +2,4 @@
 
 set -e
 
-cd build && make && ./src/p2d-run && cd ..
+cd build && cmake .. && make && ./src/p2d-run && cd ..

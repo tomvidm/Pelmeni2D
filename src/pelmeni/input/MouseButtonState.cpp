@@ -1,6 +1,6 @@
 #include "MouseButtonState.hpp"
 
-namespace p2d { namespace event { namespace input {
+namespace p2d { namespace input {
     MouseButtonState::MouseButtonState() 
     : isPressed_(false) {
         clickInterval = sf::milliseconds(200);
@@ -42,11 +42,10 @@ namespace p2d { namespace event { namespace input {
 
     bool MouseButtonState::pressWillRegisterAsDoubleClick() const {
         if (!isPressed() &&
-            pressTimer.getElapsedTime() < static_cast<sf::Int64>(2)*clickInterval) {
+            pressTimer.getElapsedTime() < clickInterval) {
             return true;
         } // if
         return false;
     } // releaseWilLRegisterAsClick
 } // namespace input
-} // namespace event
 } // namespace p2d

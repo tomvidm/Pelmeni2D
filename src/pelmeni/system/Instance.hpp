@@ -3,7 +3,7 @@
 #include "SFML/Graphics.hpp"
 
 #include "State.hpp"
-#include "../event/EventManager.hpp"
+#include "../input/InputManager.hpp"
 
 namespace p2d { namespace system {
     class Instance {
@@ -13,7 +13,7 @@ namespace p2d { namespace system {
     private:
         State state;
 
-        event::EventManager eventManager;
+        input::InputManager inputManager;
 
         sf::RenderWindow window;
         sf::Clock frameTimer;

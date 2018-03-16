@@ -1,5 +1,6 @@
 # Input specifications
-Input!
+* The InputManager handles SFML's sf::Event and translates them to p2d::input::InputEvent
+* A scene node can subscribe to a specific event. InputManager will get a list of all SceneNodes subscribing to a specific event and pass the event to them, so that the SceneNode itself can respond with specified behaviour.
 
 ### MouseButtonEvent
 Prerequisite: An SFML event is polled after a mouse button press.
