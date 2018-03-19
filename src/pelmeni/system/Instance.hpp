@@ -4,6 +4,7 @@
 
 #include "State.hpp"
 #include "../input/InputManager.hpp"
+#include "../utility/ResourceManager.hpp"
 
 namespace p2d { namespace system {
     class Instance {
