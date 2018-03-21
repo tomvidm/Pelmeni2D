@@ -15,5 +15,6 @@ include_directories(
 
 target_link_libraries(p2d-run 
     p2d-system
+    p2d-graphics
     ${SFML_LIBRARIES}
 )

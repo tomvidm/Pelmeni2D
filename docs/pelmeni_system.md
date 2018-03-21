@@ -10,6 +10,8 @@ The Instance is an instantiation of a program and is resposible for:
 
 ## Design considerations
 ### Layers
+**Problem with idea**: Might be overengineering.
+
 At any point in time, the game engine is in a State. As of now, a State is just a class which encapsulates game logic that changes with time and user input. When a user clicks the mouse button somewhere on the screen, there may be many Nodes in the SceneGraph listening for this event. 
 
 **Problem 1**: If a user is in the menu, objects in the game world should not be required to respond to this event. 
@@ -23,6 +25,7 @@ Consider the following ordering of graphical elements which may want to respond 
 1. GUI
 2. Units on a square grid
 3. The square grid itself
+
 Because the SceneGraph is coupled to the Instance, let's keep a transparent stack of "Layers". Layers of interactivity?
 
 If a user clicks on the screen, the GUI should be the first to respond. If there is no response, pass the event down the stack. Each layer associates its own InputManager, so that a click event is only passed to relevant listeners. This avoids the problem of sending an event to every single Node which may listen. In the case of a tile based game with lots of units on top of the terrain, this can improve some things. (Although this is already solved by using quadtrees)

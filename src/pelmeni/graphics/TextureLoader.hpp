@@ -8,7 +8,6 @@ namespace p2d { namespace graphics {
     class TextureLoader {
     public:
         sf::Texture loadResource(const ResourceId& id);
-        void releaseResource(const ResourceId& id);
     }; // class TextureLoader
 } // namespace graphics
 } // namespace p2d

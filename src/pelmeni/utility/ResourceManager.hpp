@@ -8,7 +8,16 @@
 namespace p2d { namespace utility {
     using ResourceId = std::string;
 
-    template <typename ResourceType, typename ResourceLoader>
+    template <typename T>
+    using ResourceMap = typename std::map<ResourceId, T>;
+
+    template <typename T>
+    using ResourceMapIter = typename std::map<ResourceId, T>::iterator;
+    
+    template <typename T>
+    using ResourceMapConstIter = typename std::map<ResourceId, T>::const_iterator;
+
+    template <typename T, typename TLoader>
     class ResourceManager {
     public:
         ResourceManager();
@@ -19,26 +28,26 @@ namespace p2d { namespace utility {
         void release(const ResourceId& id);
     private:
         std::map<ResourceId, T> resourceMap;
-        ResourceLoader resourceLoader;
+        TLoader resourceLoader;
     }; // class ResourceManager
 
-    template <typename ResourceType, typename ResourceLoader>
-    T& ResourceManager<T>::get (const ResourceId& id) {
+    template <typename T, typename TLoader>
+    T& ResourceManager<T, TLoader>::get (const ResourceId& id) {
         return resourceMap.at(id);
     } // operator []
 
-    template <typename ResourceType, typename ResourceLoader>
-    void ResourceManager<T>::load(const ResourceId& id) {
+    template <typename T, typename TLoader>
+    void ResourceManager<T, TLoader>::load(const ResourceId& id) {
         resourceMap.insert(std::pair<ResourceId, T>(id, resourceLoader.loadResource(id)));
     }
 
-    template <typename ResourceType, typename ResourceLoader>
-    void ResourceManager<T>::release(const ResourceId& id) {
+    template <typename T, typename TLoader>
+    void ResourceManager<T, TLoader>::release(const ResourceId& id) {
         resourceMap.erase(id);
     }
 
-    template <typename ResourceType, typename ResourceLoader>
-    ResourceManager<T>::ResourceManager() {
+    template <typename T, typename TLoader>
+    ResourceManager<T, TLoader>::ResourceManager() {
         ;
     }
     

@@ -7,6 +7,6 @@ namespace p2d { namespace graphics {
     struct Frame {
         sf::Time duration;
         sf::Rect<float> frameRect;
-    } // struct Frame
+    }; // struct Frame
 } // namespace graphics
 } // namespace p2d
