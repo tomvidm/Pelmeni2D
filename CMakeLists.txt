@@ -7,6 +7,12 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
 
 set(PELMENI_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(LUA_SELENE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/Selene/include)
+
+find_package(SFML 2 REQUIRED network audio graphics window system)
+find_package(Lua 5.2 REQUIRED)
+
+
 
 add_subdirectory(src)
 

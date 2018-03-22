@@ -1,14 +1,15 @@
 project(p2d-graphics)
 
 set(SOURCES
+    FrameSequence.cpp
     TextureLoader.cpp
 )
-
-message(STATUS ${SFML_INCLUDE_DIR})
 
 include_directories(
     ${SFML_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/pelmeni
+    ${LUA_INCLUDE_DIR}
+    ${LUA_SELENE_DIR}
     )
 
 add_library(p2d-graphics
@@ -17,6 +18,7 @@ add_library(p2d-graphics
 
 target_link_libraries(p2d-graphics
     ${SFML_LIBRARIES}
+    ${LUA_LIBRARIES}
 )
 
 set_target_properties(p2d-graphics

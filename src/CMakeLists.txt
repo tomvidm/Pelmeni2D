@@ -1,7 +1,5 @@
 project(pelmeni)
 
-find_package(SFML 2 REQUIRED network audio graphics window system)
-
 add_subdirectory(pelmeni)
 
 add_executable(p2d-run
