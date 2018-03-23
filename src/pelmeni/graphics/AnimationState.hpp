@@ -8,11 +8,13 @@ namespace p2d { namespace graphics {
     class AnimationState {
     public:
         AnimationState() : currentFrameIndex(0), frameSequence(nullptr) {}
-        void setAnimation(const FrameSequence& fSequence);
+        void setFrameSequence(FrameSequence& fSequence);
         void resetAnimation();
 
-        void update();
-        sf::Rect<float>& getRect() const;
+        bool update();
+        Frame& getCurrentFrame() const;
+        sf::Rect<float>& getCurrentFrameRect() const;
+        sf::Time& getCurrentFrameDuration() const;
     private:
         size_t currentFrameIndex;
         sf::Clock frameTimer;

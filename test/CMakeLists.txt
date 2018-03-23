@@ -6,6 +6,7 @@ set(TEST_SOURCES
     TrivialTest.cpp
     pelmeni/input/TestMouseButtonState.cpp
     pelmeni/input/TestMouseState.cpp
+    pelmeni/graphics/AnimationStateTest.cpp
 )
 
 
@@ -24,6 +25,7 @@ add_executable(
 target_link_libraries(
     p2d-ut
     p2d-input
+    p2d-graphics
     gtest
     gtest_main
 )

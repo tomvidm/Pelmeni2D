@@ -2,6 +2,7 @@ project(p2d-graphics)
 
 set(SOURCES
     FrameSequence.cpp
+    AnimationState.cpp
     TextureLoader.cpp
 )
 
