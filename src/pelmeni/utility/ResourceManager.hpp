@@ -33,6 +33,9 @@ namespace p2d { namespace utility {
 
     template <typename T, typename TLoader>
     T& ResourceManager<T, TLoader>::get (const ResourceId& id) {
+        if (!resourceMap.count(id)) {
+            load(id);
+        } // load if not already loaded
         return resourceMap.at(id);
     } // operator []
 

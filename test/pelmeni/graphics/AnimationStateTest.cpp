@@ -2,7 +2,7 @@
 
 void AnimationStateTest::SetUp() {
     for (size_t i = 0; i < 10; i++) {
-        fseq.addFrame(p2d::graphics::Frame(sf::milliseconds(16), sf::Rect<float>(sf::Vector2f(), sf::Vector2f())));
+        fseq.addFrame(p2d::graphics::Frame(sf::milliseconds(16), sf::Rect<int>(sf::Vector2i(), sf::Vector2i())));
     } // add frames to fs (frameSequence)
 
     as.setFrameSequence(fseq);

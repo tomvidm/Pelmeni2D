@@ -4,6 +4,7 @@ set(SOURCES
     FrameSequence.cpp
     AnimationState.cpp
     TextureLoader.cpp
+    Sprite.cpp
 )
 
 include_directories(

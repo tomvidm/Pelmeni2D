@@ -5,12 +5,20 @@
 #include "State.hpp"
 #include "../input/InputManager.hpp"
 #include "../utility/ResourceManager.hpp"
+#include "../graphics/Sprite.hpp"
 
 namespace p2d { namespace system {
     class Instance {
     public:
         Instance();
         void run();
+
+        /*
+            FOR TESTIGN
+        */
+
+        graphics::Sprite sprite;
+        sf::Texture tex;
     private:
         State state;
 

@@ -20,7 +20,7 @@ namespace p2d { namespace graphics {
         } // if else
     } // update
 
-    sf::Rect<float>& AnimationState::getCurrentFrameRect() const {
+    sf::Rect<int>& AnimationState::getCurrentFrameRect() const {
         return getCurrentFrame().frameRect;
     } // getCurrentFrameRect
 

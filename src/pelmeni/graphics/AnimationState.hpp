@@ -13,7 +13,7 @@ namespace p2d { namespace graphics {
 
         bool update();
         Frame& getCurrentFrame() const;
-        sf::Rect<float>& getCurrentFrameRect() const;
+        sf::Rect<int>& getCurrentFrameRect() const;
         sf::Time& getCurrentFrameDuration() const;
     private:
         size_t currentFrameIndex;
