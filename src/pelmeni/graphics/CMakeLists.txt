@@ -1,10 +1,14 @@
 project(p2d-graphics)
 
 set(SOURCES
-    FrameSequence.cpp
     AnimationState.cpp
-    TextureLoader.cpp
+    FrameSequence.cpp
+    Package.cpp
+    PackageLoader.cpp
+    PackageManager.cpp
     Sprite.cpp
+    TextureLoader.cpp
+    TextureManager.cpp
 )
 
 include_directories(

@@ -4,7 +4,7 @@
 
 #include "State.hpp"
 #include "../input/InputManager.hpp"
-#include "../utility/ResourceManager.hpp"
+#include "../utility/ResourceMap.hpp"
 #include "../graphics/Sprite.hpp"
 
 namespace p2d { namespace system {

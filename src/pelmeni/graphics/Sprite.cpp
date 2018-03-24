@@ -1,8 +1,7 @@
 #include "Sprite.hpp"
 
 namespace p2d { namespace graphics {
-    AnimationManager Sprite::animationManager;
-    TextureManager Sprite::textureManager;
+    PackageManager Sprite::packageManager;
 
     void Sprite::update() {
         if (animationState.update()) {
@@ -10,14 +9,8 @@ namespace p2d { namespace graphics {
         }
     } // update
 
-    void Sprite::setSpriteTexture(const ResourceId& id) {
-        setTexture(textureManager.get(id));
+    void Sprite::usePackage(const PackageId& id) {
+        packagePtr = packageManager.getPackage(id);
     }
-
-/*     
-    void Sprite::setAnimation(const ResourceId& id) {
-        animationState.setFrameSequence(animationManager.get(id));
-    } 
-*/
 } // namespace graphics
 } // namespace p2d

@@ -3,13 +3,13 @@
 namespace p2d { namespace graphics {
     using ResourceId = std::string;
     
-    sf::Texture TextureLoader::loadResource(const ResourceId& id) {
-        const std::string directory = "../resources/textures/";
-        const std::string filename = directory + id + ".png";
+    std::pair<ResourceId, TexturePtr> TextureLoader::load(const TextureId& id, const std::string& filepath) {
+        const std::string resourceDirectory = "../resources/";
+        const std::string fullpath = resourceDirectory + filepath;
 
         sf::Texture texture;
-        texture.loadFromFile(filename);
-        return texture;
+        texture.loadFromFile(fullpath);
+        return std::pair<ResourceId, TexturePtr>(id, std::make_shared<sf::Texture>(texture));
     }
 } // namespace graphics
 } // namespace p2d

@@ -1,11 +1,15 @@
 #include "Instance.hpp"
 
+#include <iostream>
+
 namespace p2d { namespace system {
     Instance::Instance() {
+        std::cout << "Running Instance()\n";
 
         // TESTING
-        tex.loadFromFile("../resources/textures/link01.png");
-        sprite.setSpriteTexture("link01");
+        sprite.usePackage("test01");
+        // sprite.setSpriteTexture("textures/test01.png");
+        sprite.setScale(4.f, 4.f);
         // TESTING
         
         framePeriod = sf::milliseconds(16);
