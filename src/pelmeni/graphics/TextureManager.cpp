@@ -1,8 +1,10 @@
 #include "TextureManager.hpp"
 
+#include "Sprite.hpp"
+
 namespace p2d { namespace graphics {
     TexturePtr TextureManager::getTexture(const TextureId& id, const std::string& path) {
-        std::cout << "TextureManager::getTexture(" << id << ", " << path << ")\n";
+         
         if (!texturePtrMap.contains(id)) {
             if (path.empty()) {
                 return TexturePtr();
@@ -15,8 +17,10 @@ namespace p2d { namespace graphics {
     } // loadPackage
 
     TexturePtr TextureManager::loadTexture(const TextureId& id, const std::string& path) {
-        std::cout << "TextureManager::loadTexture(" << id << ", " << path << ")\n";
+         
         std::pair<TextureId, TexturePtr> keyValuePair = textureLoader.load(id, path);
+        Sprite sprite;
+        sprite.useTexture(keyValuePair.second);
         texturePtrMap.insert(keyValuePair);
         return keyValuePair.second;
     }

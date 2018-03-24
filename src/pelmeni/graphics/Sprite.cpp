@@ -8,12 +8,11 @@ namespace p2d { namespace graphics {
     } // update
 
     void Sprite::usePackage(const PackagePtr pkgPtr) {
-        std::cout << "Sprite::usePackage(PackagePtr pointing to " << pkgPtr.get() << "\n";
+         
         useTexture(pkgPtr->getTexturePtr());
     } // usePackage
 
     void Sprite::useTexture(const TexturePtr texPtr) {
-        std::cout << "Sprite::useTexture(TexturePtr pointing to " << texPtr.get() << "\n";
         setTexture(*texPtr);
     } // useTexture
 } // namespace graphics

@@ -13,8 +13,10 @@ namespace p2d { namespace system {
     public:
         Object();
         void setPackage(const PackagePtr pkgPtr);
+
+        inline graphics::Sprite& getSprite() { return sprite; }
     private:
-        std::shared_ptr<graphics::Sprite> spritePtr;
+        graphics::Sprite sprite;;
         graphics::PackagePtr packagePtr;
     }; // class Object
 
