@@ -13,6 +13,7 @@ namespace p2d { namespace graphics {
         //void setAnimation(const ResourceId& id);
 
         void usePackage(const PackageId& id);
+        void usePackageTexture();
     private:
         AnimationState animationState;
         PackagePtr packagePtr;

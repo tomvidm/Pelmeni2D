@@ -1,5 +1,5 @@
 -- link01 package
-local package = {
+package = {
     name = "test01";
     texture_id = "test01";
     texture_path = "textures/test01.png";

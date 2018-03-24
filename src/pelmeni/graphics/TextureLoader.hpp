@@ -5,6 +5,7 @@
 #include "SFML/Graphics.hpp"
 
 namespace p2d { namespace graphics {
+    using Texture = sf::Texture;
     using TextureId = std::string;
     using TexturePtr = std::shared_ptr<sf::Texture>;
 
