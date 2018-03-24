@@ -4,8 +4,8 @@
 
 #include "State.hpp"
 #include "../input/InputManager.hpp"
-#include "../utility/ResourceMap.hpp"
 #include "../graphics/Sprite.hpp"
+#include "ObjectManager.hpp"
 
 namespace p2d { namespace system {
     class Instance {
@@ -17,12 +17,12 @@ namespace p2d { namespace system {
             FOR TESTIGN
         */
 
-        graphics::Sprite sprite;
-        sf::Texture tex;
+        
     private:
         State state;
 
         input::InputManager inputManager;
+        ObjectManager objectManager;
 
         sf::RenderWindow window;
         sf::Clock frameTimer;

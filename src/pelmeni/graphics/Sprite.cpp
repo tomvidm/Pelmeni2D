@@ -1,27 +1,20 @@
 #include "Sprite.hpp"
 
 namespace p2d { namespace graphics {
-    PackageManager Sprite::packageManager;
-
     void Sprite::update() {
         if (animationState.update()) {
             setTextureRect(animationState.getCurrentFrameRect());
         }
     } // update
 
-    void Sprite::usePackage(const PackageId& id) {
-        
-        packagePtr = packageManager.getPackage(id);
-        if (packagePtr == nullptr) {
-            std::cout << "Sprite::usePackage - Failed... pointer is empty.\n";
-            return;
-        } else {
-            usePackageTexture();
-        }
+    void Sprite::usePackage(const PackagePtr pkgPtr) {
+        std::cout << "Sprite::usePackage(PackagePtr pointing to " << pkgPtr.get() << "\n";
+        useTexture(pkgPtr->getTexturePtr());
     } // usePackage
 
-    void Sprite::usePackageTexture() {
-        setTexture(*(packagePtr->getTexturePtr()));
-    } // usePackageTextuer
+    void Sprite::useTexture(const TexturePtr texPtr) {
+        std::cout << "Sprite::useTexture(TexturePtr pointing to " << texPtr.get() << "\n";
+        setTexture(*texPtr);
+    } // useTexture
 } // namespace graphics
 } // namespace p2d

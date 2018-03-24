@@ -18,7 +18,7 @@ namespace p2d { namespace graphics {
         std::cout << "TextureManager::loadTexture(" << id << ", " << path << ")\n";
         std::pair<TextureId, TexturePtr> keyValuePair = textureLoader.load(id, path);
         texturePtrMap.insert(keyValuePair);
-        return texturePtrMap.get(id);
+        return keyValuePair.second;
     }
 } // namespace graphics
 } // namespace p2d

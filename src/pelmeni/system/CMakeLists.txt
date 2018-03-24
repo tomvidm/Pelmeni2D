@@ -2,12 +2,17 @@ project(p2d-system)
 
 set(SOURCES
     Instance.cpp
+    Object.cpp
+    ObjectLoader.cpp
+    ObjectManager.cpp
     State.cpp
 )
 
 include_directories(
     ${SFML_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/pelmeni
+    ${LUA_INCLUDE_DIR}
+    ${LUA_SELENE_DIR}
     )
 
 add_library(p2d-system

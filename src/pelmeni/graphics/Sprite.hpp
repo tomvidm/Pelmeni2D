@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "SFML/Graphics.hpp"
 
 #include "AnimationState.hpp"
@@ -12,13 +14,10 @@ namespace p2d { namespace graphics {
         //void setSpriteTexture(const ResourceId& id);
         //void setAnimation(const ResourceId& id);
 
-        void usePackage(const PackageId& id);
-        void usePackageTexture();
+        void usePackage(const PackagePtr pkgPtr);
+        void useTexture(const TexturePtr texPtr);
     private:
         AnimationState animationState;
-        PackagePtr packagePtr;
-
-        static PackageManager packageManager;
     }; // class Sprite
 } // namespace graphics
 } // namespace p2d

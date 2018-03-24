@@ -8,8 +8,6 @@
 #include "../utility/Map.hpp"
 
 namespace p2d { namespace graphics {
-    using PackagePtr = std::shared_ptr<Package>;
-
     class PackageManager {
         using PackageId = std::string;
         using PackagePtrMap = utility::Map<ResourceId, PackagePtr>;

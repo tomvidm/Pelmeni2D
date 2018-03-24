@@ -10,7 +10,8 @@ namespace p2d { namespace graphics {
         const std::string resourceDirectory = "../resources/";
         const std::string fullpath = resourceDirectory + filepath;
 
-        TexturePtr texturePtr = std::make_shared<sf::Texture>(sf::Texture());
+        TexturePtr texturePtr = std::make_shared<sf::Texture>();
+        std::cout << "TextureLoader::load: TexturePtr.get() = " << texturePtr.get() << "\n";  
         texturePtr->loadFromFile(fullpath);
         return std::make_pair(id, texturePtr);
     }
