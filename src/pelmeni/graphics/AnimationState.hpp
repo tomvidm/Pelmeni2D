@@ -1,14 +1,17 @@
 #pragma once
 
+#include <memory>
+
 #include "SFML/Graphics.hpp"
 
 #include "FrameSequence.hpp"
 
 namespace p2d { namespace graphics {
+    using FrameSequencePtr = std::shared_ptr<FrameSequence>;
     class AnimationState {
     public:
-        AnimationState() : currentFrameIndex(0), frameSequence(nullptr) {}
-        void setFrameSequence(FrameSequence& fSequence);
+        AnimationState() : currentFrameIndex(0), frameSequencePtr(nullptr) {}
+        void setFrameSequence(FrameSequencePtr fSequencePtr);
         void resetAnimation();
 
         bool update();
@@ -18,7 +21,7 @@ namespace p2d { namespace graphics {
     private:
         size_t currentFrameIndex;
         sf::Clock frameTimer;
-        FrameSequence* frameSequence;
+        FrameSequencePtr frameSequencePtr;
     }; // class AnimationState
 } // namespace graphics
 } // namespace p2d

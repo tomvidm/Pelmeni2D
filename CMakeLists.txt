@@ -2,8 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 
 option(Testing "Build tests." OFF)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "-g -Wall")
+set(CMAKE_CXX_FLAGS "-g -Wall -std=c++11")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
 
 set(PELMENI_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)

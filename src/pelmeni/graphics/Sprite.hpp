@@ -16,6 +16,7 @@ namespace p2d { namespace graphics {
 
         void usePackage(const PackagePtr pkgPtr);
         void useTexture(const TexturePtr texPtr);
+        void useAnimation(const FrameSequencePtr fSequencePtr);
     private:
         AnimationState animationState;
     }; // class Sprite

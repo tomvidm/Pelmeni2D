@@ -12,5 +12,12 @@ namespace p2d { namespace system {
         packagePtr = pkgPtr;
         sprite.usePackage(packagePtr);
     }
+    void Object::update() {
+        sprite.update();
+    }
+
+    void Object::setAnimation(const AnimationId& id) {
+        sprite.useAnimation(packagePtr->getAnimation(id));
+    }
 } // namespace system
 } // namespace p2d

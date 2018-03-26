@@ -12,6 +12,7 @@
 namespace p2d { namespace graphics {
     using PackageId = std::string;
     using PackagePtr = std::shared_ptr<Package>;
+    using FrameSequencePtr = std::shared_ptr<FrameSequence>;
 
     class PackageLoader {
     public:

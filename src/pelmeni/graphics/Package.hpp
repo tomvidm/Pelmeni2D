@@ -5,23 +5,24 @@
 
 #include "FrameSequence.hpp"
 #include "Texture.hpp"
+#include "../utility/Map.hpp"
 
 namespace p2d { namespace graphics {
     using FrameSequencePtr = std::shared_ptr<FrameSequence>;
     using ResourceId = std::string;
     using AnimationId = std::string;
-    using AnimationMap = utility::Map<AnimationId, FrameSequence>;
+    using AnimationPtrMap = utility::Map<AnimationId, FrameSequencePtr>;
 
     class Package {
     public:
         Package();
-        Package(const TexturePtr texPtr);
+        Package(const TexturePtr texPtr, const AnimationPtrMap& animPtrMap);
         inline TexturePtr getTexturePtr() const { return texturePtr; }
         // FrameSequencePtr& getFrameSequencePtr(const ResourceId& animId) const;
-        void addAnimation(const std::pair<AnimationId, FrameSequence>);
+        FrameSequencePtr getAnimation(const AnimationId& id);
     private:
         TexturePtr texturePtr;
-        AnimationMap animationMap;
+        AnimationPtrMap animationPtrMap;
     }; // class Package
 
     using PackagePtr = std::shared_ptr<Package>;

@@ -1,8 +1,10 @@
 #include "AnimationState.hpp"
 
+#include <iostream>
+
 namespace p2d { namespace graphics {
-    void AnimationState::setFrameSequence(FrameSequence& fSequence) {
-        frameSequence = &fSequence;
+    void AnimationState::setFrameSequence(FrameSequencePtr fSequencePtr) {
+        frameSequencePtr = fSequencePtr;
     } // setAnimation
 
     void AnimationState::resetAnimation() {
@@ -11,8 +13,10 @@ namespace p2d { namespace graphics {
     } // resetAnimation
 
     bool AnimationState::update() {
+        //std::cout << getCurrentFrameDuration().asSeconds() << std::endl;
         if (frameTimer.getElapsedTime() > getCurrentFrameDuration()) {
-            ++currentFrameIndex;
+            currentFrameIndex += 1;
+            currentFrameIndex %= frameSequencePtr->getNumFrames();
             frameTimer.restart();
             return true;
         } else { 
@@ -29,7 +33,7 @@ namespace p2d { namespace graphics {
     } // getCurrentFrameRect
 
     Frame& AnimationState::getCurrentFrame() const {
-        return (*frameSequence)[currentFrameIndex];
+        return (*frameSequencePtr)[currentFrameIndex];
     } // getCurrentFrame
 }
 }

@@ -1,11 +1,16 @@
 #include "Instance.hpp"
 
- 
+ #define NUMOBJ 1000
 
 namespace p2d { namespace system {
     Instance::Instance() {
          
-        objectManager.loadObject("obj01", "testobj01");
+        for (int i = 0; i < NUMOBJ; i++) {
+            std::string objectId = "obj" + std::to_string(i);
+            objectManager.loadObject(objectId, "testobj01");
+            objectManager.getObject(objectId)->setAnimation("anim03");
+        }
+        
         framePeriod = sf::milliseconds(16);
         window.create(sf::VideoMode(800, 600), "Window");
         run();
@@ -16,11 +21,18 @@ namespace p2d { namespace system {
             state.update();
 
             inputManager.collectInputEvents(window);
+            for (int i = 0; i < NUMOBJ; i++) {
+                    std::string objectId = "obj" + std::to_string(i);
+                    objectManager.getObject(objectId)->update();
+            }
 
             if (frameTimer.getElapsedTime() > framePeriod) {
                 frameTimer.restart();
                 window.clear();
-                window.draw(objectManager.getObject("obj01")->getSprite());
+                for (int i = 0; i < NUMOBJ; i++) {
+                    std::string objectId = "obj" + std::to_string(i);
+                    window.draw(objectManager.getObject(objectId)->getSprite());
+                }
                 window.display();
             } // if
         } // while

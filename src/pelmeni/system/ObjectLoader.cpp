@@ -8,7 +8,7 @@ namespace p2d { namespace system {
     std::pair<ObjectId, ObjectPtr> ObjectLoader::load(const ObjectId& id, const PresetId& presetId) {
          
         sel::State state;
-        state.Load("../resources/objects/" + presetId + ".lua");
+        state.Load("../resources/presets/" + presetId + ".lua");
         graphics::PackageId packageId = state["object"]["sprite_package"];
         
         ObjectPtr objectPtr = std::make_shared<Object>();
