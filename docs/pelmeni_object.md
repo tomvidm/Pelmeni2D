@@ -1,5 +1,15 @@
 # Object specifications
-The GameObject is a lightweight class containing pointers to its functional components. These components includes, child objects, parent object, sprite packages encapsulating sprite animations and the source textures, as well as sounds behaviour scripts and dependent objects which it will spawn at will during its lifetime.
+Object is a lightweight data structure containing data and pointers to the functional pieces of an object in a Pelmeni2D instance. Objects are constructed from Blueprint objects.
+
+An Object instance is created by at least two ways:
+* `ObjectManager::createObject(unique_id, blueprint_id)` is called.
+* Constructing directly from a Blueprint using `Object::Object(blueprint)`
+
+An Object instance is fetched by calling `ObjectManager::get(unique_id)`
+
+## Creating an Object instance
+When `ObjectManager::createObject` is called, it first asks the BlueprintManager if it has the blueprint. If no, BlueprintManager uses its blueprint lookup table to find the necessary file and constructs a blueprint, stores it in the blueprint map and passes it back to ObjectManger.
+
 
 ## Object handling
 ### Object Manager

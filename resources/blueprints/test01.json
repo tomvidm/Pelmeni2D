@@ -1,0 +1,8 @@
+{
+    "blueprint_id": "test01",
+    "packages": {
+        "sprite_package": {
+            "path": "packages/test01.json"
+        }
+    }
+}

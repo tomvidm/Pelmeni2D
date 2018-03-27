@@ -17,6 +17,7 @@ include_directories(
 
 add_library(p2d-system
     ${SOURCES}
+    ${RAPIDJSON_INCLUDE_DIRs}
 )
 
 target_link_libraries(p2d-system

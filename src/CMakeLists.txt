@@ -6,10 +6,9 @@ add_executable(p2d-run
     main.cpp
 )
 
-#add_definitions(-O2 -g)
-
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${RAPIDJSON_INCLUDE_DIR}
 )
 
 target_link_libraries(p2d-run 
