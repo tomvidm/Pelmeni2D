@@ -1,19 +1,21 @@
 project(p2d-graphics)
 
 set(SOURCES
-    AnimationState.cpp
-    FrameSequence.cpp
+    #AnimationState.cpp
+    #FrameSequence.cpp
     SpritePackage.cpp
     SpritePackageLoader.cpp
     SpritePackageManager.cpp
-    Sprite.cpp
-    TextureLoader.cpp
+    #Sprite.cpp
+    #TextureLoader.cpp
     TextureManager.cpp
+    ../json/Helpers.cpp
 )
 
 include_directories(
     ${SFML_INCLUDE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/pelmeni
+    ${PELMENI_SRC_DIR}
+    ${RAPIDJSON_INCLUDE_DIR}
     )
 
 add_library(p2d-graphics

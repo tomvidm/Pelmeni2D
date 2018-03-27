@@ -8,14 +8,15 @@ namespace p2d { namespace system {
     class Blueprint {
     public:
         using id = std::string;
-        Blueprint(const Blueprint::id& bpid) 
-        : blueprintId(bpid) {;}
+        Blueprint(const Blueprint::id& bpid, const graphics::SpritePackage::id& spid) 
+        : blueprintId(bpid), spritePackageId(spid) {;}
 
-        inline id getId() const { return blueprintId; }
+        inline Blueprint::id getId() const { return blueprintId; }
+        inline graphics::SpritePackage::id getSpritePackageId() const {return spritePackageId; }
     private:
         Blueprint::id blueprintId;
 
-        //graphics::SpritePackage::id spritePackageId;
+        graphics::SpritePackage::id spritePackageId;
     }; // class Blueprint
 } // namespace system
 } // namespace p2d

@@ -17,7 +17,7 @@ namespace p2d { namespace system {
             return;
         }
 
-        Blueprint blueprint = blueprintLoader.createBlueprint(blueprintId, blueprintLookupTable.get(blueprintId)); // = blueprintLoader.load(args)
+        Blueprint blueprint = blueprintLoader.createBlueprint(blueprintId, blueprintLookupTable.get(blueprintId));
         assert(blueprint.getId() == blueprintId);
 
         blueprintMap.insert(std::make_pair(blueprintId, blueprint));
@@ -25,7 +25,7 @@ namespace p2d { namespace system {
 
     void BlueprintManager::initializeBlueprintLookupTable() {
         printf("BlueprintManager: Loading and parsing blueprint lookup table\n");
-        rapidjson::Document doc = json::parseJsonFile("../resources/blueprints/blueprint_lookup_table.json");
+        rapidjson::Document doc = json::parseJsonFile("../resources/blueprints/blueprint_lookup.json");
 
         for (auto& entry : doc.GetArray()) {
             const Blueprint::id blueprintId = entry[0].GetString();

@@ -3,30 +3,24 @@
 #include <memory>
 #include <string>
 
-#include "FrameSequence.hpp"
-#include "Texture.hpp"
-#include "../utility/Map.hpp"
+#include "utility/Map.hpp"
+
+#include "graphics/Texture.hpp"
 
 namespace p2d { namespace graphics {
-    using FrameSequencePtr = std::shared_ptr<FrameSequence>;
-    using ResourceId = std::string;
-    using AnimationId = std::string;
-    using AnimationPtrMap = utility::Map<AnimationId, FrameSequencePtr>;
-
     class SpritePackage {
     public:
         using id = std::string;
-        
-        SpritePackage();
-        SpritePackage(const TexturePtr texPtr, const AnimationPtrMap& animPtrMap);
-        inline TexturePtr getTexturePtr() const { return texturePtr; }
-        // FrameSequencePtr& getFrameSequencePtr(const ResourceId& animId) const;
-        FrameSequencePtr getAnimation(const AnimationId& id);
-    private:
-        TexturePtr texturePtr;
-        AnimationPtrMap animationPtrMap;
-    }; // class Package
+        using ptr = std::shared_ptr<SpritePackage>;
 
-    using SpritePackagePtr = std::shared_ptr<SpritePackage>;
+        SpritePackage(const SpritePackage::id& spritePackageId,
+                      Texture::ptr texturePtr);
+
+        inline SpritePackage::id getId() const { return _spritePackageId; }
+    private:
+        SpritePackage::id _spritePackageId;
+        
+        Texture::ptr texture;
+    }; // class Package
 } // namespace graphics
 } // namespace p2d

@@ -1,20 +1,25 @@
 #pragma once
 
-#include "SFML/Graphics.hpp"
-
-#include "Texture.hpp"
-#include "TextureLoader.hpp"
-#include "../utility/Map.hpp"
+#include "graphics/Texture.hpp"
+//#include "graphics/TextureLoader.hpp"
+#include "utility/Map.hpp"
 
 namespace p2d { namespace graphics {
     class TextureManager {
-        using TexturePtrMap = utility::Map<TextureId, TexturePtr>;
+        using TextureMap = utility::Map<Texture::id, Texture::ptr>;
+        using TextureLookupTable = utility::Map<Texture::id, std::string>;
     public:
-        TexturePtr getTexture(const TextureId& id, const std::string& path = "");
-        TexturePtr loadTexture(const TextureId& id, const std::string& path);
+        TextureManager() {
+            initializeLookupTable();
+        }
+
+        Texture::ptr getTexture(const Texture::id& id);    
+        void loadTexture(const Texture::id& id);
     private:
-        TexturePtrMap texturePtrMap;
-        TextureLoader textureLoader;
+        void initializeLookupTable();
+        TextureMap textureMap;
+        TextureLookupTable textureLookupTable;
+        //TextureLoader textureLoader;
     }; // class TextureManager
 } // namespace graphics
 } // namespace p2d

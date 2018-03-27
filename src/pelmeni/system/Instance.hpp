@@ -2,10 +2,7 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "State.hpp"
-#include "../input/InputManager.hpp"
-#include "../graphics/Sprite.hpp"
-#include "ObjectManager.hpp"
+#include "input/InputManager.hpp"
 
 namespace p2d { namespace system {
     class Instance {
@@ -19,10 +16,7 @@ namespace p2d { namespace system {
 
         
     private:
-        State state;
-
         input::InputManager inputManager;
-        ObjectManager objectManager;
 
         sf::RenderWindow window;
         sf::Clock frameTimer;

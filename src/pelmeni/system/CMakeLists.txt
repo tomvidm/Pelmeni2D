@@ -5,9 +5,9 @@ set(SOURCES
     BlueprintLoader.cpp
     Instance.cpp
     Object.cpp
-    ObjectLoader.cpp
-    ObjectManager.cpp
-    State.cpp
+    #ObjectLoader.cpp
+    #ObjectManager.cpp
+    #State.cpp
     ../json/Helpers.cpp
 )
 

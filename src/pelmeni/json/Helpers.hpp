@@ -1,3 +1,7 @@
+#pragma once
+
+#include <cstdio>
+
 #include "rapidjson/filereadstream.h"
 #include "rapidjson/document.h"
 

@@ -3,20 +3,24 @@
 #include <string>
 #include <memory>
 
-#include "SpritePackage.hpp"
-#include "SpritePackageLoader.hpp"
-#include "../utility/Map.hpp"
+#include "utility/Map.hpp"
+#include "graphics/SpritePackage.hpp"
+#include "graphics/SpritePackageLoader.hpp"
 
 namespace p2d { namespace graphics {
     class SpritePackageManager {
-        using SpritePackageId = std::string;
-        using SpritePackagePtrMap = utility::Map<ResourceId, SpritePackagePtr>;
-    
+        using PackageMap = utility::Map<SpritePackage::id, SpritePackage::ptr>;
+        using PackageLookupTable = utility::Map<SpritePackage::id, std::string>;
     public:
-        SpritePackagePtr getSpritePackage(const SpritePackageId& id);
-        SpritePackagePtr loadSpritePackage(const SpritePackageId& id);
+        SpritePackageManager() {
+            initializePackageLookupTable();
+        }
+
+        void loadSpritePackage(const SpritePackage::id spritePackageId);
     private:
-        SpritePackagePtrMap spritePackagePtrMap;
+        void initializePackageLookupTable();
+        PackageMap packageMap;
+        PackageLookupTable packageLookupTable;
         SpritePackageLoader spritePackageLoader;
     }; // class PackageManager
 } // namespace graphics

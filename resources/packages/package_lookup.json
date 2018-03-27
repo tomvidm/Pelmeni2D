@@ -1,0 +1,5 @@
+{
+    "sprite_packages": [
+        ["test01_sprite", "test01_sprite.json"]
+    ]
+}
