@@ -13,10 +13,12 @@ namespace p2d { namespace graphics {
     using AnimationId = std::string;
     using AnimationPtrMap = utility::Map<AnimationId, FrameSequencePtr>;
 
-    class Package {
+    class SpritePackage {
     public:
-        Package();
-        Package(const TexturePtr texPtr, const AnimationPtrMap& animPtrMap);
+        using id = std::string;
+        
+        SpritePackage();
+        SpritePackage(const TexturePtr texPtr, const AnimationPtrMap& animPtrMap);
         inline TexturePtr getTexturePtr() const { return texturePtr; }
         // FrameSequencePtr& getFrameSequencePtr(const ResourceId& animId) const;
         FrameSequencePtr getAnimation(const AnimationId& id);
@@ -25,6 +27,6 @@ namespace p2d { namespace graphics {
         AnimationPtrMap animationPtrMap;
     }; // class Package
 
-    using PackagePtr = std::shared_ptr<Package>;
+    using SpritePackagePtr = std::shared_ptr<SpritePackage>;
 } // namespace graphics
 } // namespace p2d

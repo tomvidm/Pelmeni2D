@@ -22,6 +22,7 @@ namespace p2d { namespace input {
         InputEvent inputEvent;
         inputEvent.eventType = InputEventType::MOUSEBUTTON;
         inputEvent.mouseButtonEvent = mouseState.onMouseButtonEvent(sfmlEventType, mouseButton);
+        return inputEvent;
     } // onMouseButtonEvent
 
     InputEvent MouseInputManager::onMouseMoveEvent(const int& x,
@@ -29,6 +30,7 @@ namespace p2d { namespace input {
         InputEvent inputEvent;
         inputEvent.eventType = InputEventType::MOUSEMOVE;
         inputEvent.mouseMoveEvent = mouseState.onMouseMoveEvent(x, y);
+        return inputEvent;
     } // onMouseButtonEvent
 } // namespace input
 } // namespace p2d

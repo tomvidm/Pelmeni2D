@@ -9,6 +9,7 @@ add_executable(p2d-run
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${RAPIDJSON_INCLUDE_DIR}
+    ${PELMENI_SRC_DIR}
 )
 
 target_link_libraries(p2d-run 

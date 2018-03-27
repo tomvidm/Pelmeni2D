@@ -3,17 +3,17 @@
 #include <memory>
 #include <string>
 
-#include "../graphics/Package.hpp"
+#include "../graphics/SpritePackage.hpp"
 #include "../graphics/Sprite.hpp"
 
 namespace p2d { namespace system {
-    using PackagePtr = std::shared_ptr<graphics::Package>;
+    using SpritePackagePtr = std::shared_ptr<graphics::SpritePackage>;
     using AnimationId = std::string;
 
     class Object {
     public:
         Object();
-        void setPackage(const PackagePtr pkgPtr);
+        void setSpritePackage(const SpritePackagePtr pkgPtr);
         void update();
 
         inline graphics::Sprite& getSprite() { return sprite; }
@@ -21,7 +21,7 @@ namespace p2d { namespace system {
         void setAnimation(const AnimationId& id);
     private:
         graphics::Sprite sprite;;
-        graphics::PackagePtr packagePtr;
+        graphics::SpritePackagePtr spritePackagePtr;
     }; // class Object
 
     using ObjectId = std::string;

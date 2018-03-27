@@ -5,7 +5,7 @@
 #include "SFML/Graphics.hpp"
 
 #include "AnimationState.hpp"
-#include "PackageManager.hpp"
+#include "SpritePackage.hpp"
 
 namespace p2d { namespace graphics {
     class Sprite : public sf::Sprite {
@@ -14,7 +14,7 @@ namespace p2d { namespace graphics {
         //void setSpriteTexture(const ResourceId& id);
         //void setAnimation(const ResourceId& id);
 
-        void usePackage(const PackagePtr pkgPtr);
+        void useSpritePackage(const SpritePackagePtr pkgPtr);
         void useTexture(const TexturePtr texPtr);
         void useAnimation(const FrameSequencePtr fSequencePtr);
     private:

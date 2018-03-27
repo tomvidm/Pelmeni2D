@@ -2,7 +2,7 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "Package.hpp"
+#include "SpritePackage.hpp"
 #include "Frame.hpp"
 #include "FrameSequence.hpp"
 #include "Texture.hpp"
@@ -10,13 +10,13 @@
 // #include "AnimationMap.hpp"
 
 namespace p2d { namespace graphics {
-    using PackageId = std::string;
-    using PackagePtr = std::shared_ptr<Package>;
+    using SpritePackageId = std::string;
+    using SpritePackagePtr = std::shared_ptr<SpritePackage>;
     using FrameSequencePtr = std::shared_ptr<FrameSequence>;
 
-    class PackageLoader {
+    class SpritePackageLoader {
     public:
-        std::pair<PackageId, PackagePtr> load(const PackageId& id);
+        std::pair<SpritePackageId, SpritePackagePtr> load(const SpritePackageId& id);
     private:
         TextureManager textureManager;
     }; // class PackageLoader

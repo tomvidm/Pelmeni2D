@@ -1,23 +1,25 @@
 project(p2d-system)
 
 set(SOURCES
+    BlueprintManager.cpp
+    BlueprintLoader.cpp
     Instance.cpp
     Object.cpp
     ObjectLoader.cpp
     ObjectManager.cpp
     State.cpp
+    ../json/Helpers.cpp
 )
 
 include_directories(
+    ${PELMENI_SRC_DIR}
     ${SFML_INCLUDE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/pelmeni
-    ${LUA_INCLUDE_DIR}
-    ${LUA_SELENE_DIR}
+    ${RAPIDJSON_INCLUDE_DIR}
     )
 
 add_library(p2d-system
     ${SOURCES}
-    ${RAPIDJSON_INCLUDE_DIRs}
+
 )
 
 target_link_libraries(p2d-system

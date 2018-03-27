@@ -1,24 +1,10 @@
 #include <iostream>
 #include <cstdio>
 
-#include <SFML/Graphics.hpp>
-
-#include "rapidjson/document.h"
-#include "rapidjson/filereadstream.h"
-
-namespace rj = rapidjson;
+#include "system/BlueprintManager.hpp"
 
 int main() {
-    // p2d::system::Instance game;
-
-
-    FILE* pFile = fopen("../resources/blueprints/test01.json", "rb");
-    char buffer[4096];
-    rj::FileReadStream is(pFile, buffer, sizeof(buffer));
-
-    rj::Document d;
-    d.ParseStream(is);
-    
-    fclose(pFile);
+    p2d::system::BlueprintManager bpm;
+    bpm.loadBlueprint("test01");
     return 0;
 } // Main function

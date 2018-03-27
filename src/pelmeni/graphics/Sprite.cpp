@@ -7,7 +7,7 @@ namespace p2d { namespace graphics {
         }
     } // update
 
-    void Sprite::usePackage(const PackagePtr pkgPtr) {
+    void Sprite::useSpritePackage(const SpritePackagePtr pkgPtr) {
         useTexture(pkgPtr->getTexturePtr());
     } // usePackage
 

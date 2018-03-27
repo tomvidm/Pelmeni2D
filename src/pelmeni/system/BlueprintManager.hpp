@@ -1,14 +1,22 @@
-#include "../system/Blueprint.hpp"
-#include "../utility/Map.hpp"
+#pragma once
 
 #include <string>
 
+#include "system/Blueprint.hpp"
+#include "system/BlueprintLoader.hpp"
+#include "utility/Map.hpp"
+
 namespace p2d { namespace system {
     class BlueprintManager {
+    public:
         using BlueprintMap = utility::Map<Blueprint::id, Blueprint>;
         using BlueprintLookupTable = utility::Map<Blueprint::id, std::string>;
         
-        Blueprint& get(const Blueprint::id& blueprintId);
+        BlueprintManager() {
+            initializeBlueprintLookupTable();
+        }
+
+        void loadBlueprint(const Blueprint::id& blueprintId);
 
     private:
         void initializeBlueprintLookupTable();

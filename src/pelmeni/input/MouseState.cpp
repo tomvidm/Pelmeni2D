@@ -17,7 +17,7 @@ namespace p2d { namespace input {
 
     MouseMoveEvent MouseState::onMouseMoveEvent(const int& mx, 
                                                 const int& my) {
-        math::Vector2i newMousePosition = math::Vector2i(mx, my);
+        //math::Vector2i newMousePosition = math::Vector2i(mx, my);
         MouseMoveEvent event{
             mx,
             my,

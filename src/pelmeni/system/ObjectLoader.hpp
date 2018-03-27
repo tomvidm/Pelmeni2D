@@ -4,8 +4,8 @@
 #include <string>
 
 #include "Object.hpp"
-#include "../graphics/PackageManager.hpp"
-#include "../graphics/Sprite.hpp"
+#include "graphics/SpritePackageManager.hpp"
+#include "graphics/Sprite.hpp"
 
 namespace p2d { namespace system {
     using PresetId = std::string;
@@ -14,7 +14,7 @@ namespace p2d { namespace system {
     public:
         std::pair<ObjectId, ObjectPtr> load(const ObjectId& id, const PresetId& presetId);
     private:
-        graphics::PackageManager packageManager;
+        graphics::SpritePackageManager spritePackageManager;
     }; // class Object
 } // namespace system
 } // namespace p2d
