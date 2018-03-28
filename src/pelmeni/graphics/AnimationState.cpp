@@ -15,7 +15,7 @@ namespace p2d { namespace graphics {
     bool AnimationState::update() {
         //std::cout << getCurrentFrameDuration().asSeconds() << std::endl;
         if (frameTimer.getElapsedTime() > getCurrentFrameDuration()) {
-            currentFrameIndex += 1;
+            currentFrameIndex += frameTimer.getElapsedTime() / getCurrentFrameDuration();
             currentFrameIndex %= frameSequencePtr->getNumFrames();
             frameTimer.restart();
             return true;
