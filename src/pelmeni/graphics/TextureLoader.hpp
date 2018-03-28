@@ -4,14 +4,12 @@
 
 #include "SFML/Graphics.hpp"
 
-namespace p2d { namespace graphics {
-    using Texture = sf::Texture;
-    using TextureId = std::string;
-    using TexturePtr = std::shared_ptr<sf::Texture>;
+#include "graphics/Texture.hpp"
 
+namespace p2d { namespace graphics {
     class TextureLoader {
     public:
-        std::pair<TextureId, TexturePtr> load(const TextureId& id, const std::string& filepath);
+        Texture::ptr createTexture(const Texture::id& textureId, const std::string& filepath);
     }; // class TextureLoader
 } // namespace graphics
 } // namespace p2d

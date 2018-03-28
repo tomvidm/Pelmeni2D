@@ -1,22 +1,10 @@
 #include "TextureLoader.hpp"
-
- 
-#include "Sprite.hpp"
+#include "Texture.hpp"
 
 namespace p2d { namespace graphics {
-    using ResourceId = std::string;
-    
-    std::pair<TextureId, TexturePtr> TextureLoader::load(const TextureId& id, const std::string& filepath) {
-         
-        const std::string resourceDirectory = "../resources/";
-        const std::string fullpath = resourceDirectory + filepath;
-         
-
-        TexturePtr texturePtr = std::make_shared<sf::Texture>();
-        if (!texturePtr->loadFromFile(fullpath)) {
-             
-        }
-        return std::make_pair(id, texturePtr);
+    Texture::ptr TextureLoader::createTexture(const Texture::id& textureId, const std::string& filepath) {
+        printf("TextureLoader: Creating Texture from file %s\n", filepath.c_str());
+        return std::make_shared<Texture>(textureId, filepath);
     }
 } // namespace graphics
 } // namespace p2d

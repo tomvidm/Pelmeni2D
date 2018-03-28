@@ -1,7 +1,7 @@
 #pragma once
 
 #include "graphics/Texture.hpp"
-//#include "graphics/TextureLoader.hpp"
+#include "graphics/TextureLoader.hpp"
 #include "utility/Map.hpp"
 
 namespace p2d { namespace graphics {
@@ -19,7 +19,7 @@ namespace p2d { namespace graphics {
         void initializeLookupTable();
         TextureMap textureMap;
         TextureLookupTable textureLookupTable;
-        //TextureLoader textureLoader;
+        TextureLoader textureLoader;
     }; // class TextureManager
 } // namespace graphics
 } // namespace p2d

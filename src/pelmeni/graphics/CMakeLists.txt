@@ -7,7 +7,7 @@ set(SOURCES
     SpritePackageLoader.cpp
     SpritePackageManager.cpp
     #Sprite.cpp
-    #TextureLoader.cpp
+    TextureLoader.cpp
     TextureManager.cpp
     ../json/Helpers.cpp
 )

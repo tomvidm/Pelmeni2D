@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <string>
+#include <cstdio>
 
 #include "SFML/Graphics.hpp"
 
@@ -13,7 +14,10 @@ namespace p2d { namespace graphics {
 
         Texture(const Texture::id& textureId, const std::string texturePath)
         : textureId(textureId) {
-            sfmlTexture.loadFromFile(texturePath);
+            
+            if (!sfmlTexture.loadFromFile(texturePath)) {
+                printf("Texture: Error loading file %s\n", texturePath.c_str());
+            }
         }
 
         inline Texture::id getId() const { return textureId; }

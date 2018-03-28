@@ -12,11 +12,11 @@ namespace p2d { namespace graphics {
         return textureMap.get(id);
     }
 
-    void TextureManager::loadTexture(const Texture::id& id) {
-        const std::string textureFullPath = "../resources/textures/" + textureLookupTable.get(id);
+    void TextureManager::loadTexture(const Texture::id& textureId) {
+        const std::string textureFullPath = "../resources/textures/" + textureLookupTable.get(textureId);
         printf("TextureManager: Loading texture from %s\n", textureFullPath.c_str());
-        Texture::ptr texture = std::make_shared<Texture>(id, textureFullPath);
-        textureMap.insert(std::make_pair(id, texture)); 
+        Texture::ptr texture = textureLoader.createTexture(textureId, textureFullPath);
+        textureMap.insert(std::make_pair(textureId, texture)); 
     }
 
     void TextureManager::initializeLookupTable() {
