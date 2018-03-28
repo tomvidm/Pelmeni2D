@@ -1,13 +1,16 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 #include "Frame.hpp"
 
 namespace p2d { namespace graphics {
     class FrameSequence {
     public:
-        using is = std::string;
+        using id = std::string;
+        using ptr = std::shared_ptr<FrameSequence>;
+        
 
         void addFrame(const Frame& frame);
         inline size_t getNumFrames() const { return sequence.size(); }
