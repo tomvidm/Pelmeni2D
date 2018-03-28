@@ -9,7 +9,7 @@
 namespace p2d { namespace system {
     class BlueprintManager {
     public:
-        using BlueprintMap = utility::Map<Blueprint::id, Blueprint>;
+        using BlueprintMap = utility::Map<Blueprint::id, Blueprint::ptr>;
         using BlueprintLookupTable = utility::Map<Blueprint::id, std::string>;
         
         BlueprintManager() {
@@ -17,7 +17,7 @@ namespace p2d { namespace system {
         }
 
         void loadBlueprint(const Blueprint::id& blueprintId);
-
+        Blueprint::ptr get(const Blueprint::id& blueprintId);
     private:
         void initializeBlueprintLookupTable();
 

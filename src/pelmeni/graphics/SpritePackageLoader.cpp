@@ -11,7 +11,6 @@
 
 namespace p2d { namespace graphics {
     SpritePackage::ptr SpritePackageLoader::createSpritePackage(const SpritePackage::id& spritePackageId, const std::string& spritePackagePath) {
-        printf("SpritePackageLoader: Creating SpritePackage from data in ../resources/packages/%s\n", spritePackagePath.c_str());
         rapidjson::Document doc = json::parseJsonFile("../resources/packages/" + spritePackagePath);
 
         assert(spritePackageId == doc["package_id"].GetString());

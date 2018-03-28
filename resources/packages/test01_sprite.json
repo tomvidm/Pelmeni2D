@@ -1,6 +1,7 @@
 {
     "package_id": "test01_sprite",
     "texture_id": "tex01",
+    "is_animated": true,
     "animations": [
         {
             "animation_key": "anim01",

@@ -3,9 +3,9 @@
 
 namespace p2d { namespace system {
 
-    std::pair<ObjectId, ObjectPtr> ObjectLoader::load(const ObjectId& id, const PresetId& presetId) {
-        ObjectPtr objectPtr = std::make_shared<Object>();
-        return std::make_pair(id, objectPtr);
-    } // load
+    Object::ptr ObjectLoader::createObject(const Object::id& uniqueId, const Blueprint::ptr blueprint) {
+        graphics::SpritePackage::ptr spritePackage = spritePackageManager.getSpritePackage(blueprint->getSpritePackageId());
+        return std::make_shared<Object>();
+    }
 } // namespace system
 } // namespace p2d

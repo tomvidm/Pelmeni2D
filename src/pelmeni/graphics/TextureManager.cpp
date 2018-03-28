@@ -14,22 +14,21 @@ namespace p2d { namespace graphics {
 
     void TextureManager::loadTexture(const Texture::id& textureId) {
         const std::string textureFullPath = "../resources/textures/" + textureLookupTable.get(textureId);
-        printf("TextureManager: Loading texture from %s\n", textureFullPath.c_str());
+        printf("Loading texture '%s' from %s\n", textureId.c_str(), textureFullPath.c_str());
         Texture::ptr texture = textureLoader.createTexture(textureId, textureFullPath);
         textureMap.insert(std::make_pair(textureId, texture)); 
     }
 
     void TextureManager::initializeLookupTable() {
-        printf("TextureManager: Loading and parsing texture lookup table\n");
+        printf("Initializing texture lookup table... ");
         rapidjson::Document doc = p2d::json::parseJsonFile("../resources/textures/texture_lookup.json");
 
         for (auto& entry : doc.GetArray()) {
             const Texture::id textureId = entry[0].GetString();
             const std::string texturePath = entry[1].GetString();
             textureLookupTable.insert(std::make_pair(textureId, texturePath));
-            printf("-- %s: %s\n", textureId.c_str(), texturePath.c_str());
         }
-        printf("TextureManager: Finished loading texture lookup table\n");
+        printf("Finished\n");
     }
 } // namespace graphics
 } // namespace p2d

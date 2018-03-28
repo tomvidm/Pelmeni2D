@@ -1,14 +1,10 @@
 #include <iostream>
 #include <cstdio>
 
-#include "system/BlueprintManager.hpp"
-#include "graphics/SpritePackageManager.hpp"
+#include "system/ObjectManager.hpp"
 
 int main() {
-    p2d::system::BlueprintManager bpm;
-    bpm.loadBlueprint("test01");
-
-    p2d::graphics::SpritePackageManager spm;
-    spm.loadSpritePackage("test01_sprite");
+    p2d::system::ObjectManager objmanager;
+    objmanager.createFromBlueprint("object01", "test01");
     return 0;
 } // Main function

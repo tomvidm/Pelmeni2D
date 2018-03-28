@@ -3,23 +3,23 @@
 #include <memory>
 #include <string>
 
+#include "utility/Map.hpp"
+
+#include "Blueprint.hpp"
+#include "BlueprintManager.hpp"
 #include "Object.hpp"
 #include "ObjectLoader.hpp"
-#include "../graphics/Sprite.hpp"
-#include "../utility/Map.hpp"
 
 namespace p2d { namespace system {
-    using ObjectPtr = std::shared_ptr<Object>;
-    using ObjectPtrMap = utility::Map<ObjectId, ObjectPtr>;
-    using PresetId = std::string;
-
     class ObjectManager {
+        using ObjectContainer = utility::Map<Object::id, Object::ptr>;
     public:
-        ObjectPtr getObject(const ObjectId& id);
-        void loadObject(const ObjectId& id, const PresetId& presetId);
+        Object::ptr createFromBlueprint(const Object::id& uniqueId, const Blueprint::id& blueprintId);
     private:
-        ObjectPtrMap objectPtrMap;
+        ObjectContainer objectContainer;
+        
         ObjectLoader objectLoader;
-    }; // class Object
+        BlueprintManager blueprintManager;
+    }; // class ObjectManager
 } // namespace system
 } // namespace p2d

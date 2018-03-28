@@ -16,7 +16,8 @@ namespace p2d { namespace graphics {
             initializePackageLookupTable();
         }
 
-        void loadSpritePackage(const SpritePackage::id spritePackageId);
+        SpritePackage::ptr getSpritePackage(const SpritePackage::id& spritePackageId);
+        void loadSpritePackage(const SpritePackage::id& spritePackageId);
     private:
         void initializePackageLookupTable();
         PackageMap packageMap;

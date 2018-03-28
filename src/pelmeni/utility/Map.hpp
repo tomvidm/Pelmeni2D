@@ -15,6 +15,7 @@ namespace p2d { namespace utility {
         void insert(const std::pair<K, V>& keyValuePair);
         
         bool contains(const K& key) const;
+        unsigned size() const;
 
         V& get(const K& key);
         V get(const K& key) const;
@@ -39,6 +40,11 @@ namespace p2d { namespace utility {
         } else {
             return false;
         }
+    }
+
+    template <typename K, typename V>
+    unsigned Map<K, V>::size() const {
+        return stlMap.size();
     }
 
     template <typename K, typename V>

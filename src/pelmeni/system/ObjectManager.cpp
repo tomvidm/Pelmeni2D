@@ -1,22 +1,13 @@
 #include "ObjectManager.hpp"
 
 namespace p2d { namespace system {
-    ObjectPtr ObjectManager::getObject(const ObjectId& id) {
-         
-        if (!objectPtrMap.contains(id)) {
-            return std::make_shared<Object>(Object());
-        } else {
-            return objectPtrMap.get(id);
-        } // if else
-    } // getObject
+    Object::ptr ObjectManager::createFromBlueprint(const Object::id& uniqueId, const Blueprint::id& blueprintId) {
+        blueprintManager.loadBlueprint(blueprintId);
 
-    void ObjectManager::loadObject(const ObjectId& id, const PresetId& presetId) {
-         
-        if (!objectPtrMap.contains(id)) {
-            std::pair<ObjectId, ObjectPtr> keyValuePair = objectLoader.load(id, presetId);
-             
-            objectPtrMap.insert(keyValuePair);
-        } // if
-    } // loadObject
+        Blueprint::ptr blueprint(blueprintManager.get(blueprintId));
+        Object::ptr newObject = objectLoader.createObject(uniqueId, blueprint);
+
+        return newObject;
+    };
 } // namespace system
 } // namespace p2d

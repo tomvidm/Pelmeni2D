@@ -3,16 +3,13 @@
 #include <memory>
 #include <string>
 
-#include "Object.hpp"
 #include "graphics/SpritePackageManager.hpp"
-#include "graphics/Sprite.hpp"
-
+#include "system/Blueprint.hpp"
+#include "system/Object.hpp"
 namespace p2d { namespace system {
-    using PresetId = std::string;
-
     class ObjectLoader {
     public:
-        std::pair<ObjectId, ObjectPtr> load(const ObjectId& id, const PresetId& presetId);
+        Object::ptr createObject(const Object::id& uniqueId, const Blueprint::ptr blueprint);
     private:
         graphics::SpritePackageManager spritePackageManager;
     }; // class Object
