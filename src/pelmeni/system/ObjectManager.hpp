@@ -10,6 +10,8 @@
 #include "Object.hpp"
 #include "ObjectLoader.hpp"
 
+#include "debugging/Logging.hpp"
+
 namespace p2d { namespace system {
     class ObjectManager {
         using ObjectContainer = utility::Map<Object::id, Object::ptr>;

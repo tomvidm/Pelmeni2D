@@ -2,6 +2,7 @@ project(p2d-debugging)
 
 set(SOURCES
     LogContainer.cpp
+    Logger.cpp
 )
 
 add_library(p2d-debugging
