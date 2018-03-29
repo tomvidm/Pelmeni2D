@@ -15,7 +15,7 @@ namespace p2d { namespace graphics {
     void TextureManager::loadTexture(const Texture::id& textureId) {
         const std::string textureFullPath = "../resources/textures/" + textureLookupTable.get(textureId);
         printf("Loading texture '%s' from %s\n", textureId.c_str(), textureFullPath.c_str());
-        Texture::ptr texture = textureLoader.createTexture(textureId, textureFullPath);
+        Texture::ptr& texture = textureLoader.createTexture(textureId, textureFullPath);
         textureMap.insert(std::make_pair(textureId, texture)); 
     }
 

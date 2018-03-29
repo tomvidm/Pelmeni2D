@@ -1,0 +1,33 @@
+{
+    "scene_id": "scene01",
+    "prefetched_blueprints": {
+        "blueprint_lists": [
+            ["test01", "test01_blueprint.json"],
+            ["tusk", "tusk_blueprint.json"]
+        ],
+        "standalone_blueprints": []
+    },
+    "scene_objects": [
+        {
+            "id": 0,
+            "alias_id": "root",
+            "initial_state": {
+                "parent_id": null,
+                "children_id": [132, 2334]
+            }
+        },
+        {
+            "id": 132,
+            "alias_id": "test01_instance",
+            "blueprint": "test01",
+            "initial_state": {
+                "transform": {
+                    "position": [128, 192],
+                    "rotation": [0, 0]
+                },
+                "parent_id": 0,
+                "children_id": []
+            }
+        }
+    ]
+}

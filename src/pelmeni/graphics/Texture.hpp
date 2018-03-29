@@ -17,6 +17,8 @@ namespace p2d { namespace graphics {
             
             if (!sfmlTexture.loadFromFile(texturePath)) {
                 printf("Texture: Error loading file %s\n", texturePath.c_str());
+            } else {
+                printf("Texture loaded!\n");
             }
         }
 
