@@ -1,13 +1,13 @@
 project(p2d-graphics)
 
 set(SOURCES
-    #AnimationState.cpp
+    AnimationState.cpp
     FrameSequence.cpp
     FrameSequenceLoader.cpp
     SpritePackage.cpp
     SpritePackageLoader.cpp
     SpritePackageManager.cpp
-    #Sprite.cpp
+    Sprite.cpp
     TextureLoader.cpp
     TextureManager.cpp
     ../json/Helpers.cpp

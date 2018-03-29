@@ -5,7 +5,7 @@ namespace p2d { namespace system {
 
     Object::ptr ObjectLoader::createObject(const Object::id& uniqueId, const Blueprint::ptr blueprint) {
         graphics::SpritePackage::ptr spritePackage = spritePackageManager.getSpritePackage(blueprint->getSpritePackageId());
-        return std::make_shared<Object>();
+        return std::make_shared<Object>(spritePackage);
     }
 } // namespace system
 } // namespace p2d

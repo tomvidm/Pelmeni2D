@@ -10,11 +10,14 @@
 namespace p2d { namespace graphics {
     class Sprite : public sf::Sprite {
     public:
-        void update();
-        //void setSpriteTexture(const ResourceId& id);
-        //void setAnimation(const ResourceId& id);
+        using id = std::string;
+        using ptr = std::shared_ptr<Sprite>;
 
-        void useSpritePackage(const SpritePackagePtr pkgPtr);
+        void update();
+        void useTexture(const Texture::ptr texture);
+        void useAnimation(const FrameSequence::ptr fSequence);
+
+        void useSpritePackage(const SpritePackage::ptr spritePackage);
     private:
         AnimationState animationState;
     }; // class Sprite

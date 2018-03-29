@@ -20,11 +20,11 @@ namespace p2d { namespace graphics {
                       const FrameSequenceMap& fSequenceMap);
 
         inline SpritePackage::id getId() const { return _spritePackageId; }
+        inline Texture::ptr getTexture() const { return texture; }
     private:
         SpritePackage::id _spritePackageId;
-        
-        FrameSequenceMap frameSequenceMap;
         Texture::ptr texture;
+        FrameSequenceMap frameSequenceMap;
     }; // class Package
 } // namespace graphics
 } // namespace p2d

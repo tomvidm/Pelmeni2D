@@ -21,7 +21,7 @@ namespace p2d { namespace graphics {
         }
 
         inline Texture::id getId() const { return textureId; }
-
+        inline sf::Texture& getTexture() { return sfmlTexture; }
     private:
         Texture::id textureId;
 

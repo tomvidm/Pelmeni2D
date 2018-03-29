@@ -4,12 +4,13 @@ This is written and tested on Ubuntu 16.04 LTE. Any other platform requires work
 ### Prerequisites
 * [SFML 2.4+](https://www.sfml-dev.org/)
 * [CMake 3.0+](https://cmake.org/)
-* [Lua 5.2+](https://www.lua.org/)
-
-### Libraries to be downloaded as part of the build step
-* [Selene](https://github.com/jeremyong/Selene)
+* [rapidjson](https://github.com/Tencent/rapidjson)
 * [Google Testing Framework](https://github.com/google/googletest)
 
-## How to set up the build environment
-### Ubuntu / Debian / Unix
+SFML and CMake should be available to the system.
 
+`rapidjson` and `Google Testing Framework` should be git cloned into a folder `external` in the root project folder.
+To build, simply enter the following command
+```
+mkdir build && cmake ..
+```
