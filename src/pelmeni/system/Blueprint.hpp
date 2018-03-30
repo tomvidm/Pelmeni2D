@@ -9,8 +9,7 @@ namespace p2d { namespace system {
     public:
         using id = std::string;
         using ptr = std::shared_ptr<Blueprint>;
-        Blueprint(const Blueprint::id& bpid, const graphics::SpritePackage::id& spid) 
-        : blueprintId(bpid), spritePackageId(spid) {;}
+        using file = std::string;
 
         inline Blueprint::id getId() const { return blueprintId; }
         inline graphics::SpritePackage::id getSpritePackageId() const {return spritePackageId; }

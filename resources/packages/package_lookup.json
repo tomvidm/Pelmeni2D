@@ -1,6 +1,0 @@
-{
-    "sprite_packages": [
-        ["test01_sprite", "test01_sprite.json"],
-        ["tusk_sprite", "tusk_sprite.json"]
-    ]
-}

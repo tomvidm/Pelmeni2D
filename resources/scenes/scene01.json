@@ -2,8 +2,7 @@
     "scene_id": "scene01",
     "prefetched_blueprints": {
         "blueprint_lists": [
-            ["test01", "test01_blueprint.json"],
-            ["tusk", "tusk_blueprint.json"]
+            "blueprints/test_blueprints.json"
         ],
         "standalone_blueprints": []
     },

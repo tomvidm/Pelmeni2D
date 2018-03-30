@@ -6,6 +6,6 @@ When a scene is loaded, a list of needed resources are prefetched by reading the
 The scene file should contain:
 * The scene id
 * A list, or a reference to a list of blueprints to prefetch
-  * The blueprints contain their own lists of resources to prefetch, so the user is not required to list all the details.
+  * The blueprints contain their own lists of resources to prefetch, so the user is not required to list all the details. Simply list the desired blueprints, and the blueprints required resources will be fetched by their own.
 * A description of the scene graph for the engine to reconstruct
   * The exact format should be decided upon through iteration, testing and trial and error
