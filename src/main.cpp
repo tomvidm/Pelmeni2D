@@ -1,10 +1,9 @@
 #include <iostream>
 #include <cstdio>
 
-#include "system/ObjectManager.hpp"
+#include "system/Instance.hpp"
 
 int main() {
-    p2d::system::ObjectManager objmanager;
-    objmanager.createFromBlueprint("object01", "test01");
+    p2d::system::Instance instance;
     return 0;
 } // Main function

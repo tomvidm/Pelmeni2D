@@ -3,7 +3,6 @@
 #include <string>
 
 #include "system/Blueprint.hpp"
-#include "system/BlueprintLoader.hpp"
 #include "utility/Map.hpp"
 
 namespace p2d { namespace system {
@@ -20,8 +19,9 @@ namespace p2d { namespace system {
         Blueprint::ptr get(const Blueprint::id& blueprintId);
     private:
         void initializeBlueprintLookupTable();
+        Blueprint createBlueprint(const Blueprint::id blueprintId, 
+                                  const std::string& blueprintPath);
 
-        BlueprintLoader blueprintLoader;
         BlueprintMap blueprintMap; 
         BlueprintLookupTable blueprintLookupTable;
     }; // class BlueprintManager

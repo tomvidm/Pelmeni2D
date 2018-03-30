@@ -2,10 +2,8 @@ project(p2d-system)
 
 set(SOURCES
     BlueprintManager.cpp
-    BlueprintLoader.cpp
     Instance.cpp
     Object.cpp
-    ObjectLoader.cpp
     ObjectManager.cpp
     #State.cpp
     ../json/Helpers.cpp

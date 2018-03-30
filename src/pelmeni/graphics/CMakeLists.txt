@@ -5,10 +5,8 @@ set(SOURCES
     FrameSequence.cpp
     FrameSequenceLoader.cpp
     SpritePackage.cpp
-    SpritePackageLoader.cpp
     SpritePackageManager.cpp
     Sprite.cpp
-    TextureLoader.cpp
     TextureManager.cpp
     ../json/Helpers.cpp
 )

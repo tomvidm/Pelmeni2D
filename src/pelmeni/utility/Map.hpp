@@ -11,6 +11,8 @@ namespace p2d { namespace utility {
     template <typename K, typename V>
     class Map {
     public:
+        Map();
+        Map(const Map& rhs);
         void insert(const K& key, const V& value);
         void insert(const std::pair<K, V>& keyValuePair);
         
@@ -19,9 +21,20 @@ namespace p2d { namespace utility {
 
         V& get(const K& key);
         V get(const K& key) const;
-    private:
+    protected:
         std::map<K, V> stlMap;
     }; // class Map
+
+    template <typename K, typename V>
+    Map<K, V>::Map() {
+        ;
+    }
+
+    template <typename K, typename V>
+    Map<K, V>::Map(const Map& rhs)
+    : stlMap(rhs.stlMap) {
+        ;
+    }
 
     template <typename K, typename V>
     void Map<K, V>::insert(const K& key, const V& value) {

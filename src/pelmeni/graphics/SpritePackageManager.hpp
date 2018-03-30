@@ -5,7 +5,9 @@
 
 #include "utility/Map.hpp"
 #include "graphics/SpritePackage.hpp"
-#include "graphics/SpritePackageLoader.hpp"
+#include "graphics/TextureManager.hpp"
+#include "graphics/FrameSequence.hpp"
+#include "graphics/FrameSequenceLoader.hpp"
 
 namespace p2d { namespace graphics {
     class SpritePackageManager {
@@ -19,10 +21,16 @@ namespace p2d { namespace graphics {
         SpritePackage::ptr getSpritePackage(const SpritePackage::id& spritePackageId);
         void loadSpritePackage(const SpritePackage::id& spritePackageId);
     private:
+        SpritePackage::ptr createSpritePackage(const SpritePackage::id& spritePackageId, const std::string& spritePackagePath);
         void initializePackageLookupTable();
+
         PackageMap packageMap;
         PackageLookupTable packageLookupTable;
-        SpritePackageLoader spritePackageLoader;
+
+        FrameSequenceLoader frameSequenceLoader;
+
+        TextureManager textureManager;
+        
     }; // class PackageManager
 } // namespace graphics
 } // namespace p2d

@@ -8,7 +8,7 @@
 #include "Blueprint.hpp"
 #include "BlueprintManager.hpp"
 #include "Object.hpp"
-#include "ObjectLoader.hpp"
+#include "graphics/SpritePackageManager.hpp"
 
 #include "debugging/Logging.hpp"
 
@@ -17,11 +17,12 @@ namespace p2d { namespace system {
         using ObjectContainer = utility::Map<Object::id, Object::ptr>;
     public:
         Object::ptr createFromBlueprint(const Object::id& uniqueId, const Blueprint::id& blueprintId);
+        Object::ptr createObject(const Object::id& uniqueId, const Blueprint::ptr blueprint);
     private:
         ObjectContainer objectContainer;
         
-        ObjectLoader objectLoader;
         BlueprintManager blueprintManager;
+        graphics::SpritePackageManager spritePackageManager;
     }; // class ObjectManager
 } // namespace system
 } // namespace p2d

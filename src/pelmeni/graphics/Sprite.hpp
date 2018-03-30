@@ -14,12 +14,13 @@ namespace p2d { namespace graphics {
         using ptr = std::shared_ptr<Sprite>;
 
         void update();
-        void useTexture(const Texture::ptr texture);
-        void useAnimation(const FrameSequence::ptr fSequence);
+        void useAnimation(const FrameSequence::id& fid);
+        void useSpritePackage(SpritePackage::ptr newSpritePackage);
 
-        void useSpritePackage(const SpritePackage::ptr spritePackage);
+        //void useSpritePackage(const SpritePackage::ptr spritePackage);
     private:
         AnimationState animationState;
+        SpritePackage::ptr spritePackage;
     }; // class Sprite
 } // namespace graphics
 } // namespace p2d

@@ -14,13 +14,15 @@ namespace p2d { namespace system {
         using ptr = std::shared_ptr<Object>;
 
         Object();
-        Object(const graphics::SpritePackage::ptr spritePackage);
+        Object(graphics::SpritePackage::ptr spritePackage);
 
         inline Object::id getId() const { return objectId; }
+        inline graphics::Sprite getSprite() const { return sprite; }
+
+        void update();
     private:
         Object::id objectId;
-        graphics::Sprite::ptr sprite;
-        graphics::SpritePackage::ptr spritePackage;
+        graphics::Sprite sprite;
 
     }; // class Object
 } // namespace system

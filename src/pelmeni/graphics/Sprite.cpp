@@ -7,16 +7,13 @@ namespace p2d { namespace graphics {
         }
     } // update
 
-    void Sprite::useSpritePackage(const SpritePackage::ptr spritePackage) {
-        useTexture(spritePackage->getTexture());
-    } // usePackage
-
-    void Sprite::useTexture(const Texture::ptr texture) {
-        //setTexture(texture->getTexture());
+    void Sprite::useAnimation(const FrameSequence::id& fid) {
+        animationState.setFrameSequence(spritePackage->getFrameSequence(fid));
     }
 
-    void Sprite::useAnimation(const FrameSequence::ptr fSequence) {
-        animationState.setFrameSequence(fSequence);
+    void Sprite::useSpritePackage(SpritePackage::ptr newSpritePackage) {
+        spritePackage = newSpritePackage;
+        setTexture(spritePackage->getTexture());
     }
 } // namespace graphics
 } // namespace p2d

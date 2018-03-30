@@ -16,7 +16,7 @@ namespace p2d { namespace system {
             return;
         }
 
-        Blueprint blueprint = blueprintLoader.createBlueprint(blueprintId, blueprintLookupTable.get(blueprintId));
+        Blueprint blueprint = createBlueprint(blueprintId, blueprintLookupTable.get(blueprintId));
         assert(blueprint.getId() == blueprintId);
 
         blueprintMap.insert(std::make_pair(blueprintId, std::make_shared<Blueprint>(blueprint)));
@@ -40,7 +40,19 @@ namespace p2d { namespace system {
         }
 
         printf("Finished\n");
-        
+    }
+
+    Blueprint BlueprintManager::createBlueprint(const Blueprint::id blueprintId, 
+                                                   const std::string& blueprintPath) {
+            rapidjson::Document doc = json::parseJsonFile("../resources/" + blueprintPath);
+
+            assert(blueprintId == doc["blueprint_id"].GetString());
+
+            const std::string spritePackageId = doc["packages"]["sprite_package_id"].GetString();
+            
+            Blueprint blueprint(blueprintId, spritePackageId);
+
+            return blueprint;
     }
 } // namespace system
 } // namespace p2d

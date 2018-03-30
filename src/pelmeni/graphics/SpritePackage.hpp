@@ -16,14 +16,20 @@ namespace p2d { namespace graphics {
         using ptr = std::shared_ptr<SpritePackage>;
 
         SpritePackage(const SpritePackage::id& spritePackageId,
-                      const Texture::ptr texturePtr,
+                      sf::Texture& texturePtr,
                       const FrameSequenceMap& fSequenceMap);
+                    
+        SpritePackage(const SpritePackage& rhs)
+        : _spritePackageId(rhs._spritePackageId),
+        texture(rhs.texture),
+        frameSequenceMap(rhs.frameSequenceMap) {}
 
         inline SpritePackage::id getId() const { return _spritePackageId; }
-        inline Texture::ptr getTexture() const { return texture; }
-    private:
+        inline sf::Texture& getTexture() const { return texture; }
+        inline FrameSequence::ptr getFrameSequence(const FrameSequence::id& fid) { return frameSequenceMap.get(fid); }
+    protected:
         SpritePackage::id _spritePackageId;
-        Texture::ptr texture;
+        sf::Texture& texture;
         FrameSequenceMap frameSequenceMap;
     }; // class Package
 } // namespace graphics
