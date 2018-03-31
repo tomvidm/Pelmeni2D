@@ -1,12 +1,12 @@
+#include <cstdio>
+
 #include "system/EntityContainer.hpp"
 
 namespace p2d { namespace system {
-    void EntityContainer::insert(const Entity::id entityId, Entity& movedEntity) {
-        entityMap.insert(std::make_pair(entityId, std::move(movedEntity)));
-    }
-
-    void EntityContainer::insertAliasMapping(const Entity::alias newAlias, const Entity::id& newId) {
-        aliasToIdMap.insert(std::make_pair(newAlias, newId));
+    Entity::id EntityContainer::insert(Entity&& entity) {
+        Entity::id entityId = entities.push(std::move(entity));
+        printf("Entity inserted with id %zu\n", entityId);
+        return entityId;
     }
 } // namespace system
 } // namespace p2d

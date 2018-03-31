@@ -3,13 +3,7 @@
 #include "Entity.hpp"
 
 namespace p2d { namespace system {
-    Entity::Entity(const Entity::id& newId)
-    : entityId(newId) {
-        ;
-    }
-
-    Entity::Entity(const Entity::id& newId, const Entity::alias& newAlias)
-    : entityId(newId), entityAlias(newAlias) {
+    Entity::Entity() {
         ;
     }
 
@@ -21,6 +15,11 @@ namespace p2d { namespace system {
     Entity::Entity(Entity&& other) 
     : entityId(std::move(other.entityId)), entityAlias(std::move(other.entityAlias)) {
         ;
+    }
+
+    Entity& Entity::operator = (Entity&& other) {
+        entityAlias = other.getAlias();
+        return *this;
     }
 
     void Entity::update() {

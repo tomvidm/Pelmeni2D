@@ -1,17 +1,16 @@
 #pragma once
-
 #include <map>
-#include <unordered_map>
 
+#include "system/EngineDefs.hpp"
+#include "utility/Pool.hpp"
 #include "system/Entity.hpp"
 
 namespace p2d { namespace system {
     class EntityContainer {
     public:
-        void insert(const Entity::id entityId, Entity& movedEntity);
-        void insertAliasMapping(const Entity::alias newAlias, const Entity::id& newId);
+        Entity::id insert(Entity&& movedEntity);
     private:
-        std::unordered_map<Entity::id, Entity> entityMap;
+        utility::Pool<Entity, ENTITY_POOL_SIZE> entities;
         std::map<Entity::alias, Entity::id> aliasToIdMap;
     }; // class EntityContainer
 } // namespace system

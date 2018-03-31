@@ -1,6 +1,6 @@
 {
     "blueprint_id": "test01",
     "packages": {
-        "sprite_package_id": "test01_sprite"
+        "sprite_package_id": "test01_sprite",
     }
 }

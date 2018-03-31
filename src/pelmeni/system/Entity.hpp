@@ -14,10 +14,9 @@ namespace p2d { namespace system {
         using unique = std::unique_ptr<Entity>;
 
         Entity();
-        Entity(const Entity::id& newId);
-        Entity(const Entity::id& newId, const Entity::alias& newAlias);
         Entity(const Entity& copy);
         Entity(Entity&& other);
+        Entity& operator = (Entity&& other);
 
         inline Entity::id getId() const { return entityId; }
         inline Entity::alias getAlias() const { return entityAlias; }
