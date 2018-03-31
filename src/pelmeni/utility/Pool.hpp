@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdio>
 #include <memory>
 #include <deque>
 #include <array>
@@ -16,20 +17,22 @@ namespace p2d { namespace utility {
     public:
         Pool();
 
-        T& getNewObject();
+        typename T::id newObject(T&& obj);
 
         inline bool empty() const { return activeObjects_ == 0; }
-        inline size_t size() const { return size_; }
-        inline size_t activeObjects() const { return activeObjects_; }
+        inline size_t capacity() const { return capacity_; }
+        inline size_t size() const { return activeObjects_; }
+        inline size_t numFreeIndexes() const { return freeIndexes.size(); }
     private:
         size_t fetchFreeIndex();
         
         void activate(size_t index);
         void deactivate(size_t index);  
 
-        size_t size_;
         size_t activeObjects_;
         size_t firstUnusedIndex_;
+        const size_t capacity_;
+        
 
         std::array<TState, N> stateArray;
         std::array<T, N> objectArray;
@@ -38,8 +41,9 @@ namespace p2d { namespace utility {
 
     template <typename T, unsigned N>
     Pool<T, N>::Pool() 
-    : activeObjects_(0), firstUnusedIndex_(0), size_(N) {
-        ;
+    : activeObjects_(0), firstUnusedIndex_(0), capacity_(N) {
+        size_t memuse = static_cast<size_t>(N) * (sizeof(T) + sizeof(TState));
+        printf("Pool created. Estimated memory usage: %zu bytes\n", memuse);
     }
 
     template <typename T, unsigned N>
@@ -55,10 +59,10 @@ namespace p2d { namespace utility {
     } // find free index
 
     template <typename T, unsigned N>
-    T& Pool<T, N>::getNewObject() {
+    typename T::id Pool<T, N>::newObject(T&& obj) {
         size_t index = fetchFreeIndex();
         activate(index);
-        return objectArray[index];
+        return static_cast<typename T::id>(index);
     } // activate
 
     template <typename T, unsigned N>
