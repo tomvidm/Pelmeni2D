@@ -3,7 +3,9 @@ project(p2d-system)
 set(SOURCES
     BlueprintManager.cpp
     Instance.cpp
-    #Object.cpp
+    Entity.cpp
+    EntityContainer.cpp
+    EntityManager.cpp
     #ObjectManager.cpp
     Scene.cpp
     ../json/Helpers.cpp

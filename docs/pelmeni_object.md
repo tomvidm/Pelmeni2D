@@ -12,6 +12,8 @@ When `ObjectManager::createObject` is called, it first asks the BlueprintManager
 
 
 ## Object handling
+### Aliases
+Each object is assigned a unique id/hash for internal use, but can also optionally be associated with a string id. The object containers should have a scheme for accessing objects by their unique ids, and by aliases if they exist.
 ### Object Manager
 The Object Manager is responsible for loading, storing and fetching objects. ObjectManager 
 

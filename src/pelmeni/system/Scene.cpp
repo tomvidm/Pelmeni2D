@@ -13,6 +13,10 @@ namespace p2d { namespace system {
             prefetchResources();
         }
 
+        void Scene::createEntity() {
+            entityManager.createEntity();
+        }
+
         void Scene::prefetchResources() {
             rapidjson::Document doc = json::parseJsonFile("../resources/" + sceneFilePath);
             
