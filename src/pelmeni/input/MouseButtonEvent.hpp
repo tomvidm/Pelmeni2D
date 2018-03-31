@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Mouse.hpp"
+#include "input/Mouse.hpp"
 
 namespace p2d { namespace input {
     enum MouseButtonEventType {

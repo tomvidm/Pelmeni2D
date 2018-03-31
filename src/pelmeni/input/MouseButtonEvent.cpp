@@ -1,4 +1,4 @@
-#include "MouseButtonEvent.hpp"
+#include "input/MouseButtonEvent.hpp"
 
 namespace p2d { namespace input {
     bool MouseButtonEvent::operator == (const MouseButtonEvent& rhs) const {

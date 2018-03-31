@@ -2,8 +2,8 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "Mouse.hpp"
-#include "MouseButtonEvent.hpp"
+#include "input/Mouse.hpp"
+#include "input/MouseButtonEvent.hpp"
 
 namespace p2d { namespace input {
     class MouseButtonState {

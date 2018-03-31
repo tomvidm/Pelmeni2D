@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-#include "pelmeni/graphics/Frame.hpp"
-#include "pelmeni/graphics/FrameSequence.hpp"
-#include "pelmeni/graphics/AnimationState.hpp"
+#include "graphics/Frame.hpp"
+#include "graphics/FrameSequence.hpp"
+#include "graphics/AnimationState.hpp"
 
 class AnimationStateTest : public ::testing::Test {
 public:
     void SetUp();
 
     p2d::graphics::AnimationState as;
-    p2d::graphics::FrameSequence fseq;
+    p2d::graphics::FrameSequencePtr fseq;
 }; // class AnimationStateTest

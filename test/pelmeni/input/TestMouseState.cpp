@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
 
 #include "SFML/System.hpp"
-#include "pelmeni/input/MouseState.hpp"
-#include "pelmeni/input/MouseButtonEvent.hpp"
+#include "input/MouseState.hpp"
+#include "input/MouseButtonEvent.hpp"
 
 TEST(TestMouseState, correctly_registers_click_and_double_click) {
     using p2d::input::MouseState;

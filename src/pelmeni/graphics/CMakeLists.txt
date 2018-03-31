@@ -1,8 +1,8 @@
 project(p2d-graphics)
 
 set(SOURCES
-    #AnimationState.cpp
-    #FrameSequence.cpp
+    AnimationState.cpp
+    FrameSequence.cpp
     #FrameSequenceLoader.cpp
     #SpritePackage.cpp
     #SpritePackageManager.cpp

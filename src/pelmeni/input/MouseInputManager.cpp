@@ -1,4 +1,4 @@
-#include "MouseInputManager.hpp"
+#include "input/MouseInputManager.hpp"
 
 namespace p2d { namespace input {
     InputEvent MouseInputManager::onEvent(const sf::Event& sfmlEvent) {

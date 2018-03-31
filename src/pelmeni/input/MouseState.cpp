@@ -1,4 +1,4 @@
-#include "MouseState.hpp"
+#include "input/MouseState.hpp"
 
 namespace p2d { namespace input {
     MouseButtonEvent MouseState::onMouseButtonEvent(const sf::Event::EventType& sfmlEventType,

@@ -2,9 +2,9 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "Mouse.hpp"
-#include "MouseState.hpp"
-#include "InputEvent.hpp"
+#include "input/Mouse.hpp"
+#include "input/MouseState.hpp"
+#include "input/InputEvent.hpp"
 
 namespace p2d { namespace input {
     class MouseInputManager {

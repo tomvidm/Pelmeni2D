@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Mouse.hpp"
-#include "MouseButtonState.hpp"
-#include "MouseButtonEvent.hpp"
-#include "MouseMoveEvent.hpp"
+#include "input/Mouse.hpp"
+#include "input/MouseButtonState.hpp"
+#include "input/MouseButtonEvent.hpp"
+#include "input/MouseMoveEvent.hpp"
 
-#include "../math/vector.hpp"
+#include "math/vector.hpp"
 
 namespace p2d { namespace input {
     class MouseState {

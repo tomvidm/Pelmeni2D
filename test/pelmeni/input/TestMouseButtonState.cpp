@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "SFML/System.hpp"
-#include "pelmeni/input/MouseButtonState.hpp"
+#include "input/MouseButtonState.hpp"
 
 TEST(TestMouseButtonState, correctly_registers_click) {
     using p2d::input::MouseButtonState;
