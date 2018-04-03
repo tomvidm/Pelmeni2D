@@ -1,7 +1,5 @@
 #include "Instance.hpp"
 
- #define NUMOBJ 1000
-
 namespace p2d { namespace system {
     Instance::Instance() {
         framePeriod = sf::milliseconds(16);

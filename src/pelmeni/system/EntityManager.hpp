@@ -8,6 +8,8 @@ namespace p2d { namespace system {
     class EntityManager {
     public:
         Entity::id createEntity();
+        Entity::id createEntity(const Blueprint::id& blueprintId);
+        void removeEntity(const Entity::id& entityId);
     private:
         system::EntityContainer entityContainer;
     }; // class EntityContainer

@@ -5,8 +5,11 @@
 namespace p2d { namespace system {
     Entity::id EntityContainer::insert(Entity&& entity) {
         Entity::id entityId = entities.push(std::move(entity));
-        printf("Entity inserted with id %zu\n", entityId);
         return entityId;
+    }
+
+    void EntityContainer::remove(const Entity::id& entityId) {
+        entities.remove(entityId);
     }
 } // namespace system
 } // namespace p2d

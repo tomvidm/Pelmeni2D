@@ -9,6 +9,7 @@ namespace p2d { namespace system {
     class EntityContainer {
     public:
         Entity::id insert(Entity&& movedEntity);
+        void remove(const Entity::id& entityId);
     private:
         utility::Pool<Entity, ENTITY_POOL_SIZE> entities;
         std::map<Entity::alias, Entity::id> aliasToIdMap;

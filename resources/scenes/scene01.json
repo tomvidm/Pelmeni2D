@@ -8,16 +8,7 @@
     },
     "scene_objects": [
         {
-            "id": 0,
-            "alias_id": "root",
-            "initial_state": {
-                "parent_id": null,
-                "children_id": [132, 2334]
-            }
-        },
-        {
-            "id": 132,
-            "alias_id": "test01_instance",
+            "alias": "test01_instance",
             "blueprint": "test01",
             "initial_state": {
                 "transform": {

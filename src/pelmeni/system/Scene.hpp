@@ -13,7 +13,6 @@ namespace p2d { namespace system {
         Scene() = delete;
         Scene(const Scene::file& sceneFile);
 
-        void createEntity();
     private:
         void prefetchResources();
 
