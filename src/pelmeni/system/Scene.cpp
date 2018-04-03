@@ -25,7 +25,7 @@ namespace p2d { namespace system {
                 Entity::alias alias = entry["alias"].GetString();
                 Blueprint::id blueprintId = entry["blueprint"].GetString();
                 Entity::id entityId = entityManager.createEntity(blueprintId);
-                printf("Creating entity from blueprint %s.\n     Id: %u\n  Alias: %s\n", blueprintId.c_str(), entityId, alias.c_str());
+                printf("Creating entity from blueprint %s.\n         Id: %u\n      Alias: %s\n", blueprintId.c_str(), entityId, alias.c_str());
             }
         }
 } // namespace system

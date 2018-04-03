@@ -4,6 +4,7 @@
 #include <string>
 
 #include "system/Component.hpp"
+#include "system/Transform.hpp"
 
 namespace p2d { namespace system {
     class Entity {
@@ -20,11 +21,14 @@ namespace p2d { namespace system {
 
         inline Entity::id getId() const { return entityId; }
         inline Entity::alias getAlias() const { return entityAlias; }
+        inline Component::id getTransformId() const { return transformId; }
 
         void update();
     protected:
         Entity::id entityId;
         Entity::alias entityAlias;
+        
+        Component::id transformId;
     }; // class Object
 } // namespace system
 } // namespace p2d

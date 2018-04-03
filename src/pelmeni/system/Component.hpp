@@ -8,17 +8,18 @@ namespace p2d { namespace system {
         using id = unsigned;
 
         enum type {
-            Generic,
-            Transform,
-            Texture,
-            Animation
+            none,
+            transform,
+            sprite
         };
+
+        Component() : compType(type::none) {;}
+        Component(const Component::type& cType)  : compType(cType) {;}
 
         virtual void update() = 0;
 
-    private:
-        Component::id compId;
-        Component::type compType;
+    protected:
+        const Component::type compType;
     }; // class Node
 } // namespace system
 } // namespace p2d
