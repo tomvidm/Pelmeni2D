@@ -13,8 +13,12 @@ namespace p2d { namespace system {
 
         inline Blueprint::id getId() const { return blueprintId; }
         inline graphics::SpritePackage::id getSpritePackageId() const {return spritePackageId; }
+
+        inline bool hasTransform() const { return _hasTransform; }
     private:
         Blueprint::id blueprintId;
+
+        bool _hasTransform;
 
         graphics::SpritePackage::id spritePackageId;
     }; // class Blueprint

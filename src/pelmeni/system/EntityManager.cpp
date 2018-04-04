@@ -7,10 +7,8 @@ namespace p2d { namespace system {
         return entityContainer.insertEntity(Entity());
     }
 
-    Entity::id EntityManager::createEntity(const Blueprint::id& blueprintId) {
-        /*
-            use blueprint data to construct an entity and initialize its values
-        */
+    Entity::id EntityManager::createEntity(const Blueprint& blueprint) {
+        
         return entityContainer.insertEntity(Entity());
     }
 

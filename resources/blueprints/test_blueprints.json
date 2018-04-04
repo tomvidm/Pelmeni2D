@@ -1,18 +1,27 @@
 [
     {
         "blueprint_id": "test01",
+        "flags": [
+            "has_transform"
+        ],
         "packages": {
             "sprite_package": ["test01_sprite", "packages/test01_sprite.json"]
         }
     },
     {
         "blueprint_id": "test02",
+        "flags": [
+            "has_transform"
+        ],
         "packages": {
             "sprite_package": ["test01_sprite", "packages/test02_sprite.json"]
         }
     },
     {
         "blueprint_id": "tusk",
+        "flags": [
+            "has_transform"
+        ],
         "packages": {
             "sprite_package": ["tusk_sprite", "packages/tusk_sprite.json"]
         }

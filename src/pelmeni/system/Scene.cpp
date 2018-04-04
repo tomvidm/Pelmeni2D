@@ -24,7 +24,7 @@ namespace p2d { namespace system {
             for (rapidjson::Value& entry : doc["scene_objects"].GetArray()) {
                 Entity::alias alias = entry["alias"].GetString();
                 Blueprint::id blueprintId = entry["blueprint"].GetString();
-                Entity::id entityId = entityManager.createEntity(blueprintId);
+                Entity::id entityId = entityManager.createEntity(blueprintManager.get(blueprintId));
                 printf("Creating entity from blueprint %s.\n         Id: %u\n      Alias: %s\n", blueprintId.c_str(), entityId, alias.c_str());
             }
         }
