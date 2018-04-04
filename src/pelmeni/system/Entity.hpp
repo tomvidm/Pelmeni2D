@@ -3,6 +3,8 @@
 #include <memory>
 #include <string>
 
+#include "graphics/Sprite.hpp"
+
 #include "system/Component.hpp"
 #include "system/Transform.hpp"
 
@@ -21,14 +23,15 @@ namespace p2d { namespace system {
 
         inline Entity::id getId() const { return entityId; }
         inline Entity::alias getAlias() const { return entityAlias; }
-        inline Component::id getTransformId() const { return transformId; }
+        inline Transform getTransform() const { return transform; }
 
         void update();
     protected:
         Entity::id entityId;
         Entity::alias entityAlias;
         
-        Component::id transformId;
+        system::Transform transform;
+        graphics::Sprite sprite;
     }; // class Object
 } // namespace system
 } // namespace p2d

@@ -1,8 +1,5 @@
 #include <cassert>
 
-#include "rapidjson/filereadstream.h"
-#include "rapidjson/document.h"
-
 #include "json/Helpers.hpp"
 
 #include "system/Scene.hpp"
@@ -14,14 +11,14 @@ namespace p2d { namespace system {
         }
 
         void Scene::prefetchResources() {
-            rapidjson::Document doc = json::parseJsonFile("../resources/" + sceneFilePath);
+            sceneFileDOM = json::parseJsonFile("../resources/" + sceneFilePath);
             
-            for (rapidjson::Value& entry : doc["prefetched_blueprints"]["blueprint_lists"].GetArray()) {
+            for (rapidjson::Value& entry : sceneFileDOM["prefetched_blueprints"]["blueprint_lists"].GetArray()) {
                 Blueprint::file blueprintFile = entry.GetString();
                 blueprintManager.loadBlueprintsFromList(blueprintFile);
             }
 
-            for (rapidjson::Value& entry : doc["scene_objects"].GetArray()) {
+            for (rapidjson::Value& entry : sceneFileDOM["scene_objects"].GetArray()) {
                 Entity::alias alias = entry["alias"].GetString();
                 Blueprint::id blueprintId = entry["blueprint"].GetString();
                 Entity::id entityId = entityManager.createEntity(blueprintManager.get(blueprintId));

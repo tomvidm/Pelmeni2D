@@ -44,7 +44,7 @@ namespace p2d { namespace utility {
     Pool<T, N>::Pool() 
     : activeObjects_(0), firstUnusedIndex_(0), capacity_(N) {
         size_t memuse = static_cast<size_t>(N) * (sizeof(T) + sizeof(TState));
-        printf("Pool created. Estimated memory usage: %zu bytes\n", memuse);
+        printf("Pool created. Estimated memory usage: %zu bytes ~ %f kb\n", memuse, static_cast<float>((float)memuse / 1000.f));
     }
 
     template <typename T, unsigned N>

@@ -2,6 +2,9 @@
 
 #include <string>
 
+#include "rapidjson/filereadstream.h"
+#include "rapidjson/document.h"
+
 #include "system/BlueprintManager.hpp"
 #include "system/EntityManager.hpp"
 
@@ -18,6 +21,8 @@ namespace p2d { namespace system {
 
         system::BlueprintManager blueprintManager;
         system::EntityManager entityManager;
+
+        rapidjson::Document sceneFileDOM;
 
         const Scene::file sceneFilePath;
     }; // class SceneManager

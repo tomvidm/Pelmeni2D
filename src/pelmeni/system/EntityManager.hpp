@@ -16,7 +16,6 @@ namespace p2d { namespace system {
         void removeEntity(const Entity::id& entityId);
     private:
         EntityContainer entityContainer;
-        ComponentPool<Transform, COMPONENT_POOL_SIZE> transforms;
     }; // class EntityContainer
 } // namespace system
 } // namespace p2d

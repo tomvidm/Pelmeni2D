@@ -22,8 +22,9 @@ namespace p2d { namespace system {
     }
 
     void BlueprintManager::loadBlueprintListing(rapidjson::Value& blueprintListing) {
-        printf("  Processing blueprint %s\n", blueprintListing["blueprint_id"].GetString());
         system::Blueprint::id blueprintId = blueprintListing["blueprint_id"].GetString();
+        printf("  Processing blueprint %s\n", blueprintId.c_str());
+        
         system::Blueprint blueprint;
         blueprintMap.insert(std::make_pair(blueprintId, std::move(blueprint)));
 
