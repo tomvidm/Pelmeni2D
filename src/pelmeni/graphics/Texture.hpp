@@ -10,6 +10,7 @@ namespace p2d { namespace graphics {
     class Texture {
     public:
         using id = std::string;
+        using file = std::string;
         using ptr = std::shared_ptr<Texture>;
 
         Texture(const Texture::id& textureId, const std::string texturePath)

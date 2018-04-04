@@ -13,9 +13,14 @@ namespace p2d { namespace system {
         void Scene::prefetchResources() {
             sceneFileDOM = json::parseJsonFile("../resources/" + sceneFilePath);
             
-            for (rapidjson::Value& entry : sceneFileDOM["prefetched_blueprints"]["blueprint_lists"].GetArray()) {
+            for (rapidjson::Value& entry : sceneFileDOM["resource_lists"]["blueprint_lists"].GetArray()) {
                 Blueprint::file blueprintFile = entry.GetString();
                 blueprintManager.loadBlueprintsFromList(blueprintFile);
+            }
+
+            for (rapidjson::Value& entry : sceneFileDOM["resource_lists"]["texture_lists"].GetArray()) {
+                std::string textureList = entry.GetString();
+                textureManager.loadTexturesFromList(textureList);
             }
 
             for (rapidjson::Value& entry : sceneFileDOM["scene_objects"].GetArray()) {

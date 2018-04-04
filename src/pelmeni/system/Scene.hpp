@@ -7,6 +7,7 @@
 
 #include "system/BlueprintManager.hpp"
 #include "system/EntityManager.hpp"
+#include "graphics/TextureManager.hpp"
 
 namespace p2d { namespace system {
     class Scene {
@@ -21,6 +22,7 @@ namespace p2d { namespace system {
 
         system::BlueprintManager blueprintManager;
         system::EntityManager entityManager;
+        graphics::TextureManager textureManager;
 
         rapidjson::Document sceneFileDOM;
 

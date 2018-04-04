@@ -8,28 +8,19 @@
 #include "TextureManager.hpp"
 
 namespace p2d { namespace graphics {
-    sf::Texture& TextureManager::getTexture(const Texture::id& id) {
-        return textureMap.get(id);
-    }
-
-    void TextureManager::loadTexture(const Texture::id& textureId) {
-        const std::string textureFullPath = "../resources/textures/" + textureLookupTable.get(textureId);
-        printf("Loading texture '%s' from %s\n", textureId.c_str(), textureFullPath.c_str());
-        sf::Texture texture;
-        texture.loadFromFile(textureFullPath);
-        textureMap.insert(std::make_pair(textureId, std::move(texture))); 
-    }
-
-    void TextureManager::initializeLookupTable() {
-        printf("Initializing texture lookup table... ");
-        rapidjson::Document doc = p2d::json::parseJsonFile("../resources/textures/texture_lookup.json");
+    void TextureManager::loadTexturesFromList(const std::string& textureList) {
+        printf("Fetching textures from %s...\n", textureList.c_str());
+        rapidjson::Document doc = json::parseJsonFile("../resources/" + textureList);
 
         for (auto& entry : doc.GetArray()) {
-            const Texture::id textureId = entry[0].GetString();
-            const std::string texturePath = entry[1].GetString();
-            textureLookupTable.insert(std::make_pair(textureId, texturePath));
+            loadTextureFromListing(entry);
         }
-        printf("Finished\n");
+    }
+
+    void TextureManager::loadTextureFromListing(rapidjson::Value& textureListing) {
+        graphics::Texture::id textureId = textureListing[0].GetString();
+        graphics::Texture::file texturePath = textureListing[1].GetString();
+        printf("  Loading texture %s from %s\n", textureId.c_str(), texturePath.c_str());
     }
 } // namespace graphics
 } // namespace p2d

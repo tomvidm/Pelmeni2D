@@ -1,10 +1,12 @@
 {
     "scene_id": "scene01",
-    "prefetched_blueprints": {
+    "resource_lists": {
         "blueprint_lists": [
             "blueprints/test_blueprints.json"
         ],
-        "standalone_blueprints": []
+        "texture_lists": [
+            "textures/test_textures.json"
+        ]
     },
     "scene_objects": [
         {
