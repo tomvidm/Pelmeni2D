@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../math/math.hpp"
+#include "math/math.hpp"
 
 #include "SFML/Graphics/Rect.hpp"
 
@@ -21,13 +21,13 @@ namespace p2d { namespace utility {
         void operator += (const Vector2<T>& rhs);
         void operator *= (const float& factor);
 
+        inline Vector2<T> getWidth() const { return size.getX(); }
+        inline Vector2<T> getHeight() const { return size.getY(); }
         inline Vector2<T> getSize() const { return size; }
         inline Vector2<T> getCenter() const { return origin + size * 0.5f; }
 
-        Rect<T> Rect<T>::operator + (const Vector2<T>& rhs);
-        Rect<T> Rect<T>::operator * (const float& factor);
-
-        sf::Rect getSfmlRect() const;
+        Rect<T> operator + (const Vector2<T>& rhs) const;
+        Rect<T> operator * (const float& factor) const;
     private:
         Vector2<T> origin;
         Vector2<T> size;
@@ -77,27 +77,17 @@ namespace p2d { namespace utility {
     } // operator *
 
     template <typename T>
-    Rect<T> Rect<T>::operator + (const Vector2<T>& rhs) {
+    Rect<T> Rect<T>::operator + (const Vector2<T>& rhs) const {
         Rect<T> copy = *this;
         copy += rhs;
         return copy;
     } // resize
 
     template <typename T>
-    Rect<T> Rect<T>::operator * (const float& factor) {
+    Rect<T> Rect<T>::operator * (const float& factor) const {
         Rect<T> copy = *this;
         copy *= factor;
         return copy;
     } // operator *
-
-    template <typename T>
-    sf::Rect Rect<T>::getSfmlRect() const {
-        sf::Rect result;
-        result.left = static_cast<int>(origin.getX());
-        result.top = static_cast<int>(origin.getY());
-        result.width = static_cast<int>(size.getX());
-        result.height = static_cast<int>(size.getY());
-        return result;
-    }
 } // namespace utility
 } // namespace p2d
