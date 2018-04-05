@@ -13,6 +13,10 @@ namespace p2d { namespace graphics {
         using file = std::string;
         using shared = std::shared_ptr<Texture>;
 
+        Texture() {
+            ;
+        }
+
         Texture(const std::string texturePath) {
             sfmlTexturePtr = std::make_shared<sf::Texture>();
             if (!sfmlTexturePtr->loadFromFile("../resources/" + texturePath)) {
@@ -26,6 +30,11 @@ namespace p2d { namespace graphics {
 
         Texture(const Texture& rhs) {
             sfmlTexturePtr = rhs.sfmlTexturePtr;
+        }
+
+        Texture& operator = (const Texture& rhs) {
+            sfmlTexturePtr = rhs.sfmlTexturePtr;
+            return *this;
         }
 
         inline sf::Texture& getTexture() const { return *sfmlTexturePtr; }

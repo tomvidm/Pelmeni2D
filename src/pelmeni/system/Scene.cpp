@@ -34,10 +34,8 @@ namespace p2d { namespace system {
             // prefetch sprite packs
             for (rapidjson::Value& entry : sceneFileDOM["resource_lists"]["spritepack_lists"].GetArray()) {
                 std::string spritepackList = entry.GetString();
-                spritePackManager.loadSpritePacksFromList(spritepackList);
-            }
-
-            
+                spritePackManager.loadSpritePacksFromList(spritepackList, &textureManager);
+            }            
         }
 
         void Scene::prefetchSceneObjects() {

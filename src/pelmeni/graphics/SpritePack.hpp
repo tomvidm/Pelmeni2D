@@ -15,7 +15,7 @@ namespace p2d { namespace graphics {
         using alias = std::string;
         using shared = std::shared_ptr<SpritePack>;
 
-        Texture::shared texture;
+        Texture texture;
         utility::Map<FrameSequence::id, FrameSequence> frameSequenceMap;
     }; // class SpritePacka
 }

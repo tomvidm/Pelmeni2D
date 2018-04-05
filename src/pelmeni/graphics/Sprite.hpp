@@ -18,6 +18,7 @@ namespace p2d { namespace graphics {
         Sprite() {
             ;
         }
+
         Sprite(const Sprite& other)
         : animationState(other.animationState),
           texture(other.texture),

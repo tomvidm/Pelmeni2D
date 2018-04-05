@@ -12,12 +12,14 @@
 
 namespace p2d { namespace graphics {
     class SpritePackManager {
-        using SpritePackMap = utility::Map<SpritePack::alias, SpritePack::shared>;
+        using SpritePackMap = utility::Map<SpritePack::alias, SpritePack>;
     public:
+        SpritePack& get(const SpritePack::alias& spritePackAlias);
         void loadSpritePacksFromList(const std::string& spritePackList, TextureManager* textureManager);
     private:
         void loadSpritePackFromListing(rapidjson::Value& spritePackListing, TextureManager* textureManager);
-        
+        utility::Map<FrameSequence::id, FrameSequence> loadFrameSequences(rapidjson::Value& frameSequences);
+        FrameSequence loadSingleFrameSequence(rapidjson::Value& frameSequence);
         SpritePackMap spritePackMap;
     }; // class PackageManager
 } // namespace graphics

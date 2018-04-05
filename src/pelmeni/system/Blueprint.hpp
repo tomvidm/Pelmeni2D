@@ -17,6 +17,8 @@ namespace p2d { namespace system {
         : _spritePackAlias(spritePackAlias) {
             ;
         }
+
+        inline graphics::SpritePack::alias getSpritePackAlias() const { return _spritePackAlias; }
     private:
         graphics::SpritePack::id _spritePackAlias;
     }; // class Blueprint

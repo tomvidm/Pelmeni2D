@@ -1,5 +1,10 @@
 [
     {
+        "spritepack_alias": "tusk",
+        "texture_alias": "tusk",
+        "is_animated": false
+    },
+    {
         "spritepack_alias": "test_sprite01",
         "texture_alias": "tex01",
         "is_animated": true,

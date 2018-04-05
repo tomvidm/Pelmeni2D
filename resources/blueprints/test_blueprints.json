@@ -2,5 +2,9 @@
     {
         "blueprint_id": "test01",
         "sprite_pack": "test01_sprite"
+    },
+    {
+        "blueprint_id": "tusk",
+        "sprite_pack": "tusk"
     }
 ]

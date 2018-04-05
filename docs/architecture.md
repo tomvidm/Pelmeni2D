@@ -28,9 +28,7 @@ The entity should contain:
 * Its alias (if applicable)
 * Index/id to its various components
   * Transform
-  * Texture
-  * Animation
-  * Behaviour
+  * SpritePack
 * An update method to be called on updates
 
 If an entity needs to respond to some input event, the entity has to be subscribed to the specific event. When the event is registered, the EventManager will notify the entity. The entitys behaviour on an event will be defined in an object blueprint. (Or somewhere else?)
@@ -60,3 +58,6 @@ If an entity needs to respond to some input event, the entity has to be subscrib
 ```
 ## Blueprint
 A blueprint is a data structure containing the ids/aliases to resources used by the object it describes.
+
+## SpritePack
+A SpritePack contains a mapping of aliases and frame sequences, to be used for accessing animations.

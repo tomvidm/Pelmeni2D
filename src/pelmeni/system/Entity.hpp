@@ -25,7 +25,6 @@ namespace p2d { namespace system {
 
         inline Transform getTransform() const { return transform; }
 
-
         void update();
     protected:        
         system::Transform transform;
