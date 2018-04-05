@@ -14,13 +14,13 @@ namespace p2d { namespace graphics {
         void setFrameSequence(FrameSequencePtr fSequencePtr);
         void resetAnimation();
 
-        bool update();
+        bool update(const sf::Time& time);
         Frame& getCurrentFrame() const;
         sf::Rect<int>& getCurrentFrameRect() const;
         sf::Time& getCurrentFrameDuration() const;
     private:
         size_t currentFrameIndex;
-        sf::Clock frameTimer;
+        sf::Time frameTime;
         FrameSequencePtr frameSequencePtr;
     }; // class AnimationState
 } // namespace graphics

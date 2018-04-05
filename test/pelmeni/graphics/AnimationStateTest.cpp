@@ -10,7 +10,6 @@ void AnimationStateTest::SetUp() {
 }
 
 TEST_F(AnimationStateTest, works) {
-    EXPECT_FALSE(as.update());
-    sf::sleep(sf::milliseconds(50));
-    EXPECT_TRUE(as.update());
+    EXPECT_FALSE(as.update(sf::milliseconds(0)));
+    EXPECT_TRUE(as.update(sf::milliseconds(50)));
 }

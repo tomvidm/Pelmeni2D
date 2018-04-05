@@ -9,15 +9,16 @@ namespace p2d { namespace graphics {
 
     void AnimationState::resetAnimation() {
         currentFrameIndex = 0;
-        frameTimer.restart();
+        frameTime = sf::milliseconds(0);
     } // resetAnimation
 
-    bool AnimationState::update() {
+    bool AnimationState::update(const sf::Time& time) {
         //std::cout << getCurrentFrameDuration().asSeconds() << std::endl;
-        if (frameTimer.getElapsedTime() > getCurrentFrameDuration()) {
-            currentFrameIndex += frameTimer.getElapsedTime() / getCurrentFrameDuration();
+        frameTime += time;
+        if (frameTime > getCurrentFrameDuration()) {
+            currentFrameIndex += frameTime / getCurrentFrameDuration();
             currentFrameIndex %= frameSequencePtr->getNumFrames();
-            frameTimer.restart();
+            frameTime -= getCurrentFrameDuration();
             return true;
         } else { 
             return false;
