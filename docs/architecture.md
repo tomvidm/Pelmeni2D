@@ -20,9 +20,43 @@ The scene file defines the following:
 ### EntityFactory
 When a game instance asks the Scene to create an Entity, it does so by calling Scene::createEntity. This function will call EntityFactory::createEntity along with pointers to the managers as pointers. This way, the ENtityFactory will be able to access the necessary resources to create an entry. The created entity will be moved to the EntityManagers entity container.
 
-## FPS Handling
-If a lag spike occurs, the frame rate limiting control block will certainly ring true, and a larger than usual float will be passed for physics updates etc. This can cause undesired behaviour:
-* Things going through walls
-* Things behaving weirdly
+## The entity
+The entity is a lightweight object which can be accessed through ENtityManager either by a numeric id, or a string name.
+THe entity is stored in an unordered map structure.
+The entity should contain:
+* Its ID
+* Its alias (if applicable)
+* Index/id to its various components
+  * Transform
+  * Texture
+  * Animation
+  * Behaviour
+* An update method to be called on updates
 
-This must somehow be handled should the need arise. One simple solution is to implement a very strict fps limiter where low FPS will cause the maximum amount of time passed each frame (in terms of gameplay) is the framelimiter - so a frame that renders in 40ms when the normal FPS is limited to a frame period of 16ms should still pass a float corresponding to 16ms to phsyics updates. This will cause the effect of slow motion, but will not necessitate braking the rules for these cases. 
+If an entity needs to respond to some input event, the entity has to be subscribed to the specific event. When the event is registered, the EventManager will notify the entity. The entitys behaviour on an event will be defined in an object blueprint. (Or somewhere else?)
+
+``` json
+{
+    "blueprint_id": "some_id",
+    "behaviour": {
+        "input": [
+            "onKey_W": {
+                "move": [1, 0, 0]
+            },
+            "onKey_S": {
+                "move": [-1, 0, 0]
+            }
+        ],
+        "scene": [
+            "init": {
+            "setAnimation": "default",
+            "setTransform": [[0, 0, 0],
+                             [0, 0, 0],
+                             [0, 0, 0]],
+            },
+        ]
+    }
+}
+```
+## Blueprint
+A blueprint is a data structure containing the ids/aliases to resources used by the object it describes.
