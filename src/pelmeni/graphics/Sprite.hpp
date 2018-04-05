@@ -5,22 +5,22 @@
 #include "SFML/Graphics.hpp"
 
 #include "AnimationState.hpp"
-#include "SpritePackage.hpp"
+
+#include "graphics/SpritePack.hpp"
+#include "graphics/FrameSequence.hpp"
+#include "graphics/Texture.hpp"
 
 namespace p2d { namespace graphics {
     class Sprite : public sf::Sprite {
     public:
         using id = std::string;
-        using ptr = std::shared_ptr<Sprite>;
+        using shared = std::shared_ptr<Sprite>;
 
-        void update();
-        void useAnimation(const FrameSequence::id& fid);
-        void useSpritePackage(SpritePackage::ptr newSpritePackage);
-
-        //void useSpritePackage(const SpritePackage::ptr spritePackage);
+        void setSpriteTexture(const Texture& tex);
     private:
         AnimationState animationState;
-        SpritePackage::ptr spritePackage;
+        Texture::ptr texture;
+        SpritePack::ptr spritePack;
     }; // class Sprite
 } // namespace graphics
 } // namespace p2d

@@ -4,7 +4,6 @@
 #include "json/Helpers.hpp"
 
 #include "system/BlueprintManager.hpp"
-#include "graphics/SpritePackage.hpp"
 
 namespace p2d { namespace system {
     Blueprint& BlueprintManager::get(const Blueprint::id& blueprintId) {
