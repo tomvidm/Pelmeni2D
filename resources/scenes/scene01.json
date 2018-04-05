@@ -6,6 +6,9 @@
         ],
         "texture_lists": [
             "textures/test_textures.json"
+        ],
+        "spritepack_lists": [
+            "sprites/test_sprites.json"
         ]
     },
     "scene_objects": [

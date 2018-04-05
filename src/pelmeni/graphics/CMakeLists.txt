@@ -5,7 +5,7 @@ set(SOURCES
     FrameSequence.cpp
     #FrameSequenceLoader.cpp
     #SpritePackage.cpp
-    #SpritePackageManager.cpp
+    SpritePackManager.cpp
     #Sprite.cpp
     TextureManager.cpp
     ../json/Helpers.cpp

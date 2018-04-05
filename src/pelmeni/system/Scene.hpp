@@ -8,6 +8,7 @@
 #include "system/BlueprintManager.hpp"
 #include "system/EntityManager.hpp"
 #include "graphics/TextureManager.hpp"
+#include "graphics/SpritePackManager.hpp"
 
 namespace p2d { namespace system {
     class Scene {
@@ -18,11 +19,14 @@ namespace p2d { namespace system {
         Scene(const Scene::file& sceneFile);
 
     private:
+        void parseSceneFile();
         void prefetchResources();
+        void prefetchSceneObjects();
 
         system::BlueprintManager blueprintManager;
         system::EntityManager entityManager;
         graphics::TextureManager textureManager;
+        graphics::SpritePackManager spritePackManager;
 
         rapidjson::Document sceneFileDOM;
 

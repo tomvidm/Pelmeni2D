@@ -11,7 +11,7 @@ namespace p2d { namespace graphics {
     public:
         using id = std::string;
         using file = std::string;
-        using ptr = std::shared_ptr<Texture>;
+        using shared = std::shared_ptr<Texture>;
 
         Texture(const std::string texturePath) {
             sfmlTexturePtr = std::make_shared<sf::Texture>();

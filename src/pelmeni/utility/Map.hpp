@@ -38,7 +38,7 @@ namespace p2d { namespace utility {
 
     template <typename K, typename V>
     void Map<K, V>::insert(const K& key, const V& value) {
-        stlMap.insert(std::pair<K, V>(key, value));
+        stlMap.insert(std::make_pair(key, value));
     } // insert
 
     template <typename K, typename V>

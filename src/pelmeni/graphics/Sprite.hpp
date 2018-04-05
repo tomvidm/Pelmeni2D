@@ -19,8 +19,8 @@ namespace p2d { namespace graphics {
         void setSpriteTexture(const Texture& tex);
     private:
         AnimationState animationState;
-        Texture::ptr texture;
-        SpritePack::ptr spritePack;
+        Texture::shared texture;
+        SpritePack::shared spritePack;
     }; // class Sprite
 } // namespace graphics
 } // namespace p2d

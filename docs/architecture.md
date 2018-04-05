@@ -1,15 +1,24 @@
 # Achitecture
-* Decouple game logic from engine by exposing an C++ API to LUA.
+## Scene
+When a scene is constructed, stack memory is allocated based on the defined values in `system/EngineDefs.hpp`, depending on which containers are used to store and access resources. As of `05.04.2018`, the main method will be through the use of maps and unordered maps for simple retrieval based on string aliases.
 
-## ResourceMap
-ResourceMap is a generic class responsible for mapping some string (aliased as ResourceId) to some type T. For example, TextureManager would be declared as ResourceMap<sf::Texture>.
-The ResourceMap will also need a ResourceLoader as a template parameter. No inheritance or virtual functions are needed as this will be resolved at compile time.
+The Scene class contains the following members for storage and access to resources and objects:
+* BlueprintManager
+* TextureManager
+* SpritePackManager
+* EntityManager
 
-The ResourceLoader needs the following public interface to be used with the ResourceMap. As the ResourceManger is generic, the load and release methods only needs an id to identify which resource to modify, insert or remove.
-```
-* ResourceType ResourceLoader::loadResource(const ResourceId& id)
-```
-From ResourceMap point of view, each ResourceLoader only differ in the type they return. The implementation details of each loader should be specific to the type of data, where the data is located and the operations needed to obtain the data. The ResourceLoaded can just as well retrieve data from the web, because the ResourceMap does not care how the loader works as long as it adheres to the interface and returns correct data.
+In addition, the Scene class should have access to the EntityFactory.
+
+The Scene object must be constructed with a path to a "scene file" as an argument. During construction, the contents of this file will be read and the Scene will be constructed according to the contents.
+
+### Scenefile
+The scene file defines the following:
+* Lists of resources to prefetch
+* List of scene objects to construct and initializa, along with their initial states
+
+### EntityFactory
+When a game instance asks the Scene to create an Entity, it does so by calling Scene::createEntity. This function will call EntityFactory::createEntity along with pointers to the managers as pointers. This way, the ENtityFactory will be able to access the necessary resources to create an entry. The created entity will be moved to the EntityManagers entity container.
 
 ## FPS Handling
 If a lag spike occurs, the frame rate limiting control block will certainly ring true, and a larger than usual float will be passed for physics updates etc. This can cause undesired behaviour:
