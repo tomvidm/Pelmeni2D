@@ -13,7 +13,19 @@
     },
     "scene_objects": [
         {
-            "alias": "test01_instance",
+            "alias": "test_instance02",
+            "blueprint": "test01",
+            "initial_state": {
+                "transform": {
+                    "position": [128, 192],
+                    "rotation": [0, 0]
+                },
+                "parent_id": 0,
+                "children_id": []
+            }
+        },
+        {
+            "alias": "test_instance02",
             "blueprint": "test01",
             "initial_state": {
                 "transform": {

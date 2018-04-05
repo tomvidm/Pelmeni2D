@@ -3,6 +3,8 @@
 #include <memory>
 #include <string>
 
+#include "system/EngineDefs.hpp"
+
 #include "graphics/Sprite.hpp"
 
 #include "system/Component.hpp"
@@ -11,7 +13,7 @@
 namespace p2d { namespace system {
     class Entity {
     public:
-        using id = unsigned;
+        using id = system::IdType;
         using alias = std::string;
         using shared = std::shared_ptr<Entity>;
         using unique = std::unique_ptr<Entity>;
@@ -19,17 +21,13 @@ namespace p2d { namespace system {
         Entity();
         Entity(const Entity& copy);
         Entity(Entity&& other);
-        Entity& operator = (Entity&& other);
+        Entity operator = (const Entity& other);
 
-        inline Entity::id getId() const { return entityId; }
-        inline Entity::alias getAlias() const { return entityAlias; }
         inline Transform getTransform() const { return transform; }
 
+
         void update();
-    protected:
-        Entity::id entityId;
-        Entity::alias entityAlias;
-        
+    protected:        
         system::Transform transform;
         graphics::Sprite sprite;
     }; // class Object

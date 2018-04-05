@@ -3,7 +3,7 @@
 #include "system/EntityFactory.hpp"
 
 namespace p2d { namespace system {
-    Entity&& EntityFactory::createEntity(
+    Entity EntityFactory::createEntity(
         const Blueprint::id&              blueprintId,
         BlueprintManager*                 blueprintManager,
         EntityManager*                    entityManager,
@@ -11,7 +11,8 @@ namespace p2d { namespace system {
         graphics::TextureManager*         textureManager) {
             printf("Creating entity from blueprint %s\n", blueprintId.c_str());
             const Blueprint blueprint = blueprintManager->get(blueprintId);
-            return std::move(Entity());
+            Entity entity;
+            return entity;
         }
 }
 }
