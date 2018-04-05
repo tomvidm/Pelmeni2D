@@ -5,6 +5,7 @@ set(SOURCES
     Instance.cpp
     Entity.cpp
     EntityContainer.cpp
+    EntityFactory.cpp
     EntityManager.cpp
     #ObjectManager.cpp
     Scene.cpp

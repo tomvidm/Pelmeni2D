@@ -10,11 +10,11 @@ namespace p2d { namespace system {
     class EntityFactory {
     public:
         static Entity&& createEntity(
-            const Blueprint::id&    blueprintId,
-            BlueprintManager*       blueprintManager,
-            EntityManager*          entityManager,
-            SpritePackManager*      spritePackManager,
-            TextureManager*         textureManager);
+            const Blueprint::id&              blueprintId,
+            BlueprintManager*                 blueprintManager,
+            EntityManager*                    entityManager,
+            graphics::SpritePackManager*      spritePackManager,
+            graphics::TextureManager*         textureManager);
     }; // class EntityFactory
 }
 }

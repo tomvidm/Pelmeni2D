@@ -2,6 +2,7 @@
 
 #include "json/Helpers.hpp"
 
+#include "system/EntityFactory.hpp"
 #include "system/Scene.hpp"
 
 namespace p2d { namespace system {
@@ -44,8 +45,17 @@ namespace p2d { namespace system {
             for (rapidjson::Value& entry : sceneFileDOM["scene_objects"].GetArray()) {
                 Entity::alias alias = entry["alias"].GetString();
                 Blueprint::id blueprintId = entry["blueprint"].GetString();
-                Entity::id entityId = entityManager.createEntity(blueprintManager.get(blueprintId));
-                printf("Creating entity from blueprint %s.\n         Id: %u\n      Alias: %s\n", blueprintId.c_str(), entityId, alias.c_str());
+                Entity entity = EntityFactory::createEntity(
+                    blueprintId,
+                    &blueprintManager,
+                    &entityManager,
+                    &spritePackManager,
+                    &textureManager);
+                /*
+                    1. load the initial state of the entity
+                    2. create the components and assign them to the entity
+                    3. move the entity into the entity manager
+                */
             }
         }
 } // namespace system
