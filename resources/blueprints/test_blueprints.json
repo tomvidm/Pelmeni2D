@@ -1,8 +1,6 @@
 [
     {
         "blueprint_id": "test01",
-        "packages": {
-            "sprite_package": ["test01_sprite", "packages/test01_sprite.json"]
-        }
+        "sprite_pack": "test01_sprite"
     }
 ]

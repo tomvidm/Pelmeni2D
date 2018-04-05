@@ -15,6 +15,15 @@ namespace p2d { namespace graphics {
     public:
         using id = std::string;
         using shared = std::shared_ptr<Sprite>;
+        Sprite() {
+            ;
+        }
+        Sprite(const Sprite& other)
+        : animationState(other.animationState),
+          texture(other.texture),
+          spritePack(other.spritePack) {
+              ;
+          }
 
         void setSpriteTexture(const Texture& tex);
     private:

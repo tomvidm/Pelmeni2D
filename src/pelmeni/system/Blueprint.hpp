@@ -3,6 +3,8 @@
 #include <memory>
 #include <string>
 
+#include "graphics/SpritePack.hpp"
+
 namespace p2d { namespace system {
     class Blueprint {
     public:
@@ -10,9 +12,13 @@ namespace p2d { namespace system {
         using ptr = std::shared_ptr<Blueprint>;
         using file = std::string;
 
-        inline Blueprint::id getId() const { return blueprintId; }
+        Blueprint(
+            const graphics::SpritePack::alias& spritePackAlias)
+        : _spritePackAlias(spritePackAlias) {
+            ;
+        }
     private:
-        Blueprint::id blueprintId;
+        graphics::SpritePack::id _spritePackAlias;
     }; // class Blueprint
 } // namespace system
 } // namespace p2d

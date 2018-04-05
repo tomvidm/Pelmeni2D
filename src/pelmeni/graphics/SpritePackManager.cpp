@@ -3,22 +3,26 @@
 #include "SpritePackManager.hpp"
 
 namespace p2d { namespace graphics {
-    void SpritePackManager::loadSpritePacksFromList(const std::string& spritePackListPath) {
+    void SpritePackManager::loadSpritePacksFromList(const std::string& spritePackListPath, TextureManager* textureManager) {
         printf("Fetching sprite packs from %s...\n", spritePackListPath.c_str());
 
         rapidjson::Document doc = json::parseJsonFile("../resources/" + spritePackListPath);
 
         for (auto& entry : doc.GetArray()) {
-            loadSpritePackFromListing(entry);
+            loadSpritePackFromListing(entry, textureManager);
         }
     }
 
-    void SpritePackManager::loadSpritePackFromListing(rapidjson::Value& spritePackListing) {
+    void SpritePackManager::loadSpritePackFromListing(rapidjson::Value& spritePackListing, TextureManager* textureManager) {
         std::string spritePackAlias = spritePackListing["spritepack_alias"].GetString();
+        std::string textureAlias = spritePackListing["texture_alias"].GetString();
         printf("  Loading SpritePack %s\n", spritePackAlias.c_str());
 
+        SpritePack::shared spritePack = std::make_shared<SpritePack>(SpritePack());
+        spritePack->texture = textureManager->get(textureAlias);
+
         // TODO
-        spritePackMap.insert(spritePackAlias, std::make_shared<SpritePack>(SpritePack()));
+        spritePackMap.insert(spritePackAlias, spritePack);
     }
 } // namespace graphics
 } // namespace p2d

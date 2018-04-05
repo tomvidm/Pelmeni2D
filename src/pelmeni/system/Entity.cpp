@@ -8,17 +8,20 @@ namespace p2d { namespace system {
     }
 
     Entity::Entity(const Entity& copy)
-    : entityId(copy.getId()), entityAlias(copy.getAlias()) {
+    : transform(copy.transform),
+      sprite(copy.sprite) {
         ;
     }
 
     Entity::Entity(Entity&& other) 
-    : entityId(std::move(other.entityId)), entityAlias(std::move(other.entityAlias)) {
+    : transform(std::move(other.transform)),
+      sprite(std::move(other.sprite)) {
         ;
     }
 
-    Entity& Entity::operator = (Entity&& other) {
-        entityAlias = other.getAlias();
+    Entity Entity::operator = (const Entity& other) {
+        transform = other.transform;
+        sprite = other.sprite;
         return *this;
     }
 

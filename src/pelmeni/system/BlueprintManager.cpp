@@ -3,6 +3,8 @@
 
 #include "json/Helpers.hpp"
 
+#include "graphics/SpritePack.hpp"
+
 #include "system/BlueprintManager.hpp"
 
 namespace p2d { namespace system {
@@ -22,9 +24,12 @@ namespace p2d { namespace system {
 
     void BlueprintManager::loadBlueprintListing(rapidjson::Value& blueprintListing) {
         system::Blueprint::id blueprintId = blueprintListing["blueprint_id"].GetString();
+        graphics::SpritePack::alias spritePackAlias = blueprintListing["sprite_pack"].GetString();
         printf("  Processing blueprint %s\n", blueprintId.c_str());
         
-        system::Blueprint blueprint;
+        system::Blueprint blueprint(
+            spritePackAlias   
+        );
         blueprintMap.insert(std::make_pair(blueprintId, std::move(blueprint)));
 
     }

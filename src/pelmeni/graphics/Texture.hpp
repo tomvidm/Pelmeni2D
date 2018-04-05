@@ -28,7 +28,7 @@ namespace p2d { namespace graphics {
             sfmlTexturePtr = rhs.sfmlTexturePtr;
         }
 
-        inline sf::Texture& getTexture() { return *sfmlTexturePtr; }
+        inline sf::Texture& getTexture() const { return *sfmlTexturePtr; }
     protected:
         std::shared_ptr<sf::Texture> sfmlTexturePtr;
     }; // class Texture

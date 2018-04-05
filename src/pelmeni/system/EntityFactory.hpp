@@ -9,7 +9,7 @@
 namespace p2d { namespace system {
     class EntityFactory {
     public:
-        static Entity&& createEntity(
+        static Entity createEntity(
             const Blueprint::id&              blueprintId,
             BlueprintManager*                 blueprintManager,
             EntityManager*                    entityManager,
