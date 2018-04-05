@@ -20,7 +20,9 @@ namespace p2d { namespace graphics {
     void TextureManager::loadTextureFromListing(rapidjson::Value& textureListing) {
         graphics::Texture::id textureId = textureListing[0].GetString();
         graphics::Texture::file texturePath = textureListing[1].GetString();
-        printf("  Loading texture %s from %s\n", textureId.c_str(), texturePath.c_str());
+        
+        printf("  Loaded texture %s from %s\n", textureId.c_str(), texturePath.c_str());
+        textureMap.insert(textureId, Texture(texturePath));
     }
 } // namespace graphics
 } // namespace p2d

@@ -5,7 +5,7 @@
 
 namespace p2d { namespace graphics {
     class TextureManager {
-        using TextureMap = utility::Map<Texture::id, sf::Texture>;
+        using TextureMap = utility::Map<Texture::id, Texture>;
     public:
         void loadTexturesFromList(const std::string& textureList);
         void loadTextureFromListing(rapidjson::Value& textureListing);    

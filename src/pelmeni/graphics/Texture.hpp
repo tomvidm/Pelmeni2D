@@ -13,22 +13,24 @@ namespace p2d { namespace graphics {
         using file = std::string;
         using ptr = std::shared_ptr<Texture>;
 
-        Texture(const Texture::id& textureId, const std::string texturePath)
-        : textureId(textureId) {
-            
-            if (!sfmlTexture.loadFromFile(texturePath)) {
+        Texture(const std::string texturePath) {
+            sfmlTexturePtr = std::make_shared<sf::Texture>();
+            if (!sfmlTexturePtr->loadFromFile("../resources/" + texturePath)) {
                 printf("Texture: Error loading file %s\n", texturePath.c_str());
-            } else {
-                printf("Texture loaded!\n");
             }
         }
 
-        inline Texture::id getId() const { return textureId; }
-        inline sf::Texture& getTexture() { return sfmlTexture; }
-    private:
-        Texture::id textureId;
+        Texture(Texture&& rhs) {
+            sfmlTexturePtr = std::move(rhs.sfmlTexturePtr);
+        }
 
-        sf::Texture sfmlTexture;
+        Texture(const Texture& rhs) {
+            sfmlTexturePtr = rhs.sfmlTexturePtr;
+        }
+
+        inline sf::Texture& getTexture() { return *sfmlTexturePtr; }
+    protected:
+        std::shared_ptr<sf::Texture> sfmlTexturePtr;
     }; // class Texture
 } // namespace graphics
 } // namespace p2d
