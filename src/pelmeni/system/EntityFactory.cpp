@@ -12,7 +12,6 @@ namespace p2d { namespace system {
             printf("Creating entity from blueprint %s\n", blueprintId.c_str());
             const Blueprint blueprint = blueprintManager->get(blueprintId);
             const graphics::SpritePack::shared spritePack = spritePackManager->get(blueprint.getSpritePackAlias());
-            printf("createEntity::spritePack.get() = %p\n", spritePack.get());
             Entity entity(spritePack);
             return entity;
         }

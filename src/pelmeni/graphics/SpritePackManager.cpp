@@ -24,9 +24,7 @@ namespace p2d { namespace graphics {
 
         SpritePack::shared spritePack = std::make_shared<SpritePack>();
         spritePack->texture = textureManager->get(textureAlias);
-        printf("loadSpritePackFromListing::spritePack.get() = %p\n", spritePack.get());
 
-        // TODO
         spritePackMap.insert(spritePackAlias, spritePack);
     }
 } // namespace graphics

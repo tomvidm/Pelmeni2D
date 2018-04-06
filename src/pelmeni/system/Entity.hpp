@@ -25,12 +25,12 @@ namespace p2d { namespace system {
         Entity operator = (const Entity& other);
 
         inline Transform getTransform() const { return transform; }
-        inline graphics::Sprite::shared getSprite() { return sprite; } 
+        inline graphics::Sprite& getSprite() { return sprite; } 
 
         void update();
     protected:        
         system::Transform transform;
-        graphics::Sprite::shared sprite;
+        graphics::Sprite sprite;
     }; // class Object
 } // namespace system
 } // namespace p2d
