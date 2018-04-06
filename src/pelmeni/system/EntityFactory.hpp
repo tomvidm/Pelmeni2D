@@ -5,7 +5,6 @@
 #include "system/EntityManager.hpp"
 #include "system/EntityState.hpp"
 #include "graphics/SpritePackManager.hpp"
-#include "graphics/TextureManager.hpp"
 
 namespace p2d { namespace system {
     class EntityFactory {
@@ -15,8 +14,7 @@ namespace p2d { namespace system {
             const EntityState&                initialState,
             BlueprintManager*                 blueprintManager,
             EntityManager*                    entityManager,
-            graphics::SpritePackManager*      spritePackManager,
-            graphics::TextureManager*         textureManager);
+            graphics::SpritePackManager*      spritePackManager);
     }; // class EntityFactory
-}
-}
+} // namespace system
+} // namespace p2d
