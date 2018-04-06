@@ -17,7 +17,7 @@ namespace p2d { namespace utility {
     public:
         Pool();
 
-        typename T::id push(T&& obj);
+        typename T::id push(const T& obj);
         void remove(const typename T::id& index);
 
         inline bool empty() const { return activeObjects_ == 0; }
@@ -60,10 +60,10 @@ namespace p2d { namespace utility {
     } // find free index
 
     template <typename T, unsigned N>
-    typename T::id Pool<T, N>::push(T&& obj) {
+    typename T::id Pool<T, N>::push(const T& obj) {
         size_t index = fetchFreeIndex();
         activate(index);
-        objectArray[index] = std::move(obj);
+        objectArray[index] = obj;
         return static_cast<typename T::id>(index);
     } // activate
 

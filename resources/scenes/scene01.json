@@ -14,7 +14,7 @@
     "scene_objects": [
         {
             "alias": "test_instance02",
-            "blueprint": "test01",
+            "blueprint": "tusk",
             "initial_state": {
                 "transform": {
                     "position": [128, 192],

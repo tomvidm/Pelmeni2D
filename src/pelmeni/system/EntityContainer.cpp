@@ -3,8 +3,8 @@
 #include "system/EntityContainer.hpp"
 
 namespace p2d { namespace system {
-    Entity::id EntityContainer::insertEntity(Entity&& entity) {
-        Entity::id entityId = entities.push(std::move(entity));
+    Entity::id EntityContainer::insertEntity(const Entity& entity) {
+        Entity::id entityId = entities.push(entity);
         return entityId;
     }
 

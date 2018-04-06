@@ -15,6 +15,9 @@ namespace p2d { namespace system {
             if (frameTimer.getElapsedTime() > framePeriod) {
                 frameTimer.restart();
                 window.clear();
+                for (auto& entity : scene.getEntityList()) {
+                    window.draw(entity.getSprite());
+                }
                 window.display();
             } // if
         } // while

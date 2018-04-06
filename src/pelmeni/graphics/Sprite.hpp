@@ -22,7 +22,7 @@ namespace p2d { namespace graphics {
         Sprite(const Sprite& other)
         : animationState(other.animationState),
           spritePack(other.spritePack) {
-              ;
+              setTexture(*(other.getTexture()));
           }
 
         void setSpritePack(SpritePack::shared spritePackArg);

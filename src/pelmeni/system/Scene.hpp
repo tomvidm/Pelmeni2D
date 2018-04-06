@@ -13,14 +13,13 @@
 namespace p2d { namespace system {
     class Scene {
     public:
-        using DisplayList = std::vector<graphics::Sprite::shared>;
         using file = std::string;
 
         Scene() {;}
         Scene(const Scene::file& sceneFile);
 
         void loadSceneFile(const Scene::file& sceneFile);  
-        inline DisplayList& getDisplayList() { return displayList; }
+        inline std::vector<Entity>& getEntityList() { return entityManager.getEntityContainer(); }
     private:
         void parseSceneFile();
         void prefetchResources();
@@ -30,8 +29,6 @@ namespace p2d { namespace system {
         system::EntityManager entityManager;
         graphics::TextureManager textureManager;
         graphics::SpritePackManager spritePackManager;
-
-        DisplayList displayList;
 
         rapidjson::Document sceneFileDOM;
 

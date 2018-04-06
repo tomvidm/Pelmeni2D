@@ -3,17 +3,9 @@
 #include "system/EntityManager.hpp"
 
 namespace p2d { namespace system {
-    Entity::id EntityManager::createEntity() {
-        return entityContainer.insertEntity(Entity());
-    }
-
-    Entity::id EntityManager::createEntity(const Blueprint& blueprint) {
-        
-        return entityContainer.insertEntity(Entity());
-    }
-
-    void EntityManager::removeEntity(const Entity::id& entityId) {
-        entityContainer.removeEntity(entityId);
+    Entity::id EntityManager::insertEntity(const Entity& entity) {
+        entityContainer.push_back(entity);
+        return entityContainer.size() - 1;
     }
 } // namespace system
 } // namespace p2d

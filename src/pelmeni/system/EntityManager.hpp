@@ -11,11 +11,10 @@
 namespace p2d { namespace system {
     class EntityManager {
     public:
-        Entity::id createEntity();
-        Entity::id createEntity(const Blueprint& blueprint);
-        void removeEntity(const Entity::id& entityId);
+        Entity::id insertEntity(const Entity& entity);
+        inline std::vector<Entity>& getEntityContainer() { return entityContainer; }
     private:
-        EntityContainer entityContainer;
+        std::vector<Entity> entityContainer;
     }; // class EntityContainer
 } // namespace system
 } // namespace p2d
