@@ -3,6 +3,7 @@
 #include "system/Blueprint.hpp"
 #include "system/BlueprintManager.hpp"
 #include "system/EntityManager.hpp"
+#include "system/EntityState.hpp"
 #include "graphics/SpritePackManager.hpp"
 #include "graphics/TextureManager.hpp"
 
@@ -11,6 +12,7 @@ namespace p2d { namespace system {
     public:
         static Entity createEntity(
             const Blueprint::id&              blueprintId,
+            const EntityState&                initialState,
             BlueprintManager*                 blueprintManager,
             EntityManager*                    entityManager,
             graphics::SpritePackManager*      spritePackManager,

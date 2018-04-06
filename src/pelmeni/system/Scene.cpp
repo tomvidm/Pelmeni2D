@@ -50,12 +50,23 @@ namespace p2d { namespace system {
             for (rapidjson::Value& entry : sceneFileDOM["scene_objects"].GetArray()) {
                 Entity::alias alias = entry["alias"].GetString();
                 Blueprint::id blueprintId = entry["blueprint"].GetString();
+                
+                // Load initial state
+                float xPosition = entry["initial_state"]["transform"]["position"][0].GetDouble();
+                float yPosition = entry["initial_state"]["transform"]["position"][1].GetDouble();
+                EntityState entityState{
+                    Transform(math::Vector2f(xPosition, yPosition))
+                };
+                
                 Entity entity = EntityFactory::createEntity(
                     blueprintId,
+                    entityState,
                     &blueprintManager,
                     &entityManager,
                     &spritePackManager,
                     &textureManager);
+
+                
                 /*
                     1. load the initial state of the entity
                     2. create the components and assign them to the entity

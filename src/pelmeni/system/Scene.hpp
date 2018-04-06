@@ -7,6 +7,7 @@
 
 #include "system/BlueprintManager.hpp"
 #include "system/EntityManager.hpp"
+#include "system/EntityState.hpp"
 #include "graphics/TextureManager.hpp"
 #include "graphics/SpritePackManager.hpp"
 

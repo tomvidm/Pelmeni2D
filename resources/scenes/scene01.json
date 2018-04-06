@@ -13,11 +13,11 @@
     },
     "scene_objects": [
         {
-            "alias": "test_instance02",
-            "blueprint": "tusk",
+            "alias": "",
+            "blueprint": "test01",
             "initial_state": {
                 "transform": {
-                    "position": [128, 192],
+                    "position": [0, 0],
                     "rotation": [0, 0]
                 },
                 "parent_id": 0,
@@ -25,11 +25,47 @@
             }
         },
         {
-            "alias": "test_instance02",
+            "alias": "",
             "blueprint": "test01",
             "initial_state": {
                 "transform": {
-                    "position": [128, 192],
+                    "position": [32, 32],
+                    "rotation": [0, 0]
+                },
+                "parent_id": 0,
+                "children_id": []
+            }
+        },
+        {
+            "alias": "",
+            "blueprint": "test01",
+            "initial_state": {
+                "transform": {
+                    "position": [0, 64],
+                    "rotation": [0, 0]
+                },
+                "parent_id": 0,
+                "children_id": []
+            }
+        },
+        {
+            "alias": "",
+            "blueprint": "test01",
+            "initial_state": {
+                "transform": {
+                    "position": [64, 64],
+                    "rotation": [0, 0]
+                },
+                "parent_id": 0,
+                "children_id": []
+            }
+        },
+        {
+            "alias": "",
+            "blueprint": "test01",
+            "initial_state": {
+                "transform": {
+                    "position": [64, 0],
                     "rotation": [0, 0]
                 },
                 "parent_id": 0,

@@ -4,7 +4,9 @@ namespace p2d { namespace system {
     Instance::Instance() {
         scene.loadSceneFile("scenes/scene01.json");
         framePeriod = sf::milliseconds(16);
+        window.setVerticalSyncEnabled(false);
         window.create(sf::VideoMode(800, 600), "Window");
+        
         run();
     } // constructor
     
@@ -15,7 +17,7 @@ namespace p2d { namespace system {
                 sf::Time frameTime = frameTimer.restart();
                 window.clear();
                 for (auto& entity : scene.getEntityList()) {
-                    entity.getSprite().update(frameTime);
+                    entity.update(frameTime);
                     window.draw(entity.getSprite());
                 }
                 window.display();

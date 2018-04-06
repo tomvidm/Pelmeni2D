@@ -7,7 +7,8 @@ namespace p2d { namespace system {
         ;
     }
 
-    Entity::Entity(const graphics::SpritePack::shared spritePack) {
+    Entity::Entity(const graphics::SpritePack::shared spritePack, const EntityState& initialState)
+    : transform(initialState.transform) {
         sprite.setSpritePack(spritePack);
     }
 
@@ -31,6 +32,7 @@ namespace p2d { namespace system {
 
     void Entity::update(const sf::Time& dt) {
         sprite.update(dt);
+        sprite.setPosition(transform.position.toSfVector2f());
     }
 } // namespace system
 } // namespace p2d

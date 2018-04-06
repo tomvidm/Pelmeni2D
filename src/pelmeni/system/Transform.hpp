@@ -8,6 +8,7 @@ namespace p2d { namespace system {
     public:
         using id = unsigned;
         Transform() : Component(Component::type::transform) {;}
+        Transform(const math::Vector2f& positionArg) : Component(Component::type::transform), position(positionArg) {;}
         Transform(const Transform& other) : Component(Component::type::transform) { position = other.position; }
         Transform(Transform&& other) : Component(Component::type::transform) { position = other.position; }
         Transform operator = (const Transform& rhs) { position = rhs.position; return *this; }
@@ -15,7 +16,7 @@ namespace p2d { namespace system {
         math::Vector2f getPosition() const { return position; }
 
         virtual void update() {;}
-    protected:
+
         math::Vector2f position;
     }; // class Transform
 } // namespace system
