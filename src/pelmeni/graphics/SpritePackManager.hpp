@@ -19,7 +19,7 @@ namespace p2d { namespace graphics {
     private:
         void loadSpritePackFromListing(rapidjson::Value& spritePackListing, TextureManager* textureManager);
         utility::Map<FrameSequence::id, FrameSequence> loadFrameSequences(rapidjson::Value& frameSequences);
-        FrameSequence loadSingleFrameSequence(rapidjson::Value& frameSequence);
+        FrameSequence loadSingleFrameSequence(rapidjson::Value& entry);
         SpritePackMap spritePackMap;
     }; // class PackageManager
 } // namespace graphics
