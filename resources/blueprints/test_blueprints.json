@@ -6,5 +6,9 @@
     {
         "blueprint_id": "tusk",
         "sprite_pack": "tusk"
+    },
+    {
+        "blueprint_id": "link",
+        "sprite_pack": "link"
     }
 ]

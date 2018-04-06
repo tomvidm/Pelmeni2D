@@ -1,4 +1,5 @@
 [
     ["tex01", "textures/tex01.png"],
-    ["tusk", "textures/tusk.png"]
+    ["tusk", "textures/tusk.png"],
+    ["link", "textures/link01.png"]
 ]

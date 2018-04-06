@@ -3,6 +3,7 @@
         "spritepack_alias": "tusk",
         "texture_alias": "tusk",
         "is_animated": true,
+        "scale": 1.0,
         "animations": [
             {
                 "animation_key": "default",
@@ -24,6 +25,7 @@
         "spritepack_alias": "test_sprite01",
         "texture_alias": "tex01",
         "is_animated": true,
+        "scale": 4.0,
         "animations": [
             {
                 "animation_key": "default",
@@ -63,6 +65,28 @@
                     [41, 32, 96, 32, 32],
                     [41, 64, 96, 32, 32],
                     [41, 96, 96, 32, 32]
+                ]
+            }
+        ]
+    },
+    {
+        "spritepack_alias": "link",
+        "texture_alias": "link",
+        "is_animated": true,
+        "animations": [
+            {
+                "animation_key": "default",
+                "frames": [
+                    [100, 0, 104, 24, 28],
+                    [100, 24, 104, 24, 28],
+                    [100, 48, 104, 24, 28],
+                    [100, 72, 104, 24, 28],
+                    [100, 96, 104, 24, 28],
+                    [100, 120, 104, 24, 28],
+                    [100, 144, 104, 24, 28],
+                    [100, 168, 104, 24, 28],
+                    [100, 192, 104, 24, 28],
+                    [100, 216, 104, 24, 28]
                 ]
             }
         ]

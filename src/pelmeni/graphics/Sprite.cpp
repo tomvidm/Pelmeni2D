@@ -17,6 +17,7 @@ namespace p2d { namespace graphics {
         if (animationState.update(dt)) {
             setTextureRect(animationState.getCurrentFrameRect());
         }
+        setScale(12.f, 12.f);
     }
 } // namespace graphics
 } // namespace p2d

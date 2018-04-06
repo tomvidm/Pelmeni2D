@@ -63,8 +63,7 @@ namespace p2d { namespace system {
                     entityState,
                     &blueprintManager,
                     &entityManager,
-                    &spritePackManager,
-                    &textureManager);
+                    &spritePackManager);
 
                 
                 /*

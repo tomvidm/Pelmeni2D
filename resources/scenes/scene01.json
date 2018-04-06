@@ -14,58 +14,10 @@
     "scene_objects": [
         {
             "alias": "",
-            "blueprint": "test01",
+            "blueprint": "link",
             "initial_state": {
                 "transform": {
                     "position": [0, 0],
-                    "rotation": [0, 0]
-                },
-                "parent_id": 0,
-                "children_id": []
-            }
-        },
-        {
-            "alias": "",
-            "blueprint": "test01",
-            "initial_state": {
-                "transform": {
-                    "position": [32, 32],
-                    "rotation": [0, 0]
-                },
-                "parent_id": 0,
-                "children_id": []
-            }
-        },
-        {
-            "alias": "",
-            "blueprint": "test01",
-            "initial_state": {
-                "transform": {
-                    "position": [0, 64],
-                    "rotation": [0, 0]
-                },
-                "parent_id": 0,
-                "children_id": []
-            }
-        },
-        {
-            "alias": "",
-            "blueprint": "test01",
-            "initial_state": {
-                "transform": {
-                    "position": [64, 64],
-                    "rotation": [0, 0]
-                },
-                "parent_id": 0,
-                "children_id": []
-            }
-        },
-        {
-            "alias": "",
-            "blueprint": "test01",
-            "initial_state": {
-                "transform": {
-                    "position": [64, 0],
                     "rotation": [0, 0]
                 },
                 "parent_id": 0,
