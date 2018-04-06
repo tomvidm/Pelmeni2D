@@ -32,73 +32,73 @@ namespace p2d { namespace math {
 
         sf::Vector2f toSfVector2f() const;
 
-        inline T getX() const { return x_; }
-        inline T getY() const { return y_; }
-        inline T& getX() { return x_; }
-        inline T& getY() { return y_; }
-        inline Vector2<T> getVectorX() const { return Vector2<T>(x_, T(0)); }
-        inline Vector2<T> getVectorY() const { return Vector2<T>(T(0), y_); }
-    private:
-        T x_, y_;
+        inline T getX() const { return x; }
+        inline T getY() const { return y; }
+        inline T& getX() { return x; }
+        inline T& getY() { return y; }
+        inline Vector2<T> getVectorX() const { return Vector2<T>(x, T(0)); }
+        inline Vector2<T> getVectorY() const { return Vector2<T>(T(0), y); }
+
+        T x, y;
     }; // Vector2
 
     template <typename T>
     Vector2<T>::Vector2() 
-    : x_(0), y_(0) {
+    : x(0), y(0) {
         ;
     } // constructor
 
     template <typename T>
     Vector2<T>::Vector2(const T& x, const T& y) 
-    : x_(x), y_(y) {
+    : x(x), y(y) {
         ;
     } // constructor
 
     template <typename T>
     Vector2<T>::Vector2(const Vector2<T>& other) 
-    : x_(other.getX()), y_(other.getY()) {
+    : x(other.y), y(other.y) {
         ;
     } // copy constructor
 
     template <typename T>
     void Vector2<T>::operator += (const Vector2<T>& rhs) {
-        x_ += rhs.getX();
-        y_ += rhs.getY();
+        x += rhs.x;
+        y += rhs.y;
     } // operatpr +=
 
     template <typename T>
     void Vector2<T>::operator *= (const T& rhs) {
-        x_ *= rhs;
-        y_ *= rhs;
+        x *= rhs;
+        y *= rhs;
     } // operator *=
 
     template <typename T>
     Vector2<T> Vector2<T>::operator + (const Vector2<T>& rhs) const {
         return Vector2<T>(
-            x_ + rhs.getX(),
-            y_ + rhs.getY()
+            x + rhs.x,
+            y + rhs.y
         );
     } // operator +
 
     template <typename T>
     Vector2<T> Vector2<T>::operator - (const Vector2<T>& rhs) const {
         return Vector2<T>(
-            x_ - rhs.getX(),
-            y_ - rhs.getY()
+            x - rhs.x,
+            y - rhs.y
         );
     } // operator -
 
     template <typename T>
     Vector2<T> Vector2<T>::operator * (const T& rhs) const {
         return Vector2<T>(
-            x_ * rhs,
-            y_ * rhs
+            x * rhs,
+            y * rhs
         );
     } // operator *
 
     template <typename T>
     float Vector2<T>::getMagnitudeSquared() const {
-        return static_cast<float>((x_ * x_) + (y_ * y_));
+        return static_cast<float>((x * x) + (y * y));
     } // getMagnitudeSquared
 
     template <typename T>
@@ -108,19 +108,19 @@ namespace p2d { namespace math {
 
     template <typename T>
     T Vector2<T>::dot(const Vector2<T>& other) const {
-        return (x_ * other.getX()) + (y_ * other.getY());
+        return (x * other.x) + (y * other.y);
     } // dot
 
     template <typename T>
     Vector2<int> Vector2<T>::getIntified() const {
-        return Vector2<int>(static_cast<int>(x_),
-                              static_cast<int>(y_));
+        return Vector2<int>(static_cast<int>(x),
+                              static_cast<int>(y));
     } // getFloatified
 
     template <typename T>
     Vector2<float> Vector2<T>::getFloatified() const {
-        return Vector2<float>(static_cast<float>(x_),
-                              static_cast<float>(y_));
+        return Vector2<float>(static_cast<float>(x),
+                              static_cast<float>(y));
     } // getFloatified
 
     template <typename T>
@@ -130,7 +130,7 @@ namespace p2d { namespace math {
 
     template <typename T>
     sf::Vector2f Vector2<T>::toSfVector2f() const {
-        return sf::Vector2f(x_, y_);
+        return sf::Vector2f(x, y);
     } // toSfVector2f
 } // namespace math
 } // namespace p2d
