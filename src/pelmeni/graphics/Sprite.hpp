@@ -25,7 +25,10 @@ namespace p2d { namespace graphics {
               setTexture(*(other.getTexture()));
           }
 
+        void update(const sf::Time& dt);
+
         void setSpritePack(SpritePack::shared spritePackArg);
+        void setFrameSequence(const FrameSequence::id& fSeqId);
     private:
         AnimationState animationState;
         SpritePack::shared spritePack;

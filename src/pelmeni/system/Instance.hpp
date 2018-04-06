@@ -23,6 +23,7 @@ namespace p2d { namespace system {
         system::Scene scene;
         sf::RenderWindow window;
         sf::Clock frameTimer;
+        sf::Clock updateTimer;
         sf::Time framePeriod;
         sf::Event event;
     }; // class State

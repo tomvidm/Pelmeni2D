@@ -2,7 +2,23 @@
     {
         "spritepack_alias": "tusk",
         "texture_alias": "tusk",
-        "is_animated": false
+        "is_animated": true,
+        "animations": [
+            {
+                "animation_key": "default",
+                "frames": [
+                    [41, 0, 0, 480, 316],
+                    [61, 10, 0, 480, 316],
+                    [81, 10, 10, 480, 316],
+                    [101, 0, 10, 480, 316],
+                    [41, 10, 10, 480, 316],
+                    [121, 0, 10, 480, 316],
+                    [41, 0, 0, 480, 316],
+                    [41, 10, 0, 480, 316],
+                    [41, 10, 10, 480, 316]
+                ]
+            }
+        ]
     },
     {
         "spritepack_alias": "test_sprite01",

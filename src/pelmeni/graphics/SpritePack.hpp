@@ -23,6 +23,10 @@ namespace p2d { namespace graphics {
               ;
           }
 
+        FrameSequence& getFrameSequence(const FrameSequence::id& fSeqId) {
+            return frameSequenceMap.get(fSeqId);
+        }
+
         Texture texture;
         utility::Map<FrameSequence::id, FrameSequence> frameSequenceMap;
     }; // class SpritePacka

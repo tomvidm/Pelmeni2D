@@ -11,11 +11,11 @@ namespace p2d { namespace system {
     void Instance::run() {
         while (window.isOpen()) {
             inputManager.collectInputEvents(window);
-
             if (frameTimer.getElapsedTime() > framePeriod) {
-                frameTimer.restart();
+                sf::Time frameTime = frameTimer.restart();
                 window.clear();
                 for (auto& entity : scene.getEntityList()) {
+                    entity.getSprite().update(frameTime);
                     window.draw(entity.getSprite());
                 }
                 window.display();

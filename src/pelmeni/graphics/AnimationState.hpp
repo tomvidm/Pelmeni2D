@@ -11,7 +11,7 @@ namespace p2d { namespace graphics {
     class AnimationState {
     public:
         AnimationState() : currentFrameIndex(0), frameSequencePtr(nullptr) {}
-        void setFrameSequence(FrameSequencePtr fSequencePtr);
+        void setFrameSequence(FrameSequence& fSequence);
         void resetAnimation();
 
         bool update(const sf::Time& time);
@@ -21,7 +21,7 @@ namespace p2d { namespace graphics {
     private:
         size_t currentFrameIndex;
         sf::Time frameTime;
-        FrameSequencePtr frameSequencePtr;
+        FrameSequence* frameSequencePtr;
     }; // class AnimationState
 } // namespace graphics
 } // namespace p2d

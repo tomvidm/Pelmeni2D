@@ -6,7 +6,7 @@ set(TEST_SOURCES
     TrivialTest.cpp
     pelmeni/input/TestMouseButtonState.cpp
     pelmeni/input/TestMouseState.cpp
-    pelmeni/graphics/AnimationStateTest.cpp
+    #pelmeni/graphics/AnimationStateTest.cpp
     pelmeni/utility/TestPool.cpp
 )
 

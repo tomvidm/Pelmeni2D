@@ -3,8 +3,8 @@
 #include <iostream>
 
 namespace p2d { namespace graphics {
-    void AnimationState::setFrameSequence(FrameSequencePtr fSequencePtr) {
-        frameSequencePtr = fSequencePtr;
+    void AnimationState::setFrameSequence(FrameSequence& fSequence) {
+        frameSequencePtr = &fSequence;
     } // setAnimation
 
     void AnimationState::resetAnimation() {

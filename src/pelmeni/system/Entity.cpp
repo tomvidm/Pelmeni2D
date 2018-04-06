@@ -29,8 +29,8 @@ namespace p2d { namespace system {
         return *this;
     }
 
-    void Entity::update() {
-        ;
+    void Entity::update(const sf::Time& dt) {
+        sprite.update(dt);
     }
 } // namespace system
 } // namespace p2d

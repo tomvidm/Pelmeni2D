@@ -27,7 +27,7 @@ namespace p2d { namespace system {
         inline Transform getTransform() const { return transform; }
         inline graphics::Sprite& getSprite() { return sprite; } 
 
-        void update();
+        void update(const sf::Time& dt);
     protected:        
         system::Transform transform;
         graphics::Sprite sprite;
