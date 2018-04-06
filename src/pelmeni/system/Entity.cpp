@@ -7,6 +7,11 @@ namespace p2d { namespace system {
         ;
     }
 
+    Entity::Entity(const graphics::SpritePack::shared spritePack) {
+        printf("Entity::Entity::spritePack.get() = %p\n", spritePack.get());
+        sprite->setSpritePack(spritePack);
+    }
+
     Entity::Entity(const Entity& copy)
     : transform(copy.transform),
       sprite(copy.sprite) {

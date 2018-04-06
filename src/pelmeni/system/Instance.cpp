@@ -2,6 +2,7 @@
 
 namespace p2d { namespace system {
     Instance::Instance() {
+        scene.loadSceneFile("scenes/scene01.json");
         framePeriod = sf::milliseconds(16);
         window.create(sf::VideoMode(800, 600), "Window");
         run();

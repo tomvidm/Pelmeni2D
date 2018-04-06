@@ -12,9 +12,9 @@
 
 namespace p2d { namespace graphics {
     class SpritePackManager {
-        using SpritePackMap = utility::Map<SpritePack::alias, SpritePack>;
+        using SpritePackMap = utility::Map<SpritePack::alias, SpritePack::shared>;
     public:
-        SpritePack& get(const SpritePack::alias& spritePackAlias);
+        SpritePack::shared get(const SpritePack::alias& spritePackAlias);
         void loadSpritePacksFromList(const std::string& spritePackList, TextureManager* textureManager);
     private:
         void loadSpritePackFromListing(rapidjson::Value& spritePackListing, TextureManager* textureManager);

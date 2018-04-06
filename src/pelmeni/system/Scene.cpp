@@ -13,6 +13,13 @@ namespace p2d { namespace system {
             prefetchSceneObjects();
         }
 
+        void Scene::loadSceneFile(const Scene::file& sceneFile) {
+            sceneFilePath = sceneFile;
+            parseSceneFile();
+            prefetchResources();
+            prefetchSceneObjects();
+        }
+
         void Scene::parseSceneFile() {
             printf("Parsing scene file %s\n", sceneFilePath.c_str());
             sceneFileDOM = json::parseJsonFile("../resources/" + sceneFilePath);

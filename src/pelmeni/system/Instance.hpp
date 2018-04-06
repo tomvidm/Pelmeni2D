@@ -4,6 +4,7 @@
 
 #include "SFML/Graphics.hpp"
 
+#include "system/Scene.hpp"
 #include "input/InputManager.hpp"
 
 namespace p2d { namespace system {
@@ -19,7 +20,7 @@ namespace p2d { namespace system {
         
     private:
         input::InputManager inputManager;
-
+        system::Scene scene;
         sf::RenderWindow window;
         sf::Clock frameTimer;
         sf::Time framePeriod;

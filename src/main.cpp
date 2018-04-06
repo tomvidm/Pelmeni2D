@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstdio>
 
-#include "system/Scene.hpp"
+#include "system/Instance.hpp"
 #include "utility/Quadtree.hpp"
 
 int main() {
-    p2d::system::Scene scene("scenes/scene01.json");
+    p2d::system::Instance instance;
     return 0;
 } // Main function

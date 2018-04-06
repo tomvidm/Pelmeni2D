@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdio>
+
 #include "system/EngineDefs.hpp"
 
 #include <string>
@@ -14,6 +16,12 @@ namespace p2d { namespace graphics {
         using id = std::string;
         using alias = std::string;
         using shared = std::shared_ptr<SpritePack>;
+
+        SpritePack() {;}
+        SpritePack(const SpritePack& rhs)
+        : texture(rhs.texture) {
+              ;
+          }
 
         Texture texture;
         utility::Map<FrameSequence::id, FrameSequence> frameSequenceMap;

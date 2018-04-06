@@ -3,7 +3,7 @@
 #include "SpritePackManager.hpp"
 
 namespace p2d { namespace graphics {
-    SpritePack& SpritePackManager::get(const SpritePack::alias& spritePackAlias) {
+    SpritePack::shared SpritePackManager::get(const SpritePack::alias& spritePackAlias) {
         return spritePackMap.get(spritePackAlias);
     }
 
@@ -22,11 +22,12 @@ namespace p2d { namespace graphics {
         std::string textureAlias = spritePackListing["texture_alias"].GetString();
         printf("  Loading SpritePack %s\n", spritePackAlias.c_str());
 
-        SpritePack spritePack;
-        spritePack.texture = textureManager->get(textureAlias);
+        SpritePack::shared spritePack = std::make_shared<SpritePack>();
+        spritePack->texture = textureManager->get(textureAlias);
+        printf("loadSpritePackFromListing::spritePack.get() = %p\n", spritePack.get());
 
         // TODO
-        spritePackMap.insert(spritePackAlias, std::move(spritePack));
+        spritePackMap.insert(spritePackAlias, spritePack);
     }
 } // namespace graphics
 } // namespace p2d

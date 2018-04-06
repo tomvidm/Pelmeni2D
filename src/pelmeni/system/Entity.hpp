@@ -19,16 +19,18 @@ namespace p2d { namespace system {
         using unique = std::unique_ptr<Entity>;
 
         Entity();
+        Entity(const graphics::SpritePack::shared spritePack);
         Entity(const Entity& copy);
         Entity(Entity&& other);
         Entity operator = (const Entity& other);
 
         inline Transform getTransform() const { return transform; }
+        inline graphics::Sprite::shared getSprite() { return sprite; } 
 
         void update();
     protected:        
         system::Transform transform;
-        graphics::Sprite sprite;
+        graphics::Sprite::shared sprite;
     }; // class Object
 } // namespace system
 } // namespace p2d
