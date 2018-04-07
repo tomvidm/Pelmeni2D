@@ -60,4 +60,4 @@ If an entity needs to respond to some input event, the entity has to be subscrib
 A blueprint is a data structure containing the ids/aliases to resources used by the object it describes.
 
 ## SpritePack
-A SpritePack contains a mapping of aliases and frame sequences, to be used for accessing animations.
+A SpritePack contains a mapping of aliases and frame sequences, to be used for accessing animations. Several sprites can share the same SpritePack if they use the same texture and pool of frame sequences. This 
