@@ -32,7 +32,7 @@ namespace p2d { namespace system {
 
     void Entity::update(const sf::Time& dt) {
         sprite.update(dt);
-        sprite.setPosition(transform.position.toSfVector2f());
+        sprite.setPosition(transform.position);
     }
 } // namespace system
 } // namespace p2d

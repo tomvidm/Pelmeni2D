@@ -21,8 +21,8 @@ namespace p2d { namespace input {
         MouseMoveEvent event{
             mx,
             my,
-            mx - mousePosition.getX(),
-            my - mousePosition.getY()
+            mx - mousePosition.x,
+            my - mousePosition.y
         };
         mousePosition = math::Vector2i(mx, my);
         return event;
