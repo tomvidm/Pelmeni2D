@@ -5,7 +5,7 @@
 #include "input/MouseButtonEvent.hpp"
 #include "input/MouseMoveEvent.hpp"
 
-#include "math/vector.hpp"
+#include "math/Vector.hpp"
 
 namespace p2d { namespace input {
     class MouseState {

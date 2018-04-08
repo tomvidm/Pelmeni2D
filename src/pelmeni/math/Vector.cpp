@@ -1,4 +1,4 @@
-#include "vector.hpp"
+#include "Vector.hpp"
 
 namespace p2d { namespace math {
 

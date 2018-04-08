@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../math/vector.hpp"
+#include "math/Vector.hpp"
 
 namespace p2d { namespace input {
     enum MouseButton {

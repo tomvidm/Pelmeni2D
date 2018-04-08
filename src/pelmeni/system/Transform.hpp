@@ -1,6 +1,6 @@
 #pragma once
 
-#include "math/vector.hpp"
+#include "math/Vector.hpp"
 #include "system/Component.hpp"
 
 namespace p2d { namespace system {

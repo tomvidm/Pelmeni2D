@@ -2,7 +2,7 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "math/vector.hpp"
+#include "math/Vector.hpp"
 
 namespace p2d { namespace graphics {
     constexpr size_t NumberOfVertices(const size_t& R, const size_t& C) {

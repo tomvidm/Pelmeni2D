@@ -3,7 +3,9 @@
 
 #include <cmath>
 
-#include "vector.hpp"
+#include "Vector.hpp"
+#include "Transform.hpp"
+#include "Transform3.hpp"
 
 namespace p2d { namespace math {
     bool floatComp(float a, float b);

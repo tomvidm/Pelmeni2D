@@ -2,7 +2,7 @@
 
 #include <array>
 
-#include "math/vector.hpp"
+#include "math/Vector.hpp"
 
 namespace p2d { namespace math {
     class Transform {

@@ -42,5 +42,11 @@ namespace p2d { namespace math {
     T dot(const Vector2<T>& lhs, const Vector2<T>& rhs) {
         return lhs.x * rhs.x + lhs.y * rhs.y;
     }
+
+    // Compute cosine of angle between lhs and rhs
+    template <typename T>
+    float cosTheta(const Vector2<T>& lhs, const Vector2<T>& rhs) {
+        return dot(lhs, rhs) / (magnitude(lhs) * magnitude(rhs));
+    }
 } // namespace math
 } // namespace p2d
