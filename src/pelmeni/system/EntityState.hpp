@@ -1,10 +1,10 @@
 #pragma once
 
-#include "system/Transform.hpp"
+#include "math/Transform3.hpp"
 
 namespace p2d { namespace system {
     struct EntityState {
-        system::Transform transform;
+        math::Transform3 transform;
     }; // struct EntityState
 } // namespace system
 } // namesapce p2d

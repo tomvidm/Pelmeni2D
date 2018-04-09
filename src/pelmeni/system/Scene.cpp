@@ -55,7 +55,7 @@ namespace p2d { namespace system {
                 float xPosition = entry["initial_state"]["transform"]["position"][0].GetDouble();
                 float yPosition = entry["initial_state"]["transform"]["position"][1].GetDouble();
                 EntityState entityState{
-                    Transform(math::Vector2f(xPosition, yPosition))
+                    math::Transform3::Identity()
                 };
                 
                 Entity entity = EntityFactory::createEntity(

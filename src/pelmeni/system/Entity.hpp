@@ -9,7 +9,7 @@
 
 #include "system/Component.hpp"
 #include "system/EntityState.hpp"
-#include "system/Transform.hpp"
+#include "math/Transform3.hpp"
 
 namespace p2d { namespace system {
     class Entity {
@@ -25,14 +25,10 @@ namespace p2d { namespace system {
         Entity(Entity&& other);
         Entity operator = (const Entity& other);
 
-        inline void setTransform(const Transform& transformArg) { transform = transformArg; }
-
-        inline Transform getTransform() const { return transform; }
         inline graphics::Sprite& getSprite() { return sprite; } 
 
         void update(const sf::Time& dt);
     protected:        
-        system::Transform transform;
         graphics::Sprite sprite;
     }; // class Object
 } // namespace system
