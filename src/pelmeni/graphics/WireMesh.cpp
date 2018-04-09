@@ -53,6 +53,25 @@ namespace p2d { namespace graphics {
         }
     }
 
+    void WireMesh::transform(const math::Transform3& transform) {
+        const math::Transform3 finalTransform = math::Transform3::Translation(position) * transform * math::Transform3::Translation(-origin);
+
+        for (size_t i = 0; i < _edgeList.size(); i++) {
+            // Get index for vector
+            const size_t index0 = std::get<0>(_edgeList[i]);
+            const size_t index1 = std::get<1>(_edgeList[i]);
+            // Transform and store vector3
+            const math::Vector3f vector0 = finalTransform.transformVector(_vectorList[index0]);
+            const math::Vector3f vector1 = finalTransform.transformVector(_vectorList[index1]);
+            // Project vector3 to vector2
+            const math::Vector2f projected0 = math::projectToXY(vector0);
+            const math::Vector2f projected1 = math::projectToXY(vector1);
+            // Set position of vertex to projected vector2
+            vertices[2*i].position = projected0;
+            vertices[2*i + 1].position = projected1;
+        }
+    }
+
     void WireMesh::draw(sf::RenderTarget& target, sf::RenderStates states) const {
         target.draw(vertices);
     }

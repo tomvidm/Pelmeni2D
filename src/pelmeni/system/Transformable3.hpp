@@ -11,6 +11,7 @@ namespace p2d { namespace system {
         inline math::Vector3f getOrigin() const { return origin; }
         
         void setRotation(const float& x, const float& y, const float& z);
+        virtual void transform(const math::Transform3& transform);
         
         math::Transform3 getTransform3() const;
     protected:

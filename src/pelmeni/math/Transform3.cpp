@@ -112,6 +112,32 @@ namespace p2d { namespace math {
             0, 0, 0, 1);
     }
 
+    Transform3 Transform3::Rotation(const float& yaw, const float& pitch, const float& roll) {
+        const float sinYaw = sinf(yaw);
+        const float cosYaw = cosf(yaw);
+        const float sinPitch = sinf(pitch);
+        const float cosPitch = cosf(pitch);
+        const float sinRoll = sinf(roll);
+        const float cosRoll = cosf(roll);
+        return Transform3(
+            cosYaw * cosPitch, 
+            cosYaw * sinPitch * sinRoll - sinYaw * cosRoll,
+            cosYaw * sinPitch * cosRoll + sinYaw * sinRoll,
+            0.f,
+            sinYaw * cosPitch,
+            sinYaw * sinPitch * sinRoll + cosYaw * cosRoll,
+            sinYaw * sinPitch * cosRoll - cosYaw * sinRoll,
+            0.f,
+            -sinPitch,
+            cosPitch * sinRoll,
+            cosPitch * cosRoll,
+            0.f,
+            0.f,
+            0.f,
+            0.f,
+            1.f);
+    }
+
     Transform3 Transform3::Identity() {
         return Transform3(
             1, 0, 0, 0,

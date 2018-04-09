@@ -27,6 +27,7 @@ namespace p2d { namespace math {
         static Transform3 RotationAboutX(const float& theta);
         static Transform3 RotationAboutY(const float& theta);
         static Transform3 RotationAboutZ(const float& theta);
+        static Transform3 Rotation(const float& yaw, const float& pitch, const float& roll);
         static Transform3 Identity();
 
         friend float determinant(const Transform3& t);

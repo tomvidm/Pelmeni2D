@@ -19,6 +19,8 @@ namespace p2d { namespace graphics {
         void initAxisMarker();
         void transformAndProjectToXY();
 
+        virtual void transform(const math::Transform3& transform);
+
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
         Vector3List _vectorList;
