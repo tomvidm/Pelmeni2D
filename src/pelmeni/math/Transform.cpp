@@ -17,13 +17,15 @@ namespace p2d { namespace math {
     Transform::Transform(Transform&& rhs)
     : mat(std::move(rhs.mat)) {;}
 
-    Vector2f Transform::transformVector(const Vector2f& vec) const {
-        return Vector2f(vec.x * (mat[0] + mat[1] + mat[2]), vec.y * (mat[3] + mat[4] + mat[5]));
+    Vector2f Transform::transformPoint(const float& x, const float& y) const {
+        return Vector2f(mat[0]*x + mat[1]*y + mat[2],
+                        mat[3]*x + mat[4]*y + mat[5]);
     }
 
-    Vector2f Transform::transformPoint(const float& x, const float& y) const {
-        return Vector2f(x * (mat[0] + mat[1] + mat[2]), y * (mat[3] + mat[4] + mat[5]));
+    Vector2f Transform::transformVector(const Vector2f& vec) const {
+        return Vector2f(transformPoint(vec.x, vec.y));
     }
+
 
     Transform Transform::Rotation(const float& theta) {
         return Transform(
@@ -57,23 +59,23 @@ namespace p2d { namespace math {
             0, 0, 1);
     }
 
-    float Transform::determinant() const {
-        return mat[0]*(mat[4]*mat[8] - mat[5]*mat[7]) -
-               mat[1]*(mat[3]*mat[8] + mat[5]*mat[6]) +
-               mat[2]*(mat[3]*mat[7] - mat[4]*mat[6]);
+    float determinant(const Transform& t) {
+        return t.mat[0]*(t.mat[4]*t.mat[8] - t.mat[5]*t.mat[7]) -
+               t.mat[1]*(t.mat[3]*t.mat[8] + t.mat[5]*t.mat[6]) +
+               t.mat[2]*(t.mat[3]*t.mat[7] - t.mat[4]*t.mat[6]);
     }
 
-    Transform Transform::inverse() const {
-        return determinant() * Transform(
-            mat[4]*mat[8] - mat[5]*mat[7],
-            mat[2]*mat[7] - mat[1]*mat[8],
-            mat[1]*mat[5] - mat[2]*mat[4],
-            mat[5]*mat[6] - mat[3]*mat[8],
-            mat[0]*mat[8] - mat[2]*mat[6],
-            mat[2]*mat[3] - mat[0]*mat[5],
-            mat[3]*mat[7] - mat[4]*mat[6],
-            mat[1]*mat[6] - mat[0]*mat[7],
-            mat[0]*mat[4] - mat[1]*mat[3]);
+    Transform inverse(const Transform& t) {
+        return determinant(t) * Transform(
+            t.mat[4]*t.mat[8] - t.mat[5]*t.mat[7],
+            t.mat[2]*t.mat[7] - t.mat[1]*t.mat[8],
+            t.mat[1]*t.mat[5] - t.mat[2]*t.mat[4],
+            t.mat[5]*t.mat[6] - t.mat[3]*t.mat[8],
+            t.mat[0]*t.mat[8] - t.mat[2]*t.mat[6],
+            t.mat[2]*t.mat[3] - t.mat[0]*t.mat[5],
+            t.mat[3]*t.mat[7] - t.mat[4]*t.mat[6],
+            t.mat[1]*t.mat[6] - t.mat[0]*t.mat[7],
+            t.mat[0]*t.mat[4] - t.mat[1]*t.mat[3]);
     }
 
     Transform operator * (const Transform& lhs, const float& rhs) {

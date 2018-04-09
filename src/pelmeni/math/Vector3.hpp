@@ -100,6 +100,15 @@ namespace p2d { namespace math {
         return dot(lhs, rhs);
     }
 
+    // Cross product
+    template <typename T>
+    Vector3<T> cross(const Vector3<T>& lhs, const Vector3<T>& rhs) {
+        return Vector3<T>(
+            lhs.y * rhs.z - lhs.z * rhs.y,
+            lhs.z * rhs.x - lhs.x * rhs.z,
+            lhs.x * rhs.y - lhs.y * rhs.x);
+    }
+
     // Compare operator
     template <typename T>
     T operator == (const Vector3<T>& lhs, const Vector3<T>& rhs) {

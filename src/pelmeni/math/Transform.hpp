@@ -17,7 +17,7 @@ namespace p2d { namespace math {
         Vector2f transformVector(const Vector2f& vec) const;
         Vector2f transformPoint(const float& x, const float& y) const;
 
-        Transform inverse() const;
+        
         
         static Transform Rotation(const float& theta);
         static Transform Scale(const float& sx, const float& sy);
@@ -30,10 +30,11 @@ namespace p2d { namespace math {
         friend Transform operator * (const Transform& lhs, const Transform& rhs);
         friend Vector2f operator * (const Transform& lhs, const Vector2f& rhs);
 
+        friend float determinant(const Transform& t);
+        friend Transform inverse(const Transform& t);
+
         friend std::string toString(const Transform& rhs);
     protected:
-        float determinant() const;
-        
         std::array<float, 9> mat;
     }; // class Transform
 
@@ -41,6 +42,9 @@ namespace p2d { namespace math {
     Transform operator * (const float& lhs, const Transform& rhs);
     Transform operator * (const Transform& lhs, const Transform& rhs);
     Vector2f operator * (const Transform& lhs, const Vector2f& rhs);
+
+    float determinant(const Transform& t);
+    Transform inverse(const Transform& t);
 
     std::string toString(const Transform& rhs);
 } // namespace math
