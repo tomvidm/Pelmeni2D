@@ -15,10 +15,14 @@ namespace p2d { namespace math {
         Transform3(const Transform3& rhs);
         Transform3(Transform3&& rhs);
 
+        Vector4f transformPoint(const float& x, const float& y, const float& z, const float& w) const;
+        Vector4f transformVector(const Vector4f& vec) const;
+        
         Vector3f transformPoint(const float& x, const float& y, const float& z) const;
         Vector3f transformVector(const Vector3f& vec) const;
 
         static Transform3 Translation(const float& dx, const float& dy, const float& dz);
+        static Transform3 Translation(const Vector3f& vec);
         static Transform3 Scaling(const float& sx, const float& sy, const float& sz);
         static Transform3 RotationAboutX(const float& theta);
         static Transform3 RotationAboutY(const float& theta);
@@ -27,12 +31,18 @@ namespace p2d { namespace math {
 
         friend float determinant(const Transform3& t);
 
+        friend Transform3 composition(const Transform3& lhs, const Transform3& rhs);
+        friend Transform3 operator * (const Transform3& lhs, const Transform3& rhs);
+        
         friend Vector3f operator * (const Transform3& lhs, const Vector3f& rhs);
 
         std::array<float, 16> mat;
     }; // class Transform
 
     float determinant(const Transform3& t);
+
+    Transform3 composition(const Transform3& lhs, const Transform3& rhs);
+    Transform3 operator * (const Transform3& lhs, const Transform3& rhs);
 /* 
 
     Transform operator * (const Transform& lhs, const float& rhs);

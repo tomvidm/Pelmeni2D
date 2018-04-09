@@ -1,10 +1,8 @@
 #include <iostream>
 #include <cstdio>
 
-#include "system/Instance.hpp"
-#include "math/Vector3.hpp"
+#include "testapps/Testapp_WireMesh.hpp"
 
 int main() {
-    p2d::math::Vector3<float> vec(0, 0, 0);
-    return 0;
+    return testapps::Testapp_WireMesh();
 } // Main function

@@ -31,6 +31,7 @@ namespace p2d { namespace math {
         friend Vector2f operator * (const Transform& lhs, const Vector2f& rhs);
 
         friend float determinant(const Transform& t);
+        friend Transform composition(const Transform& lhs, const Transform& rhs);
         friend Transform inverse(const Transform& t);
 
         friend std::string toString(const Transform& rhs);

@@ -8,6 +8,7 @@ set(SOURCES
     SpritePackManager.cpp
     Sprite.cpp
     TextureManager.cpp
+    WireMesh.cpp
     ../json/Helpers.cpp
 )
 

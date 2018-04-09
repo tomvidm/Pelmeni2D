@@ -20,6 +20,18 @@ namespace p2d { namespace math {
     Transform3::Transform3(Transform3&& rhs)
     : mat(std::move(rhs.mat)) {;}
 
+    Vector4f Transform3::transformPoint(const float& x, const float& y, const float& z, const float& w) const {
+        return Vector4f(
+            mat[0]*x + mat[1]*y + mat[2]*z + mat[3]*w,
+            mat[4]*x + mat[5]*y + mat[6]*z + mat[7]*w,
+            mat[8]*x + mat[9]*y + mat[10]*z + mat[11]*w,
+            mat[12]*x + mat[13]*y + mat[14]*z + mat[15]*w);
+    }
+
+    Vector4f Transform3::transformVector(const Vector4f& vec) const {
+        return transformPoint(vec.x, vec.y, vec.z, vec.w);
+    }
+
     Vector3f Transform3::transformPoint(const float& x, const float& y, const float& z) const {
         return Vector3f(
             mat[0]*x + mat[1]*y + mat[2]*z + mat[3],
@@ -58,6 +70,10 @@ namespace p2d { namespace math {
             0, 0, 0, 1);
     }
 
+    Transform3 Transform3::Translation(const Vector3f& vec) {
+        return Translation(vec.x, vec.y, vec.z);
+    }
+
     Transform3 Transform3::Scaling(const float& sx, const float& sy, const float& sz) {
         return Transform3(
             sx, 0, 0, 0,
@@ -67,25 +83,31 @@ namespace p2d { namespace math {
     }
 
     Transform3 Transform3::RotationAboutX(const float& theta) {
+        const float cosTheta = cosf(theta);
+        const float sinTheta = sinf(theta);
         return Transform3(
             1, 0, 0, 0,
-            0, cosf(theta), sinf(-theta), 0,
-            0, sinf(theta), cosf(theta), 0,
+            0, cosTheta, -sinTheta, 0,
+            0, sinTheta, cosTheta, 0,
             0, 0, 0, 1);
     }
 
     Transform3 Transform3::RotationAboutY(const float& theta) {
+        const float cosTheta = cosf(theta);
+        const float sinTheta = sinf(theta);
         return Transform3(
-            cosf(theta), 0, sinf(theta), 0,
+            cosTheta, 0, sinTheta, 0,
             0, 1, 0, 0,
-            -sinf(theta), 0, cosf(theta), 0,
+            -sinTheta, 0, cosTheta, 0,
             0, 0, 0, 1);
     }
 
     Transform3 Transform3::RotationAboutZ(const float& theta) {
+        const float cosTheta = cosf(theta);
+        const float sinTheta = sinf(theta);
         return Transform3(
-            cosf(theta), -sinf(theta), 0, 0,
-            sinf(theta), cosf(theta), 0, 0,
+            cosTheta, -sinTheta, 0, 0,
+            sinTheta, cosTheta, 0, 0,
             0, 0, 1, 0,
             0, 0, 0, 1);
     }
@@ -96,6 +118,17 @@ namespace p2d { namespace math {
             0, 1, 0, 0,
             0, 0, 1, 0,
             0, 0, 0, 1);
+    }
+
+    Transform3 composition(const Transform3& lhs, const Transform3& rhs) {
+        const Vector4f c0(rhs.mat[0], rhs.mat[4], rhs.mat[8], rhs.mat[12]);
+        const Vector4f c1(rhs.mat[1], rhs.mat[5], rhs.mat[9], rhs.mat[13]);
+        const Vector4f c2(rhs.mat[2], rhs.mat[6], rhs.mat[10], rhs.mat[14]);
+        const Vector4f c3(rhs.mat[3], rhs.mat[7], rhs.mat[11], rhs.mat[15]);
+    }
+
+    Transform3 operator * (const Transform3& lhs, const Transform3& rhs) {
+        return composition(lhs, rhs);
     }
 } // namespace math
 } // namespace p2d

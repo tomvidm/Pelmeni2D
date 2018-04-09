@@ -11,6 +11,13 @@ namespace p2d { namespace math {
         Vector3(const Vector3& rhs);
         Vector3(Vector3&& rhs);
 
+        Vector3 operator = (const Vector3<T>& rhs) {
+            this->x = rhs.x;
+            this->y = rhs.y;
+            this->z = rhs.z;
+            return *this;
+        }
+
         T x;
         T y;
         T z;
@@ -18,7 +25,7 @@ namespace p2d { namespace math {
 
     template <typename T>
     Vector3<T>::Vector3() 
-    : x(0), y(0), x(0) {;}
+    : x(0), y(0), z(0) {;}
 
     template <typename T>
     Vector3<T>::Vector3(const T& _x, const T& _y, const T& _z) 
