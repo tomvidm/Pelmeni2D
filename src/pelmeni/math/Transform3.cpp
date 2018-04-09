@@ -121,10 +121,19 @@ namespace p2d { namespace math {
     }
 
     Transform3 composition(const Transform3& lhs, const Transform3& rhs) {
-        const Vector4f c0(rhs.mat[0], rhs.mat[4], rhs.mat[8], rhs.mat[12]);
-        const Vector4f c1(rhs.mat[1], rhs.mat[5], rhs.mat[9], rhs.mat[13]);
-        const Vector4f c2(rhs.mat[2], rhs.mat[6], rhs.mat[10], rhs.mat[14]);
-        const Vector4f c3(rhs.mat[3], rhs.mat[7], rhs.mat[11], rhs.mat[15]);
+        Vector4f c0(rhs.mat[0], rhs.mat[4], rhs.mat[8], rhs.mat[12]);
+        Vector4f c1(rhs.mat[1], rhs.mat[5], rhs.mat[9], rhs.mat[13]);
+        Vector4f c2(rhs.mat[2], rhs.mat[6], rhs.mat[10], rhs.mat[14]);
+        Vector4f c3(rhs.mat[3], rhs.mat[7], rhs.mat[11], rhs.mat[15]);
+        c0 = lhs.transformVector(c0);
+        c1 = lhs.transformVector(c1);
+        c2 = lhs.transformVector(c2);
+        c3 = lhs.transformVector(c3);
+        return Transform3(
+            c0.x, c1.x, c2.x, c3.x,
+            c0.y, c1.y, c2.y, c3.y,
+            c0.z, c1.z, c2.z, c3.z,
+            c0.w, c1.w, c2.w, c3.w);
     }
 
     Transform3 operator * (const Transform3& lhs, const Transform3& rhs) {

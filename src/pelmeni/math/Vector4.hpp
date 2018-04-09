@@ -8,7 +8,7 @@ namespace p2d { namespace math {
     struct Vector4 {
         Vector4();
         Vector4(const T& _x, const T& _y, const T& _z, const T& _w);
-        Vector4(const Vector3& rhs);
+        Vector4(const Vector4& rhs);
 
         Vector4 operator = (const Vector3<T>& rhs) {
             this->x = rhs.x;
@@ -33,7 +33,7 @@ namespace p2d { namespace math {
     : x(_x), y(_y), z(_z), w(_w) {;}
 
     template <typename T>
-    Vector4::Vector4(const Vector3& rhs) :
+    Vector4<T>::Vector4(const Vector4& rhs) :
     x(rhs.x), y(rhs.y), z(rhs.z), w(rhs.w) {;}
 }
 }

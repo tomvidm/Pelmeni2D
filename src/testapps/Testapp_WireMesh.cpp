@@ -26,7 +26,9 @@ namespace testapps {
 
         p2d::graphics::WireMesh mesh(vlist, elist);
         mesh.setPosition(p2d::math::Vector3f(320.f, 240.f, 0.f));
+        float rx = M_PI / 5;
         float rz = 0.f;
+        const float drx = 2.f * M_PI / 3.f;
         const float drz = 2.f * M_PI / 6.f;
         
         
@@ -36,7 +38,7 @@ namespace testapps {
             float dt = timer.restart().asSeconds();
             sf::Event event;
             rz += drz * dt;
-            mesh.setRotation(0, 0, rz);
+            mesh.setRotation(rx, 0, rz);
             mesh.transformAndProjectToXY();
             while (window.pollEvent(event)) {
                 if (event.type == sf::Event::Closed) {

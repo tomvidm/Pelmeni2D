@@ -16,6 +16,7 @@ namespace p2d { namespace graphics {
         WireMesh(const Vector3List& vectorList, const EdgeList& edgeList);
 
         void initMesh();
+        void initAxisMarker();
         void transformAndProjectToXY();
 
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
