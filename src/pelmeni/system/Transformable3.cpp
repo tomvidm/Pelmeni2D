@@ -8,6 +8,7 @@ namespace p2d { namespace system {
       origin(math::Vector3f(0, 0, 0)),
       scale(math::Vector3f(1.f, 1.f, 1.0f)),
       rotationAxis(math::Vector3f(0.f, 0.f, 1.f)),
+      facing(math::Vector3f(0.f, 0.f, 1.f)),
       angle(0.f) {
         needsUpdate = true;
     }
@@ -32,6 +33,11 @@ namespace p2d { namespace system {
         needsUpdate = true;
     }
 
+    void Transformable3::setFacing(const math::Vector3f& vec) {
+        facing = vec;
+        needsUpdate = true;
+    }
+
     void Transformable3::setAngle(const float& val) {
         angle = val;
         needsUpdate = true;
@@ -53,15 +59,22 @@ namespace p2d { namespace system {
         return rotationAxis;
     }
 
+    math::Vector3f Transformable3::getFacing() const {
+        return facing;
+    }
+
     float Transformable3::getAngle() const {
         return angle;
     }
 
     math::Transform3 Transformable3::getTransform3() {
         if (needsUpdate) {
+            const math::Vector3f forward = math::normalized<float>(facing - position);
+            const math::Vector3f axis = math::cross(math::Vector3f(0.f, 0.f, 1.f), forward);
+            const float angle = acosf(math::dot(forward, math::Vector3f(0.f, 0.f, 1.f)));
             transform = math::Transform3::Translation(position) *
                         math::Transform3::Scaling(scale) *
-                        math::Transform3::Rotation(rotationAxis, angle) * 
+                        math::Transform3::Rotation(axis, angle) *
                         math::Transform3::Translation(-origin);
 /* 
             transform = math::Transform3(

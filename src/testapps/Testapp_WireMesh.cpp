@@ -12,10 +12,10 @@ namespace testapps {
         printf("Running Testapp_WireMesh...\n");
 
         p2d::graphics::Vector3List vlist = {
-            100.f*Vector3f(-1.f, -0.5, 0.f),
+            100.f*Vector3f(-0.5f, -0.5, 0.f),
             100.f*Vector3f(0.f, 0.f, 2.f),
-            100.f*Vector3f(0.f, 1.f, 0.f),
-            100.f*Vector3f(1.f, -0.5, 0.f),
+            100.f*Vector3f(0.f, 0.5f, 0.f),
+            100.f*Vector3f(0.5f, -0.5, 0.f),
             100.f*Vector3f(0.f, 0.f, -0.5f)
         };
 
@@ -31,27 +31,36 @@ namespace testapps {
             std::make_tuple(4, 3)
         };
 
-        p2d::graphics::Axes ax;
+
         p2d::graphics::WireMesh mesh(vlist, elist);
         mesh.setPosition(p2d::math::Vector3f(320.f, 240.f, 0.f));
         //mesh.setOrigin(p2d::math::Vector3f(100.f, -50.f, -50.f));
         mesh.setScale(p2d::math::Vector3f(1.f, 1.f, 1.f));
         mesh.setRotationAxis(p2d::math::Vector3f(1.f, 0.2f, 0.5f));
-        ax.setRotationAxis(p2d::math::Vector3f(1.f, 1.f, 1.f));
+
         float t = 0.f;
         float dt = 0.f;
-        ax.setPosition(p2d::math::Vector3f(300.f, 300.f, 0.f));
         
         sf::RenderWindow window(sf::VideoMode(640, 480), "Testapp_WireMesh");
+        sf::Vector2i mpos = sf::Mouse::getPosition(window);
+        p2d::math::Vector3f pos = p2d::math::Vector3f(
+            static_cast<float>(mpos.x - mesh.getPosition().x),
+            static_cast<float>(mpos.y - mesh.getPosition().y),
+            200.f
+        );
         sf::Clock timer;
         while (window.isOpen()) {
+            mpos = sf::Mouse::getPosition(window);
+            pos = p2d::math::Vector3f(
+                static_cast<float>(mpos.x),
+                static_cast<float>(mpos.y),
+                200.f
+            );
             dt = timer.restart().asSeconds();
             t += dt;
-            mesh.setAngle(t);
+            mesh.setFacing(pos);
             sf::Event event;
             mesh.transform();
-            ax.setAngle(t);
-            ax.update();
             while (window.pollEvent(event)) {
                 if (event.type == sf::Event::Closed) {
                     window.close();
@@ -60,7 +69,6 @@ namespace testapps {
 
             window.clear();
             window.draw(mesh);
-            window.draw(ax);
             window.display();
         }
 
