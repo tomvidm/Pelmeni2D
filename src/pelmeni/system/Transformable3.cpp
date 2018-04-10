@@ -5,8 +5,10 @@ namespace p2d { namespace system {
 
     Transformable3::Transformable3() 
     : position(math::Vector3f(0, 0, 0)),
-      scale(math::Vector3f(1.f, 1.f, 1.f)),
-      origin(math::Vector3f(0, 0, 0)) {
+      origin(math::Vector3f(0, 0, 0)),
+      scale(math::Vector3f(1.f, 1.f, 1.0f)),
+      rotationAxis(math::Vector3f(0.f, 0.f, 1.f)),
+      angle(0.f) {
         needsUpdate = true;
     }
 
@@ -25,8 +27,13 @@ namespace p2d { namespace system {
         needsUpdate = true;
     }
 
-    void Transformable3::setYaw(const float& val) {
-        yaw = val;
+    void Transformable3::setRotationAxis(const math::Vector3f& vec) { 
+        rotationAxis = vec; 
+        needsUpdate = true;
+    }
+
+    void Transformable3::setAngle(const float& val) {
+        angle = val;
         needsUpdate = true;
     }
 
@@ -42,15 +49,19 @@ namespace p2d { namespace system {
         return scale;
     }
 
-    float Transformable3::getYaw() const {
-        return yaw;
+    math::Vector3f Transformable3::getRotationAxis() const {
+        return rotationAxis;
+    }
+
+    float Transformable3::getAngle() const {
+        return angle;
     }
 
     math::Transform3 Transformable3::getTransform3() {
         if (needsUpdate) {
             transform = math::Transform3::Translation(position) *
-                        math::Transform3::RotationAboutZ(yaw) *
                         math::Transform3::Scaling(scale) *
+                        math::Transform3::Rotation(rotationAxis, angle) * 
                         math::Transform3::Translation(-origin);
 /* 
             transform = math::Transform3(

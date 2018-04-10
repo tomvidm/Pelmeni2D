@@ -79,7 +79,7 @@ namespace p2d { namespace math {
     } // magnitude
 
     template <typename T>
-    Vector3<float> normalize(const Vector3<float>& vec) {
+    Vector3<float> normalized(const Vector3<float>& vec) {
         return vec * (1.f / magnitude(vec));
     }
 

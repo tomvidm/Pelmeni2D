@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstdio>
 
-#include "testapps/Testapp_Sprites.hpp"
+#include "testapps/Testapp_WireMesh.hpp"
 
 int main() {
-    return testapps::Testapp_Sprites();
+    return testapps::Testapp_WireMesh();
 } // Main function

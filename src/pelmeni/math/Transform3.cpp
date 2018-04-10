@@ -153,6 +153,31 @@ namespace p2d { namespace math {
             1.f);
     }
 
+    Transform3 Transform3::Rotation(const math::Vector3f& axis, const float& angle) {
+        return Rotation(math::Quaternion<float>(math::normalized<float>(axis), angle));
+    }
+
+    Transform3 Transform3::Rotation(const math::Quaternion<float>& q) {
+        const float xx = q.x * q.x;
+        const float yy = q.y * q.y;
+        const float zz = q.z * q.z;
+        const float ww = q.w * q.w;
+
+        const float xy = q.x * q.y;
+        const float xz = q.x * q.z;
+        const float xw = q.x * q.w;
+        const float yz = q.y * q.z;
+        const float yw = q.y * q.w;
+        const float zw = q.z * q.w;
+
+        return Transform3(
+            xx + yy - zz - ww, 2*(yz - xw), 2*(yw + xz), 0.f,
+            2*(yz + xw), xx - yy + zz - ww, 2*(zw - xy), 0.f,
+            2*(yw - xz), 2*(zw + xy), xx - yy - zz + ww, 0.f,
+            0.f, 0.f, 0.f, 1.f);
+    }
+
+
     Transform3 Transform3::Identity() {
         return Transform3(
             1, 0, 0, 0,

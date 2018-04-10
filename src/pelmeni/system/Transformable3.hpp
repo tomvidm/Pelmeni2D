@@ -10,11 +10,13 @@ namespace p2d { namespace system {
         void setPosition(const math::Vector3f& vec);
         void setOrigin(const math::Vector3f& vec);
         void setScale(const math::Vector3f& vec);
-        void setYaw(const float& val);
+        void setRotationAxis(const math::Vector3f& vec);
+        void setAngle(const float& val);
         math::Vector3f getPosition() const;
         math::Vector3f getOrigin() const;
         math::Vector3f getScale() const;
-        float getYaw() const;
+        math::Vector3f getRotationAxis() const;
+        float getAngle() const;
         
         math::Transform3 getTransform3();
         math::Transform getTransform();
@@ -23,8 +25,8 @@ namespace p2d { namespace system {
         math::Vector3f position;
         math::Vector3f origin;
         math::Vector3f scale;
-
-        float yaw;
+        math::Vector3f rotationAxis;
+        float angle;
 
         math::Transform3 transform;
     }; // class Transformable

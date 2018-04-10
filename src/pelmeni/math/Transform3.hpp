@@ -2,6 +2,8 @@
 
 #include <array>
 
+#include "math/Quaternion.hpp"
+
 #include "math/Vector.hpp"
 
 namespace p2d { namespace math {
@@ -30,6 +32,8 @@ namespace p2d { namespace math {
         static Transform3 RotationAboutY(const float& theta);
         static Transform3 RotationAboutZ(const float& theta);
         static Transform3 Rotation(const float& yaw, const float& pitch, const float& roll);
+        static Transform3 Rotation(const math::Vector3f& axis, const float& angle);
+        static Transform3 Rotation(const math::Quaternion<float>& q);
         static Transform3 Identity();
 
         Transform3 operator = (const Transform3& rhs);

@@ -32,22 +32,18 @@ namespace testapps {
 
         p2d::graphics::WireMesh mesh(vlist, elist);
         mesh.setPosition(p2d::math::Vector3f(320.f, 240.f, 0.f));
-        mesh.setOrigin(p2d::math::Vector3f(100.f, -50.f, -50.f));
-        float yaw = 0;
-        float pitch;
-        float roll;
-        float scale = 1.f;
+        //mesh.setOrigin(p2d::math::Vector3f(100.f, -50.f, -50.f));
+        mesh.setScale(p2d::math::Vector3f(1.f, 1.f, 1.f));
+        mesh.setRotationAxis(p2d::math::Vector3f(1.f, 0.2f, 0.5f));
         float t = 0.f;
+        float dt = 0.f;
         
         sf::RenderWindow window(sf::VideoMode(640, 480), "Testapp_WireMesh");
         sf::Clock timer;
         while (window.isOpen()) {
-            float dt = timer.restart().asSeconds();
+            dt = timer.restart().asSeconds();
             t += dt;
-            yaw += 4.f * dt;
-            mesh.setYaw(yaw);
-            scale = 1.f + 0.5f*sinf(1*M_PI*t);
-            mesh.setScale(p2d::math::Vector3f(scale, scale, scale));
+            mesh.setAngle(t);
             sf::Event event;
             mesh.transform();
             while (window.pollEvent(event)) {
