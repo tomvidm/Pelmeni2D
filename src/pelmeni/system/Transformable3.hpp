@@ -31,6 +31,8 @@ namespace p2d { namespace system {
         math::Vector3f facing;
         float angle;
 
+        static const math::Vector3f forward;
+
         math::Transform3 transform;
     }; // class Transformable
 } // namespace system

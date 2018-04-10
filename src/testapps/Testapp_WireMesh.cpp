@@ -52,8 +52,8 @@ namespace testapps {
         while (window.isOpen()) {
             mpos = sf::Mouse::getPosition(window);
             pos = p2d::math::Vector3f(
-                static_cast<float>(mpos.x),
-                static_cast<float>(mpos.y),
+                static_cast<float>(mpos.x - mesh.getPosition().x),
+                static_cast<float>(mpos.y - mesh.getPosition().y),
                 200.f
             );
             dt = timer.restart().asSeconds();
