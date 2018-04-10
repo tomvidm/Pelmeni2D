@@ -64,9 +64,5 @@ namespace p2d { namespace system {
 
         return transform;
     }
-
-    math::Vector2f Transformable3::positionProjectedToXY() const {
-        return math::Vector2f(position.x, position.y);
-    }
 }
 }

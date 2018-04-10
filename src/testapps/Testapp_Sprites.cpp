@@ -10,7 +10,8 @@ namespace testapps {
         float dt;
         float t;
         p2d::graphics::Sprite3 sprite = p2d::graphics::Sprite3();
-        sprite.setPosition(p2d::math::Vector3f(100, 100, 0));
+        sprite.setPosition(p2d::math::Vector3f(100.f, 100.f, 0));
+        sprite.setOrigin(p2d::math::Vector3f(-50.f, -50.f, 0.f));
         
         sf::Event event;
         sf::RenderWindow window(sf::VideoMode(640, 480), "Testapp_WireMesh");

@@ -28,9 +28,11 @@ namespace p2d { namespace math {
 
 
     Transform Transform::Rotation(const float& theta) {
+        const float sine = sinf(theta);
+        const float cosine = cosf(theta);
         return Transform(
-            cosf(theta), -sinf(theta), 0,
-            sinf(theta), cos(theta), 0,
+            cosine, -sine, 0,
+            sine, cosine, 0,
             0, 0, 1);
     }
     

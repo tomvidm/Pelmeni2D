@@ -1,5 +1,6 @@
 #pragma once
 
+#include "math/Transform.hpp"
 #include "math/Transform3.hpp"
 
 namespace p2d { namespace system {
@@ -16,8 +17,7 @@ namespace p2d { namespace system {
         float getYaw() const;
         
         math::Transform3 getTransform3();
-
-        math::Vector2f positionProjectedToXY() const;
+        math::Transform getTransform();
     protected:
         bool needsUpdate;
         math::Vector3f position;
