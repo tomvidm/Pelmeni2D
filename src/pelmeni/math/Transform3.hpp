@@ -7,6 +7,7 @@
 namespace p2d { namespace math {
     class Transform3 {
     public:
+        Transform3();
         Transform3(float m00, float m01, float m02, float m03,
                   float m10, float m11, float m12, float m13,
                   float m20, float m21, float m22, float m23,
@@ -23,6 +24,7 @@ namespace p2d { namespace math {
 
         static Transform3 Translation(const float& dx, const float& dy, const float& dz);
         static Transform3 Translation(const Vector3f& vec);
+        static Transform3 Scaling(const Vector3f& vec);
         static Transform3 Scaling(const float& sx, const float& sy, const float& sz);
         static Transform3 RotationAboutX(const float& theta);
         static Transform3 RotationAboutY(const float& theta);
@@ -30,8 +32,10 @@ namespace p2d { namespace math {
         static Transform3 Rotation(const float& yaw, const float& pitch, const float& roll);
         static Transform3 Identity();
 
-        friend float determinant(const Transform3& t);
+        Transform3 operator = (const Transform3& rhs);
 
+        friend bool operator == (const Transform3& lhs, const Transform3& rhs); 
+        friend float determinant(const Transform3& t);
         friend Transform3 composition(const Transform3& lhs, const Transform3& rhs);
         friend Transform3 operator * (const Transform3& lhs, const Transform3& rhs);
         
@@ -44,6 +48,9 @@ namespace p2d { namespace math {
 
     Transform3 composition(const Transform3& lhs, const Transform3& rhs);
     Transform3 operator * (const Transform3& lhs, const Transform3& rhs);
+
+    bool operator == (const Transform3& lhs, const Transform3& rhs);
+    
 /* 
 
     Transform operator * (const Transform& lhs, const float& rhs);

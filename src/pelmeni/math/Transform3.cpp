@@ -5,6 +5,12 @@
 #include "math/Transform3.hpp"
 
 namespace p2d { namespace math {
+    Transform3::Transform3()
+    : mat{0, 0, 0, 0,
+          0, 0, 0, 0,
+          0, 0, 0, 0,
+          0, 0, 0, 0} {;}
+          
     Transform3::Transform3(float m00, float m01, float m02, float m03,
                            float m10, float m11, float m12, float m13,
                            float m20, float m21, float m22, float m23,
@@ -19,6 +25,11 @@ namespace p2d { namespace math {
 
     Transform3::Transform3(Transform3&& rhs)
     : mat(std::move(rhs.mat)) {;}
+
+    Transform3 Transform3::operator = (const Transform3& rhs) {
+        mat = rhs.mat;
+        return *this;
+    }
 
     Vector4f Transform3::transformPoint(const float& x, const float& y, const float& z, const float& w) const {
         return Vector4f(
@@ -72,6 +83,10 @@ namespace p2d { namespace math {
 
     Transform3 Transform3::Translation(const Vector3f& vec) {
         return Translation(vec.x, vec.y, vec.z);
+    }
+
+    Transform3 Transform3::Scaling(const Vector3f& vec) {
+        return Scaling(vec.x, vec.y, vec.z);
     }
 
     Transform3 Transform3::Scaling(const float& sx, const float& sy, const float& sz) {
@@ -164,6 +179,16 @@ namespace p2d { namespace math {
 
     Transform3 operator * (const Transform3& lhs, const Transform3& rhs) {
         return composition(lhs, rhs);
+    }
+
+    bool operator == (const Transform3& lhs, const Transform3& rhs) {
+        for (size_t i = 0; i < 16; i++) {
+            if (lhs.mat[i] != rhs.mat[i]) {
+                return false;
+            }
+        }
+
+        return true;
     }
 } // namespace math
 } // namespace p2d

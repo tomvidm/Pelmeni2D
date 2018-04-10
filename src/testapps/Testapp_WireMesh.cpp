@@ -31,19 +31,20 @@ namespace testapps {
 
         p2d::graphics::WireMesh mesh(vlist, elist);
         mesh.setPosition(p2d::math::Vector3f(320.f, 240.f, 0.f));
-        mesh.setOrigin(p2d::math::Vector3f(0.f, 0.f, 200.f));
+        mesh.setOrigin(p2d::math::Vector3f(0.f, 0.f, -50.f));
         float yaw;
         float pitch;
         float roll;
-        
+        float scale = 1.f;
+        float t = 0.f;
         
         sf::RenderWindow window(sf::VideoMode(640, 480), "Testapp_WireMesh");
         sf::Clock timer;
         while (window.isOpen()) {
             float dt = timer.restart().asSeconds();
-            yaw += 1.f * dt;
-            pitch += 0.5f * dt;
-            roll += 0.75f * dt;
+            t += dt;
+            scale = 1.f + 0.5f*sinf(8*M_PI*t);
+            mesh.setScale(p2d::math::Vector3f(scale, scale, scale));
             sf::Event event;
             const Transform3 transform = Transform3::Rotation(yaw, pitch, roll);
             mesh.transform(transform);
