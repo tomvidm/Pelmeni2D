@@ -1,6 +1,7 @@
 project(p2d-graphics)
 
 set(SOURCES
+    Axes.cpp
     AnimationState.cpp
     FrameSequence.cpp
     #FrameSequenceLoader.cpp

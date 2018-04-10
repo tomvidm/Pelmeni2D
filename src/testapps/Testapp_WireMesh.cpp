@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <math.h>
 
+#include "graphics/Axes.hpp"
 #include "Testapp_WireMesh.hpp"
 
 namespace testapps {
@@ -30,13 +31,16 @@ namespace testapps {
             std::make_tuple(4, 3)
         };
 
+        p2d::graphics::Axes ax;
         p2d::graphics::WireMesh mesh(vlist, elist);
         mesh.setPosition(p2d::math::Vector3f(320.f, 240.f, 0.f));
         //mesh.setOrigin(p2d::math::Vector3f(100.f, -50.f, -50.f));
         mesh.setScale(p2d::math::Vector3f(1.f, 1.f, 1.f));
         mesh.setRotationAxis(p2d::math::Vector3f(1.f, 0.2f, 0.5f));
+        ax.setRotationAxis(p2d::math::Vector3f(1.f, 1.f, 1.f));
         float t = 0.f;
         float dt = 0.f;
+        ax.setPosition(p2d::math::Vector3f(300.f, 300.f, 0.f));
         
         sf::RenderWindow window(sf::VideoMode(640, 480), "Testapp_WireMesh");
         sf::Clock timer;
@@ -46,6 +50,8 @@ namespace testapps {
             mesh.setAngle(t);
             sf::Event event;
             mesh.transform();
+            ax.setAngle(t);
+            ax.update();
             while (window.pollEvent(event)) {
                 if (event.type == sf::Event::Closed) {
                     window.close();
@@ -54,6 +60,7 @@ namespace testapps {
 
             window.clear();
             window.draw(mesh);
+            window.draw(ax);
             window.display();
         }
 
