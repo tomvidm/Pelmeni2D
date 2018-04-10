@@ -6,8 +6,9 @@
 namespace testapps {
     int Testapp_WireMesh() {
         using p2d::math::Transform3;
-        printf("Running Testapp_WireMesh...\n");
         using p2d::math::Vector3f;
+
+        printf("Running Testapp_WireMesh...\n");
 
         p2d::graphics::Vector3List vlist = {
             100.f*Vector3f(-1.f, -0.5, 0.f),
@@ -31,8 +32,8 @@ namespace testapps {
 
         p2d::graphics::WireMesh mesh(vlist, elist);
         mesh.setPosition(p2d::math::Vector3f(320.f, 240.f, 0.f));
-        mesh.setOrigin(p2d::math::Vector3f(0.f, 0.f, -50.f));
-        float yaw;
+        mesh.setOrigin(p2d::math::Vector3f(100.f, -50.f, -50.f));
+        float yaw = 0;
         float pitch;
         float roll;
         float scale = 1.f;
@@ -43,11 +44,12 @@ namespace testapps {
         while (window.isOpen()) {
             float dt = timer.restart().asSeconds();
             t += dt;
-            scale = 1.f + 0.5f*sinf(8*M_PI*t);
+            yaw += 4.f * dt;
+            mesh.setYaw(yaw);
+            scale = 1.f + 0.5f*sinf(1*M_PI*t);
             mesh.setScale(p2d::math::Vector3f(scale, scale, scale));
             sf::Event event;
-            const Transform3 transform = Transform3::Rotation(yaw, pitch, roll);
-            mesh.transform(transform);
+            mesh.transform();
             while (window.pollEvent(event)) {
                 if (event.type == sf::Event::Closed) {
                     window.close();

@@ -35,9 +35,7 @@ namespace p2d { namespace graphics {
         lines[5].color = sf::Color::Blue;
     }
 
-    void WireMesh::transform(const math::Transform3& transform) {
-        const math::Transform3 finalTransform = math::Transform3::Translation(position) * transform * math::Transform3::Translation(-origin);
-
+    void WireMesh::transform() {
         for (size_t i = 0; i < _edgeList.size(); i++) {
             // Get index for vector
             const size_t index0 = std::get<0>(_edgeList[i]);
@@ -58,4 +56,4 @@ namespace p2d { namespace graphics {
         target.draw(vertices);
     }
 } // namespace graphics
-} // namespcae p2d
+} // namespcae p2dw

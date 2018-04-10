@@ -25,6 +25,11 @@ namespace p2d { namespace system {
         needsUpdate = true;
     }
 
+    void Transformable3::setYaw(const float& val) {
+        yaw = val;
+        needsUpdate = true;
+    }
+
     math::Vector3f Transformable3::getPosition() const {
         return position;
     }
@@ -37,18 +42,31 @@ namespace p2d { namespace system {
         return scale;
     }
 
+    float Transformable3::getYaw() const {
+        return yaw;
+    }
+
     math::Transform3 Transformable3::getTransform3() {
         if (needsUpdate) {
+            transform = math::Transform3::Translation(position) *
+                        math::Transform3::RotationAboutZ(yaw) *
+                        math::Transform3::Scaling(scale) *
+                        math::Transform3::Translation(-origin);
+/* 
             transform = math::Transform3(
                 scale.x, 0, 0, position.x - origin.x*scale.x,
                 0, scale.y, 0, position.y - origin.y*scale.y,
                 0, 0, scale.z, position.z - origin.z*scale.z,
                 0, 0, 0, 1);
-
+ */
             needsUpdate = false;
         }
 
         return transform;
+    }
+
+    math::Vector2f Transformable3::positionProjectedToXY() const {
+        return math::Vector2f(position.x, position.y);
     }
 }
 }
