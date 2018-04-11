@@ -4,6 +4,7 @@ add_subdirectory(pelmeni)
 
 add_executable(p2d-run
     main.cpp
+    testapps/Testapp_ProjectionTesting.cpp
     testapps/Testapp_WireMesh.cpp
     #testapps/Testapp_Sprites.cpp
 )

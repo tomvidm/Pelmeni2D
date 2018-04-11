@@ -127,6 +127,8 @@ namespace p2d { namespace math {
             0, 0, 0, 1);
     }
 
+    // Deprecate this!
+    // Rotation with euler angles is non-commutative. Better to rely on quaternions.
     Transform3 Transform3::Rotation(const float& yaw, const float& pitch, const float& roll) {
         const float sinYaw = sinf(yaw);
         const float cosYaw = cosf(yaw);

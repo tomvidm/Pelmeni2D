@@ -33,10 +33,9 @@ namespace testapps {
 
 
         p2d::graphics::WireMesh mesh(vlist, elist);
-        mesh.setPosition(p2d::math::Vector3f(320.f, 240.f, 0.f));
+        mesh.setPosition(p2d::math::Vector3f(320.f, 240.f, -100.f));
         //mesh.setOrigin(p2d::math::Vector3f(100.f, -50.f, -50.f));
         mesh.setScale(p2d::math::Vector3f(1.f, 1.f, 1.f));
-        mesh.setRotationAxis(p2d::math::Vector3f(1.f, 0.2f, 0.5f));
 
         float t = 0.f;
         float dt = 0.f;

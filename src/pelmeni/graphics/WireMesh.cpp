@@ -1,8 +1,17 @@
 #include "graphics/WireMesh.hpp"
 
 namespace p2d { namespace graphics {
+    WireMesh::WireMesh() {
+        ;
+    }
     WireMesh::WireMesh(const Vector3List& vectorList, const EdgeList& edgeList)
     : _vectorList(vectorList), _edgeList(edgeList) {
+        initMesh();
+    }
+
+    void WireMesh::setMeshData(const Vector3List& vectorList, const EdgeList& edgeList) {
+        _vectorList = vectorList;
+        _edgeList = edgeList;
         initMesh();
     }
 
@@ -16,9 +25,9 @@ namespace p2d { namespace graphics {
         const size_t numVectors = _vectorList.size();
 
         _vectorList.push_back(math::Vector3f(0.f, 0.f, 0.f));
-        _vectorList.push_back(math::Vector3f(32.f, 0.f, 0.f));
-        _vectorList.push_back(math::Vector3f(0.f, 32.f, 0.f));
-        _vectorList.push_back(math::Vector3f(0.f, 0.f, 32.f));
+        _vectorList.push_back(math::Vector3f(16.f, 0.f, 0.f));
+        _vectorList.push_back(math::Vector3f(0.f, 16.f, 0.f));
+        _vectorList.push_back(math::Vector3f(0.f, 0.f, 16.f));
         _edgeList.push_back(std::make_tuple(numVectors, numVectors + 1));
         _edgeList.push_back(std::make_tuple(numVectors, numVectors + 2));
         _edgeList.push_back(std::make_tuple(numVectors, numVectors + 3));

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <tuple>
 
 #include "SFML/Graphics.hpp"
@@ -13,8 +15,10 @@ namespace p2d { namespace graphics {
 
     class WireMesh : public sf::Drawable, public p2d::system::Transformable3 {
     public:
+        WireMesh();
         WireMesh(const Vector3List& vectorList, const EdgeList& edgeList);
 
+        void setMeshData(const Vector3List& vectorList, const EdgeList& edgeList);
         void initMesh();
         void initAxisMarker();
         void transformAndProjectToXY();
