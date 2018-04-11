@@ -17,6 +17,10 @@ namespace p2d { namespace system {
         math::Vector3f getScale() const;
         math::Vector3f getFacing() const;
         float getAngle() const;
+
+        void move(const math::Vector3f& vec);
+        void rotate(const math::Vector3f& axis, const float& angle);
+        void roll(const float& arg);
         
         math::Transform3 getTransform3();
         math::Transform getTransform();
@@ -27,6 +31,7 @@ namespace p2d { namespace system {
         math::Vector3f scale;
         math::Vector3f facing;
         float angle;
+        float rollAngle;
         
         math::Transform3 transform;
 
