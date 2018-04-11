@@ -6,7 +6,7 @@
 #include "../Helpers.hpp"
 
 namespace p2d { namespace math { namespace ut {
-    TEST(TestTransform3, Transform3WorksFine) {
+    TEST(TestMath, Transform3WorksFine) {
         const float pi = 3.141592f;
         Transform3 translate = Transform3::Translation(1.f, 1.f, 1.f);
 

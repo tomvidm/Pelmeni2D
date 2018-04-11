@@ -7,9 +7,11 @@ set(TEST_SOURCES
     pelmeni/input/TestMouseButtonState.cpp
     pelmeni/input/TestMouseState.cpp
 
+    pelmeni/math/TestLerpAndClamp.cpp
     pelmeni/math/TestTransform3.cpp
     pelmeni/math/TestTransform.cpp
     pelmeni/math/TestVector2.cpp
+    pelmeni/math/TestQuaternion.cpp
 
     pelmeni/Helpers.cpp
     

@@ -6,7 +6,7 @@
 #include "../Helpers.hpp"
 
 namespace p2d { namespace math { namespace ut {
-    TEST(TestTransform, TransformWorksFine) {
+    TEST(TestMath, TransformWorksFine) {
         const float pi = 3.141592f;
         Transform translate = Transform::Translate(1.f, 1.f);
         Transform rotate90DegreesCCW = Transform::Rotation(pi/2.f);

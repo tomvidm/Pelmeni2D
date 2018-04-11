@@ -3,7 +3,7 @@
 #include "math/Vector.hpp"
 
 namespace p2d { namespace math { namespace ut {
-    TEST(TestVector2, Vector2WorksFine) {
+    TEST(TestMath, Vector2WorksFine) {
         Vector2f a(1.f, 1.f);
 
         EXPECT_EQ(projectToX(a), Vector2f(1.f, 0.f));
