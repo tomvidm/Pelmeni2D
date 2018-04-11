@@ -15,7 +15,8 @@ namespace p2d { namespace math {
     LinearInterpolation::LinearInterpolation(const T& t0, const T& t1, const sf::Time& T)
     : t0(t0), t1(t1), dt(T) {;}
 
-    T& LinearInterpolation::getInterpolated(const sf::Time& dt) {
+    template <typename T>
+    T& LinearInterpolation<T>::getInterpolated(const sf::Time& dt) {
         return (t1 - t0) * (elapsedTime/dt);
     }
 }
