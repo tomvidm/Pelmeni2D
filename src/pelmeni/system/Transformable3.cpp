@@ -83,9 +83,9 @@ namespace p2d { namespace system {
             const math::Quaternion<float> q_roll(math::normalized<float>(facing), rollAngle);
             
             transform = math::Transform3::Translation(position) *
-                        math::Transform3::Scaling(scale) *
                         math::Transform3::Rotation(q_roll) * 
                         math::Transform3::Rotation(q_facing) *
+                        math::Transform3::Scaling(scale) *
                         math::Transform3::Translation(-origin);
 /* 
             transform = math::Transform3(
