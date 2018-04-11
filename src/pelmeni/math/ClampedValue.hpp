@@ -7,14 +7,16 @@ namespace p2d { namespace math {
     } // clamp
     
     template <typename T>
-    struct ClampedValue {
+    class ClampedValue {
+    public:
+        ClampedValue(const T& val, const T& fmin, const T& fmax) 
+        : value(val), min(fmin), max(fmax) {;}
+
+        inline T get() const { return clamp<T>(value, min, max); }
+    private:
         T value;
+        const T min;
+        const T max;
     }; // class ClampedValue
-
-    template <typename T>
-    ClampedValue<T> operator + (const ClampedValue<T>& lhs, const T& rhs) {
-        return ClampedValue{clamp(lhs.value + rhs)};
-    } // operator +
-
 } // namespace math
 } // namespace p2d

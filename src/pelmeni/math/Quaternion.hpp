@@ -45,6 +45,14 @@ namespace p2d { namespace math {
     }
 
     template <typename T>
+    bool operator == (const Quaternion<T>& lhs, const Quaternion<T>& rhs) {
+        return lhs.x == rhs.x &&
+               lhs.y == rhs.y &&
+               lhs.z == rhs.z &&
+               lhs.w == rhs.w;
+    }
+
+    template <typename T>
     Quaternion<T> operator * (const Quaternion<T>& lhs, const Quaternion<T>& rhs) {
         return Quaternion<T>(lhs.x * rhs.x - lhs.y * rhs.x - lhs.z * rhs.z - lhs.w * rhs.w,
                              lhs.x * rhs.y + lhs.y * rhs.y + lhs.z * rhs.w - lhs.w * rhs.z,

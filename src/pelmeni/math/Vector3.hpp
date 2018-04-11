@@ -91,6 +91,13 @@ namespace p2d { namespace math {
     }
 
     template <typename T>
+    void operator += (Vector3<T>& lhs, const Vector3<T>& rhs) {
+        lhs.x += rhs.x;
+        lhs.y += rhs.y;
+        lhs.z += rhs.z;
+    }
+
+    template <typename T>
     Vector3<T> operator - (const Vector3<T>& lhs, const Vector3<T>& rhs) {
         return Vector3<T>(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
     }
