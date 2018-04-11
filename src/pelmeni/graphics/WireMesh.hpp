@@ -20,7 +20,6 @@ namespace p2d { namespace graphics {
 
         void setMeshData(const Vector3List& vectorList, const EdgeList& edgeList);
         void initMesh();
-        void initAxisMarker();
         void transformAndProjectToXY();
 
         virtual void transform();
