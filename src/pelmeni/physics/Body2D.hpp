@@ -23,6 +23,7 @@ namespace p2d { namespace physics {
         void setCenterOfMass(const math::Vector2f& com);
         void setAngularVelocity(const float& angVel);
         void setVelocity(const math::Vector2f& vel);
+        void setFixed(const bool& fix);
 
         void applyForce(const Force2& force, const math::Vector2f& forceLocation, const float& dt);
         void applyForce(const Force2& force, const float& dt);
@@ -32,7 +33,12 @@ namespace p2d { namespace physics {
         void applyTime(const float& time);
 
         float getEnergy() const;
+        inline float getMass() const { return mass; }
+        inline float getMoment() const { return momentOfInertia; }
+        inline float getAngularVelocity() const { return angularVelocity; }
+        inline math::Vector2f getVelocity() const { return velocity; }
     private:
+        bool fixed;
         float mass;
         float momentOfInertia;
 

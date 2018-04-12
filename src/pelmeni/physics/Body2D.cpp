@@ -57,6 +57,10 @@ namespace p2d { namespace physics {
         velocity = vel;
     } // setVelocity
 
+    void Body2D::setFixed(const bool& fix) {
+        fixed = fix;
+    } // setFixed
+
     void Body2D::applyForce(const Force2& force, const float& dt) {
         applyImpulse(force * dt);
     } // applyImpulse
@@ -79,8 +83,10 @@ namespace p2d { namespace physics {
     } // applyAngularImpulse
 
     void Body2D::applyTime(const float& time) {
-        move(velocity * time);
-        rotate(angularVelocity * time);
+        if (!fixed) {
+            move(velocity * time);
+            rotate(angularVelocity * time);
+        }
     } // applyTime
 
     float Body2D::getEnergy() const {
