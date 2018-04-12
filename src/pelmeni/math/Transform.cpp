@@ -26,6 +26,10 @@ namespace p2d { namespace math {
         return Vector2f(transformPoint(vec.x, vec.y));
     }
 
+    Transform Transform::operator = (const Transform& rhs) {
+        mat = rhs.mat;
+        return *this;
+    }
 
     Transform Transform::Rotation(const float& theta) {
         const float sine = sinf(theta);

@@ -10,6 +10,8 @@ namespace p2d { namespace math {
 
         float toAngle() const;
         float toRadians() const;
+
+        void operator += (const Radian& rhs);
     private:
         float rads;
     }; // class Radian

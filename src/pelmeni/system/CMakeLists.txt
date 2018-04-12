@@ -9,6 +9,7 @@ set(SOURCES
     EntityManager.cpp
     #ObjectManager.cpp
     Scene.cpp
+    Transformable2.cpp
     Transformable3.cpp
     ../json/Helpers.cpp
 )

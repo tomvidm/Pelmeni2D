@@ -17,7 +17,7 @@ namespace p2d { namespace math {
         Vector2f transformVector(const Vector2f& vec) const;
         Vector2f transformPoint(const float& x, const float& y) const;
 
-        
+        Transform operator = (const Transform& rhs);
         
         static Transform Rotation(const float& theta);
         static Transform Scale(const float& sx, const float& sy);

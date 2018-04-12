@@ -22,5 +22,9 @@ namespace p2d { namespace math {
     Radian fromRadians(const float& rads) {
         return Radian(rads);
     }
+
+    void Radian::operator += (const Radian& rhs) {
+        rads += rhs.toRadians();
+    }
 }
 }
