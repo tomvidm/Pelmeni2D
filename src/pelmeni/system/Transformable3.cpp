@@ -81,10 +81,10 @@ namespace p2d { namespace system {
             const float angle = acosf(math::dot(forward, facing));
             const math::Quaternion<float> q_facing(axis, angle);
             const math::Quaternion<float> q_roll(math::normalized<float>(facing), rollAngle);
-            
+            math::Quaternion<float> q = q_roll * q_facing;
+            q = math::normalized<float>(q);
             transform = math::Transform3::Translation(position) *
-                        math::Transform3::Rotation(q_roll) * 
-                        math::Transform3::Rotation(q_facing) *
+                        math::Transform3::Rotation(q) * 
                         math::Transform3::Scaling(scale) *
                         math::Transform3::Translation(-origin);
 /* 
