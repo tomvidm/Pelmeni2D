@@ -3,9 +3,40 @@
 #include "physics/Body2D.hpp"
 
 namespace p2d { namespace physics {
+    Body2D::Body2D(
+        const math::Vector2f& initialPosition,
+        const float& initialMass, 
+        const float& initialMoment,
+        const float& initialAngularVelocity,
+        const math::Vector2f& initialVelocity)
+    : Transformable2(initialPosition),
+      mass(initialMass), 
+      momentOfInertia(initialMoment),
+      angularVelocity(initialAngularVelocity), 
+      velocity(math::Vector2f(0.f, 0.f)) {
+        ;
+    }
+
     Body2D::Body2D()
-    : mass(1.f), momentOfInertia(1.f),
-      angularVelocity(0.f), velocity(math::Vector2f(0.f, 0.f)) {;}
+    : Body2D(math::Vector2f(0.f, 0.f),
+             1.f,
+             1.f,
+             0.f,
+             math::Vector2f(0.f, 0.f)) {
+        ;
+    }
+
+    Body2D::Body2D(
+        const math::Vector2f initialPosition,
+        const float& initialMass)
+    : Body2D(initialPosition,
+             initialMass,
+             1.f,
+             0.f,
+             math::Vector2f(0.f, 0.f)) {
+        ;
+    }
+
     void Body2D::setMass(const float& m) {
         mass = m;
     } // setMass
@@ -37,7 +68,7 @@ namespace p2d { namespace physics {
 
     void Body2D::applyTorque(const float& torque, const float& dt) {
         applyAngularImpulse(torque * dt);
-    }
+    } // applyTorque
 
     void Body2D::applyImpulse(const Impulse2& impulse) {
         velocity += impulse / mass;
@@ -54,6 +85,6 @@ namespace p2d { namespace physics {
 
     float Body2D::getEnergy() const {
         return 0.5f * math::magnitudeSquared(velocity) * mass;
-    }
+    } // getEnergy
 } // namespace physics
 } // namespace p2d

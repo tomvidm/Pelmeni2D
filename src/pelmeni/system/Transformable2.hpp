@@ -7,7 +7,15 @@
 namespace p2d { namespace system {
     class Transformable2 {
     public:
+        Transformable2(const math::Vector2f& initialPosition,
+                       const math::Vector2f& initialOrigin,
+                       const math::Vector2f& initialScale,
+                       const math::Radian& initialRotation);
+
         Transformable2();
+        
+        Transformable2(const math::Vector2f& initialPosition);
+
         void setPosition(const math::Vector2f& vec);
         void setOrigin(const math::Vector2f& vec);
         void setScale(const math::Vector2f& vec);

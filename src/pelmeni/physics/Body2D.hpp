@@ -7,7 +7,16 @@
 namespace p2d { namespace physics {
     class Body2D : public system::Transformable2 {
     public:
+        Body2D(const math::Vector2f& initialPosition,
+               const float& initialMass, 
+               const float& initialMoment,
+               const float& initialAngularVelocity,
+               const math::Vector2f& initialVelocity);
+        
         Body2D();
+        
+        Body2D(const math::Vector2f initialPosition,
+               const float& initialMass);
         
         void setMass(const float& m);
         void setMomentOfInertia(const float& I);

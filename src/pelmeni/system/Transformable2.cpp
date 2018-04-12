@@ -1,13 +1,35 @@
 #include "system/Transformable2.hpp"
 
 namespace p2d { namespace system {
-    Transformable2::Transformable2()
+    Transformable2::Transformable2(
+        const math::Vector2f& initialPosition,
+        const math::Vector2f& initialOrigin,
+        const math::Vector2f& initialScale,
+        const math::Radian& initialRotation)
     : needsUpdate(true),
-      position(math::Vector2f(0.f, 0.f)),
-      origin(math::Vector2f(0.f, 0.f)),
-      scale(math::Vector2f(1.f, 1.f)),
-      rotation(math::Radian(0.f)),
-      transform(math::Transform::Identity()) {;}
+      position(initialPosition),
+      origin(initialOrigin),
+      scale(initialScale),
+      rotation(initialRotation),
+      transform(math::Transform::Identity()) {
+        ;
+    }
+
+    Transformable2::Transformable2()
+    : Transformable2(math::Vector2f(0.f, 0.f),
+                     math::Vector2f(0.f, 0.f),
+                     math::Vector2f(1.f, 1.f),
+                     math::Radian(0.f)) {
+        ;
+    }
+
+    Transformable2::Transformable2(const math::Vector2f& initialPosition)
+    : Transformable2(initialPosition,
+                     math::Vector2f(0.f, 0.f),
+                     math::Vector2f(0.f, 0.f),
+                     math::Radian(0.f)) {
+        ;
+    }
 
       void Transformable2::setPosition(const math::Vector2f& vec) {
           position = vec;
