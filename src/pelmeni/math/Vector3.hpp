@@ -18,6 +18,10 @@ namespace p2d { namespace math {
             return *this;
         }
 
+        static constexpr Vector3 UnitX = Vector3(1.f, 0.f, 0.f);
+        static constexpr Vector3 UnitY = Vector3(0.f, 1.f, 0.f);
+        static constexpr Vector3 UnitZ = Vector3(0.f, 0.f, 1.f);
+
         T x;
         T y;
         T z;
