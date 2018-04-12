@@ -21,6 +21,8 @@ namespace p2d { namespace physics {
         void applyImpulse(const Impulse2& impulse);
         void applyAngularImpulse(const float& angularImpulse);
         void applyTime(const float& time);
+
+        float getEnergy() const;
     private:
         float mass;
         float momentOfInertia;

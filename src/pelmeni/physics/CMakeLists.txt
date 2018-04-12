@@ -2,6 +2,7 @@ project(p2d-physics)
 
 set(SOURCES
     Body2D.cpp
+    Spring2D.cpp
 )
 
 include_directories(

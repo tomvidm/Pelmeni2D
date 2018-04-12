@@ -51,5 +51,9 @@ namespace p2d { namespace physics {
         move(velocity * time);
         rotate(angularVelocity * time);
     } // applyTime
+
+    float Body2D::getEnergy() const {
+        return 0.5f * math::magnitudeSquared(velocity) * mass;
+    }
 } // namespace physics
 } // namespace p2d
