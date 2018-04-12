@@ -59,6 +59,7 @@ namespace p2d { namespace system {
           if (needsUpdate) {
               transform = math::Transform::Translate(position) *
                           math::Transform::Rotation(rotation.toRadians()) *
+                          math::Transform::Scale(scale) *
                           math::Transform::Translate(-origin);
           }
 

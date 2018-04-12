@@ -50,6 +50,10 @@ namespace p2d { namespace math {
             0, 0, 1);
     }
     
+    Transform Transform::Scale(const Vector2f& vec) {
+        return Scale(vec.x, vec.y);
+    }
+
     Transform Transform::Scale(const float& sx, const float& sy) {
         return Transform(
             sx, 0, 0,

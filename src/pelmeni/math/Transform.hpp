@@ -23,6 +23,7 @@ namespace p2d { namespace math {
         
         static Transform Rotation(const float& theta);
         static Transform Scale(const float& sx, const float& sy);
+        static Transform Scale(const Vector2f& vec);
         static Transform Translate(const float& dx, const float& dy);
         static Transform Translate(const Vector2f& dr);
         static Transform Identity();
