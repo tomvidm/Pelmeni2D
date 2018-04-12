@@ -3,6 +3,7 @@ project(p2d-math)
 add_library(p2d-math
     math.cpp
     Vector.cpp
+    Radian.cpp
     Transform.cpp
     Transform3.cpp
     )
