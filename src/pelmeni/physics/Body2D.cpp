@@ -1,6 +1,11 @@
+#include <cstdio>
+
 #include "physics/Body2D.hpp"
 
 namespace p2d { namespace physics {
+    Body2D::Body2D()
+    : mass(1.f), momentOfInertia(1.f),
+      angularVelocity(0.f), velocity(math::Vector2f(0.f, 0.f)) {;}
     void Body2D::setMass(const float& m) {
         mass = m;
     } // setMass
@@ -10,7 +15,7 @@ namespace p2d { namespace physics {
     } // setMomentOfInertia
 
     void Body2D::setCenterOfMass(const math::Vector2f& com) {
-        origin = com;
+        setOrigin(com);
     } // setCenterOfMass
 
     void Body2D::setAngularVelocity(const float& angularVel) {
@@ -29,6 +34,10 @@ namespace p2d { namespace physics {
         applyImpulse(force * dt);
         applyTorque(math::cross(force, forceLocation), dt);
     } // applyForce
+
+    void Body2D::applyTorque(const float& torque, const float& dt) {
+        applyAngularImpulse(torque * dt);
+    }
 
     void Body2D::applyImpulse(const Impulse2& impulse) {
         velocity += impulse / mass;

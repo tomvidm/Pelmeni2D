@@ -11,12 +11,12 @@ namespace p2d { namespace graphics {
         vertices.setPrimitiveType(sf::PrimitiveType::Lines);
     } // constructor
 
-    void Mesh2D::buildVertices() {
+    void Mesh2D::transform(const math::Transform& transformation) {
         for (size_t i = 0; i < meshEdges.size(); i++) {
             const size_t index0 = std::get<0>(meshEdges[i]);
             const size_t index1 = std::get<1>(meshEdges[i]);
-            const math::Vector2f vector0 = getTransform().transformVector(meshVectors[index0]);
-            const math::Vector2f vector1 = getTransform().transformVector(meshVectors[index1]);
+            const math::Vector2f vector0 = transformation.transformVector(meshVectors[index0]);
+            const math::Vector2f vector1 = transformation.transformVector(meshVectors[index1]);
             vertices[2*i].position = vector0;
             vertices[2*i + 1].position = vector1;
         }

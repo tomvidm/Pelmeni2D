@@ -6,6 +6,9 @@
 
 namespace p2d { namespace physics {
     class Body2D : public system::Transformable2 {
+    public:
+        Body2D();
+        
         void setMass(const float& m);
         void setMomentOfInertia(const float& I);
         void setCenterOfMass(const math::Vector2f& com);

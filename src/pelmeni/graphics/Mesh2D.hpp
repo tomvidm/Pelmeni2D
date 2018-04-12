@@ -9,7 +9,7 @@
 #include "math/Vector.hpp"
 
 namespace p2d { namespace graphics {
-    class Mesh2D : public sf::Drawable, public system::Transformable2 {
+    class Mesh2D : public sf::Drawable {
     public:
         using MeshVectors = std::vector<math::Vector2f>;
         using MeshEdges = std::vector<std::tuple<size_t, size_t>>;
@@ -17,7 +17,7 @@ namespace p2d { namespace graphics {
         Mesh2D();
         Mesh2D(const MeshVectors& mVecs, const MeshEdges& mEdges);
 
-        void buildVertices();
+        void transform(const math::Transform& transformation);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
