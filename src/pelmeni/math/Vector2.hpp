@@ -36,6 +36,11 @@ namespace p2d { namespace math {
     }
 
     template <typename T>
+    float cross(const Vector2<T>& v0, const Vector2<T>& v1) {
+        return v0.x * v1.y - v0.y * v1.x;
+    }
+
+    template <typename T>
     Vector2<float> getUnitVector(const math::Radian& rads) {
         return Vector2<float>(cosf(rads.toRadians()), sinf(rads.toRadians()));
     }
