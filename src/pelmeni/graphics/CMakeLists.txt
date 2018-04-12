@@ -10,6 +10,7 @@ set(SOURCES
     Sprite.cpp
     #Sprite3.cpp
     TextureManager.cpp
+    Mesh2D.cpp
     WireMesh.cpp
     ../json/Helpers.cpp
 )
