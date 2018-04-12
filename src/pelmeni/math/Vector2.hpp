@@ -5,6 +5,8 @@
 
 #include "SFML/System/Vector2.hpp"
 
+#include "math/Radian.hpp"
+
 namespace p2d { namespace math {
     using sf::Vector2;
     
@@ -31,6 +33,11 @@ namespace p2d { namespace math {
     template <typename T>
     float magnitude(const Vector2<T>& vec) {
         return sqrtf(magnitudeSquared(vec));
+    }
+
+    template <typename T>
+    Vector2<float> getUnitVector(const math::Radian& rads) {
+        return Vector2<float>(cosf(rads.toRadians()), sinf(rads.toRadians()));
     }
 
     template <typename T>
