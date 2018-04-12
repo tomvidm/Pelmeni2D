@@ -22,8 +22,18 @@ namespace p2d { namespace math {
                         mat[3]*x + mat[4]*y + mat[5]);
     }
 
+    Vector3f Transform::transformPoint(const float& x, const float& y, const float& z) const {
+        return Vector3f(mat[0]*x + mat[1]*y + mat[2]*z,
+                        mat[3]*x + mat[4]*y + mat[5]*z,
+                        mat[6]*x + mat[7]*y + mat[8]*z);
+    }
+
     Vector2f Transform::transformVector(const Vector2f& vec) const {
         return Vector2f(transformPoint(vec.x, vec.y));
+    }
+
+    Vector3f Transform::transformVector(const Vector3f& vec) const {
+        return Vector3f(transformPoint(vec.x, vec.y, vec.z));
     }
 
     Transform Transform::operator = (const Transform& rhs) {
@@ -72,18 +82,16 @@ namespace p2d { namespace math {
     }
 
     Transform composition(const Transform& lhs, const Transform& rhs) {
+        Vector3f c0(rhs.mat[0], rhs.mat[3], rhs.mat[6]);
+        Vector3f c1(rhs.mat[1], rhs.mat[4], rhs.mat[7]);
+        Vector3f c2(rhs.mat[2], rhs.mat[5], rhs.mat[8]);
+        c0 = lhs.transformVector(c0);
+        c1 = lhs.transformVector(c1);
+        c2 = lhs.transformVector(c2);
         return Transform(
-            lhs.mat[0] * rhs.mat[0] + lhs.mat[1] * rhs.mat[3] + lhs.mat[2] * rhs.mat[6],
-            lhs.mat[0] * rhs.mat[1] + lhs.mat[1] * rhs.mat[4] + lhs.mat[2] * rhs.mat[7],
-            lhs.mat[0] * rhs.mat[2] + lhs.mat[1] * rhs.mat[5] + lhs.mat[2] * rhs.mat[8],
-            
-            lhs.mat[3] * rhs.mat[0] + lhs.mat[4] * rhs.mat[3] + lhs.mat[5] * rhs.mat[6],
-            lhs.mat[3] * rhs.mat[1] + lhs.mat[4] * rhs.mat[4] + lhs.mat[5] * rhs.mat[7],
-            lhs.mat[3] * rhs.mat[2] + lhs.mat[4] * rhs.mat[5] + lhs.mat[5] * rhs.mat[8],
-
-            lhs.mat[6] * rhs.mat[0] + lhs.mat[7] * rhs.mat[3] + lhs.mat[8] * rhs.mat[6],
-            lhs.mat[6] * rhs.mat[1] + lhs.mat[7] * rhs.mat[4] + lhs.mat[8] * rhs.mat[7],
-            lhs.mat[6] * rhs.mat[2] + lhs.mat[7] * rhs.mat[5] + lhs.mat[8] * rhs.mat[8]);
+            c0.x, c1.x, c2.x,
+            c0.y, c1.y, c2.y,
+            c0.z, c1.z, c2.z);
     }
 
     Transform inverse(const Transform& t) {

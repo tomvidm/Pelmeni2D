@@ -15,7 +15,9 @@ namespace p2d { namespace math {
         Transform(Transform&& rhs);
 
         Vector2f transformVector(const Vector2f& vec) const;
+        Vector3f transformVector(const Vector3f& vec) const;
         Vector2f transformPoint(const float& x, const float& y) const;
+        Vector3f transformPoint(const float& x, const float& y, const float& z) const;
 
         Transform operator = (const Transform& rhs);
         
