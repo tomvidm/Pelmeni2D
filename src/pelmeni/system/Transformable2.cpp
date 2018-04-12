@@ -26,6 +26,7 @@ namespace p2d { namespace system {
 
       void Transformable2::setRotation(const math::Radian& rads) {
           rotation = rads.toRadians();
+          needsUpdate = true;
       } // setRotation
 
       math::Vector2f Transformable2::getPosition() const {
@@ -51,6 +52,7 @@ namespace p2d { namespace system {
 
       void Transformable2::rotate(const math::Radian& rads) {
           rotation += rads;
+          needsUpdate = true;
       } // rotate
 
       math::Transform Transformable2::getTransform() {
