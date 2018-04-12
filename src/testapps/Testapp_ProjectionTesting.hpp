@@ -4,8 +4,8 @@
 
 #include "graphics/WireMesh.hpp"
 
-#define ROWS 24
-#define COLUMNS 24
+#define ROWS 12
+#define COLUMNS 16
 
 namespace testapps {
     class ProjectionTesting {

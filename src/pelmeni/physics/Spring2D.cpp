@@ -19,8 +19,8 @@ namespace p2d { namespace physics {
 
         const math::Vector2f relativeVelocity = body1.getVelocity() - body0.getVelocity();
         const Force2 springForce = -normalizedDisplacement * springConstant * absDisplacement;
-        const Force2 springFriction = normalizedDisplacement * internalFriction * math::dot(relativeVelocity, normalizedDisplacement);
-        return springForce - springFriction;
+        const Force2 springFriction = -normalizedDisplacement * internalFriction * math::dot(relativeVelocity, normalizedDisplacement);
+        return springForce + springFriction;
     }
 } // namespace physics
 } // namespace p2d
