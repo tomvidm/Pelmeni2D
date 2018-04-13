@@ -11,6 +11,7 @@ set(SOURCES
     #Sprite3.cpp
     TextureManager.cpp
     Mesh2D.cpp
+    MeshData2D.cpp
     WireMesh.cpp
     ../json/Helpers.cpp
 )

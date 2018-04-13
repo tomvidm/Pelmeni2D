@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <vector>
 
 #include "SFML/Graphics.hpp"
@@ -12,15 +13,16 @@
 namespace p2d { namespace graphics {
     using sf::VertexArray;
 
-    class Mesh2D : public system::Transformable2, public sf::Drawable {
+    class Mesh2D : public sf::Drawable {
     public:
         Mesh2D();
-        void update();
-        void updateMesh();
+        void transformMesh(const math::Transform& transform);
+        
+        void setMeshData(std::shared_ptr<MeshData2D> extMeshData);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
-        MeshData2D meshData;
+        std::shared_ptr<MeshData2D> meshData = nullptr;
         VertexArray verticesToDraw;
     }; // class Mesh2D
 } // namespace graphics
