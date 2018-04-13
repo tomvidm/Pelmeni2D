@@ -27,10 +27,12 @@ namespace p2d { namespace system {
 
         void move(const math::Vector2f& vec);
         void rotate(const math::Radian& rads);
+
+        inline bool needsUpdate() const { return _needsUpdate; }
         
         math::Transform getTransform();
     protected:
-        bool needsUpdate;
+        bool _needsUpdate;
         math::Vector2f position;
         math::Vector2f origin;
         math::Vector2f scale;

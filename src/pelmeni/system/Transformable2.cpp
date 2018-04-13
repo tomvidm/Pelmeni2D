@@ -6,7 +6,7 @@ namespace p2d { namespace system {
         const math::Vector2f& initialOrigin,
         const math::Vector2f& initialScale,
         const math::Radian& initialRotation)
-    : needsUpdate(true),
+    : _needsUpdate(true),
       position(initialPosition),
       origin(initialOrigin),
       scale(initialScale),
@@ -33,22 +33,22 @@ namespace p2d { namespace system {
 
       void Transformable2::setPosition(const math::Vector2f& vec) {
           position = vec;
-          needsUpdate = true;
+          _needsUpdate = true;
       } // setPosition
 
       void Transformable2::setOrigin(const math::Vector2f& vec) {
           origin = vec;
-          needsUpdate = true;
+          _needsUpdate = true;
       } // setOrigin
 
       void Transformable2::setScale(const math::Vector2f& vec) {
           scale = vec;
-          needsUpdate = true;
+          _needsUpdate = true;
       } // setScale
 
       void Transformable2::setRotation(const math::Radian& rads) {
           rotation = rads.toRadians();
-          needsUpdate = true;
+          _needsUpdate = true;
       } // setRotation
 
       math::Vector2f Transformable2::getPosition() const {
@@ -69,12 +69,12 @@ namespace p2d { namespace system {
 
       void Transformable2::move(const math::Vector2f& vec) {
           position += vec;
-          needsUpdate = true;
+          _needsUpdate = true;
       } // move
 
       void Transformable2::rotate(const math::Radian& rads) {
           rotation += rads;
-          needsUpdate = true;
+          _needsUpdate = true;
       } // rotate
 
       math::Transform Transformable2::getTransform() {
