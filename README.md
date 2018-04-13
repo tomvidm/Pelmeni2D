@@ -4,11 +4,13 @@ Pelmeni2D is a hobby side project of mine, with the goal of making it a function
 
 Pelmeni2D is built on top of SFML and uses many of the features SFML uses. The plan is to slowly replace those features with 3D analogues, although the 3D aspect will be mostly limited to transforming in 3D space before projecting onto the XY plane.
 ## Features so far
+* Input manager for mouse events that distinguishes between press, release, click and double click
 * Custom math classes, because wasting time on boiler plate is fun
 * A simple framework for a sprite animation
 * Simple loading of objects and resources using JSON files
 * A half flexible system of transforms, both 2D and 3D
-* An custom implementation of sprites, in parallel to SFML sprites, to allow for sprites to exist in 3D space.
+* Simple physics with Body2D and Spring2D
+* A Mesh2D class for arbitrary meshes with vertices, edges and filled quads.
 * Fixed axis rotation and quaternion rotation
 ## Requirements
 This is written and tested on Ubuntu 16.04 LTE. Any other platform requires work on the build system.
