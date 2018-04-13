@@ -16,6 +16,7 @@ set(TEST_SOURCES
     pelmeni/Helpers.cpp
     
     pelmeni/utility/TestPool.cpp
+    pelmeni/utility/TestQuadContainer.cpp
 )
 
 

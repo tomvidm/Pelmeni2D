@@ -10,9 +10,9 @@
 
 namespace p2d { namespace utility {
     template <typename T, unsigned N>
-    class Quad {
+    class QuadContainer {
     public:
-        Quad();
+        QuadContainer();
 
         inline bool isEmpty() const { return elementsInLeaf == 0; }
         inline bool isFull() const { return elementsInLeaf == elementsPerLeaf; }
@@ -31,12 +31,12 @@ namespace p2d { namespace utility {
     }; // class Quad
 
     template <typename T, unsigned N>
-    Quad<T, N>::Quad() : 
+    QuadContainer<T, N>::QuadContainer() : 
     elementsPerLeaf(N), 
     elementsInLeaf(0) {;}
 
     template <typename T, unsigned N>
-    bool Quad<T, N>::push(const T& obj) {
+    bool QuadContainer<T, N>::push(const T& obj) {
         if (isFull()) {
             return false;
         } else {
@@ -46,7 +46,7 @@ namespace p2d { namespace utility {
     } // bool push
 
     template <typename T, unsigned N>
-    bool Quad<T, N>::contains(math::Vector2f& point) const {
+    bool QuadContainer<T, N>::contains(math::Vector2f& point) const {
         return boundingRect.contains(point);
     } // bool contains
 } // namespace utility
