@@ -26,7 +26,7 @@ namespace p2d { namespace system {
     Transformable2::Transformable2(const math::Vector2f& initialPosition)
     : Transformable2(initialPosition,
                      math::Vector2f(0.f, 0.f),
-                     math::Vector2f(0.f, 0.f),
+                     math::Vector2f(1.f, 1.f),
                      math::Radian(0.f)) {
         ;
     }
