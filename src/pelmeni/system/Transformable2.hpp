@@ -20,6 +20,7 @@ namespace p2d { namespace system {
         void setOrigin(const math::Vector2f& vec);
         void setScale(const math::Vector2f& vec);
         void setRotation(const math::Radian& rads);
+        void setRotation(const math::Vector2f& direction);
         math::Vector2f getPosition() const;
         math::Vector2f getOrigin() const;
         math::Vector2f getScale() const;
@@ -29,7 +30,7 @@ namespace p2d { namespace system {
         void rotate(const math::Radian& rads);
 
         inline bool needsUpdate() const { return _needsUpdate; }
-        
+  
         math::Transform getTransform();
     protected:
         bool _needsUpdate;
@@ -39,7 +40,6 @@ namespace p2d { namespace system {
         math::Radian rotation;
         
         math::Transform transform;
-
     }; // class Transformable
 } // namespace system
 } // namespace p2d

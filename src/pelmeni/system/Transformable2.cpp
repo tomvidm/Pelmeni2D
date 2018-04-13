@@ -51,6 +51,11 @@ namespace p2d { namespace system {
           _needsUpdate = true;
       } // setRotation
 
+      void Transformable2::setRotation(const math::Vector2f& direction) {
+          rotation = math::angleOf(direction);
+          _needsUpdate = true;
+      } // setRotation
+
       math::Vector2f Transformable2::getPosition() const {
           return position;
       } // getPosition
@@ -78,7 +83,7 @@ namespace p2d { namespace system {
       } // rotate
 
       math::Transform Transformable2::getTransform() {
-          if (needsUpdate) {
+          if (needsUpdate()) {
               transform = math::Transform::Translate(position) *
                           math::Transform::Rotation(rotation.toRadians()) *
                           math::Transform::Scale(scale) *
