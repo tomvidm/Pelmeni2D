@@ -9,8 +9,8 @@ namespace p2d { namespace graphics {
             size_t i = 0;
             for (auto& edge : meshData->getMeshEdges()) {
                 MeshVertices& vertices = meshData->getMeshVertices();
-                const Mesh2DVertex v0 = transform.transformVector(vertices[edge.v0]);
-                const Mesh2DVertex v1 = transform.transformVector(vertices[edge.v1]);
+                const Mesh2DVertex v0 = transform.transformVector(vertices[edge.v[0]]);
+                const Mesh2DVertex v1 = transform.transformVector(vertices[edge.v[1]]);
                 verticesToDraw[i++].position = v0;
                 verticesToDraw[i++].position = v1;
             }

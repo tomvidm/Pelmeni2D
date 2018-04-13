@@ -18,6 +18,8 @@ namespace p2d { namespace graphics {
         meshEdges = mEdges;
     } // setMeshEdges
 
+    void MeshData2D::setMeshQuads(const MeshQuads& mQuads);
+
     MeshVertices& MeshData2D::getMeshVertices() {
         return meshVertices;
     } // setMeshVectors
