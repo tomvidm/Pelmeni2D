@@ -31,7 +31,8 @@ namespace p2d { namespace system {
 
         inline bool needsUpdate() const { return _needsUpdate; }
   
-        math::Transform getTransform();
+        math::Transform getLocalTransform();
+        math::Transform getRelativeTransform(const math::Transform& relTransform);
     protected:
         bool _needsUpdate;
         math::Vector2f position;
@@ -39,7 +40,7 @@ namespace p2d { namespace system {
         math::Vector2f scale;
         math::Radian rotation;
         
-        math::Transform transform;
+        math::Transform localTransform;
     }; // class Transformable
 } // namespace system
 } // namespace p2d

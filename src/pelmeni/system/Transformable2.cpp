@@ -11,7 +11,7 @@ namespace p2d { namespace system {
       origin(initialOrigin),
       scale(initialScale),
       rotation(initialRotation),
-      transform(math::Transform::Identity()) {
+      localTransform(math::Transform::Identity()) {
         ;
     }
 
@@ -82,15 +82,19 @@ namespace p2d { namespace system {
           _needsUpdate = true;
       } // rotate
 
-      math::Transform Transformable2::getTransform() {
+      math::Transform Transformable2::getLocalTransform() {
           if (needsUpdate()) {
-              transform = math::Transform::Translate(position) *
-                          math::Transform::Rotation(rotation.toRadians()) *
-                          math::Transform::Scale(scale) *
-                          math::Transform::Translate(-origin);
+              localTransform = math::Transform::Translate(position) *
+                               math::Transform::Rotation(rotation.toRadians()) *
+                               math::Transform::Scale(scale) *
+                               math::Transform::Translate(-origin);
           }
 
-          return transform;
+          return localTransform;
+      }
+
+      math::Transform Transformable2::getRelativeTransform(const math::Transform& relTransform) {
+          return localTransform * relTransform;
       }
 } // namespace system
 } // namespace p2d
