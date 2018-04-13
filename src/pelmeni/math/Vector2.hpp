@@ -41,6 +41,11 @@ namespace p2d { namespace math {
     }
 
     template <typename T>
+    float angleBetween(const Vector2<T>& a, const Vector2<T>& b) {
+        return atan2f(b.y - a.y, b.x - a.x);
+    }
+
+    template <typename T>
     Vector2<float> getUnitVector(const math::Radian& rads) {
         return Vector2<float>(cosf(rads.toRadians()), sinf(rads.toRadians()));
     }

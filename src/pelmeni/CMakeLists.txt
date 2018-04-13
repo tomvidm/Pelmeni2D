@@ -1,6 +1,7 @@
 project(pelmeni)
 
 add_subdirectory(system)
+add_subdirectory(experimental)
 add_subdirectory(input)
 add_subdirectory(physics)
 #add_subdirectory(gui)

@@ -3,10 +3,11 @@
 #include <tuple>
 
 #include "SFML/Graphics.hpp"
-
+#include "experimental/Gish.hpp"
 #include "math/Vector.hpp"
 #include "physics/Body2D.hpp"
 #include "physics/Spring2D.hpp"
+#include "physics/Physics.hpp"
 
 p2d::math::Vector2f getMousePosition(sf::RenderWindow& window) {
     const sf::Vector2i mpos = sf::Mouse::getPosition(window);
@@ -18,7 +19,7 @@ p2d::math::Vector2f getMousePosition(sf::RenderWindow& window) {
 
 int main() {
     using namespace p2d;
-
+    experimental::Gish g;
     std::vector<physics::Body2D> bodies = {
         physics::Body2D(math::Vector2f(300.f, 100.f), 1.f),
         physics::Body2D(math::Vector2f(250.f, 150.f), 1.f),
@@ -37,26 +38,32 @@ int main() {
         std::make_tuple(0,2),
         std::make_tuple(1,2),
         std::make_tuple(1,3),
+        std::make_tuple(1,4),
         std::make_tuple(2,4),
+        std::make_tuple(2,3),
         std::make_tuple(3,4),
         std::make_tuple(3,5),
+        std::make_tuple(3,6),
         std::make_tuple(4,6),
+        std::make_tuple(4,5),
         std::make_tuple(5,6),
         std::make_tuple(5,7),
+        std::make_tuple(5,8),
+        std::make_tuple(6,7),
         std::make_tuple(6,8),
         std::make_tuple(7,8),
         std::make_tuple(7,9),
         std::make_tuple(8,9)
     };
 
-    bodies[0].setFixed(true);
+    //bodies[0].setFixed(true);
     bodies[9].setFixed(true);
 
     sf::VertexArray vertices;
     vertices.setPrimitiveType(sf::PrimitiveType::Lines);
     vertices.resize(2 * edges.size());
 
-    physics::Spring2D spring(15.f, 2.5f, 50.f);
+    physics::Spring2D spring(15.f, 0.5f, 70.f);
 
     sf::RenderWindow window(sf::VideoMode(640, 480), "Testapp_WireMesh");
     sf::Clock timer;
@@ -76,7 +83,11 @@ int main() {
         }
 
         for (auto& body : bodies) {
-            body.applyTime(dt);
+            body.applyForce(physics::getDrag(body.getVelocity(), 0.02), dt);
+        }
+
+        for (auto& body : bodies) {
+            body.update(dt);
         }
 
         for (size_t i = 0; i < edges.size(); i++) {
@@ -93,9 +104,10 @@ int main() {
                 window.close();
             }
         }
-
+        g.update(dt);
         window.clear();
         window.draw(vertices);
+       // window.draw(g);
         window.display();
     }
 

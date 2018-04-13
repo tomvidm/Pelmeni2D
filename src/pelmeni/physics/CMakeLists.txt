@@ -2,6 +2,7 @@ project(p2d-physics)
 
 set(SOURCES
     Body2D.cpp
+    Physics.cpp
     Spring2D.cpp
 )
 

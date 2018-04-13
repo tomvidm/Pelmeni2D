@@ -4,9 +4,6 @@ add_subdirectory(pelmeni)
 
 add_executable(p2d-run
     main.cpp
-    testapps/Testapp_ProjectionTesting.cpp
-    testapps/Testapp_WireMesh.cpp
-    testapps/Testapp_Mesh2D.cpp
 )
 
 include_directories(
@@ -17,6 +14,7 @@ include_directories(
 
 target_link_libraries(p2d-run 
     p2d-graphics
+    p2d-experimental
     p2d-system
     p2d-math
     p2d-physics

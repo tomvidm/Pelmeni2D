@@ -10,6 +10,7 @@ namespace p2d { namespace physics {
         const float& initialAngularVelocity,
         const math::Vector2f& initialVelocity)
     : Transformable2(initialPosition),
+      fixed(false),
       mass(initialMass), 
       momentOfInertia(initialMoment),
       angularVelocity(initialAngularVelocity), 
@@ -62,7 +63,7 @@ namespace p2d { namespace physics {
     } // setFixed
 
     void Body2D::applyForce(const Force2& force, const float& dt) {
-        applyImpulse(force * dt);
+        if (!fixed) applyImpulse(force * dt);
     } // applyImpulse
     
     void Body2D::applyForce(const Force2& force, const math::Vector2f& forceLocation, const float& dt) {
@@ -83,11 +84,18 @@ namespace p2d { namespace physics {
     } // applyAngularImpulse
 
     void Body2D::applyTime(const float& time) {
-        if (!fixed) {
-            move(velocity * time);
-            rotate(angularVelocity * time);
-        }
+        move(velocity * time);
+        rotate(angularVelocity * time);
     } // applyTime
+
+    void Body2D::update(const float& dt) {
+        if (fixed) {
+            velocity = math::Vector2f(0.f, 0.f);
+            angularVelocity = 0.f;
+        }
+
+        applyTime(dt);
+    }
 
     float Body2D::getEnergy() const {
         return 0.5f * math::magnitudeSquared(velocity) * mass;
