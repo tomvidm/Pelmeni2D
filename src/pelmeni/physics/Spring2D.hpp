@@ -7,6 +7,11 @@ namespace p2d { namespace physics {
     public:
         Spring2D();
         Spring2D(const float& sConstant, const float& friction, const float& eqLength);
+        
+        void setSpringConstant(const float& sConstant);
+        void setInternalFriction(const float& fric);
+        void setEquilibriumLength(const float& eqLength);
+
         Force2 calculateForce(Body2D& body0, Body2D& body1) const;
     private:
         float springConstant;
