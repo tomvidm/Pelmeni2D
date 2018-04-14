@@ -6,11 +6,12 @@ Pelmeni2D is built on top of SFML and uses many of the features SFML uses. The p
 ## Features so far
 * Input manager for mouse events that distinguishes between press, release, click and double click
 * Custom math classes, because wasting time on boiler plate is fun
-* A simple framework for a sprite animation
+* A simple framework for a sprite animation, independent of frame rate
 * Simple loading of objects and resources using JSON files
 * A half flexible system of transforms, both 2D and 3D
 * Simple physics with Body2D and Spring2D
 * A Mesh2D class for arbitrary meshes with vertices, edges and filled quads.
+* A Tilemap class which renders a grid and arbitrary parts of a texture.
 * Fixed axis rotation and quaternion rotation
 ## Requirements
 This is written and tested on Ubuntu 16.04 LTE. Any other platform requires work on the build system.
@@ -20,7 +21,7 @@ This is written and tested on Ubuntu 16.04 LTE. Any other platform requires work
 * [rapidjson](https://github.com/Tencent/rapidjson)
 * [Google Testing Framework](https://github.com/google/googletest)
 
-SFML and CMake should be available to the system.
+SFML and CMake should be already installed on the system.
 
 `rapidjson` and `Google Testing Framework` should be git cloned into a folder `external` in the root project folder.
 To build, simply enter the following command
