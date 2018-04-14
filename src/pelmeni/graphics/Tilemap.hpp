@@ -15,6 +15,8 @@ namespace p2d { namespace graphics {
         void buildTilemap();
         void transformVertices();
 
+        sf::Vertex* getQuadVertices(const size_t& row, const size_t& col);
+
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
         math::Vector2f tileSize;

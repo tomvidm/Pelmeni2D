@@ -39,6 +39,10 @@ namespace p2d { namespace graphics {
             quadsToDraw.resize(4 * meshData->getNumQuads());
         }
 
+        sf::Vertex* Mesh2D::getQuadVertices(const size_t& q) {
+            return &quadsToDraw[4 * q];
+        }
+
         void Mesh2D::draw(sf::RenderTarget& target, sf::RenderStates states) const {
             target.draw(quadsToDraw);
             target.draw(linesToDraw);

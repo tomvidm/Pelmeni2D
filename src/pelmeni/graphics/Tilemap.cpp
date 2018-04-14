@@ -17,10 +17,24 @@ namespace p2d { namespace graphics {
             generateMeshQuads(numRows, numCols)
         );
         mesh.setMeshData(meshData);
+        for (size_t r = 0; r < numRows; r++) {
+            for (size_t c = 0; c < numCols; c++) {
+                sf::Vertex* quad = getQuadVertices(r, c);
+                quad[0].color = sf::Color(128, 128, 128);
+                quad[1].color = sf::Color(128, 128, 128);
+                quad[2].color = sf::Color(128, 128, 128);
+                quad[3].color = sf::Color(128, 128, 128);
+            }
+        }
     }
 
     void Tilemap::transformVertices() {
         mesh.transformMesh(getLocalTransform());
+    }
+
+    sf::Vertex* Tilemap::getQuadVertices(const size_t& row, const size_t& col) {
+        const size_t quadIndex = col + numCols * row;
+        return mesh.getQuadVertices(quadIndex);
     }
 
     void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates states) const {

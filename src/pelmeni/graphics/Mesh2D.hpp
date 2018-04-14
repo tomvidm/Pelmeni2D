@@ -20,6 +20,8 @@ namespace p2d { namespace graphics {
         
         void setMeshData(std::shared_ptr<MeshData2D> extMeshData);
 
+        sf::Vertex* getQuadVertices(const size_t& q);
+
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
         std::shared_ptr<MeshData2D> meshData = nullptr;
