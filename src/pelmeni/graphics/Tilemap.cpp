@@ -28,6 +28,10 @@ namespace p2d { namespace graphics {
         mesh.transformMesh(getLocalTransform());
     }
 
+    void Tilemap::setTexture(const Texture& texture) {
+        tilemapTexture = texture;
+    }
+
     void Tilemap::setQuadColor(const size_t& row, const size_t& col, const sf::Color& color) {
         mesh.setQuadColor(row * numCols + col, color);
     }
@@ -42,7 +46,8 @@ namespace p2d { namespace graphics {
     }
 
     void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-        target.draw(mesh);
+        states.texture = &tilemapTexture.getTexture();
+        target.draw(mesh, states);
     }
 
     graphics::MeshVertices Tilemap::generateMeshVertices(const size_t& rows, const size_t& cols, const math::Vector2f& tileSize) {

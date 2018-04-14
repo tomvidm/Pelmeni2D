@@ -6,6 +6,7 @@
 
 #include "graphics/Mesh2D.hpp"
 #include "graphics/MeshData2D.hpp"
+#include "graphics/Texture.hpp"
 #include "system/Transformable2.hpp"
 #include "math/Vector.hpp"
 
@@ -17,6 +18,7 @@ namespace p2d { namespace graphics {
         void buildTilemap();
         void transformVertices();
 
+        void setTexture(const Texture& texture);
         void setQuadColor(const size_t& row, const size_t& col, const sf::Color& color);
         void setQuadTextureCoords(const size_t& row, const size_t& col, const QuadTextureCoordinates& texCoords);
 
@@ -30,7 +32,7 @@ namespace p2d { namespace graphics {
         static graphics::MeshQuads generateMeshQuads(const size_t& rows, const size_t& cols);
 
         graphics::Mesh2D mesh;
-
+        graphics::Texture tilemapTexture;
         sf::Vertex* getQuadVertices(const size_t& row, const size_t& col);
     }; // class Tilemap
 }

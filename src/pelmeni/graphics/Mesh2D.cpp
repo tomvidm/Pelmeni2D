@@ -60,7 +60,7 @@ namespace p2d { namespace graphics {
         }
 
         void Mesh2D::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-            target.draw(quadsToDraw);
+            target.draw(quadsToDraw, states);
             target.draw(linesToDraw);
         }
 } // namespace graphics
