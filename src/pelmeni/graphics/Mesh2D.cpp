@@ -39,6 +39,22 @@ namespace p2d { namespace graphics {
             quadsToDraw.resize(4 * meshData->getNumQuads());
         }
 
+        void Mesh2D::setQuadColor(const size_t& q, const sf::Color& color) {
+            sf::Vertex* quad = getQuadVertices(q);
+            quad[1].color = color;
+            quad[0].color = color;
+            quad[2].color = color;
+            quad[3].color = color;
+        }
+
+        void Mesh2D::setQuadTextureCoordinates(const size_t& q, const QuadTextureCoordinates& texCoord) {
+            sf::Vertex* quad = getQuadVertices(q);
+            quad[0].texCoords = texCoord[0];
+            quad[1].texCoords = texCoord[1];
+            quad[2].texCoords = texCoord[2];
+            quad[3].texCoords = texCoord[3];
+        }
+
         sf::Vertex* Mesh2D::getQuadVertices(const size_t& q) {
             return &quadsToDraw[4 * q];
         }

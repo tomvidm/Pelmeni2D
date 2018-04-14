@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <vector>
+#include <array>
 
 #include "SFML/Graphics.hpp"
 
@@ -12,13 +13,15 @@
 
 namespace p2d { namespace graphics {
     using sf::VertexArray;
-
+    using QuadTextureCoordinates = std::array<math::Vector2f, 4>;
     class Mesh2D : public sf::Drawable {
     public:
         Mesh2D();
         void transformMesh(const math::Transform& transform);
         
         void setMeshData(std::shared_ptr<MeshData2D> extMeshData);
+        void setQuadColor(const size_t& q, const sf::Color& color);
+        void setQuadTextureCoordinates(const size_t& q, const QuadTextureCoordinates& texCoord);
 
         sf::Vertex* getQuadVertices(const size_t& q);
 

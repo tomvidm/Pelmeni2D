@@ -1,5 +1,7 @@
 #pragma once
 
+#include <array>
+
 #include "SFML/Graphics.hpp"
 
 #include "graphics/Mesh2D.hpp"
@@ -16,6 +18,7 @@ namespace p2d { namespace graphics {
         void transformVertices();
 
         void setQuadColor(const size_t& row, const size_t& col, const sf::Color& color);
+        void setQuadTextureCoords(const size_t& row, const size_t& col, const QuadTextureCoordinates& texCoords);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
