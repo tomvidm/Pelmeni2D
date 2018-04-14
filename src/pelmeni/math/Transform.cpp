@@ -17,6 +17,12 @@ namespace p2d { namespace math {
     Transform::Transform(Transform&& rhs)
     : mat(std::move(rhs.mat)) {;}
 
+    void Transform::transformVertexArray(const sf::VertexArray& varr) const {
+        for (size_t i = 0; i < varr.size(); i++) {
+            transformVector(varr[i]);
+        }
+    }
+
     Vector2f Transform::transformPoint(const float& x, const float& y) const {
         return Vector2f(mat[0]*x + mat[1]*y + mat[2],
                         mat[3]*x + mat[4]*y + mat[5]);

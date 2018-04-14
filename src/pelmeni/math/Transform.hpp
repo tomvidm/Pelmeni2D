@@ -14,6 +14,8 @@ namespace p2d { namespace math {
         Transform(const Transform& rhs);
         Transform(Transform&& rhs);
 
+        void  transformVertexArray(const sf::VertexArray& varr) const;
+        
         Vector2f transformVector(const Vector2f& vec) const;
         Vector3f transformVector(const Vector3f& vec) const;
         Vector2f transformPoint(const float& x, const float& y) const;
