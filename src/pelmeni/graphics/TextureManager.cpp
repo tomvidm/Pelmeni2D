@@ -1,8 +1,5 @@
 #include <cstdio>
 
-#include "rapidjson/filereadstream.h"
-#include "rapidjson/document.h"
-
 #include "json/Helpers.hpp"
 
 #include "TextureManager.hpp"

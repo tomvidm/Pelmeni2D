@@ -1,5 +1,8 @@
 #pragma once
 
+#include "rapidjson/filereadstream.h"
+#include "rapidjson/document.h"
+
 #include "graphics/Texture.hpp"
 #include "utility/Map.hpp"
 
