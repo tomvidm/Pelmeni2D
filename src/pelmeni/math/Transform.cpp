@@ -18,8 +18,8 @@ namespace p2d { namespace math {
     : mat(std::move(rhs.mat)) {;}
 
     void Transform::transformVertexArray(const sf::VertexArray& varr) const {
-        for (size_t i = 0; i < varr.size(); i++) {
-            transformVector(varr[i]);
+        for (size_t i = 0; i < varr.getVertexCount(); i++) {
+            transformVector(varr[i].position);
         }
     }
 

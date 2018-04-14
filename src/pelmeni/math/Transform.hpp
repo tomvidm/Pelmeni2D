@@ -2,6 +2,8 @@
 
 #include <array>
 
+#include "SFML/Graphics.hpp"
+
 #include "math/Vector.hpp"
 
 namespace p2d { namespace math {
