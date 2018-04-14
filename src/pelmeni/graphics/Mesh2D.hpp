@@ -23,7 +23,8 @@ namespace p2d { namespace graphics {
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
         std::shared_ptr<MeshData2D> meshData = nullptr;
-        VertexArray verticesToDraw;
+        VertexArray linesToDraw;
+        VertexArray quadsToDraw;
     }; // class Mesh2D
 } // namespace graphics
 } // namespace p2d

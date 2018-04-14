@@ -5,8 +5,8 @@ namespace p2d { namespace graphics {
         ;
     } // constructor
 
-    MeshData2D::MeshData2D(const MeshVertices& mVecs, const MeshEdges& mEdges) 
-    : meshVertices(mVecs), meshEdges(mEdges) {
+    MeshData2D::MeshData2D(const MeshVertices& mVecs, const MeshEdges& mEdges, const MeshQuads& mQuads) 
+    : meshVertices(mVecs), meshEdges(mEdges), meshQuads(mQuads) {
         ;
     } // constructor
 
@@ -18,7 +18,9 @@ namespace p2d { namespace graphics {
         meshEdges = mEdges;
     } // setMeshEdges
 
-    void MeshData2D::setMeshQuads(const MeshQuads& mQuads);
+    void MeshData2D::setMeshQuads(const MeshQuads& mQuads) {
+        meshQuads = mQuads;
+    } // setMeshQuads
 
     MeshVertices& MeshData2D::getMeshVertices() {
         return meshVertices;
@@ -27,5 +29,9 @@ namespace p2d { namespace graphics {
     MeshEdges& MeshData2D::getMeshEdges() {
         return meshEdges;
     } // getMeshEdges
+
+    MeshQuads& MeshData2D::getMeshQuads() {
+        return meshQuads;
+    }
 } // namespace graphics
 } // namespace p2d

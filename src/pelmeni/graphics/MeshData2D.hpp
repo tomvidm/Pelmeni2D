@@ -21,7 +21,7 @@ namespace p2d { namespace graphics {
     class MeshData2D {
     public:
         MeshData2D();
-        MeshData2D(const MeshVertices& mVecs, const MeshEdges& mEdges);
+        MeshData2D(const MeshVertices& mVecs, const MeshEdges& mEdges, const MeshQuads& mQuads);
 
         void setMeshVertices(const MeshVertices& mVecs);
         void setMeshEdges(const MeshEdges& mEdges);
@@ -32,6 +32,7 @@ namespace p2d { namespace graphics {
         MeshQuads& getMeshQuads();
 
         inline size_t getNumEdges() const { return meshEdges.size(); }
+        inline size_t getNumQuads() const { return meshQuads.size(); }
     private:
         MeshVertices meshVertices;
         MeshEdges meshEdges;

@@ -12,7 +12,7 @@ set(SOURCES
     TextureManager.cpp
     Mesh2D.cpp
     MeshData2D.cpp
-    #TileData.cpp
+    Tilemap.cpp
     WireMesh.cpp
     ../json/Helpers.cpp
 )
