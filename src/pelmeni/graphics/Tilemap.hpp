@@ -15,7 +15,7 @@ namespace p2d { namespace graphics {
         void buildTilemap();
         void transformVertices();
 
-        sf::Vertex* getQuadVertices(const size_t& row, const size_t& col);
+        void setQuadColor(const size_t& row, const size_t& col, const sf::Color& color);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
@@ -27,6 +27,8 @@ namespace p2d { namespace graphics {
         static graphics::MeshQuads generateMeshQuads(const size_t& rows, const size_t& cols);
 
         graphics::Mesh2D mesh;
+
+        sf::Vertex* getQuadVertices(const size_t& row, const size_t& col);
     }; // class Tilemap
 }
 }
