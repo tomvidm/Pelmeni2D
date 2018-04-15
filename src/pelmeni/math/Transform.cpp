@@ -117,6 +117,14 @@ namespace p2d { namespace math {
             t.mat[0]*t.mat[4] - t.mat[1]*t.mat[3]);
     }
 
+    sf::Transform toSfmlTransform(const Transform& rhs) {
+        return sf::Transform(
+            rhs.mat[0], rhs.mat[1], rhs.mat[2], 
+            rhs.mat[3], rhs.mat[4], rhs.mat[5], 
+            rhs.mat[6], rhs.mat[7], rhs.mat[8]
+        );
+    }
+
     Transform operator * (const Transform& lhs, const float& rhs) {
         Transform temp(lhs);
         for (auto& x : temp.mat) {

@@ -6,15 +6,15 @@ namespace p2d { namespace graphics {
             quadsToDraw.setPrimitiveType(sf::PrimitiveType::Quads);
         }
     
-        void Mesh2D::transformMesh(const math::Transform& transform) {
+        void Mesh2D::buildMesh() {
             MeshVertices& vertices = meshData->getMeshVertices();
             size_t i = 0;
             for (auto& quad : meshData->getMeshQuads()) {
                 const Mesh2DVertex v[] = {
-                    transform.transformVector(vertices[quad.v[0]]),
-                    transform.transformVector(vertices[quad.v[1]]),
-                    transform.transformVector(vertices[quad.v[2]]),
-                    transform.transformVector(vertices[quad.v[3]])
+                    vertices[quad.v[0]],
+                    vertices[quad.v[1]],
+                    vertices[quad.v[2]],
+                    vertices[quad.v[3]]
                 };
                 quadsToDraw[i++].position = v[0];
                 quadsToDraw[i++].position = v[1];
@@ -25,8 +25,8 @@ namespace p2d { namespace graphics {
             i = 0;
             for (auto& edge : meshData->getMeshEdges()) {
                 const Mesh2DVertex v[] = {
-                    transform.transformVector(vertices[edge.v[0]]),
-                    transform.transformVector(vertices[edge.v[1]])
+                    vertices[edge.v[0]],
+                    vertices[edge.v[1]]
                 };
                 linesToDraw[i++].position = v[0];
                 linesToDraw[i++].position = v[1];
@@ -41,6 +41,7 @@ namespace p2d { namespace graphics {
             meshData = extMeshData;
             linesToDraw.resize(2 * meshData->getNumEdges());
             quadsToDraw.resize(4 * meshData->getNumQuads());
+            buildMesh();
         }
 
         void Mesh2D::setQuadColor(const size_t& q, const sf::Color& color) {
@@ -65,7 +66,7 @@ namespace p2d { namespace graphics {
 
         void Mesh2D::draw(sf::RenderTarget& target, sf::RenderStates states) const {
             target.draw(quadsToDraw, states);
-            if (renderEdges) target.draw(linesToDraw);
+            if (renderEdges) target.draw(linesToDraw, states);
         }
 } // namespace graphics
 } // namespace p2d

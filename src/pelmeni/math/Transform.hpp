@@ -32,6 +32,7 @@ namespace p2d { namespace math {
         static Transform Translate(const Vector2f& dr);
         static Transform Identity();
 
+        friend sf::Transform toSfmlTransform(const Transform& rhs);
         friend Transform operator * (const Transform& lhs, const float& rhs);
         friend Transform operator * (const float& lhs, const Transform& rhs);
         friend Transform operator * (const Transform& lhs, const Transform& rhs);
@@ -46,6 +47,7 @@ namespace p2d { namespace math {
         std::array<float, 9> mat;
     }; // class Transform
 
+    sf::Transform toSfmlTransform(const Transform& rhs);
     Transform operator * (const Transform& lhs, const float& rhs);
     Transform operator * (const float& lhs, const Transform& rhs);
     Transform operator * (const Transform& lhs, const Transform& rhs);

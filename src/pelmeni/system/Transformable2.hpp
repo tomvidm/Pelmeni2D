@@ -31,16 +31,16 @@ namespace p2d { namespace system {
 
         inline bool needsUpdate() const { return _needsUpdate; }
   
-        math::Transform getLocalTransform();
-        math::Transform getRelativeTransform(const math::Transform& relTransform);
+        math::Transform getLocalTransform() const;
+        math::Transform getRelativeTransform(const math::Transform& relTransform) const;
     protected:
-        bool _needsUpdate;
+        mutable bool _needsUpdate;
         math::Vector2f position;
         math::Vector2f origin;
         math::Vector2f scale;
         math::Radian rotation;
         
-        math::Transform localTransform;
+        mutable math::Transform localTransform;
     }; // class Transformable
 } // namespace system
 } // namespace p2d

@@ -82,7 +82,7 @@ namespace p2d { namespace system {
           _needsUpdate = true;
       } // rotate
 
-      math::Transform Transformable2::getLocalTransform() {
+      math::Transform Transformable2::getLocalTransform() const {
           if (needsUpdate()) {
               localTransform = math::Transform::Translate(position) *
                                math::Transform::Rotation(rotation.toRadians()) *
@@ -93,7 +93,7 @@ namespace p2d { namespace system {
           return localTransform;
       }
 
-      math::Transform Transformable2::getRelativeTransform(const math::Transform& relTransform) {
+      math::Transform Transformable2::getRelativeTransform(const math::Transform& relTransform) const {
           return localTransform * relTransform;
       }
 } // namespace system

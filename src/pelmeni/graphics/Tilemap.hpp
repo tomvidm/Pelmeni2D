@@ -16,7 +16,6 @@ namespace p2d { namespace graphics {
         void setTileSize(const math::Vector2f& tSize);
         void setTilemapSize(const size_t& rows, const size_t& cols);
         void buildTilemap();
-        void transformVertices();
 
         void setRenderGrid(const bool& yesno);
         void setTexture(const Texture& texture);

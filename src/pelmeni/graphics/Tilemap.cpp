@@ -24,10 +24,6 @@ namespace p2d { namespace graphics {
         }
     }
 
-    void Tilemap::transformVertices() {
-        mesh.transformMesh(getLocalTransform());
-    }
-
     void Tilemap::setRenderGrid(const bool& yesno) {
         renderGrid = yesno;
         mesh.setRenderEdges(yesno);
@@ -51,6 +47,7 @@ namespace p2d { namespace graphics {
     }
 
     void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+        states.transform *= toSfmlTransform(getLocalTransform());
         states.texture = &tilemapTexture.getTexture();
         target.draw(mesh, states);
     }

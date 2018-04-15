@@ -51,6 +51,14 @@ namespace p2d { namespace math {
     }
 
     template <typename T>
+    Vector2<T> relativeScale(const Vector2<T>& lhs, const Vector2<T>& rhs) {
+        return Vector2<T>(
+            rhs.x / lhs.x,
+            rhs.y / lhs.y
+        );
+    }
+
+    template <typename T>
     Vector2<float> getUnitVector(const math::Radian& rads) {
         return Vector2<float>(cosf(rads.toRadians()), sinf(rads.toRadians()));
     }

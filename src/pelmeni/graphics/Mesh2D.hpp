@@ -17,7 +17,7 @@ namespace p2d { namespace graphics {
     class Mesh2D : public sf::Drawable {
     public:
         Mesh2D();
-        void transformMesh(const math::Transform& transform);
+        void buildMesh();
         
         void setRenderEdges(const bool& yesno);
         void setMeshData(std::shared_ptr<MeshData2D> extMeshData);
