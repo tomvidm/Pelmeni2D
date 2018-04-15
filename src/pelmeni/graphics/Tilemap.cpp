@@ -28,6 +28,11 @@ namespace p2d { namespace graphics {
         mesh.transformMesh(getLocalTransform());
     }
 
+    void Tilemap::setRenderGrid(const bool& yesno) {
+        renderGrid = yesno;
+        mesh.setRenderEdges(yesno);
+    }
+
     void Tilemap::setTexture(const Texture& texture) {
         tilemapTexture = texture;
     }

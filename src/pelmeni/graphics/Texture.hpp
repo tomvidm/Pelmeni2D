@@ -22,6 +22,7 @@ namespace p2d { namespace graphics {
             if (!sfmlTexturePtr->loadFromFile("../resources/" + texturePath)) {
                 printf("Texture: Error loading file %s\n", texturePath.c_str());
             }
+            sfmlTexturePtr->setSmooth(false);
         }
 
         Texture(Texture&& rhs) {

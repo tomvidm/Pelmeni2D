@@ -18,12 +18,14 @@ namespace p2d { namespace graphics {
         void buildTilemap();
         void transformVertices();
 
+        void setRenderGrid(const bool& yesno);
         void setTexture(const Texture& texture);
         void setQuadColor(const size_t& row, const size_t& col, const sf::Color& color);
         void setQuadTextureCoords(const size_t& row, const size_t& col, const QuadTextureCoordinates& texCoords);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
+        bool renderGrid;
         math::Vector2f tileSize;
         size_t numRows;
         size_t numCols;

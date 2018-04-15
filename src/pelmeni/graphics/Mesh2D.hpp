@@ -19,6 +19,7 @@ namespace p2d { namespace graphics {
         Mesh2D();
         void transformMesh(const math::Transform& transform);
         
+        void setRenderEdges(const bool& yesno);
         void setMeshData(std::shared_ptr<MeshData2D> extMeshData);
         void setQuadColor(const size_t& q, const sf::Color& color);
         void setQuadTextureCoordinates(const size_t& q, const QuadTextureCoordinates& texCoord);
@@ -27,6 +28,9 @@ namespace p2d { namespace graphics {
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
+        bool renderEdges = true;
+        bool renderQuads = true;
+
         std::shared_ptr<MeshData2D> meshData = nullptr;
         VertexArray linesToDraw;
         VertexArray quadsToDraw;

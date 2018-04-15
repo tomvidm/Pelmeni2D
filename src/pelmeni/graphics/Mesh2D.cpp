@@ -33,6 +33,10 @@ namespace p2d { namespace graphics {
             }
         } // tranformMesh
 
+        void Mesh2D::setRenderEdges(const bool& yesno) {
+            renderEdges = yesno;
+        }
+
         void Mesh2D::setMeshData(std::shared_ptr<MeshData2D> extMeshData) {
             meshData = extMeshData;
             linesToDraw.resize(2 * meshData->getNumEdges());
@@ -61,7 +65,7 @@ namespace p2d { namespace graphics {
 
         void Mesh2D::draw(sf::RenderTarget& target, sf::RenderStates states) const {
             target.draw(quadsToDraw, states);
-            target.draw(linesToDraw);
+            if (renderEdges) target.draw(linesToDraw);
         }
 } // namespace graphics
 } // namespace p2d
