@@ -6,6 +6,7 @@
 
 #include "SFML/Window.hpp"
 
+#include "input/InputListener.hpp"
 #include "system/Component.hpp"
 #include "MouseInputManager.hpp"
 
@@ -13,13 +14,13 @@ namespace p2d { namespace input {
     class InputManager {
     public:
         void collectInputEvents(sf::Window& window);
-        void notifyListeners(const InputEvent& inputEvent);
+        void notifyListeners();
+        void registerListener(const InputEventType& eventType, InputListener* listener);
 
-
-        InputEvent onEvent(const sf::Event& sfmlEvent);
+        InputEvent onEvent(const sf::Event& sfmlEvent, sf::Window& window);
     private:
-        std::multimap<InputEvent, std::shared_ptr<system::Component>> eventListenerMap;
-
+        std::multimap<InputEventType, InputListener*> eventListenerMap;
+        std::vector<InputEvent> inputEvents;
         MouseInputManager mouseInputManager;
     }; // MouseInputManager
 } // namespace input

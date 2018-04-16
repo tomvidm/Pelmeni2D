@@ -4,6 +4,7 @@
 
 #include "SFML/Graphics.hpp"
 
+#include "input/InputListener.hpp"
 #include "graphics/Mesh2D.hpp"
 #include "graphics/MeshData2D.hpp"
 #include "graphics/Texture.hpp"
@@ -16,7 +17,9 @@ namespace p2d { namespace graphics {
         size_t col;
     }; // struct Tileinfo
 
-    class Tilemap : public sf::Drawable, public system::Transformable2 {
+    class Tilemap : 
+        public sf::Drawable, public system::Transformable2,
+        public input::InputListener {
     public:
         void setTileSize(const math::Vector2f& tSize);
         void setTilemapSize(const size_t& rows, const size_t& cols);
@@ -30,6 +33,8 @@ namespace p2d { namespace graphics {
         void setQuadTextureCoords(const size_t& row, const size_t& col, const QuadTextureCoordinates& texCoords);
 
         TileCoordinate vectorToTileCoordinate(const math::Vector2f& vec);
+
+        virtual void onEvent(const input::InputEventType& eventType);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:

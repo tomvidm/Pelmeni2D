@@ -56,6 +56,10 @@ namespace p2d { namespace graphics {
         };
     }
 
+    void Tilemap::onEvent(const input::InputEventType& eventType) {
+        ;
+    }
+
     sf::Vertex* Tilemap::getQuadVertices(const size_t& row, const size_t& col) {
         const size_t quadIndex = col + numCols * row;
         return mesh.getQuadVertices(quadIndex);
