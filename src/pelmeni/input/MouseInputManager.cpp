@@ -1,3 +1,5 @@
+#include <cstdio>
+
 #include "input/MouseInputManager.hpp"
 
 namespace p2d { namespace input {

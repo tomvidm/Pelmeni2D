@@ -3,6 +3,10 @@
 #include "MouseButtonEvent.hpp"
 #include "MouseMoveEvent.hpp"
 
+namespace sf {
+    class RenderWindow;
+}
+
 namespace p2d { namespace input {
     enum InputEventType {
         WINDOW_CLOSED,
@@ -16,6 +20,7 @@ namespace p2d { namespace input {
 
         static const InputEvent Closed;
 
+        sf::RenderWindow* window;
         InputEventType eventType;
         union {
             MouseButtonEvent mouseButtonEvent;
