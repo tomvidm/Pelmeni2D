@@ -11,6 +11,11 @@
 #include "math/Vector.hpp"
 
 namespace p2d { namespace graphics {
+    struct TileCoordinate {
+        size_t row;
+        size_t col;
+    }; // struct Tileinfo
+
     class Tilemap : public sf::Drawable, public system::Transformable2 {
     public:
         void setTileSize(const math::Vector2f& tSize);
@@ -19,8 +24,12 @@ namespace p2d { namespace graphics {
 
         void setRenderGrid(const bool& yesno);
         void setTexture(const Texture& texture);
+        void setQuadColor(const TileCoordinate& tileCoordinate, const sf::Color& color);
         void setQuadColor(const size_t& row, const size_t& col, const sf::Color& color);
+        void setQuadTextureCoords(const TileCoordinate& tileCoordinate, const QuadTextureCoordinates& texCoords);
         void setQuadTextureCoords(const size_t& row, const size_t& col, const QuadTextureCoordinates& texCoords);
+
+        TileCoordinate vectorToTileCoordinate(const math::Vector2f& vec);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:

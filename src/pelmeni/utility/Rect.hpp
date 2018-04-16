@@ -21,14 +21,14 @@ namespace p2d { namespace utility {
         void operator += (const Vector2<T>& rhs);
         void operator *= (const float& factor);
 
-        inline Vector2<T> getWidth() const { return size.getX(); }
-        inline Vector2<T> getHeight() const { return size.getY(); }
+        inline T getWidth() const { return size.x; }
+        inline T getHeight() const { return size.y; }
         inline Vector2<T> getSize() const { return size; }
         inline Vector2<T> getCenter() const { return origin + size * 0.5f; }
 
         Rect<T> operator + (const Vector2<T>& rhs) const;
         Rect<T> operator * (const float& factor) const;
-    private:
+
         Vector2<T> origin;
         Vector2<T> size;
     }; // Rect

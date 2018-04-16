@@ -19,7 +19,7 @@ namespace p2d { namespace graphics {
         mesh.setMeshData(meshData);
         for (size_t r = 0; r < numRows; r++) {
             for (size_t c = 0; c < numCols; c++) {
-                setQuadColor(r, c, sf::Color(92, 92, 92));
+                setQuadColor(r, c, sf::Color(128, 128, 128));
             }
         }
     }
@@ -33,12 +33,27 @@ namespace p2d { namespace graphics {
         tilemapTexture = texture;
     }
 
+    void Tilemap::setQuadColor(const TileCoordinate& tileCoordinate, const sf::Color& color) {
+        setQuadColor(tileCoordinate.row, tileCoordinate.col, color);
+    }
+
     void Tilemap::setQuadColor(const size_t& row, const size_t& col, const sf::Color& color) {
         mesh.setQuadColor(row * numCols + col, color);
     }
 
+    void Tilemap::setQuadTextureCoords(const TileCoordinate& tileCoordinate, const QuadTextureCoordinates& texCoords) {
+        setQuadTextureCoords(tileCoordinate.row, tileCoordinate.col, texCoords);
+    }
+
     void Tilemap::setQuadTextureCoords(const size_t& row, const size_t& col, const QuadTextureCoordinates& texCoords)  {
         mesh.setQuadTextureCoordinates(row * numCols + col, texCoords);
+    }
+
+    TileCoordinate Tilemap::vectorToTileCoordinate(const math::Vector2f& vec) {
+        return TileCoordinate{
+            static_cast<size_t>(floorf((vec.y - getPosition().y) / tileSize.y)) % numRows,
+            static_cast<size_t>(floorf((vec.x - getPosition().x) / tileSize.x)) % numCols
+        };
     }
 
     sf::Vertex* Tilemap::getQuadVertices(const size_t& row, const size_t& col) {
