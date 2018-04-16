@@ -1,10 +1,15 @@
 #include "InputManager.hpp"
 
 namespace p2d { namespace input {
+    void InputManager::processEvents(sf::RenderWindow& window) {
+        collectInputEvents(window);
+        notifyListeners();
+    }
+
     void InputManager::collectInputEvents(sf::RenderWindow& window) {
         sf::Event sfmlEvent;
         while(window.pollEvent(sfmlEvent)) {
-            inputEvents.push_back(std::move(onEvent(sfmlEvent, window)));
+            inputEvents.push_back(std::move(translateSfmlEvent(sfmlEvent, window)));
         } // while
     } // collectInputEvents
 
@@ -22,7 +27,7 @@ namespace p2d { namespace input {
         eventListenerMap.insert(std::make_pair(eventType, listener));
     }
  
-    InputEvent InputManager::onEvent(const sf::Event& sfmlEvent, sf::RenderWindow& window) {
+    InputEvent InputManager::translateSfmlEvent(const sf::Event& sfmlEvent, sf::RenderWindow& window) {
         InputEvent inputEvent;
         switch (sfmlEvent.type) {
             case sf::Event::EventType::MouseMoved:
