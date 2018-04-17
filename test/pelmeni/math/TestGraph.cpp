@@ -4,7 +4,7 @@
 #include "math/graph/SearchBFS.hpp"
 
 namespace p2d { namespace math { namespace ut {
-    TEST(TestGraph, EdgeWorksFine) {
+    TEST(TestGraph, edges_works) {
         Node node_a;
         node_a.addEdge(Edge{1});
         node_a.addEdge(Edge{2});
@@ -14,7 +14,7 @@ namespace p2d { namespace math { namespace ut {
         EXPECT_TRUE(node_a.hasEdgeTo(3));
     }
 
-    TEST(TestGraph, GraphWorksFine) {
+    TEST(TestGraph, fill_BFS_works_fine) {
         Graph graph;
         size_t node_a = graph.addNode();
         size_t node_b = graph.addNode();
@@ -34,6 +34,26 @@ namespace p2d { namespace math { namespace ut {
 
         SearchBFS bfs_with_isolated_node(graph, isolated_node);
         EXPECT_EQ(bfs_with_isolated_node.fill().size(), 1);
+    }
+
+    TEST(TestGraph, shortest_path_BFS_works_fine) {
+        Graph graph;
+        size_t a = graph.addNode();
+        size_t b = graph.addNode();
+        size_t c = graph.addNode();
+        size_t d = graph.addNode();
+        size_t e = graph.addNode();
+
+        graph.connect(a, b, 1.f);
+        graph.connect(a, c, 4.f);
+        graph.connect(b, c, 1.f);
+        graph.connect(b, d, 3.f);
+        graph.connect(c, d, 1.f);
+        graph.connect(d, e, 1.f);
+
+        SearchBFS bfs_shortest_path(graph, a, e);
+        Path shortest_path = bfs_shortest_path.getShortestPath();
+        EXPECT_EQ(shortest_path.nodes.size(), 5);
     }
 }
 }

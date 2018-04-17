@@ -1,3 +1,5 @@
+#include <type_traits>
+
 #include "gtest/gtest.h"
 
 #include "utility/QuadContainer.hpp"
@@ -19,4 +21,8 @@ TEST(TestUtilities, QuadContainerWorksFine) {
     EXPECT_EQ(q.numElements(), 4);
     EXPECT_FALSE(q.push(1));
     EXPECT_EQ(q.numElements(), 4);
+
+    for (auto it = q.begin(); it != q.end(); it++) {
+        EXPECT_EQ(*it, 1);
+    }
 }
