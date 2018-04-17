@@ -7,6 +7,9 @@ add_library(p2d-math
     Random.cpp
     Transform.cpp
     Transform3.cpp
+    graph/Graph.cpp
+    graph/Node.cpp
+    graph/SearchBFS.cpp
     )
 
 set_target_properties(p2d-math

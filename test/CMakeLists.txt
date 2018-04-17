@@ -7,6 +7,7 @@ set(TEST_SOURCES
     pelmeni/input/TestMouseButtonState.cpp
     pelmeni/input/TestMouseState.cpp
 
+    pelmeni/math/TestGraph.cpp
     pelmeni/math/TestLerpAndClamp.cpp
     pelmeni/math/TestTransform3.cpp
     pelmeni/math/TestTransform.cpp
@@ -17,6 +18,7 @@ set(TEST_SOURCES
     
     pelmeni/utility/TestPool.cpp
     pelmeni/utility/TestQuadContainer.cpp
+    pelmeni/utility/TestGridIndex.cpp
 )
 
 
