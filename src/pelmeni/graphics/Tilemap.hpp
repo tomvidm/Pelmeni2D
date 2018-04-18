@@ -10,6 +10,7 @@
 #include "graphics/Texture.hpp"
 #include "system/Transformable2.hpp"
 #include "math/Vector.hpp"
+#include "math/graph/Graph.hpp"
 
 namespace p2d { namespace graphics {
     struct TileCoordinate {
@@ -19,8 +20,7 @@ namespace p2d { namespace graphics {
 
     class Tilemap : 
         public sf::Drawable, 
-        public system::Transformable2,
-        public input::InputListener {
+        public system::Transformable2 {
     public:
         void setTileSize(const math::Vector2f& tSize);
         void setTilemapSize(const size_t& rows, const size_t& cols);
@@ -37,10 +37,8 @@ namespace p2d { namespace graphics {
 
         TileCoordinate vectorToTileCoordinate(const math::Vector2f& vec);
 
-        virtual void onEvent(const input::InputEvent& event);
-
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    private:
+    protected:
         bool renderGrid;
         math::Vector2f tileSize;
         size_t numRows;

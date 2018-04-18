@@ -60,11 +60,7 @@ namespace p2d { namespace graphics {
             static_cast<size_t>(floorf((vec.x - getPosition().x) / tileSize.x)) % numCols
         };
     }
-
-    void Tilemap::onEvent(const input::InputEvent& event) {
-        ;
-    }
-
+    
     sf::Vertex* Tilemap::getQuadVertices(const size_t& row, const size_t& col) {
         const size_t quadIndex = col + numCols * row;
         return mesh.getQuadVertices(quadIndex);

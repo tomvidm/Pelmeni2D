@@ -1,6 +1,10 @@
 #include "math/graph/TilemapGraph.hpp"
 
 namespace p2d { namespace math {
+    TilemapGraph::TilemapGraph() {
+        ;
+    }
+    
     TilemapGraph::TilemapGraph(const Heightmap& heightmap) 
     : numRows(heightmap.rows), numCols(heightmap.cols) {
         addNodes(numRows * numCols);
@@ -8,6 +12,11 @@ namespace p2d { namespace math {
     }
 
     const CostCounter& TilemapGraph::getPrecalculatedCosts() const {
+        return precalculatedCosts;
+    }
+
+    const CostCounter& TilemapGraph::getPrecalculatedCosts(const size_t sourceNode) {
+        precalculateCostsFromNode(sourceNode);
         return precalculatedCosts;
     }
 
