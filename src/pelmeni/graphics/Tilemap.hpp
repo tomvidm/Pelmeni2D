@@ -18,7 +18,8 @@ namespace p2d { namespace graphics {
     }; // struct Tileinfo
 
     class Tilemap : 
-        public sf::Drawable, public system::Transformable2,
+        public sf::Drawable, 
+        public system::Transformable2,
         public input::InputListener {
     public:
         void setTileSize(const math::Vector2f& tSize);
@@ -32,9 +33,11 @@ namespace p2d { namespace graphics {
         void setQuadTextureCoords(const TileCoordinate& tileCoordinate, const QuadTextureCoordinates& texCoords);
         void setQuadTextureCoords(const size_t& row, const size_t& col, const QuadTextureCoordinates& texCoords);
 
+        sf::Color getQuadColor(const size_t& row, const size_t& col);
+
         TileCoordinate vectorToTileCoordinate(const math::Vector2f& vec);
 
-        virtual void onEvent(const input::InputEventType& eventType);
+        virtual void onEvent(const input::InputEvent& event);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:

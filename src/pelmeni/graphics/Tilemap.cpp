@@ -49,6 +49,11 @@ namespace p2d { namespace graphics {
         mesh.setQuadTextureCoordinates(row * numCols + col, texCoords);
     }
 
+    sf::Color Tilemap::getQuadColor(const size_t& row, const size_t& col) {
+        sf::Vertex* v = getQuadVertices(row, col);
+        return v[0].color;
+    }
+
     TileCoordinate Tilemap::vectorToTileCoordinate(const math::Vector2f& vec) {
         return TileCoordinate{
             static_cast<size_t>(floorf((vec.y - getPosition().y) / tileSize.y)) % numRows,
@@ -56,7 +61,7 @@ namespace p2d { namespace graphics {
         };
     }
 
-    void Tilemap::onEvent(const input::InputEventType& eventType) {
+    void Tilemap::onEvent(const input::InputEvent& event) {
         ;
     }
 
