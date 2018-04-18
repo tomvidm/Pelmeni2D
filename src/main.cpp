@@ -32,7 +32,7 @@ int main() {
     float elevation[rows][cols];
     for (size_t r = 0; r < rows; r++) {
         for (size_t c = 0; c < cols; c++) {
-            elevation[r][c] = 255.f * randf();
+            elevation[r][c] = 255.f * std::min(randf(), std::min(randf(), randf()));
         }
     }
 
@@ -40,14 +40,18 @@ int main() {
         for (size_t c = 0; c < cols; c++) {
             const size_t i = r * cols + c;
             if (r < rows - 1) {
-                const float weight = abs(elevation[r][c] - elevation[r + 1][c]);
+                const float weightTo = std::max(0.f, elevation[r + 1][c] - elevation[r][c]);
+                const float weightFrom = std::max(0.f, elevation[r][c] - elevation[r + 1][c]);
                 const size_t i_down = (r + 1) * cols + c;
-                graph.connect(i, i_down, weight);
+                graph.connectTo(i, i_down, weightTo);
+                graph.connectTo(i_down, i, weightFrom);
             }
             if (c < cols - 1) {
-                const float weight = abs(elevation[r][c] - elevation[r][c + 1]);
+                const float weightTo = std::max(0.f, elevation[r][c + 1] - elevation[r][c]);
+                const float weightFrom = std::max(0.f, elevation[r][c] - elevation[r][c + 1]);
                 const size_t i_right = r * cols + c + 1;
-                graph.connect(i, i_right, weight);
+                graph.connectTo(i, i_right, weightTo);
+                graph.connectTo(i_right, i, weightFrom);
             }
 
         }
