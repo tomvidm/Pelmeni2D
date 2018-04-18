@@ -3,17 +3,14 @@
 #include "math/graph/Graph.hpp"
 
 namespace p2d { namespace math {
-    size_t Graph::addNode() {
-        adjacencyList.push_back(Node());
+    size_t Graph::addNodes(const size_t numNodes) {
+        adjacencyList.resize(adjacencyList.size() + numNodes);
         return adjacencyList.size() - 1;
     }
 
-    std::vector<size_t> Graph::addNodes(const size_t numNodes) {
-        std::vector<size_t> ids;
-        for (size_t i = 0; i < numNodes; i++) {
-            ids.push_back(addNode());
-        }
-        return ids;
+    size_t Graph::addNode() {
+        adjacencyList.push_back(Node());
+        return adjacencyList.size() - 1;
     }
 
     void Graph::connect(const size_t node_a, const size_t node_b, const float weight) {
@@ -37,6 +34,10 @@ namespace p2d { namespace math {
 
     const AdjacencyList& Graph::getAdjacencyList() const {
         return adjacencyList;
+    }
+
+    const Node& Graph::operator[] (const size_t node) const {
+        return adjacencyList[node];
     }
 }
 }

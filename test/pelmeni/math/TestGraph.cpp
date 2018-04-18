@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "math/graph/Graph.hpp"
-#include "math/graph/SearchBFS.hpp"
+#include "math/graph/Dijkstra.hpp"
 
 namespace p2d { namespace math { namespace ut {
     TEST(TestGraph, edges_works) {
@@ -14,29 +14,7 @@ namespace p2d { namespace math { namespace ut {
         EXPECT_TRUE(node_a.hasEdgeTo(3));
     }
 
-    TEST(TestGraph, fill_BFS_works_fine) {
-        Graph graph;
-        size_t node_a = graph.addNode();
-        size_t node_b = graph.addNode();
-        size_t node_c = graph.addNode();
-
-        graph.connect(node_a, node_b);
-        graph.connect(node_b, node_c);
-
-        EXPECT_TRUE(graph.isConnected(node_a, node_b));
-        EXPECT_TRUE(graph.isConnected(node_b, node_c));
-        EXPECT_FALSE(graph.isConnected(node_a, node_c));
-
-        SearchBFS bfs_without_isolated_node(graph, node_a);
-        EXPECT_EQ(bfs_without_isolated_node.fill().size(), 3);
-
-        size_t isolated_node = graph.addNode();
-
-        SearchBFS bfs_with_isolated_node(graph, isolated_node);
-        EXPECT_EQ(bfs_with_isolated_node.fill().size(), 1);
-    }
-
-    TEST(TestGraph, shortest_path_BFS_works_fine) {
+    TEST(TestGraph, shortest_path_Dijkstra_works_fine) {
         Graph graph;
         size_t a = graph.addNode();
         size_t b = graph.addNode();
@@ -51,9 +29,17 @@ namespace p2d { namespace math { namespace ut {
         graph.connect(c, d, 1.f);
         graph.connect(d, e, 1.f);
 
-        SearchBFS bfs_shortest_path(graph, a, e);
-        Path shortest_path = bfs_shortest_path.getShortestPath();
-        EXPECT_EQ(shortest_path.nodes.size(), 5);
+        Path shortestPath = shortestPath_Dijkstra(graph, a, e);
+
+        Step expected_steps[] = {
+            Step{0, 0, 0.f},
+            Step{1, 0, 1.f},
+            Step{2, 1, 2.f},
+            Step{3, 2, 3.f},
+            Step{4, 3, 4.f}
+        };
+
+        EXPECT_EQ(shortestPath[0], expected_steps[0]);
     }
 }
 }

@@ -9,7 +9,7 @@ add_library(p2d-math
     Transform3.cpp
     graph/Graph.cpp
     graph/Node.cpp
-    graph/SearchBFS.cpp
+    graph/Dijkstra.cpp
     )
 
 set_target_properties(p2d-math
