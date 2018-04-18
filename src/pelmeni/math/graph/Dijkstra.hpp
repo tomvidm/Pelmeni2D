@@ -6,16 +6,11 @@
 
 namespace p2d { namespace math {
     struct Candidate {
-        struct Compare {
-            bool operator() (const Candidate& lhs, const Candidate& rhs) {
-                return lhs.cost < rhs.cost;
-            }
-        }; // struct Candidate::Compare
         size_t nodeId;
         float cost;
     }; // struct Candidate
 
-    using CandidateQueue = std::priority_queue<Candidate, std::deque<Candidate>, Candidate::Compare>;
+    using CandidateQueue = std::queue<Candidate>;
 
     struct Step {
         size_t thisNode;

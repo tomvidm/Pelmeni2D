@@ -1,102 +1,110 @@
 #include <iostream>
+#include <memory>
 #include <cstdio>
+#include <cstdlib>
+#include <time.h>
 #include <tuple>
 
-#include "SFML/Graphics.hpp"
-#include "experimental/Gish.hpp"
-#include "math/Vector.hpp"
-#include "physics/Body2D.hpp"
-#include "physics/Spring2D.hpp"
-#include "physics/Physics.hpp"
 
-p2d::math::Vector2f getMousePosition(sf::RenderWindow& window) {
-    const sf::Vector2i mpos = sf::Mouse::getPosition(window);
-    return ::p2d::math::Vector2f(
-        static_cast<float>(mpos.x),
-        static_cast<float>(mpos.y)
-        );
+#include "SFML/Graphics.hpp"
+
+#include "math/graph/Graph.hpp"
+#include "math/graph/Dijkstra.hpp"
+
+#include "graphics/Tilemap.hpp"
+
+float randf() {
+    const float r = static_cast<float>(rand());
+    const float r_max = static_cast<float>(RAND_MAX);
+    return r / r_max;
 }
 
 int main() {
     using namespace p2d;
-    experimental::Gish g;
-    std::vector<physics::Body2D> bodies = {
-        physics::Body2D(math::Vector2f(300.f, 100.f), 1.f),
-        physics::Body2D(math::Vector2f(250.f, 150.f), 1.f),
-        physics::Body2D(math::Vector2f(350.f, 150.f), 1.f),
-        physics::Body2D(math::Vector2f(250.f, 200.f), 1.f),
-        physics::Body2D(math::Vector2f(350.f, 200.f), 1.f),
-        physics::Body2D(math::Vector2f(250.f, 250.f), 1.f),
-        physics::Body2D(math::Vector2f(350.f, 250.f), 1.f),
-        physics::Body2D(math::Vector2f(250.f, 300.f), 1.f),
-        physics::Body2D(math::Vector2f(350.f, 300.f), 1.f),
-        physics::Body2D(math::Vector2f(300.f, 350.f), 1.f)
-    };
+    const size_t rows = 128;
+    const size_t cols = 128;
 
-    std::vector<std::tuple<size_t, size_t>> edges = {
-        std::make_tuple(0,1),
-        std::make_tuple(0,2),
-        std::make_tuple(1,2),
-        std::make_tuple(1,3),
-        std::make_tuple(1,4),
-        std::make_tuple(2,4),
-        std::make_tuple(2,3),
-        std::make_tuple(3,4),
-        std::make_tuple(3,5),
-        std::make_tuple(3,6),
-        std::make_tuple(4,6),
-        std::make_tuple(4,5),
-        std::make_tuple(5,6),
-        std::make_tuple(5,7),
-        std::make_tuple(5,8),
-        std::make_tuple(6,7),
-        std::make_tuple(6,8),
-        std::make_tuple(7,8),
-        std::make_tuple(7,9),
-        std::make_tuple(8,9)
-    };
+    srand(time(NULL));
 
-    //bodies[0].setFixed(true);
-    bodies[9].setFixed(true);
+    math::Graph graph;
+    graph.addNodes(rows * cols);
 
-    sf::VertexArray vertices;
-    vertices.setPrimitiveType(sf::PrimitiveType::Lines);
-    vertices.resize(2 * edges.size());
+    float elevation[rows][cols];
+    for (size_t r = 0; r < rows; r++) {
+        for (size_t c = 0; c < cols; c++) {
+            elevation[r][c] = 255.f * randf();
+        }
+    }
 
-    physics::Spring2D spring(15.f, 0.5f, 70.f);
+    for (size_t r = 0; r < rows; r++) {
+        for (size_t c = 0; c < cols; c++) {
+            const size_t i = r * cols + c;
+            if (r < rows - 1) {
+                const float weight = abs(elevation[r][c] - elevation[r + 1][c]);
+                const size_t i_down = (r + 1) * cols + c;
+                graph.connect(i, i_down, weight);
+            }
+            if (c < cols - 1) {
+                const float weight = abs(elevation[r][c] - elevation[r][c + 1]);
+                const size_t i_right = r * cols + c + 1;
+                graph.connect(i, i_right, weight);
+            }
+            if (c < cols - 1 && r < rows - 1) {
+                const float weight_diag0 = abs(elevation[r][c] - elevation[r + 1][c + 1]);
+                const float weight_diag1 = abs(elevation[r + 1][c] - elevation[r][c + 1]);
+                const size_t i_diag0 = (r + 1) * cols + c + 1;
+                const size_t i_diag1_a = (r + 1) * cols + c;
+                const size_t i_diag1_b = r * cols + c + 1;
+                graph.connect(i, i_diag0, weight_diag0);
+                graph.connect(i_diag1_a, i_diag1_b, weight_diag1);
+            }
+        }
+    }
 
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Testapp_WireMesh");
-    sf::Clock timer;
+    graphics::Tilemap tmap;
+    tmap.setTilemapSize(rows, cols);
+    tmap.setTileSize(math::Vector2f(4.f, 4.f));
+    tmap.buildTilemap();
+    tmap.setRenderGrid(false);
+
+
+    sf::RenderWindow window(sf::VideoMode(800, 600), "main.cpp");
     sf::Event event;
+
+    sf::Clock timer;
     while (window.isOpen()) {
-        const float dt = timer.restart().asSeconds();
-        const math::Vector2f mpos = getMousePosition(window);
+        if (timer.getElapsedTime() > sf::milliseconds(10.f)) {
+            timer.restart();
+            const math::Vector2i mpos_pixel = sf::Mouse::getPosition(window);
+            const math::Vector2f mpos_screen = window.mapPixelToCoords(mpos_pixel);
+            const graphics::TileCoordinate tileCoords = tmap.vectorToTileCoordinate(mpos_screen);
+            const size_t mrow = tileCoords.row;
+            const size_t mcol = tileCoords.col;
+            const size_t mi = mrow * cols + mcol;
 
-        bodies[9].setPosition(mpos);
+            const size_t startNode = 0;
+            const size_t endNode = mi;
 
-        for (auto& edge : edges) {
-            physics::Body2D& b0 = bodies[std::get<0>(edge)];
-            physics::Body2D& b1 = bodies[std::get<1>(edge)];
-            const physics::Force2 force = spring.calculateForce(b0, b1);
-            b0.applyForce(-force, dt);
-            b1.applyForce(force, dt);
-        }
+            math::Path shortestPath = math::shortestPath_Dijkstra(graph, startNode, endNode);
 
-        for (auto& body : bodies) {
-            body.applyForce(physics::getDrag(body.getVelocity(), 0.02), dt);
-        }
-
-        for (auto& body : bodies) {
-            body.update(dt);
-        }
-
-        for (size_t i = 0; i < edges.size(); i++) {
-            const size_t a = std::get<0>(edges[i]);
-            const size_t b = std::get<1>(edges[i]);
-            const math::Vector2f v0 = bodies[a].getPosition();
-            const math::Vector2f v1 = bodies[b].getPosition();
-            vertices[2*i].position = v0;
-            vertices[2*i + 1].position = v1;
+            for (size_t r = 0; r < rows; r++) {
+                for (size_t c = 0; c < cols; c++) {
+                    const float tileElevation = elevation[r][c];
+                    tmap.setQuadColor(r, c, sf::Color(tileElevation, tileElevation, tileElevation));
+                }
+            }
+            //printf("Shortest path\n");
+            for (auto& step : shortestPath) {
+                const size_t i = step.thisNode;
+                const size_t col = i % cols;
+                const size_t row = (i - col) / cols;
+                //printf("%zu - (%zu, %zu)\n", i, row, col);
+                if (step.costToThis < 5.f) {
+                    tmap.setQuadColor(row, col, sf::Color::Green);
+                } else {
+                    tmap.setQuadColor(row, col, sf::Color::Red);
+                }
+            }
         }
 
         while (window.pollEvent(event)) {
@@ -104,11 +112,11 @@ int main() {
                 window.close();
             }
         }
-        g.update(dt);
+
         window.clear();
-        window.draw(vertices);
-       // window.draw(g);
+        window.draw(tmap);
         window.display();
+
     }
 
     return 0;

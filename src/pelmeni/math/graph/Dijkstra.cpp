@@ -10,8 +10,8 @@ namespace p2d { namespace math {
 
         size_t currentNode = nodeEnd;
         while (currentNode != nodeStart) {
-            currentNode = costCounter[currentNode].previousNode;
             shortestPath.push_back(costCounter[currentNode]);
+            currentNode = costCounter[currentNode].previousNode;
         }
 
         shortestPath.push_back(costCounter[nodeStart]);
@@ -26,7 +26,7 @@ namespace p2d { namespace math {
         CostCounter costCounter = prepareInititalCostCounter(graph.getAdjacencyList().size(), sourceNode);
 
         while (!candidateQueue.empty()) {
-            const Candidate currentCandidate = candidateQueue.top();
+            const Candidate currentCandidate = candidateQueue.front();
             const Node& currentNode = graph[currentCandidate.nodeId];
             const EdgeList& edges = currentNode.getEdges();
             candidateQueue.pop();
