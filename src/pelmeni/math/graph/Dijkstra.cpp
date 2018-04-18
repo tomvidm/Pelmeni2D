@@ -32,7 +32,7 @@ namespace p2d { namespace math {
             candidateQueue.pop();
             
             for (auto& edge : edges) {
-                const size_t targetNode = edge.nodeId;
+                const size_t targetNode = edge.nodeEnd;
                 const float costHere = costCounter[currentCandidate.nodeId].costToThis;
                 const float costThere = costCounter[targetNode].costToThis;
                 const float costAcrossEdge = edge.weight;

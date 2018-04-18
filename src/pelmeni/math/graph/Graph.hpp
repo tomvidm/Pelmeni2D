@@ -13,6 +13,7 @@ namespace p2d { namespace math {
         size_t addNode();
 
         void connect(const size_t node_a, const size_t node_b, const float weight = 1.f);
+        void connectTo(const size_t node_a, const size_t node_b, const float weight = 1.f);
         bool isConnected(const size_t node_a, const size_t node_b) const;
         bool isConnectedTo(const size_t node_a, const size_t node_b) const;
 

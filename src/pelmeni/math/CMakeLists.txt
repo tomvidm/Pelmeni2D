@@ -10,6 +10,7 @@ add_library(p2d-math
     graph/Graph.cpp
     graph/Node.cpp
     graph/Dijkstra.cpp
+    graph/TilemapGraph.cpp
     )
 
 set_target_properties(p2d-math

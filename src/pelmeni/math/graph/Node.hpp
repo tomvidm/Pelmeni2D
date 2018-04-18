@@ -5,7 +5,8 @@
 
 namespace p2d { namespace math {
     struct Edge {
-        size_t nodeId;
+        size_t nodeBegin;
+        size_t nodeEnd;
         float weight;
     }; // struct Edge
 

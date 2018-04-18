@@ -6,7 +6,7 @@ namespace p2d { namespace math {
 
     bool Node::hasEdgeTo(const size_t node) const {
         for (auto& edge : edges) {
-            if (edge.nodeId == node) {
+            if (edge.nodeEnd == node) {
                 return true;
             }
         } 

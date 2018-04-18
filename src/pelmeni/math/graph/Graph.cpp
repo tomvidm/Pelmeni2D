@@ -15,8 +15,14 @@ namespace p2d { namespace math {
 
     void Graph::connect(const size_t node_a, const size_t node_b, const float weight) {
         if (std::max(node_a, node_b) < adjacencyList.size()) {
-            adjacencyList[node_a].addEdge(Edge{node_b, weight});    
-            adjacencyList[node_b].addEdge(Edge{node_a, weight});
+            adjacencyList[node_a].addEdge(Edge{node_a, node_b, weight});    
+            adjacencyList[node_b].addEdge(Edge{node_a, node_a, weight});
+        }
+    }
+
+    void Graph::connectTo(const size_t node_a, const size_t node_b, const float weight) {
+        if (std::max(node_a, node_b) < adjacencyList.size()) {
+            adjacencyList[node_a].addEdge(Edge{node_a, node_b, weight});    
         }
     }
 
