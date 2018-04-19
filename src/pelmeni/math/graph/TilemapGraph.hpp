@@ -6,8 +6,8 @@
 namespace p2d { namespace math {
     struct Heightmap {
         using HeightmapData = std::vector<std::vector<float>>;
-        const size_t rows;
-        const size_t cols;
+        size_t rows;
+        size_t cols;
         HeightmapData data;
     }; // struct Heightmap
 
@@ -16,21 +16,10 @@ namespace p2d { namespace math {
         COST_BY_TARGET_COLOUR
     };
 
-    class TilemapGraph : public Graph{
+    class TilemapGraph : protected Graph{
     public:
         TilemapGraph();
-        TilemapGraph(const Heightmap& heightmap);
-
-        void setHeightmap(const Heightmap& heightmap);
-
-        const CostCounter& getPrecalculatedCosts() const;
-        const CostCounter& getPrecalculatedCosts(const size_t sourceNode);
-        void precalculateCostsFromNode(const size_t sourceNode);
-    private:
-        void buildGraphFromHeightmap(const Heightmap& heightmap);
-        const size_t numRows;
-        const size_t numCols;
-        CostCounter precalculatedCosts;
+        void buildGraphFromHeightmap(const Heightmap& argheightmap);
     }; // class TilemapGraph
 }
 }

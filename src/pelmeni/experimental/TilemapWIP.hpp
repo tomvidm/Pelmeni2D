@@ -9,13 +9,15 @@
 
 namespace p2d { namespace experimental {
     class TilemapWIP
-    : public math::TilemapGraph,
-      public graphics::Tilemap,
-      public input::InputListener
+    : public input::InputListener,
+      public math::TilemapGraph,
+      public graphics::Tilemap
       /* public system::Transformable2, */
       /* public sf::Drawable */ {
     public:
+        
         virtual void onEvent(const input::InputEvent& event);
+        virtual void onMouseButtonEvent(const input::InputEvent& event);
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states);
     }; // class Tilemap
 }

@@ -18,4 +18,5 @@ target_link_libraries(p2d-run
     p2d-system
     p2d-math
     p2d-physics
+    p2d-input
 )
