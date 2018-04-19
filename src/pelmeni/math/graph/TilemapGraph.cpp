@@ -1,11 +1,26 @@
 #include "math/graph/TilemapGraph.hpp"
 
 namespace p2d { namespace math {
+    Heightmap buildRandomHeightmap(const size_t rows, const size_t cols) {
+        Heightmap hm;
+        hm.rows = rows;
+        hm.cols = cols;
+        hm.data.resize(rows);
+        for (size_t r = 0; r < rows; r++) {
+            hm.data[r].resize(cols);
+            for (size_t c = 0; c < cols; c++) {
+                hm.data[r][c] = 2.f * std::min(rand(), rand());
+            }
+        }
+        return hm;
+    }
+
     TilemapGraph::TilemapGraph() {
         ;
     }
 
     void TilemapGraph::buildGraphFromHeightmap(const Heightmap& heightmap) {
+        addNodes(heightmap.rows * heightmap.cols);
         for (size_t r = 0; r < heightmap.rows; r++) {
             for (size_t c = 0; c < heightmap.cols; c++) {
                 const float weightHere = heightmap.data[r][c];

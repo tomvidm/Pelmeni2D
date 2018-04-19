@@ -33,6 +33,7 @@ namespace p2d { namespace system {
   
         math::Transform getLocalTransform() const;
         math::Transform getRelativeTransform(const math::Transform& relTransform) const;
+        math::Transform getInverseLocalTransform() const;
     protected:
         mutable bool _needsUpdate;
         math::Vector2f position;
@@ -41,6 +42,7 @@ namespace p2d { namespace system {
         math::Radian rotation;
         
         mutable math::Transform localTransform;
+        mutable math::Transform inverseLocalTransform;
     }; // class Transformable
 } // namespace system
 } // namespace p2d

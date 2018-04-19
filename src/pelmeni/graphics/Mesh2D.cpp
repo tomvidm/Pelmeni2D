@@ -46,8 +46,8 @@ namespace p2d { namespace graphics {
 
         void Mesh2D::setQuadColor(const size_t& q, const sf::Color& color) {
             sf::Vertex* quad = getQuadVertices(q);
-            quad[1].color = color;
             quad[0].color = color;
+            quad[1].color = color;
             quad[2].color = color;
             quad[3].color = color;
         }

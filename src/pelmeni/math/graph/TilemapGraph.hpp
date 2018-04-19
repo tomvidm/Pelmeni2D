@@ -11,6 +11,8 @@ namespace p2d { namespace math {
         HeightmapData data;
     }; // struct Heightmap
 
+    Heightmap buildRandomHeightmap(const size_t rows, const size_t cols);
+
     enum class GraphBuildRules {
         DOWNSLOPE_IS_FREE,
         COST_BY_TARGET_COLOUR

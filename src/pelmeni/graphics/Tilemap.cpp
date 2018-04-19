@@ -55,9 +55,10 @@ namespace p2d { namespace graphics {
     }
 
     TileCoordinate Tilemap::vectorToTileCoordinate(const math::Vector2f& vec) {
+        const math::Vector2f vec_transformed = getInverseLocalTransform().transformVector(vec);
         return TileCoordinate{
-            static_cast<size_t>(floorf((vec.y - getPosition().y) / tileSize.y)) % numRows,
-            static_cast<size_t>(floorf((vec.x - getPosition().x) / tileSize.x)) % numCols
+            static_cast<size_t>(floorf((vec_transformed.y) / tileSize.y)) % numRows,
+            static_cast<size_t>(floorf((vec_transformed.x) / tileSize.x)) % numCols
         };
     }
     
