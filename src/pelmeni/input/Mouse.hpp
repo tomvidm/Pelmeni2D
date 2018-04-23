@@ -1,8 +1,11 @@
 #pragma once
 
+#include "SFML/Graphics.hpp"
 #include "math/Vector.hpp"
 
 namespace p2d { namespace input {
+    math::Vector2f getMousePosition(sf::RenderWindow& window);
+
     enum MouseButton {
         LEFT        = 0,
         RIGHT       = 1,

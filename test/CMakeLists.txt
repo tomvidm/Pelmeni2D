@@ -16,6 +16,7 @@ set(TEST_SOURCES
 
     pelmeni/Helpers.cpp
     
+    pelmeni/utility/TestArray.cpp
     pelmeni/utility/TestPool.cpp
     pelmeni/utility/TestQuadContainer.cpp
     pelmeni/utility/TestGridIndex.cpp

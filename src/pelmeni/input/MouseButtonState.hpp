@@ -15,6 +15,8 @@ namespace p2d { namespace input {
 
         MouseButtonEventType onPressEventType() const;
         MouseButtonEventType onReleaseEventType() const;
+        MouseButtonSecondaryEventType onPressSecondaryEventType() const;
+        MouseButtonSecondaryEventType onReleaseSecondaryEventType() const;
 
         bool releaseWillRegisterAsClick() const;
         bool pressWillRegisterAsDoubleClick() const;

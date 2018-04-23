@@ -4,6 +4,7 @@ set(SOURCES
     MouseButtonState.cpp
     MouseButtonEvent.cpp
     MouseState.cpp
+    Mouse.cpp
     MouseInputManager.cpp
     InputManager.cpp
     InputEvent.cpp

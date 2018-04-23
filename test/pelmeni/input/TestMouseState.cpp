@@ -9,6 +9,7 @@ TEST(TestMouseState, correctly_registers_click_and_double_click) {
     using p2d::input::MouseButton;
     using p2d::input::MouseButtonEvent;
     using p2d::input::MouseButtonEventType;
+    using p2d::input::MouseButtonSecondaryEventType;
 
     MouseState mState;
     MouseButtonEvent mbEvent;
@@ -19,12 +20,14 @@ TEST(TestMouseState, correctly_registers_click_and_double_click) {
 
     MouseButtonEvent expected_mbLeftDoubleClickEvent = {
         MouseButton::LEFT,
-        MouseButtonEventType::DOUBLECLICK
+        MouseButtonEventType::PRESS,
+        MouseButtonSecondaryEventType::DOUBLECLICK
     };
     
     MouseButtonEvent expected_mbLeftClickEvent = {
         MouseButton::LEFT,
-        MouseButtonEventType::CLICK
+        MouseButtonEventType::RELEASE,
+        MouseButtonSecondaryEventType::CLICK
     };
     
     sf::sleep(sf::milliseconds(200));

@@ -6,13 +6,14 @@
 TEST(TestMouseButtonState, correctly_registers_click) {
     using p2d::input::MouseButtonState;
     using p2d::input::MouseButtonEventType;
+    using p2d::input::MouseButtonSecondaryEventType;
 
     MouseButtonState mbState;
 
     mbState.press();
     sf::sleep(sf::milliseconds(150));
     EXPECT_TRUE(mbState.releaseWillRegisterAsClick());
-    EXPECT_EQ(mbState.onReleaseEventType(), MouseButtonEventType::CLICK);
+    EXPECT_EQ(mbState.onReleaseSecondaryEventType(), MouseButtonSecondaryEventType::CLICK);
     
     sf::sleep(sf::milliseconds(150));
     EXPECT_FALSE(mbState.releaseWillRegisterAsClick());
@@ -22,6 +23,7 @@ TEST(TestMouseButtonState, correctly_registers_click) {
 TEST(TestMouseButtonState, correctly_registers_doubleclick) {
     using p2d::input::MouseButtonState;
     using p2d::input::MouseButtonEventType;
+    using p2d::input::MouseButtonSecondaryEventType;
 
     MouseButtonState mbState;
 
@@ -33,5 +35,5 @@ TEST(TestMouseButtonState, correctly_registers_doubleclick) {
     mbState.release();
     sf::sleep(sf::milliseconds(50));
     EXPECT_TRUE(mbState.pressWillRegisterAsDoubleClick());
-    EXPECT_EQ(mbState.onPressEventType(), MouseButtonEventType::DOUBLECLICK);
+    EXPECT_EQ(mbState.onPressSecondaryEventType(), MouseButtonSecondaryEventType::DOUBLECLICK);
 }

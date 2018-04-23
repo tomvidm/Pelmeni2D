@@ -17,19 +17,23 @@ namespace p2d { namespace input {
     } // release
 
     MouseButtonEventType MouseButtonState::onPressEventType() const {
-        if (pressWillRegisterAsDoubleClick()) {
-            return MouseButtonEventType::DOUBLECLICK;
-        } else {
-            return MouseButtonEventType::PRESS;
-        }
+        return MouseButtonEventType::PRESS;
     }
     
     MouseButtonEventType MouseButtonState::onReleaseEventType() const {
+        return MouseButtonEventType::RELEASE;
+    }
+
+    MouseButtonSecondaryEventType MouseButtonState::onPressSecondaryEventType() const {
+        if (pressWillRegisterAsDoubleClick()) {
+            return MouseButtonSecondaryEventType::DOUBLECLICK;
+        } else return MouseButtonSecondaryEventType::NONE;
+    }
+
+    MouseButtonSecondaryEventType MouseButtonState::onReleaseSecondaryEventType() const {
         if (releaseWillRegisterAsClick()) {
-            return MouseButtonEventType::CLICK;
-        } else {
-            return MouseButtonEventType::RELEASE;
-        }
+            return MouseButtonSecondaryEventType::CLICK;
+        } else return MouseButtonSecondaryEventType::NONE;
     }
 
     bool MouseButtonState::releaseWillRegisterAsClick() const {
