@@ -1,9 +1,10 @@
 #include "Widget.hpp"
 
 namespace p2d { namespace gui {
-    Widget::Widget()
-    : widgetState(WidgetState::Idle) {
-        rectangle.setFillColor(sf::Color::White);
+    Widget::Widget() 
+    : style(WidgetStyle::Default),
+      options(WidgetOptions::Default) {
+        rectangle.setFillColor(style.fillColor);
         rectangle.setSize(math::Vector2f(300.f, 200.f));
     }
 
@@ -18,19 +19,9 @@ namespace p2d { namespace gui {
     void Widget::update() {
         boundingRect.origin = getPosition();
         boundingRect.size = rectangle.getSize();
-        if (inFocus) {
-            rectangle.setOutlineThickness(2.f);
-            rectangle.setOutlineColor(sf::Color::Red);
-            if (isDragged) {
-                rectangle.setOutlineColor(sf::Color::Green);
-            }
-        } else {
-            rectangle.setOutlineThickness(0.f);
-        }
     }
 
     void Widget::onEvent(const input::InputEvent& event) {
-        printf("onEvent\n");
         if (event.eventType == input::InputEventType::MOUSEBUTTON) {
             onMouseButtonEvent(event);
         }
@@ -44,7 +35,7 @@ namespace p2d { namespace gui {
 
     void Widget::onMouseMoveEvent(const input::InputEvent& event) {
         math::Vector2f mousePos = input::getMousePosition(*event.window);
-        if (isDragged) {
+        if (options.isMoveable && isDragged) {
             setPosition(mousePos - initialDragPosition);
         }
         if (boundingRect.contains(mousePos)) {
