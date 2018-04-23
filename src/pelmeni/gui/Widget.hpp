@@ -11,6 +11,10 @@
 #include "gui/WidgetStyle.hpp"
 #include "gui/WidgetOptions.hpp"
 namespace p2d { namespace gui {
+    enum class WidgetType {
+        BaseWidget
+    };
+
     class Widget 
     : public sf::Drawable, 
       public system::Transformable2,
@@ -23,6 +27,7 @@ namespace p2d { namespace gui {
     private:
         virtual void onMouseMoveEvent(const input::InputEvent& event);
         virtual void onMouseButtonEvent(const input::InputEvent& event);
+
         bool inFocus = false;
         bool isDragged = false;
 

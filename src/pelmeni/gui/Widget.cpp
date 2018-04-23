@@ -5,6 +5,8 @@ namespace p2d { namespace gui {
     : style(WidgetStyle::Default),
       options(WidgetOptions::Default) {
         rectangle.setFillColor(style.fillColor);
+        rectangle.setOutlineColor(style.outlineColor);
+        rectangle.setOutlineThickness(style.outlineThickness);
         rectangle.setSize(math::Vector2f(300.f, 200.f));
     }
 
@@ -60,6 +62,5 @@ namespace p2d { namespace gui {
             }
         }
     }
-
 } // namespace gui
 } // namespace p2d
