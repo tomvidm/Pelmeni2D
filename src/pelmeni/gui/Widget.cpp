@@ -43,8 +43,10 @@ namespace p2d { namespace gui {
     }
 
     void Widget::onMouseMoveEvent(const input::InputEvent& event) {
-        printf("onMouseMoveEvent\n");
         math::Vector2f mousePos = input::getMousePosition(*event.window);
+        if (isDragged) {
+            setPosition(mousePos - initialDragPosition);
+        }
         if (boundingRect.contains(mousePos)) {
             inFocus = true;
         } else {
@@ -53,13 +55,11 @@ namespace p2d { namespace gui {
     }
 
     void Widget::onMouseButtonEvent(const input::InputEvent& event) {
-        printf("onMouseButtonEvent\n");
         if (event.mouseButtonEvent.eventType == input::MouseButtonEventType::PRESS) {
-            printf("onMouseButtonEvent -> PRESS\n");
             if (event.mouseButtonEvent.button == input::MouseButton::LEFT) {
-                printf("onMouseButtonEvent -> PRESS -> LEFT\n");
                 const sf::Vector2f mousePosition = input::getMousePosition(*event.window);
                 if (boundingRect.contains(mousePosition)) {
+                    initialDragPosition = mousePosition - getPosition();
                     isDragged = true;
                 }
             }

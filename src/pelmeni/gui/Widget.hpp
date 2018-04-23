@@ -40,6 +40,8 @@ namespace p2d { namespace gui {
 
         sf::RectangleShape rectangle;
         utility::Rect<float> boundingRect;
+        
+        math::Vector2f initialDragPosition;
     }; // class Widget
 } // namespace gui
 } // namespace p2d
