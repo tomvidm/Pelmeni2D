@@ -4,6 +4,7 @@ set(SOURCES
     Widget.cpp
     WidgetStyle.cpp
     WidgetOptions.cpp
+    WidgetManager.cpp
 )
 
 add_library(p2d-gui
