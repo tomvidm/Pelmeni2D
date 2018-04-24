@@ -12,7 +12,8 @@
 #include "gui/WidgetOptions.hpp"
 namespace p2d { namespace gui {
     enum class WidgetType {
-        BaseWidget
+        BaseWidget,
+        TextBox
     };
 
     class Widget 
