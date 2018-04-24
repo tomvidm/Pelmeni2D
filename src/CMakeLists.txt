@@ -1,6 +1,7 @@
 project(pelmeni)
 
 add_subdirectory(pelmeni)
+add_subdirectory(tbsgame)
 
 add_executable(p2d-run
     main.cpp
@@ -19,4 +20,5 @@ target_link_libraries(p2d-run
     p2d-math
     p2d-physics
     p2d-input
+    p2d-gui
 )
