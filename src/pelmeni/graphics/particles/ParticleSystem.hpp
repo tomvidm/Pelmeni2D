@@ -2,14 +2,12 @@
 
 #include "SFML/Graphics.hpp"
 
-namespace p2d { namespace graphics { namespace particles {
+#include "graphics/particles/Particle2D.hpp"
+
+namespace p2d { namespace graphics {
     class ParticleSystem : public sf::Transformable {
-    public:
-        void updateVertices();
     private:
-        std::vector<Particle> particles;
-        sf::VertexArray vertices;
+        std::vector<Particle2D> particles;
     };
-} // namespace particles
 } // namespace graphics
 } // namespace p2d

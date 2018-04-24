@@ -15,6 +15,7 @@ set(SOURCES
     Tilemap.cpp
     WireMesh.cpp
     ../json/Helpers.cpp
+    particles/Particle2D.cpp
 )
 
 include_directories(

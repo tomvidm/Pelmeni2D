@@ -5,6 +5,7 @@
 namespace p2d { namespace graphics {
     void AnimationState::setFrameSequence(FrameSequence& fSequence) {
         frameSequencePtr = &fSequence;
+        resetAnimation();
     } // setAnimation
 
     void AnimationState::resetAnimation() {
@@ -25,7 +26,7 @@ namespace p2d { namespace graphics {
         } // if else
     } // update
 
-    sf::Rect<int>& AnimationState::getCurrentFrameRect() const {
+    sf::Rect<float>& AnimationState::getCurrentFrameRect() const {
         return getCurrentFrame().frameRect;
     } // getCurrentFrameRect
 

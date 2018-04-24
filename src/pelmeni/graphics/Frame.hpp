@@ -5,20 +5,20 @@
 
 namespace p2d { namespace graphics {
     struct Frame {
-        Frame(const sf::Time& t, const sf::Rect<int>& rect)
+        Frame(const sf::Time& t, const sf::Rect<float>& rect)
         : duration(t), frameRect(rect) {;}
 
         Frame(const sf::Time& t,
-              const int x,
-              const int y,
-              const int xsize,
-              const int ysize)
+              const float x,
+              const float y,
+              const float xsize,
+              const float ysize)
         : duration(t) {
-            frameRect = sf::Rect<int>(x, y, xsize, ysize);
+            frameRect = sf::Rect<float>(x, y, xsize, ysize);
         }
         
         sf::Time duration;
-        sf::Rect<int> frameRect;
+        sf::Rect<float> frameRect;
     }; // struct Frame
 } // namespace graphics
 } // namespace p2d

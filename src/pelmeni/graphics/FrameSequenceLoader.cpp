@@ -14,10 +14,10 @@ namespace p2d { namespace graphics {
         
         for (auto& frame : jsonEntry["frames"].GetArray()) {
             const sf::Time framePeriod = sf::milliseconds(frame[0].GetInt());
-            const int x = frame[1].GetInt();
-            const int y = frame[2].GetInt();
-            const int xsize = frame[3].GetInt();
-            const int ysize = frame[4].GetInt();
+            const float x = static_cast<float>(frame[1].GetInt());
+            const float y = static_cast<float>(frame[2].GetInt());
+            const float xsize = static_cast<float>(frame[3].GetInt());
+            const float ysize = static_cast<float>(frame[4].GetInt());
             fSequence->addFrame(Frame(framePeriod, x, y, xsize, ysize));
         }
 

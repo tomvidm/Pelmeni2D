@@ -28,7 +28,7 @@ namespace p2d { namespace system {
     }
 
     void Entity::update(const sf::Time& dt) {
-        sprite.update(dt);
+        // sprite.update(dt);
     }
 } // namespace system
 } // namespace p2d
