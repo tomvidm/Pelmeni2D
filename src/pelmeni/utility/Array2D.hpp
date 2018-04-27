@@ -25,7 +25,7 @@ namespace p2d { namespace utility {
     template <typename T>
     void Array2D<T>::resize(const size_t& rows, const size_t& cols) {
         data.resize(rows);
-        for (auto row& : data) {
+        for (auto& row : data) {
             row.resize(cols);
         } // allocate columns
     } // allocate rows and columns

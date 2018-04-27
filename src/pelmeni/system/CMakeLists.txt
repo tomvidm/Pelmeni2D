@@ -21,7 +21,6 @@ include_directories(
 
 add_library(p2d-system
     ${SOURCES}
-
 )
 
 target_link_libraries(p2d-system

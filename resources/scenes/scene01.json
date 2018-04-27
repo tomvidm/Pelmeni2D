@@ -17,9 +17,22 @@
             "blueprint": "link",
             "initial_state": {
                 "transform": {
-                    "position": [50, 0],
-                    "scale": [5, 3],
-                    "rotation": 30
+                    "position": [50, 50],
+                    "scale": [3, 3],
+                    "rotation": 0
+                },
+                "parent_id": 0,
+                "children_id": []
+            }
+        },
+        {
+            "alias": "link",
+            "blueprint": "link",
+            "initial_state": {
+                "transform": {
+                    "position": [350, 150],
+                    "scale": [3, 3],
+                    "rotation": 45
                 },
                 "parent_id": 0,
                 "children_id": []
