@@ -4,20 +4,16 @@
 #include <cstdlib>
 #include <time.h>
 #include <tuple>
+#include <array>
 
 
 #include "SFML/Graphics.hpp"
 
-#include "math/graph/Graph.hpp"
-#include "math/graph/Dijkstra.hpp"
-
+#include "graphics/TextureManager.hpp"
+#include "graphics/SpritePackManager.hpp"
 #include "input/InputManager.hpp"
-#include "graphics/Tilemap.hpp"
-#include "math/graph/TilemapGraph.hpp"
-#include "experimental/TilemapWIP.hpp"
-#include "gui/Widget.hpp"
-#include "gui/WidgetManager.hpp"
-#include "system/Scene.hpp"
+
+#include "graphics/Sprite.hpp"
 
 float randf() {
     const float r = static_cast<float>(rand());
@@ -27,34 +23,45 @@ float randf() {
 
 int main() {
     using namespace p2d;
-    const size_t rows = 155;
-    const size_t cols = 155;
 
     srand(time(NULL));
-    gui::WidgetManager wm;
-    wm.createWidget(gui::WidgetType::BaseWidget);
-    wm.createWidget(gui::WidgetType::BaseWidget);
+    input::InputManager inputManager;
+    graphics::TextureManager tmgr;
+    graphics::SpritePackManager spmgr;
 
+    tmgr.loadTexturesFromList("textures/test_textures.json");
+    spmgr.loadSpritePacksFromList("sprites/test_sprites.json", &tmgr);
+
+    std::array<graphics::Sprite, 200> sprites;
+    for (auto& sprite : sprites) {
+        sprite.setSpritePack(spmgr.get("test_sprite01"));
+        sprite.setAnimation("default");
+        sprite.setPosition(math::Vector2f(800.f * randf(), 600.f * randf()));
+        sprite._animationState.update(sf::seconds(randf()));
+    }
+
+//  SFML
     sf::RenderWindow window(sf::VideoMode(800, 600), "main.cpp");
     sf::Clock timer;
     sf::Event event;
-    input::InputManager inputManager;
+//  SFML
 
-    inputManager.registerListener(input::InputEventType::MOUSEMOVE, &wm);
-    inputManager.registerListener(input::InputEventType::MOUSEBUTTON, &wm);
+    sf::Time dt;
     while (window.isOpen()) {
         inputManager.collectInputEvents(window);
         inputManager.processEvents(window);
         if (timer.getElapsedTime() > sf::milliseconds(10.f)) {
-            timer.restart();
+            dt = timer.restart();
             while (window.pollEvent(event)) {
                 if (event.type == sf::Event::Closed) {
                     window.close();
                 }
             }
-            wm.updateWidgets();
             window.clear();
-            wm.drawWidgets(window);
+            for (auto& sprite : sprites) {
+                sprite.update(dt * 0.6f);
+                window.draw(sprite);
+            }
             window.display();
         }
 

@@ -7,12 +7,14 @@
 
 #include "graphics/Sprite.hpp"
 
+#include "input/InputListener.hpp"
 #include "system/Component.hpp"
 #include "system/EntityState.hpp"
 #include "math/Transform3.hpp"
 
 namespace p2d { namespace system {
-    class Entity {
+    class Entity
+    : public input::InputListener {
     public:
         using id = system::IdType;
         using alias = std::string;
@@ -24,6 +26,8 @@ namespace p2d { namespace system {
         Entity(const Entity& copy);
         Entity(Entity&& other);
         Entity operator = (const Entity& other);
+
+        virtual void onEvent(const input::InputEvent& event);
 
         inline graphics::Sprite& getSprite() { return sprite; } 
 

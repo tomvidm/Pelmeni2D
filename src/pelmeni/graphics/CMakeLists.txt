@@ -8,6 +8,7 @@ set(SOURCES
     #SpritePackage.cpp
     SpritePackManager.cpp
     Sprite.cpp
+    Hexagon.cpp
     #Sprite3.cpp
     TextureManager.cpp
     Mesh2D.cpp

@@ -27,6 +27,10 @@ namespace p2d { namespace system {
         return *this;
     }
 
+    void Entity::onEvent(const input::InputEvent& event) {
+        ;
+    }
+
     void Entity::update(const sf::Time& dt) {
         // sprite.update(dt);
     }

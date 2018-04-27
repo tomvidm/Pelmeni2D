@@ -1,7 +1,9 @@
 #include <cassert>
+#include <iostream>
 
 #include "json/Helpers.hpp"
 
+#include "math/Transform.hpp"
 #include "system/EntityFactory.hpp"
 #include "system/Scene.hpp"
 
@@ -11,6 +13,11 @@ namespace p2d { namespace system {
             parseSceneFile();
             prefetchResources();
             prefetchSceneObjects();
+        }
+
+        void Scene::listResources() const {
+            std::cout << "Listing resources...\n";
+            spritePackManager.listResources();
         }
 
         void Scene::loadSceneFile(const Scene::file& sceneFile) {
@@ -55,7 +62,7 @@ namespace p2d { namespace system {
                 float xPosition = entry["initial_state"]["transform"]["position"][0].GetDouble();
                 float yPosition = entry["initial_state"]["transform"]["position"][1].GetDouble();
                 EntityState entityState{
-                    math::Transform3::Identity()
+                    math::Transform::Identity()
                 };
                 
                 Entity entity = EntityFactory::createEntity(

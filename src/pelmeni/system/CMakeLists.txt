@@ -7,7 +7,6 @@ set(SOURCES
     EntityContainer.cpp
     EntityFactory.cpp
     EntityManager.cpp
-    #ObjectManager.cpp
     Scene.cpp
     Transformable2.cpp
     Transformable3.cpp
@@ -28,6 +27,7 @@ add_library(p2d-system
 target_link_libraries(p2d-system
     p2d-input
     p2d-graphics
+    p2d-math
     ${SFML_LIBRARIES}
 )
 

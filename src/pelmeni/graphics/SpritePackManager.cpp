@@ -1,10 +1,19 @@
+#include <iostream>
+
 #include "json/Helpers.hpp"
 
 #include "SpritePackManager.hpp"
 
 namespace p2d { namespace graphics {
     SpritePack::shared SpritePackManager::get(const SpritePack::alias& spritePackAlias) {
-        return spritePackMap.get(spritePackAlias);
+        return spritePackMap.at(spritePackAlias);
+    }
+
+    void SpritePackManager::listResources() const {
+        std::cout << "  SpritePacks\n";
+        for (auto& pair : spritePackMap) {
+            std::cout << "    " << pair.first << "\n";
+        }
     }
 
     void SpritePackManager::loadSpritePacksFromList(const std::string& spritePackListPath, TextureManager* textureManager) {
@@ -29,7 +38,7 @@ namespace p2d { namespace graphics {
             spritePack->frameSequenceMap = loadFrameSequences(spritePackListing["animations"]);
         }
 
-        spritePackMap.insert(spritePackAlias, spritePack);
+        spritePackMap.insert(std::make_pair(spritePackAlias, spritePack));
     }
 
     utility::Map<FrameSequence::id, FrameSequence> SpritePackManager::loadFrameSequences(rapidjson::Value& frameSequences) {
