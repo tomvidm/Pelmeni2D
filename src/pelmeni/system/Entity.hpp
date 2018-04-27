@@ -30,6 +30,7 @@ namespace p2d { namespace system {
         virtual void onEvent(const input::InputEvent& event);
 
         inline graphics::Sprite& getSprite() { return sprite; } 
+        inline const graphics::Sprite& getSprite() const { return sprite; } 
 
         void update(const sf::Time& dt);
     protected:        

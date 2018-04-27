@@ -47,8 +47,8 @@ namespace p2d { namespace system {
         _needsUpdate = true;
     } // setScale
 
-    void Transformable2::setRotation(const math::Radian& rads) {
-        rotation = rads.toRadians();
+    void Transformable2::setRotation(const math::Radian& degs) {
+        rotation = degs.toRadians();
         _needsUpdate = true;
     } // setRotation
 
@@ -86,9 +86,12 @@ namespace p2d { namespace system {
     math::Transform Transformable2::getLocalTransform() const {
         if (needsUpdate()) {
             localTransform = math::Transform::Translate(position) *
-                            math::Transform::Rotation(rotation.toRadians()) *
-                            math::Transform::Scale(scale) *
-                            math::Transform::Translate(-origin);
+                             math::Transform::Rotation(rotation.toRadians()) *
+                             math::Transform::Scale(scale) *
+                             math::Transform::Translate(-origin);
+                             
+                             
+                             
             
             inverseLocalTransform = math::inverse(localTransform);
         }

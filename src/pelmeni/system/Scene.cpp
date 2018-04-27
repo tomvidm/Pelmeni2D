@@ -15,6 +15,20 @@ namespace p2d { namespace system {
             prefetchSceneObjects();
         }
 
+        void Scene::renderScene(sf::RenderWindow& window) const {
+            auto& entities = getEntityList();
+            for (auto& entity : entities) {
+                window.draw(entity.getSprite());
+            }
+        }
+
+        void Scene::updateEntities(const sf::Time dt) {
+            auto& entities = getEntityList();
+            for (auto& entity : entities) {
+                entity.update(dt);
+            }
+        }
+
         void Scene::listResources() const {
             std::cout << "Listing resources...\n";
             spritePackManager.listResources();
@@ -59,10 +73,15 @@ namespace p2d { namespace system {
                 Blueprint::id blueprintId = entry["blueprint"].GetString();
                 
                 // Load initial state
-                float xPosition = entry["initial_state"]["transform"]["position"][0].GetDouble();
-                float yPosition = entry["initial_state"]["transform"]["position"][1].GetDouble();
+                float xPosition = entry["initial_state"]["transform"]["position"][0].GetFloat();
+                float yPosition = entry["initial_state"]["transform"]["position"][1].GetFloat();
+                float xScale = entry["initial_state"]["transform"]["scale"][0].GetFloat();
+                float yScale = entry["initial_state"]["transform"]["scale"][1].GetFloat();
+                float rotation = entry["initial_state"]["transform"]["rotation"].GetFloat();
                 EntityState entityState{
-                    math::Transform::Identity()
+                    math::Vector2f(xPosition, yPosition),
+                    math::Vector2f(xScale, yScale),
+                    math::fromAngle(rotation)
                 };
                 
                 Entity entity = EntityFactory::createEntity(
@@ -71,7 +90,6 @@ namespace p2d { namespace system {
                     &blueprintManager,
                     &entityManager,
                     &spritePackManager);
-
                 
                 /*
                     1. load the initial state of the entity

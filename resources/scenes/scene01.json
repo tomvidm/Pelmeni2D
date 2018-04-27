@@ -13,12 +13,13 @@
     },
     "scene_objects": [
         {
-            "alias": "",
+            "alias": "link",
             "blueprint": "link",
             "initial_state": {
                 "transform": {
-                    "position": [0, 0],
-                    "rotation": [0, 0]
+                    "position": [50, 0],
+                    "scale": [5, 3],
+                    "rotation": 30
                 },
                 "parent_id": 0,
                 "children_id": []

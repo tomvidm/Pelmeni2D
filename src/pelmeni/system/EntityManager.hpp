@@ -14,6 +14,7 @@ namespace p2d { namespace system {
     public:
         Entity::id insertEntity(const Entity& entity);
         inline std::vector<Entity>& getEntityContainer() { return entityContainer; }
+        inline const std::vector<Entity>& getEntityContainer() const { return entityContainer; }
     private:
         std::vector<Entity> entityContainer;
     }; // class EntityContainer

@@ -5,6 +5,8 @@
 #include "rapidjson/filereadstream.h"
 #include "rapidjson/document.h"
 
+#include "SFML/Graphics.hpp" 
+
 #include "graphics/TextureManager.hpp"
 #include "graphics/SpritePackManager.hpp"
 #include "input/InputManager.hpp"
@@ -23,6 +25,9 @@ namespace p2d { namespace system {
         void listResources() const;
 
         void loadSceneFile(const Scene::file& sceneFile);  
+        void renderScene(sf::RenderWindow& winow) const;
+        void updateEntities(const sf::Time dt);
+        inline const std::vector<Entity>& getEntityList() const { return entityManager.getEntityContainer(); }
         inline std::vector<Entity>& getEntityList() { return entityManager.getEntityContainer(); }
     private:
         void parseSceneFile();
