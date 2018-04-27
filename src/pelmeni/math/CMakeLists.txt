@@ -2,6 +2,7 @@ project(p2d-math)
 
 add_library(p2d-math
     math.cpp
+    BezierCurve.cpp
     Vector.cpp
     Radian.cpp
     Random.cpp
@@ -11,6 +12,7 @@ add_library(p2d-math
     graph/Node.cpp
     graph/Dijkstra.cpp
     graph/TilemapGraph.cpp
+    geometry/Hexagon.cpp
     )
 
 set_target_properties(p2d-math
