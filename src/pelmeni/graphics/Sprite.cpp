@@ -22,7 +22,6 @@ namespace p2d { namespace graphics {
     }
 
     void Sprite::update(const sf::Time& dt) {
-        rotate(3 * dt.asSeconds());
         if (isDrawable && _animationState.update(dt)) {
             setTextureRect(_animationState.getCurrentFrameRect());
         }

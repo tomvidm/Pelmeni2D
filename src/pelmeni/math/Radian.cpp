@@ -15,6 +15,10 @@ namespace p2d { namespace math {
         return rads;
     }
 
+    Radian operator * (const Radian& lhs, const float rhs) {
+        return fromRadians(lhs.toRadians() * fromAngle(rhs).toRadians());
+    }
+
     Radian fromAngle(const float& angle) {
         return Radian(static_cast<float>(M_PI) * angle / 180.f);
     }
