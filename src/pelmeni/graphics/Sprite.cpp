@@ -22,6 +22,7 @@ namespace p2d { namespace graphics {
     }
 
     void Sprite::update(const sf::Time& dt) {
+        rotate(3 * dt.asSeconds());
         if (isDrawable && _animationState.update(dt)) {
             setTextureRect(_animationState.getCurrentFrameRect());
         }
@@ -37,10 +38,10 @@ namespace p2d { namespace graphics {
         _vertices[1].texCoords = topRight;
         _vertices[2].texCoords = bottomRight;
         _vertices[3].texCoords = bottomLeft;
-        _vertices[0].position = getPosition();
-        _vertices[1].position = getPosition() + math::projectToX(size);
-        _vertices[2].position = getPosition() + size;
-        _vertices[3].position = getPosition() + math::projectToY(size);
+        _vertices[0].position = math::Vector2f();
+        _vertices[1].position = math::projectToX(size);
+        _vertices[2].position = size;
+        _vertices[3].position = math::projectToY(size);
     }
 } // namespace graphics
 } // namespace p2d
