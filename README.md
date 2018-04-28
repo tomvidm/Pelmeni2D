@@ -1,8 +1,8 @@
 # Pelmeni2D
 ## Introduction
-Pelmeni2D is a hobby side project of mine, with the goal of making it a functional framework to create isometric 3D games with. So far, this is way wayyy from finished in any interpretation of the word, but contain functional pieces which more or less work in isolation, and in some cases, in concert with other pieces
+Pelmeni2D is a hobby side project of mine, with the goal of making it an at least somewhat functional framework to create games. So far, this is way wayyy from finished in any interpretation of the word, but contain functional pieces which more or less work in isolation, and in some cases, in concert with other pieces
 
-Pelmeni2D is built on top of SFML and uses many of the features SFML uses. The plan is to slowly replace those features with 3D analogues, although the 3D aspect will be mostly limited to transforming in 3D space before projecting onto the XY plane.
+Pelmeni2D is built on top of SFML and uses many of the features SFML uses.
 ## Features so far
 * Input manager for mouse events that distinguishes between press, release, click and double click
 * Custom math classes, because wasting time on boiler plate is fun
@@ -13,6 +13,8 @@ Pelmeni2D is built on top of SFML and uses many of the features SFML uses. The p
 * A Mesh2D class for arbitrary meshes with vertices, edges and filled quads.
 * A Tilemap class which renders a grid and arbitrary parts of a texture.
 * Fixed axis rotation and quaternion rotation
+* Bezier curves
+* Objects can register for specific inputs through the InputListener interface
 ## Requirements
 This is written and tested on Ubuntu 16.04 LTE. Any other platform requires work on the build system.
 ### Prerequisites
