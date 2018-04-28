@@ -8,7 +8,6 @@
 #include "graphics/Sprite.hpp"
 
 #include "input/InputListener.hpp"
-#include "system/Component.hpp"
 #include "system/EntityState.hpp"
 #include "math/Transform3.hpp"
 

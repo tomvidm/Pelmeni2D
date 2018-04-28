@@ -7,7 +7,6 @@
 #include "SFML/Window.hpp"
 
 #include "input/InputListener.hpp"
-#include "system/Component.hpp"
 #include "MouseInputManager.hpp"
 
 namespace p2d { namespace input {

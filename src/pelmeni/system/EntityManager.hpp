@@ -7,7 +7,6 @@
 #include "system/Blueprint.hpp"
 #include "system/Entity.hpp"
 #include "system/EntityContainer.hpp"
-#include "system/ComponentPool.hpp"
 
 namespace p2d { namespace system {
     class EntityManager {
