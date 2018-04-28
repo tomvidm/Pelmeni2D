@@ -11,7 +11,9 @@ namespace p2d { namespace math {
 
     class BezierCurve {
     public:
+        BezierCurve();
         BezierCurve(const std::vector<math::Vector2f>& controlPoints);
+        BezierCurve(const BezierCurve& other);
 
         BezierCurve derivative() const;
         
@@ -20,6 +22,8 @@ namespace p2d { namespace math {
         unsigned degree() const;
         math::Vector2f getStart() const;
         math::Vector2f getEnd() const;
+        
+        void setControlPoints(const std::vector<math::Vector2f>& controlPoints);
     private:
         std::vector<math::Vector2f> m_controlPoints;
     }; // class BezierCurve

@@ -1,8 +1,17 @@
 #include "math/BezierCurve.hpp"
 
 namespace p2d { namespace math {
+    BezierCurve::BezierCurve() {
+        ;
+    }
+
     BezierCurve::BezierCurve(const std::vector<math::Vector2f>& controlPoints)
     : m_controlPoints(controlPoints) {
+        ;
+    }
+
+    BezierCurve::BezierCurve(const BezierCurve& other)
+    : m_controlPoints(other.getControlPoints()) {
         ;
     }
 
@@ -20,7 +29,11 @@ namespace p2d { namespace math {
     }
 
     math::Vector2f BezierCurve::generatePointOnCurve(float t) const {
-        return bezier(m_controlPoints, degree() + 1, t);
+        if (m_controlPoints.empty()) {
+            return math::Vector2f();
+        } else {
+            return bezier(m_controlPoints, degree() + 1, t);
+        }
     }
 
     unsigned BezierCurve::degree() const {
@@ -33,6 +46,10 @@ namespace p2d { namespace math {
 
     math::Vector2f BezierCurve::getEnd() const {
         return m_controlPoints.back();
+    }
+
+    void BezierCurve::setControlPoints(const std::vector<math::Vector2f>& controlPoints) {
+        m_controlPoints = controlPoints;
     }
 } // namespace math
 } // namespace p2d
