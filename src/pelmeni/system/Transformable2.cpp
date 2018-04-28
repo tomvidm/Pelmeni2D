@@ -86,6 +86,7 @@ namespace p2d { namespace system {
     math::Transform Transformable2::getLocalTransform() const {
         if (needsUpdate()) {
             localTransform = math::Transform::Translate(position) *
+                             math::Transform::Translate(origin) *
                              math::Transform::Rotation(rotation.toRadians()) *
                              math::Transform::Scale(scale) *
                              math::Transform::Translate(-origin);

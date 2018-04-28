@@ -6,6 +6,7 @@ namespace p2d { namespace animation {
         const auto& currentAnimationFrame = animation.getCurrentFrame();
         setPosition(currentAnimationFrame.position);
         setScale(currentAnimationFrame.scale);
+        setOrigin(currentAnimationFrame.origin);
         setRotation(currentAnimationFrame.angle);
     }
 

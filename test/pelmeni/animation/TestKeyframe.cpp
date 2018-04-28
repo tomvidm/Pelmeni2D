@@ -13,12 +13,14 @@ TEST(TestAnimation, keyframe_interpolation_works) {
     Frame kf1{
         p2d::math::Vector2f(0.f, 0.f),
         p2d::math::Vector2f(0.f, 0.f),
+        p2d::math::Vector2f(0.f, 0.f),
         p2d::math::fromRadians(0.f)
     };
 
     Frame kf2{
         p2d::math::Vector2f(100.f, 100.f),
         p2d::math::Vector2f(2.f, 2.f),
+        p2d::math::Vector2f(0.f, 0.f),
         p2d::math::fromRadians(1.f)
     };
 
@@ -27,6 +29,7 @@ TEST(TestAnimation, keyframe_interpolation_works) {
     Frame expected_kf{
         p2d::math::Vector2f(50.f, 50.f),
         p2d::math::Vector2f(1.f, 1.f),
+        p2d::math::Vector2f(0.f, 0.f),
         p2d::math::fromRadians(0.5f)
     };
 

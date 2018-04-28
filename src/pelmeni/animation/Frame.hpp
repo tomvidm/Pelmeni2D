@@ -6,6 +6,7 @@ namespace p2d { namespace animation {
     struct Frame {
         math::Vector2f position;
         math::Vector2f scale;
+        math::Vector2f origin;
         math::Radian angle;
     }; // struct Frame
 

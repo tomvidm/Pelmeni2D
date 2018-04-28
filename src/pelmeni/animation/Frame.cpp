@@ -4,6 +4,7 @@ namespace p2d { namespace animation {
     bool operator == (const Frame& lhs, const Frame& rhs) {
         return lhs.position == rhs.position &&
                lhs.scale == rhs.scale &&
+               lhs.origin == rhs.origin &&
                lhs.angle == rhs.angle;
     }
 
@@ -11,6 +12,7 @@ namespace p2d { namespace animation {
         return Frame{
             lhs.position + rhs.position,
             lhs.scale + rhs.scale,
+            lhs.origin + rhs.origin,
             lhs.angle + rhs.angle
         };
     }
@@ -19,6 +21,7 @@ namespace p2d { namespace animation {
         return Frame{
             lhs.position - rhs.position,
             lhs.scale - rhs.scale,
+            lhs.origin - rhs.origin,
             lhs.angle - rhs.angle
         };
     }
@@ -27,6 +30,7 @@ namespace p2d { namespace animation {
         return Frame{
             lhs.position * rhs,
             lhs.scale * rhs,
+            lhs.origin * rhs,
             lhs.angle * rhs
         };
     }

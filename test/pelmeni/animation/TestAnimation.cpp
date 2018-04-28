@@ -16,6 +16,7 @@ TEST(TestAnimation, animation_interpolation_works) {
         Frame {
             p2d::math::Vector2f(0.f, 0.f),
             p2d::math::Vector2f(0.f, 0.f),
+            p2d::math::Vector2f(0.f, 0.f),
             p2d::math::fromRadians(0.f)
         }
     };
@@ -25,6 +26,7 @@ TEST(TestAnimation, animation_interpolation_works) {
         Frame {
             p2d::math::Vector2f(100.f, 100.f),
             p2d::math::Vector2f(1.f, 1.f),
+            p2d::math::Vector2f(0.f, 0.f),
             p2d::math::fromRadians(1.f)
         }
     };
@@ -34,6 +36,7 @@ TEST(TestAnimation, animation_interpolation_works) {
         Frame {
             p2d::math::Vector2f(0.f, 0.f),
             p2d::math::Vector2f(1.f, 1.f),
+            p2d::math::Vector2f(0.f, 0.f),
             p2d::math::fromRadians(1.f)
         }
     };
@@ -44,18 +47,21 @@ TEST(TestAnimation, animation_interpolation_works) {
     Frame expected_frame1{
         p2d::math::Vector2f(50.f, 50.f),
         p2d::math::Vector2f(0.5f, 0.5f),
+        p2d::math::Vector2f(0.f, 0.f),
         p2d::math::fromRadians(0.5f)
     };
 
     Frame expected_frame2{
         p2d::math::Vector2f(100.f, 100.f),
         p2d::math::Vector2f(1.f, 1.f),
+        p2d::math::Vector2f(0.f, 0.f),
         p2d::math::fromRadians(1.f)
     };
 
     Frame expected_frame3{
         p2d::math::Vector2f(50.f, 50.f),
         p2d::math::Vector2f(1.f, 1.f),
+        p2d::math::Vector2f(0.f, 0.f),
         p2d::math::fromRadians(1.f)
     };
     anim.update(sf::seconds(0.f));
