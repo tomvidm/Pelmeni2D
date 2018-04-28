@@ -1,24 +1,41 @@
 #include "animation/Animation.hpp"
-
+#include <iostream>
 namespace p2d { namespace animation {
-    Animation::Animation() {
-        ;
+    Animation::Animation(const std::vector<Keyframe>& keyframeList)
+    : currentKeyframeIndex(0),
+      timeElapsedCurrentKeyframe(sf::seconds(0.f)),
+      keyframes(keyframeList) {
+          interpolator.setEndpoints(keyframes[0].frame, keyframes[1].frame);
     }
 
-    void Animation::setAnimationPath(const math::BezierCurve& curve) {
-        data.path = curve;
+    Frame Animation::getCurrentFrame() const {
+        const float fractionalTimeElapsed = 
+                    timeElapsedCurrentKeyframe.asSeconds() / 
+                    getCurrentKeyframe().duration.asSeconds();
+        return interpolator.getInterpolated(fractionalTimeElapsed);
+    };
+
+    Keyframe& Animation::getCurrentKeyframe() {
+        return keyframes[currentKeyframeIndex];
     }
 
-    void Animation::setAnimationDuraction(const sf::Time time) {
-        data.duration = time;
+    const Keyframe& Animation::getCurrentKeyframe() const {
+        return keyframes[currentKeyframeIndex];
     }
 
-    math::Vector2f Animation::getPathStart() const {
-        return data.path.getStart();
+    const size_t Animation::getCurrentKeyframeIndex() const {
+        return currentKeyframeIndex;
     }
 
-    math::Vector2f Animation::getPathEnd() const {
-        return data.path.getEnd();
+    void Animation::update(const sf::Time dt) {
+        timeElapsedCurrentKeyframe += dt;
+        auto& currentKeyframe = getCurrentKeyframe();
+        if (timeElapsedCurrentKeyframe >= currentKeyframe.duration) {
+            timeElapsedCurrentKeyframe -= currentKeyframe.duration;
+            ++currentKeyframeIndex;
+            interpolator.setEndpoints(keyframes[currentKeyframeIndex].frame,
+                                      keyframes[currentKeyframeIndex + 1].frame);
+        }
     }
 } // namespace animation
 } // namespace p2d

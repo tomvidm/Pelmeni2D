@@ -14,10 +14,10 @@ namespace p2d { namespace math { namespace ut {
     }
 
     TEST(TestMath, LerpWorksFine) {
-        LinearInterpolation<float> lerp(0.f, 100.f);
-        EXPECT_EQ(lerp.getInterpolated(-0.5f), 0.f);
-        EXPECT_EQ(lerp.getInterpolated(0.f), 0.f);
-        EXPECT_EQ(lerp.getInterpolated(0.5f), 50.f);
+        LinearInterpolation<float> lerp(50.f, 100.f);
+        EXPECT_EQ(lerp.getInterpolated(-0.5f), 50.f);
+        EXPECT_EQ(lerp.getInterpolated(0.f), 50.f);
+        EXPECT_EQ(lerp.getInterpolated(0.5f), 75.f);
         EXPECT_EQ(lerp.getInterpolated(1.f), 100.f);
         EXPECT_EQ(lerp.getInterpolated(1.5f), 100.f);
     }

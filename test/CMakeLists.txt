@@ -5,6 +5,7 @@ set(GTEST_DIR ${CMAKE_SOURCE_DIR}/external/googletest/googletest)
 set(TEST_SOURCES
     TrivialTest.cpp
     pelmeni/animation/TestKeyframe.cpp
+    pelmeni/animation/TestAnimation.cpp
     pelmeni/input/TestMouseButtonState.cpp
     pelmeni/input/TestMouseState.cpp
 

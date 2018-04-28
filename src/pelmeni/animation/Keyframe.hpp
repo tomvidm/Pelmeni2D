@@ -1,17 +1,15 @@
 #pragma once
 
-#include "math/Vector.hpp"
+#include "SFML/System/Time.hpp"
+
+#include "animation/Frame.hpp"
 
 namespace p2d { namespace animation {
     struct Keyframe {
-        math::Vector2f position;
-        math::Vector2f scale;
-        math::Radian angle;
+        sf::Time duration;
+        Frame frame;
     }; // struct Keyframe
-
+    
     bool operator == (const Keyframe& lhs, const Keyframe& rhs);
-    Keyframe operator + (const Keyframe& lhs, const Keyframe& rhs);
-    Keyframe operator - (const Keyframe& lhs, const Keyframe& rhs);
-    Keyframe operator * (const Keyframe& lhs, const float rhs);
 } // namespace animation
 } // namespace p2d 

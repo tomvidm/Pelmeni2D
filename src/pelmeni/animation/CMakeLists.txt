@@ -2,6 +2,8 @@ project(p2d-animation)
 
 set(SOURCES
     Animable.cpp
+    Animation.cpp
+    Frame.cpp
     Keyframe.cpp
 )
 
