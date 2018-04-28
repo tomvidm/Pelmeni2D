@@ -1,17 +1,17 @@
 #pragma once
 
+#include <vector>
+
 #include "SFML/System/Time.hpp"
 
-#include "math/BezierCurve.hpp"
-
 namespace p2d { namespace animation {
-    struct Animation {
-        Animation() { ; }
-        std::unique_ptr<math::BezierCurve> path;
-        sf::Time timeDuration;
-        sf::Time timeElapsed;
+    struct Keyframe {
+        int deleteThisVar;
+    };
 
-        inline float getNormalizedTimeElapsed() const { return timeElapsed.asSeconds() / timeDuration.asSeconds(); }
-    }; // struct Animation
+    class Animation {
+    private:
+        std::vector<Keyframe> keyframes;
+    }; // class Animation
 } // namespace animation
 } // namespace p2d

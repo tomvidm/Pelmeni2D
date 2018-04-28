@@ -4,6 +4,11 @@ namespace p2d { namespace math {
     Radian::Radian()
     : rads(0) {;}
 
+    Radian::Radian(const Radian& other)
+    : rads(other.rads) {
+        ;
+    }
+
     Radian::Radian(const float& frads)
     : rads(frads) {;}
 
@@ -15,8 +20,21 @@ namespace p2d { namespace math {
         return rads;
     }
 
+    bool operator == (const Radian& lhs, const Radian& rhs) {
+        return lhs.toRadians() == rhs.toRadians();
+    }
+
+    Radian operator + (const Radian& lhs, const Radian& rhs) {
+        return fromRadians(lhs.toRadians() + rhs.toRadians());
+    }
+
+    Radian operator - (const Radian& lhs, const Radian& rhs) {
+        return fromRadians(lhs.toRadians() - rhs.toRadians());
+    }
+    
+
     Radian operator * (const Radian& lhs, const float rhs) {
-        return fromRadians(lhs.toRadians() * fromAngle(rhs).toRadians());
+        return fromRadians(lhs.toRadians() * rhs);
     }
 
     Radian fromAngle(const float& angle) {

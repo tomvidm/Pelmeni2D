@@ -4,6 +4,7 @@ set(GTEST_DIR ${CMAKE_SOURCE_DIR}/external/googletest/googletest)
 
 set(TEST_SOURCES
     TrivialTest.cpp
+    pelmeni/animation/TestKeyframe.cpp
     pelmeni/input/TestMouseButtonState.cpp
     pelmeni/input/TestMouseState.cpp
 
@@ -18,7 +19,6 @@ set(TEST_SOURCES
     
     pelmeni/utility/TestArray.cpp
     pelmeni/utility/TestPool.cpp
-    pelmeni/utility/TestQuadContainer.cpp
     pelmeni/utility/TestGridIndex.cpp
 )
 
@@ -37,6 +37,7 @@ add_executable(
 
 target_link_libraries(
     p2d-ut
+    p2d-animation
     p2d-input
     p2d-math
     p2d-graphics

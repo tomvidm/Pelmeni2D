@@ -2,6 +2,7 @@ project(p2d-animation)
 
 set(SOURCES
     Animable.cpp
+    Keyframe.cpp
 )
 
 add_library(p2d-animation
