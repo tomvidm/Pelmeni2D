@@ -13,7 +13,7 @@ namespace p2d { namespace system {
         sprite.setPosition(initialState.position);
         sprite.setScale(initialState.scale);
         sprite.setRotation(initialState.rotation);
-        sprite.setAnimation("default");
+        sprite.setSpriteAnimation("default");
     }
 
     Entity::Entity(const Entity& copy)

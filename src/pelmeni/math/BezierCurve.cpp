@@ -26,5 +26,13 @@ namespace p2d { namespace math {
     unsigned BezierCurve::degree() const {
         return m_controlPoints.size() - 1;
     }
+
+    math::Vector2f BezierCurve::getStart() const {
+        return m_controlPoints.front();
+    }
+
+    math::Vector2f BezierCurve::getEnd() const {
+        return m_controlPoints.back();
+    }
 } // namespace math
 } // namespace p2d

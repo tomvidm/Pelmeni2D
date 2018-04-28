@@ -17,7 +17,7 @@ namespace p2d { namespace graphics {
         isDrawable = true;
     } // setSpritePack
 
-    void Sprite::setAnimation(const FrameSequence::alias& animationAlias) {
+    void Sprite::setSpriteAnimation(const FrameSequence::alias& animationAlias) {
         _animationState.setFrameSequence(_spritePack->getFrameSequence(animationAlias));
     }
 

@@ -14,6 +14,7 @@ include_directories(
 )
 
 target_link_libraries(p2d-run 
+    p2d-animation
     p2d-graphics
     p2d-experimental
     p2d-system

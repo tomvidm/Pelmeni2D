@@ -18,6 +18,8 @@ namespace p2d { namespace math {
         const std::vector<math::Vector2f>& getControlPoints() const;
         math::Vector2f generatePointOnCurve(float t) const;
         unsigned degree() const;
+        math::Vector2f getStart() const;
+        math::Vector2f getEnd() const;
     private:
         std::vector<math::Vector2f> m_controlPoints;
     }; // class BezierCurve

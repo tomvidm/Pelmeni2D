@@ -1,5 +1,6 @@
 project(pelmeni)
 
+add_subdirectory(animation)
 add_subdirectory(system)
 add_subdirectory(experimental)
 add_subdirectory(input)

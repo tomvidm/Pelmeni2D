@@ -27,6 +27,7 @@ namespace p2d { namespace system {
         void loadSceneFile(const Scene::file& sceneFile);  
         void renderScene(sf::RenderWindow& winow) const;
         void updateEntities(const sf::Time dt);
+
         inline const std::vector<Entity>& getEntityList() const { return entityManager.getEntityContainer(); }
         inline std::vector<Entity>& getEntityList() { return entityManager.getEntityContainer(); }
     private:

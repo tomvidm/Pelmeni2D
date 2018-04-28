@@ -6,8 +6,10 @@ set(SOURCES
     FrameSequence.cpp
     #FrameSequenceLoader.cpp
     #SpritePackage.cpp
+    AnimatedSprite.cpp
     SpritePackManager.cpp
     Sprite.cpp
+    SpriteBase.cpp
     Hexagon.cpp
     #Sprite3.cpp
     TextureManager.cpp

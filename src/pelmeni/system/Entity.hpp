@@ -5,7 +5,7 @@
 
 #include "system/EngineDefs.hpp"
 
-#include "graphics/Sprite.hpp"
+#include "graphics/AnimatedSprite.hpp"
 
 #include "input/InputListener.hpp"
 #include "system/EntityState.hpp"
@@ -28,12 +28,12 @@ namespace p2d { namespace system {
 
         virtual void onEvent(const input::InputEvent& event);
 
-        inline graphics::Sprite& getSprite() { return sprite; } 
-        inline const graphics::Sprite& getSprite() const { return sprite; } 
+        inline graphics::AnimatedSprite& getSprite() { return sprite; } 
+        inline const graphics::AnimatedSprite& getSprite() const { return sprite; } 
 
         void update(const sf::Time& dt);
     protected:        
-        graphics::Sprite sprite;
+        graphics::AnimatedSprite sprite;
     }; // class Object
 } // namespace system
 } // namespace p2d
