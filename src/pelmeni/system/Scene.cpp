@@ -96,7 +96,7 @@ namespace p2d { namespace system {
                     2. create the components and assign them to the entity
                     3. move the entity into the entity manager
                 */
-               entityManager.insertEntity(entity);
+               entityManager.insertEntity(alias, entity);
             }
         }
 } // namespace system

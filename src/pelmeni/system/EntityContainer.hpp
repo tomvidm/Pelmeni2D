@@ -12,7 +12,6 @@ namespace p2d { namespace system {
         void removeEntity(const Entity::id& entityId);
     private:
         utility::Pool<Entity, ENTITY_POOL_SIZE> entities;
-        std::map<Entity::alias, Entity::id> aliasToIdMap;
     }; // class EntityContainer
 } // namespace system
 } // namespace p2ds
