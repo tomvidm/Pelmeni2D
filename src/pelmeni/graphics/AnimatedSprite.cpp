@@ -18,6 +18,7 @@ namespace p2d { namespace graphics {
         isDrawable = other.isDrawable;
         _animationState = other._animationState;
         _spritePack = other._spritePack;
+        return *this;
     }
 
     void AnimatedSprite::draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -39,6 +40,7 @@ namespace p2d { namespace graphics {
     }
 
     void AnimatedSprite::update(const sf::Time& dt) {
+        updateAnimation(dt);
         if (isDrawable && _animationState.update(dt)) {
             setTextureRect(_animationState.getCurrentFrameRect());
         }

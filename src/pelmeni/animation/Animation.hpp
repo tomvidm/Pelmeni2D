@@ -11,6 +11,7 @@
 namespace p2d { namespace animation {
     class Animation {
     public:
+        Animation();
         Animation(const std::vector<Keyframe>& keyframeList);
 
         Frame getCurrentFrame() const;
@@ -20,6 +21,8 @@ namespace p2d { namespace animation {
         const size_t getCurrentKeyframeIndex() const;
 
         void update(const sf::Time dt);
+        void reset();
+        void setKeyframes(const std::vector<Keyframe>& keyframeList);
     private:
         size_t currentKeyframeIndex;
         sf::Time timeElapsedCurrentKeyframe;

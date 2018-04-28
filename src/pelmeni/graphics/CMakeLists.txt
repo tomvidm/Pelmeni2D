@@ -32,6 +32,7 @@ add_library(p2d-graphics
 )
 
 target_link_libraries(p2d-graphics
+    p2d-animation
     ${SFML_LIBRARIES}
 )
 

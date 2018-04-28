@@ -1,6 +1,10 @@
 #include "animation/Animation.hpp"
 #include <iostream>
 namespace p2d { namespace animation {
+    Animation::Animation() {
+        ;
+    }
+
     Animation::Animation(const std::vector<Keyframe>& keyframeList)
     : currentKeyframeIndex(0),
       timeElapsedCurrentKeyframe(sf::seconds(0.f)),
@@ -31,11 +35,21 @@ namespace p2d { namespace animation {
         timeElapsedCurrentKeyframe += dt;
         auto& currentKeyframe = getCurrentKeyframe();
         if (timeElapsedCurrentKeyframe >= currentKeyframe.duration) {
-            timeElapsedCurrentKeyframe -= currentKeyframe.duration;
             ++currentKeyframeIndex;
+            timeElapsedCurrentKeyframe -= currentKeyframe.duration;
             interpolator.setEndpoints(keyframes[currentKeyframeIndex].frame,
                                       keyframes[currentKeyframeIndex + 1].frame);
         }
+    }
+
+    void Animation::reset() {
+        timeElapsedCurrentKeyframe = sf::seconds(0.f);
+        currentKeyframeIndex = 0;
+    }
+
+    void Animation::setKeyframes(const std::vector<Keyframe>& keyframeList) {
+        keyframes = keyframeList;
+        reset();
     }
 } // namespace animation
 } // namespace p2d
