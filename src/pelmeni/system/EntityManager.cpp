@@ -11,5 +11,14 @@ namespace p2d { namespace system {
         }
         return id;
     }
+
+    Entity& EntityManager::get(const Entity::id id) {
+        return entityContainer.at(id);
+    }
+
+    Entity& EntityManager::get(const Entity::alias alias) {
+        const Entity::id id = entityIdToIndexMap.at(alias);
+        return entityContainer.at(id);
+    }
 } // namespace system
 } // namespace p2d

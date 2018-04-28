@@ -18,6 +18,9 @@ namespace p2d { namespace system {
     private:
         std::vector<Entity> entityContainer;
         std::map<Entity::alias, Entity::id> entityIdToIndexMap;
+
+        Entity& get(const Entity::id id);
+        Entity& get(const Entity::alias alias);
     }; // class EntityContainer
 } // namespace system
 } // namespace p2d

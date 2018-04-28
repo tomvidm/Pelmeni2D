@@ -9,6 +9,7 @@ namespace p2d { namespace system {
     class EntityContainer {
     public:
         Entity::id insertEntity(const Entity& entity);
+        Entity& getEntity(const Entity::id entityId);
         void removeEntity(const Entity::id& entityId);
     private:
         utility::Pool<Entity, ENTITY_POOL_SIZE> entities;

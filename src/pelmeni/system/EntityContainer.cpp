@@ -8,6 +8,10 @@ namespace p2d { namespace system {
         return entityId;
     }
 
+    Entity& EntityContainer::getEntity(const Entity::id entityId) {
+        return entities.get(entityId);
+    }
+
     void EntityContainer::removeEntity(const Entity::id& entityId) {
         entities.remove(entityId);
     }

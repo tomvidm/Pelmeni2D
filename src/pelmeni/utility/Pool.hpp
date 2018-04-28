@@ -20,6 +20,8 @@ namespace p2d { namespace utility {
         typename T::id push(const T& obj);
         void remove(const typename T::id& index);
 
+        T& get(const typename T::id id);
+
         inline bool empty() const { return activeObjects_ == 0; }
         inline size_t capacity() const { return capacity_; }
         inline size_t size() const { return activeObjects_; }
@@ -45,6 +47,11 @@ namespace p2d { namespace utility {
     : activeObjects_(0), firstUnusedIndex_(0), capacity_(N) {
         size_t memuse = static_cast<size_t>(N) * (sizeof(T) + sizeof(TState));
         printf("Pool created. Estimated memory usage: %zu bytes ~ %f kb\n", memuse, static_cast<float>((float)memuse / 1000.f));
+    }
+
+    template <typename T, unsigned N>
+    T& Pool<T, N>::get(const typename T::id id) {
+        return objectArray[id];
     }
 
     template <typename T, unsigned N>
