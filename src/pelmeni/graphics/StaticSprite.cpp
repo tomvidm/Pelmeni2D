@@ -1,9 +1,9 @@
 #include <cstdio>
 
-#include "graphics/Sprite.hpp"
+#include "graphics/StaticSprite.hpp"
 
 namespace p2d { namespace graphics {
-    void Sprite::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+    void StaticSprite::draw(sf::RenderTarget& target, sf::RenderStates states) const {
         if (isDrawable) {
             states.transform *= math::toSfmlTransform(getLocalTransform());
             states.texture = _texturePtr;
@@ -11,23 +11,23 @@ namespace p2d { namespace graphics {
         }
     } // draw
 
-    void Sprite::setSpritePack(const SpritePack::shared spritePack) {
+    void StaticSprite::setSpritePack(const SpritePack::shared spritePack) {
         _spritePack = spritePack;
         _texturePtr = &(_spritePack->texture.getTexture());
         isDrawable = true;
     } // setSpritePack
 
-    void Sprite::setSpriteAnimation(const FrameSequence::alias& animationAlias) {
+    void StaticSprite::setSpriteAnimation(const FrameSequence::alias& animationAlias) {
         _animationState.setFrameSequence(_spritePack->getFrameSequence(animationAlias));
     }
 
-    void Sprite::update(const sf::Time& dt) {
+    void StaticSprite::update(const sf::Time& dt) {
         if (isDrawable && _animationState.update(dt)) {
             setTextureRect(_animationState.getCurrentFrameRect());
         }
     }
 
-    void Sprite::setTextureRect(const sf::Rect<float>& rect) {
+    void StaticSprite::setTextureRect(const sf::Rect<float>& rect) {
         const math::Vector2f topLeft(rect.left, rect.top);
         const math::Vector2f topRight(rect.left + rect.width, rect.top);
         const math::Vector2f bottomRight(rect.left + rect.width, rect.top + rect.height);

@@ -9,7 +9,7 @@ set(SOURCES
     FrameSequence.cpp
     Hexagon.cpp
     SpritePackManager.cpp
-    Sprite.cpp
+    StaticSprite.cpp
     SpriteBase.cpp
     TextureManager.cpp
     Tilemap.cpp

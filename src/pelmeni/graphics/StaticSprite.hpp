@@ -11,13 +11,13 @@
 #include "system/EngineDefs.hpp"
 
 namespace p2d { namespace graphics {
-    class Sprite
+    class StaticSprite
     : public sf::Drawable,
       public system::Transformable2 {
     public:
         using id = system::IdType;
-        using shared = std::shared_ptr<Sprite>;
-        using unique = std::unique_ptr<Sprite>;
+        using shared = std::shared_ptr<StaticSprite>;
+        using unique = std::unique_ptr<StaticSprite>;
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -32,6 +32,6 @@ namespace p2d { namespace graphics {
         SpritePack::shared _spritePack;
         sf::Vertex _vertices[4];
         sf::Texture* _texturePtr;
-    }; // class Sprite
+    }; // class StaticSprite
 } // namespace graphics
 } // namespace p2d
