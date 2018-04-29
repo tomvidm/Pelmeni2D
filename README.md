@@ -13,8 +13,9 @@ Pelmeni2D is built on top of SFML and uses many of the features SFML uses.
 * A Mesh2D class for arbitrary meshes with vertices, edges and filled quads.
 * A Tilemap class which renders a grid and arbitrary parts of a texture.
 * Fixed axis rotation and quaternion rotation
-* Bezier curves
+* Bezier curves & Catmull-Rom splines
 * Objects can register for specific inputs through the InputListener interface
+* Interpolated keyframe animations through Animable class
 ## Requirements
 This is written and tested on Ubuntu 16.04 LTE. Any other platform requires work on the build system.
 ### Prerequisites

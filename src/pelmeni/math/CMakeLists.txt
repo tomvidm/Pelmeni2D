@@ -3,6 +3,7 @@ project(p2d-math)
 add_library(p2d-math
     math.cpp
     BezierCurve.cpp
+    CatmullRomSpline.cpp
     Vector.cpp
     Radian.cpp
     Random.cpp
