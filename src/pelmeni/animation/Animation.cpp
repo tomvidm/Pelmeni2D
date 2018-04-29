@@ -47,8 +47,8 @@ namespace p2d { namespace animation {
         auto& currentKeyframe = getCurrentKeyframe();
         if (timeElapsedCurrentKeyframe >= currentKeyframe.duration) {
             timeElapsedCurrentKeyframe -= currentKeyframe.duration;
-            ++currentKeyframeIndex;
             if (keyframeInterpolationMethod == KeyframeInterpolationMethod::Linear) {
+                ++currentKeyframeIndex;
                 linearInterpolator.setEndpoints(keyframes[currentKeyframeIndex].frame,
                                                 keyframes[currentKeyframeIndex + 1].frame);
             } else if (keyframeInterpolationMethod == KeyframeInterpolationMethod::CatmullRom) {
@@ -59,6 +59,7 @@ namespace p2d { namespace animation {
                     keyframes[currentKeyframeIndex + 3].frame
                 };
                 catmullRomInterpolator.setControlPoints(frames, 0);
+                ++currentKeyframeIndex;
             }
         }
     }

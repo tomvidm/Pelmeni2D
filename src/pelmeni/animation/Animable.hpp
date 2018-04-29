@@ -12,7 +12,11 @@ namespace p2d { namespace animation {
     public:
         void updateAnimation(const sf::Time dt);
         void setAnimation(const Animation& anim);
+        void stopAnimation();
+        void startAnimation();
         Animation animation;
+    private:
+        bool animationIsRunning = false;
     }; // class Animable
 } // namespace animation
 } // namespace p2d
