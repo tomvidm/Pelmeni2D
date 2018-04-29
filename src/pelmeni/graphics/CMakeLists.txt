@@ -1,24 +1,21 @@
 project(p2d-graphics)
 
 set(SOURCES
-    Axes.cpp
-    AnimationState.cpp
-    FrameSequence.cpp
-    #FrameSequenceLoader.cpp
-    #SpritePackage.cpp
+    ../json/Helpers.cpp
+    particles/Particle2D.cpp
     AnimatedSprite.cpp
+    AnimationState.cpp
+    Axes.cpp
+    FrameSequence.cpp
+    Hexagon.cpp
     SpritePackManager.cpp
     Sprite.cpp
     SpriteBase.cpp
-    Hexagon.cpp
-    #Sprite3.cpp
     TextureManager.cpp
+    Tilemap.cpp
     Mesh2D.cpp
     MeshData2D.cpp
-    Tilemap.cpp
     WireMesh.cpp
-    ../json/Helpers.cpp
-    particles/Particle2D.cpp
 )
 
 include_directories(

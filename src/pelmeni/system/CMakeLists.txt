@@ -1,16 +1,16 @@
 project(p2d-system)
 
 set(SOURCES
+    ../json/Helpers.cpp
     BlueprintManager.cpp
-    Instance.cpp
     Entity.cpp
     EntityContainer.cpp
     EntityFactory.cpp
     EntityManager.cpp
+    Instance.cpp
     Scene.cpp
     Transformable2.cpp
     Transformable3.cpp
-    ../json/Helpers.cpp
 )
 
 include_directories(

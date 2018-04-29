@@ -13,10 +13,10 @@ namespace p2d { namespace math {
         const float b1 = 0.5f * (2 - 5*tt + 3*ttt);
         const float b2 = 0.5f * (t + 4*tt - 3*ttt);
         const float b3 = 0.5f * (-tt + ttt);
-        return controlPoints[i] * b0 +
-               controlPoints[i + 1] * b1 +
-               controlPoints[i + 2] * b2 +
-               controlPoints[i + 3] * b3;
+        return controlPoints[i - 1] * b0 +
+               controlPoints[i] * b1 +
+               controlPoints[i + 1] * b2 +
+               controlPoints[i + 2] * b3;
     }
 } // namespace math
 } // namespace p2d

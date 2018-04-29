@@ -6,6 +6,7 @@ set(SOURCES
 
 include_directories(
     ${PELMENI_SRC_DIR}
+    ${RAPIDJSON_INCLUDE_DIR}
     )
 
 add_executable(tbsgame
@@ -14,4 +15,5 @@ add_executable(tbsgame
 
 target_link_libraries(tbsgame
     ${SFML_LIBRARIES}
+    p2d-system
 )

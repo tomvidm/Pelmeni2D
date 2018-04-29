@@ -1,13 +1,13 @@
 project(p2d-input)
 
 set(SOURCES
+    Mouse.cpp
     MouseButtonState.cpp
     MouseButtonEvent.cpp
-    MouseState.cpp
-    Mouse.cpp
     MouseInputManager.cpp
-    InputManager.cpp
+    MouseState.cpp
     InputEvent.cpp
+    InputManager.cpp
 )
 
 add_library(p2d-input

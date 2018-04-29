@@ -9,6 +9,11 @@
 #include "math/LinearInterpolation.hpp"
 
 namespace p2d { namespace animation {
+    enum class KeyframeInterpolationMethod {
+        Linear,
+        CatmullRom
+    };  
+
     class Animation {
     public:
         Animation();
