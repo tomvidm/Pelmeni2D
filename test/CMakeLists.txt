@@ -7,8 +7,9 @@ set(TEST_SOURCES
     pelmeni/animation/TestKeyframe.cpp
     pelmeni/animation/TestAnimation.cpp
     pelmeni/input/TestMouseButtonState.cpp
-    pelmeni/input/TestMouseState.cpp
-
+    pelmeni/input/TestMouseState
+    
+    pelmeni/math/TestCatmullRom.cpp
     pelmeni/math/TestGraph.cpp
     pelmeni/math/TestLerpAndClamp.cpp
     pelmeni/math/TestTransform3.cpp
