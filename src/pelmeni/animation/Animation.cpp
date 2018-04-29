@@ -1,22 +1,24 @@
 #include "animation/Animation.hpp"
 #include <iostream>
 namespace p2d { namespace animation {
-    Animation::Animation() {
+    Animation::Animation()
+    : keyframeInterpolationMethod(KeyframeInterpolationMethod::Linear) {
         ;
     }
 
-    Animation::Animation(const std::vector<Keyframe>& keyframeList)
-    : currentKeyframeIndex(0),
+    Animation::Animation(const std::vector<Keyframe>& keyframeList, const KeyframeInterpolationMethod interpolationMethod)
+    : keyframeInterpolationMethod(interpolationMethod),
+      currentKeyframeIndex(0),
       timeElapsedCurrentKeyframe(sf::seconds(0.f)),
       keyframes(keyframeList) {
-          interpolator.setEndpoints(keyframes[0].frame, keyframes[1].frame);
+          linearInterpolator.setEndpoints(keyframes[0].frame, keyframes[1].frame);
     }
 
     Frame Animation::getCurrentFrame() const {
         const float fractionalTimeElapsed = 
                     timeElapsedCurrentKeyframe.asSeconds() / 
                     getCurrentKeyframe().duration.asSeconds();
-        return interpolator.getInterpolated(fractionalTimeElapsed);
+        return linearInterpolator.getInterpolated(fractionalTimeElapsed);
     };
 
     Keyframe& Animation::getCurrentKeyframe() {
@@ -31,13 +33,17 @@ namespace p2d { namespace animation {
         return currentKeyframeIndex;
     }
 
+    void Animation::setInterpolationMethod(const KeyframeInterpolationMethod interpolationMethod) {
+        keyframeInterpolationMethod = interpolationMethod;
+    }
+
     void Animation::update(const sf::Time dt) {
         timeElapsedCurrentKeyframe += dt;
         auto& currentKeyframe = getCurrentKeyframe();
         if (timeElapsedCurrentKeyframe >= currentKeyframe.duration) {
             ++currentKeyframeIndex;
             timeElapsedCurrentKeyframe -= currentKeyframe.duration;
-            interpolator.setEndpoints(keyframes[currentKeyframeIndex].frame,
+            linearInterpolator.setEndpoints(keyframes[currentKeyframeIndex].frame,
                                       keyframes[currentKeyframeIndex + 1].frame);
         }
     }
