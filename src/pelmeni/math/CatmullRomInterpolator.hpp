@@ -12,7 +12,7 @@ namespace p2d { namespace math {
         CatmullRomInterpolator();
         CatmullRomInterpolator(const std::vector<T>& controlPoints, const size_t segment);
 
-        T getInterpolated(const float t);
+        T getInterpolated(const float t) const;
 
         void setControlPoints(const std::vector<T>& controlPoints, const size_t segment);
     private:
@@ -49,7 +49,7 @@ namespace p2d { namespace math {
     }
 
     template <typename T>
-    T CatmullRomInterpolator<T>::getInterpolated(const float t) {
+    T CatmullRomInterpolator<T>::getInterpolated(const float t) const {
         return cubicCatmullRom(m_controlPoints, t, 1);
     }
 } // namespace math

@@ -18,7 +18,12 @@ namespace p2d { namespace animation {
         const float fractionalTimeElapsed = 
                     timeElapsedCurrentKeyframe.asSeconds() / 
                     getCurrentKeyframe().duration.asSeconds();
-        return linearInterpolator.getInterpolated(fractionalTimeElapsed);
+        if (keyframeInterpolationMethod == KeyframeInterpolationMethod::Linear) {
+            return linearInterpolator.getInterpolated(fractionalTimeElapsed);
+        } else if (keyframeInterpolationMethod == KeyframeInterpolationMethod::CatmullRom) {
+            return catmullRomInterpolator.getInterpolated(fractionalTimeElapsed);
+        }
+        
     };
 
     Keyframe& Animation::getCurrentKeyframe() {
@@ -41,10 +46,20 @@ namespace p2d { namespace animation {
         timeElapsedCurrentKeyframe += dt;
         auto& currentKeyframe = getCurrentKeyframe();
         if (timeElapsedCurrentKeyframe >= currentKeyframe.duration) {
-            ++currentKeyframeIndex;
             timeElapsedCurrentKeyframe -= currentKeyframe.duration;
-            linearInterpolator.setEndpoints(keyframes[currentKeyframeIndex].frame,
-                                      keyframes[currentKeyframeIndex + 1].frame);
+            ++currentKeyframeIndex;
+            if (keyframeInterpolationMethod == KeyframeInterpolationMethod::Linear) {
+                linearInterpolator.setEndpoints(keyframes[currentKeyframeIndex].frame,
+                                                keyframes[currentKeyframeIndex + 1].frame);
+            } else if (keyframeInterpolationMethod == KeyframeInterpolationMethod::CatmullRom) {
+                std::vector<Frame> frames = {
+                    keyframes[currentKeyframeIndex].frame,
+                    keyframes[currentKeyframeIndex + 1].frame,
+                    keyframes[currentKeyframeIndex + 2].frame,
+                    keyframes[currentKeyframeIndex + 3].frame
+                };
+                catmullRomInterpolator.setControlPoints(frames, 0);
+            }
         }
     }
 
