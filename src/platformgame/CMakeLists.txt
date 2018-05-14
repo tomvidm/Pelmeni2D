@@ -1,4 +1,4 @@
-project(tbsgame)
+project(platformgame)
 
 set(SOURCES
     main.cpp
@@ -9,11 +9,11 @@ include_directories(
     ${RAPIDJSON_INCLUDE_DIR}
     )
 
-add_executable(tbsgame
+add_executable(platformgame
     ${SOURCES}
 )
 
-target_link_libraries(tbsgame
+target_link_libraries(platformgame
     ${SFML_LIBRARIES}
     p2d-system
     p2d-graphics
