@@ -5,12 +5,16 @@
 #include "system/Scene.hpp"
 #include "input/Mouse.hpp"
 #include "input/InputManager.hpp"
+#include "graphics/Tilemap.hpp"
+
+struct Object {
+    p2d::graphics::TileCoordinate tile;
+};
 
 int main() {
     using namespace p2d;
     printf("Running tbsgame...\n");
 
-    system::Scene mainScene("scenes/tbsgame.json");
     graphics::TileCoordinate currentMouseoverTile{0, 0};
     graphics::TileCoordinate currentSelectedTile{0, 0};
     graphics::Tilemap tilemap;
@@ -29,21 +33,8 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
-            if (event.type == sf::Event::MouseMoved) {
-                tilemap.setQuadColor(currentMouseoverTile, sf::Color(128, 128, 128));
-                currentMouseoverTile = tilemap.vectorToTileCoordinate(input::getMousePosition(window));
-                tilemap.setQuadColor(currentMouseoverTile, sf::Color(255, 128, 128));
-            }
-            if (event.type == sf::Event::MouseButtonPressed) {
-                tilemap.setQuadColor(currentSelectedTile, sf::Color(128, 128, 128));
-                currentSelectedTile = tilemap.vectorToTileCoordinate(input::getMousePosition(window));
-            }
         }
-        tilemap.setQuadColor(currentSelectedTile, sf::Color(255, 64, 64));
-        mainScene.updateEntities(dt);
         window.clear(sf::Color::White);
-        mainScene.renderScene(window);
-        window.draw(tilemap);
         window.display();
     }
     return 0;
