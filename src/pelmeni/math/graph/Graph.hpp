@@ -20,6 +20,7 @@ namespace p2d { namespace math {
         const AdjacencyList& getAdjacencyList() const;
 
         const Node& operator[] (const size_t node) const;
+        const Node& get(const size_t node) const;
     private:
         AdjacencyList adjacencyList;
     }; // class Graph

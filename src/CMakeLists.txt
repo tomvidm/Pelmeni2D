@@ -2,6 +2,7 @@ project(pelmeni)
 
 add_subdirectory(pelmeni)
 add_subdirectory(tbsgame)
+add_subdirectory(platformgame)
 
 add_executable(p2d-run
     main.cpp

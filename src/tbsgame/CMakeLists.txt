@@ -17,5 +17,6 @@ target_link_libraries(tbsgame
     ${SFML_LIBRARIES}
     p2d-system
     p2d-graphics
+    p2d-math
     p2d-input
 )
