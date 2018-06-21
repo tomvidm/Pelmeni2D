@@ -6,9 +6,9 @@
 namespace p2d { namespace math { namespace ut {
     TEST(TestGraph, edges_works) {
         Node node_a;
-        node_a.addEdge(Edge{0, 1});
-        node_a.addEdge(Edge{0, 2});
-        node_a.addEdge(Edge{0, 3});
+        node_a.addEdge(Edge{1});
+        node_a.addEdge(Edge{2});
+        node_a.addEdge(Edge{3});
         EXPECT_TRUE(node_a.hasEdgeTo(1));
         EXPECT_TRUE(node_a.hasEdgeTo(2));
         EXPECT_TRUE(node_a.hasEdgeTo(3));
