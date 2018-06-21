@@ -5,10 +5,7 @@ namespace p2d { namespace animation {
         if (animationIsRunning) {
             animation.update(dt);
             const auto& currentAnimationFrame = animation.getCurrentFrame();
-            setPosition(currentAnimationFrame.position);
-            setScale(currentAnimationFrame.scale);
-            setOrigin(currentAnimationFrame.origin);
-            setRotation(currentAnimationFrame.angle);
+            applyFrame(currentAnimationFrame);
         }
     }
 
@@ -21,6 +18,13 @@ namespace p2d { namespace animation {
     }
     void Animable::startAnimation() {
         animationIsRunning = true;
+    }
+
+    void Animable::applyFrame(const Frame& frame) {
+        setPosition(frame.position);
+        setScale(frame.scale);
+        setOrigin(frame.origin);
+        setRotation(frame.angle);
     }
 } // namespace animation
 } // namespace p2d

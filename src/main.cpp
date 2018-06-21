@@ -36,6 +36,7 @@ int main() {
         animation::Frame{
             math::Vector2f(100.f, 100.f),
             math::Vector2f(4.f, 1.f),
+            math::Vector2f(0.f, 0.f),
             0.f
         }
     };
@@ -45,6 +46,7 @@ int main() {
         animation::Frame{
             math::Vector2f(500.f, 500.f),
             math::Vector2f(3.f, 3.f),
+            math::Vector2f(0.f, 0.f),
             math::fromAngle(90.f)
         }
     };
@@ -54,6 +56,7 @@ int main() {
         animation::Frame{
             math::Vector2f(500.f, 200.f),
             math::Vector2f(5.f, 5.f),
+            math::Vector2f(0.f, 0.f),
             math::fromAngle(210.f)
         }
     };

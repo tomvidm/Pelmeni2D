@@ -9,6 +9,7 @@ add_library(p2d-math
     graph/TilemapGraph.cpp
     geometry/Hexagon.cpp
     math.cpp
+    LineSnap.cpp
     Radian.cpp
     Random.cpp
     Transform.cpp

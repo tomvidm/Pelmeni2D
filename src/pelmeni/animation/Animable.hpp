@@ -16,6 +16,7 @@ namespace p2d { namespace animation {
         void startAnimation();
         Animation animation;
     private:
+        void applyFrame(const Frame& frame);
         bool animationIsRunning = false;
     }; // class Animable
 } // namespace animation
