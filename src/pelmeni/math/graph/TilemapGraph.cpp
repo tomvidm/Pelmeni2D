@@ -9,21 +9,7 @@ namespace p2d { namespace math {
         for (size_t r = 0; r < rows; r++) {
             hm.data[r].resize(cols);
             for (size_t c = 0; c < cols; c++) {
-                hm.data[r][c] = 1.f * rand();
-            }
-        }
-        return hm;
-    }
-
-    Heightmap buildUniformHeightmap(const size_t rows, const size_t cols) {
-        Heightmap hm;
-        hm.rows = rows;
-        hm.cols = cols;
-        hm.data.resize(rows);
-        for (size_t r = 0; r < rows; r++) {
-            hm.data[r].resize(cols);
-            for (size_t c = 0; c < cols; c++) {
-                hm.data[r][c] = 1.f;
+                hm.data[r][c] = 2.f * std::min(rand(), rand());
             }
         }
         return hm;
@@ -34,8 +20,6 @@ namespace p2d { namespace math {
     }
 
     void TilemapGraph::buildGraphFromHeightmap(const Heightmap& heightmap) {
-        rows = heightmap.rows;
-        cols = heightmap.cols;
         addNodes(heightmap.rows * heightmap.cols);
         for (size_t r = 0; r < heightmap.rows; r++) {
             for (size_t c = 0; c < heightmap.cols; c++) {
@@ -55,12 +39,6 @@ namespace p2d { namespace math {
                 }
             }
         }
-    }
-
-    const size_t TilemapGraph::getNode(const graphics::TileCoordinate coord) const {
-        const size_t row = coord.row;
-        const size_t col = coord.col;
-        return cols * row + col;
     }
 }
 }

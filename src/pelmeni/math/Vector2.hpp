@@ -23,7 +23,7 @@ namespace p2d { namespace math {
     template <typename T>
     Vector2<T> project(const Vector2<T>& lhs, const Vector2<T>& rhs) {
         return rhs * (dot(lhs, rhs)/dot(rhs, rhs));
-    }   
+    }
 
     template <typename T>
     float magnitudeSquared(const Vector2<T>& vec) {

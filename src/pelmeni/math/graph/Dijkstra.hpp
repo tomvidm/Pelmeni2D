@@ -24,7 +24,6 @@ namespace p2d { namespace math {
     using CostCounter = std::vector<Step>;
 
     Path shortestPath_Dijkstra(const Graph& graph, const size_t nodeStart, const size_t nodeEnd);
-    Path shortestPath_Dijkstra(const size_t nodeStart, const size_t nodeEnd, const CostCounter& precalculatedCosts);
     CostCounter precalculatedGraphCosts(const Graph& graph, const size_t sourceNode);
     CostCounter prepareInititalCostCounter(const size_t numNodes, const size_t sourceNode);
 

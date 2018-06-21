@@ -45,9 +45,5 @@ namespace p2d { namespace math {
     const Node& Graph::operator[] (const size_t node) const {
         return adjacencyList[node];
     }
-
-    const Node& Graph::get(const size_t node) const {
-        return adjacencyList[node];
-    }
 }
 }

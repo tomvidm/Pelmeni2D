@@ -14,7 +14,7 @@ namespace p2d { namespace math {
     typedef Vector4<float> Vector4f;
 
     template <typename T>
-    Vector2<T> projectToXY(const Vector3<T> vec) {
+    Vector2<T> projectToXY(const Vector3<T>& vec) {
         return Vector2<T>(vec.x, vec.y);
     }
 } // namespace math

@@ -19,20 +19,6 @@ namespace p2d { namespace math {
         return shortestPath;
     }
 
-    Path shortestPath_Dijkstra(const size_t nodeStart, const size_t nodeEnd, const CostCounter& precalculatedCosts) {
-        Path shortestPath;
-
-        size_t currentNode = nodeEnd;
-        while (currentNode != nodeStart) {
-            shortestPath.push_back(precalculatedCosts[currentNode]);
-            currentNode = precalculatedCosts[currentNode].previousNode;
-        }
-
-        shortestPath.push_back(precalculatedCosts[nodeStart]);
-        std::reverse(shortestPath.begin(), shortestPath.end());
-        return shortestPath;
-    }
-
     CostCounter precalculatedGraphCosts(const Graph& graph, const size_t sourceNode) {
         CandidateQueue candidateQueue;
         candidateQueue.push(Candidate{sourceNode, 0.f});
