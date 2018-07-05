@@ -3,6 +3,7 @@ project(p2d-math)
 add_library(p2d-math
     BezierCurve.cpp
     CatmullRomSpline.cpp
+    ConvexPolygon.cpp
     graph/Graph.cpp
     graph/Node.cpp
     graph/Dijkstra.cpp

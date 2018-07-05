@@ -10,6 +10,7 @@ set(TEST_SOURCES
     pelmeni/input/TestMouseState
     
     pelmeni/math/TestCatmullRom.cpp
+    pelmeni/math/TestConvexPolygon.cpp
     pelmeni/math/TestGraph.cpp
     pelmeni/math/TestLerpAndClamp.cpp
     pelmeni/math/TestLineSnap.cpp
