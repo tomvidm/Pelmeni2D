@@ -23,7 +23,7 @@ namespace p2d { namespace math {
             const size_t ipp = (i + 1) % vertices.size();
             const Vector2f edge = vertices[ipp] - vertices[i];
             const Vector2f edgeToPoint = point - vertices[i];
-            if (dot(edge, edgeToPoint) < 0.f) {
+            if (cross(edge, edgeToPoint) < 0.f) {
                 return false;
             }
         }
@@ -51,9 +51,9 @@ namespace p2d { namespace math {
     void ConvexPolygon::calculateCenter() {
         centerPoint = Vector2f(0.f, 0.f);
         for (auto v : vertices) {
-            center = center + v;
+            centerPoint = centerPoint + v;
         }
-        return center * (1.f / static_cast<float>(vertices.size()));
+        centerPoint = centerPoint * (1.f / static_cast<float>(vertices.size()));
     }
 
     void ConvexPolygon::calculateBoundingBox() {
