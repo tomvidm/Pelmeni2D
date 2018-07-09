@@ -8,7 +8,6 @@ add_library(p2d-math
     graph/Node.cpp
     graph/Dijkstra.cpp
     graph/TilemapGraph.cpp
-    geometry/Hexagon.cpp
     math.cpp
     LineSnap.cpp
     Radian.cpp

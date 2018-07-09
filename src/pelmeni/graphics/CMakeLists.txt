@@ -2,12 +2,10 @@ project(p2d-graphics)
 
 set(SOURCES
     ../json/Helpers.cpp
-    particles/Particle2D.cpp
     AnimatedSprite.cpp
     AnimationState.cpp
     Axes.cpp
     FrameSequence.cpp
-    Hexagon.cpp
     SpritePackManager.cpp
     StaticSprite.cpp
     SpriteBase.cpp

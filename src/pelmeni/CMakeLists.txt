@@ -2,7 +2,6 @@ project(pelmeni)
 
 add_subdirectory(animation)
 add_subdirectory(debugging)
-add_subdirectory(experimental)
 add_subdirectory(gui)
 add_subdirectory(graphics)
 add_subdirectory(input)
