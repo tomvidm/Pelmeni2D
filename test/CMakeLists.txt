@@ -13,7 +13,7 @@ set(TEST_SOURCES
     pelmeni/math/TestConvexPolygon.cpp
     pelmeni/math/TestGraph.cpp
     pelmeni/math/TestLerpAndClamp.cpp
-    pelmeni/math/TestLineSnap.cpp
+    pelmeni/math/TestGeometrySelection.cpp
     pelmeni/math/TestTransform3.cpp
     pelmeni/math/TestTransform.cpp
     pelmeni/math/TestVector2.cpp

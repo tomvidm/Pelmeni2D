@@ -9,7 +9,7 @@ add_library(p2d-math
     graph/Dijkstra.cpp
     graph/TilemapGraph.cpp
     math.cpp
-    LineSnap.cpp
+    GeometrySelection.cpp
     Radian.cpp
     Random.cpp
     Transform.cpp

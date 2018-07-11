@@ -1,10 +1,10 @@
 #include "gtest/gtest.h"
 
-#include "math/LineSnap.hpp"
+#include "math/GeometrySelection.hpp"
 #include "math/Vector.hpp"
 
 namespace p2d { namespace math { namespace ut {
-    TEST(TestLineSnap, SnapsCorrectly) {
+    TEST(TestGeometrySelection, SnapsCorrectly) {
         Vector2f p0(0.f, 0.f);
         Vector2f p1(6.f, 2.f);
         float width = 1.f;
