@@ -39,9 +39,15 @@ namespace p2d { namespace graphics {
 
         void Mesh2D::setMeshData(std::shared_ptr<MeshData2D> extMeshData) {
             meshData = extMeshData;
-            linesToDraw.resize(2 * meshData->getNumEdges());
-            quadsToDraw.resize(4 * meshData->getNumQuads());
+            linesToDraw.resize(2 * meshData->getNumEdges()); // = 2 * |E|
+            quadsToDraw.resize(4 * meshData->getNumQuads()); // = 4 * |Q|
             buildMesh();
+        }
+
+        void Mesh2D::setEdgeColor(const size_t& e, const sf::Color& color) {
+            sf::Vertex* edge = getEdgeVertices(e);
+            edge[0].color = color;
+            edge[1].color = color;
         }
 
         void Mesh2D::setQuadColor(const size_t& q, const sf::Color& color) {
@@ -58,6 +64,10 @@ namespace p2d { namespace graphics {
             quad[1].texCoords = texCoord[1];
             quad[2].texCoords = texCoord[2];
             quad[3].texCoords = texCoord[3];
+        }
+
+        sf::Vertex* Mesh2D::getEdgeVertices(const size_t& e) {
+            return &linesToDraw[2 * e];
         }
 
         sf::Vertex* Mesh2D::getQuadVertices(const size_t& q) {

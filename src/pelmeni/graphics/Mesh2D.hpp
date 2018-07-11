@@ -16,14 +16,18 @@ namespace p2d { namespace graphics {
     using QuadTextureCoordinates = std::array<math::Vector2f, 4>;
     class Mesh2D : public sf::Drawable {
     public:
+        using shared = std::shared_ptr<Mesh2D>;
+    public:
         Mesh2D();
         void buildMesh();
         
         void setRenderEdges(const bool& yesno);
         void setMeshData(std::shared_ptr<MeshData2D> extMeshData);
+        void setEdgeColor(const size_t& e, const sf::Color& color);
         void setQuadColor(const size_t& q, const sf::Color& color);
         void setQuadTextureCoordinates(const size_t& q, const QuadTextureCoordinates& texCoord);
 
+        sf::Vertex* getEdgeVertices(const size_t& e);
         sf::Vertex* getQuadVertices(const size_t& q);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

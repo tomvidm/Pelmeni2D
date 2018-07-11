@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
 #include "math/Vector.hpp"
 
@@ -19,6 +20,8 @@ namespace p2d { namespace graphics {
     using MeshQuads = std::vector<Quad2D>;
 
     class MeshData2D {
+    public:
+        using shared = std::shared_ptr<MeshData2D>;
     public:
         MeshData2D();
         MeshData2D(const MeshVertices& mVecs, const MeshEdges& mEdges, const MeshQuads& mQuads);
