@@ -6,8 +6,7 @@ namespace p2d { namespace math {
     bool snapsToLine(const Vector2f& queryPoint, 
                      const Vector2f& p0, 
                      const Vector2f& p1, 
-                     const float longitudinalMargin, 
-                     const float widthMargin) {
+                     const float threshold) {
         const Vector2f P = p1 - p0;
         const Vector2f V = queryPoint - p0;
 
@@ -20,9 +19,11 @@ namespace p2d { namespace math {
         const float dotPP = dot(P, P);
         const float dotVV = dot(V, V);
 
-        if (dotVV - (dotPV * dotPV) / dotPP < widthMargin * widthMargin) {
-            const float X = dotPV / sqrt(dotPP);
-            if (longitudinalMargin < X && X < magnitude(P) - longitudinalMargin) {
+        const bool isNearLine = dotVV - (dotPV * dotPV) / dotPP < threshold * threshold;
+
+        if (isNearLine) {
+            const bool isBoundedByLineSegment = dotPV * dotPV < dotPP * dotVV;
+            if (isBoundedByLineSegment) {
                 return true;
             } else {
                 return false;

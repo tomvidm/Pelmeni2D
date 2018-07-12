@@ -6,8 +6,7 @@ namespace p2d { namespace math {
     bool snapsToLine(const Vector2f& point, 
                      const Vector2f& p0, 
                      const Vector2f& p1, 
-                     const float longitudinalMargin, 
-                     const float widthMargin);
+                     const float threshold);
 
     bool snapsToPoint(const Vector2f& queryPoint,
                       const Vector2f& point,
