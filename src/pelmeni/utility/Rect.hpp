@@ -1,5 +1,7 @@
 #pragma once
 
+#include <limits>
+
 #include "math/math.hpp"
 
 #include "SFML/Graphics/Rect.hpp"
@@ -11,6 +13,7 @@ namespace p2d { namespace utility {
     class Rect {
     public:
         Rect();
+        Rect(const std::vector<Vector2<T>>& vectorArray);
         Rect(const Vector2<T>& pos, const Vector2<T>& siz);
         Rect(const float& x, const float& y, 
              const float& w, const float& h);
@@ -32,6 +35,20 @@ namespace p2d { namespace utility {
         Vector2<T> origin;
         Vector2<T> size;
     }; // Rect
+
+    template <typename T>
+    Rect<T>::Rect(const std::vector<Vector2<T>>& vectorArray) {
+        float min_x = std::numeric_limits<T>::max();
+        float max_x = std::numeric_limits<T>::lowest();;
+        float min_y = std::numeric_limits<T>::max();;
+        float max_y = std::numeric_limits<T>::lowest();;
+        for (auto& v : vectorArray) {
+            if (v.x < min_x) min_x = v.x;
+            if (v.x > max_x) max_x = v.x;
+            if (v.y < min_y) min_y = v.y;
+            if (v.y > max_y) max_y = v.y;
+        }
+    }
 
     template <typename T>
     Rect<T>::Rect(const Vector2<T>& pos, const Vector2<T>& siz) 
