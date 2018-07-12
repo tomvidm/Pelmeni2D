@@ -90,10 +90,6 @@ namespace p2d { namespace system {
                              math::Transform::Rotation(rotation.toRadians()) *
                              math::Transform::Scale(scale) *
                              math::Transform::Translate(-origin);
-                             
-                             
-                             
-            
             inverseLocalTransform = math::inverse(localTransform);
         }
         return localTransform;

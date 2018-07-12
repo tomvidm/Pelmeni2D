@@ -91,10 +91,10 @@ namespace p2d { namespace graphics {
         lines.reserve(rows + cols + 2);
         const size_t C = cols + 1;
         for (size_t r = 0; r <= rows; r++) {
-            lines.push_back(graphics::Edge2D{r * C, C * (r + 1) - 1});
+            lines.push_back(graphics::EdgeIndices{r * C, C * (r + 1) - 1});
         }
         for (size_t c = 0; c <= cols; c++) {
-            lines.push_back(graphics::Edge2D{c, C * rows + c});
+            lines.push_back(graphics::EdgeIndices{c, C * rows + c});
         }
         return lines;
     }
@@ -105,7 +105,7 @@ namespace p2d { namespace graphics {
         const size_t C = cols + 1;
         for (size_t r = 0; r < rows; r++) {
             for (size_t c = 0; c < cols; c++) {
-                quads.push_back(graphics::Quad2D{
+                quads.push_back(graphics::QuadIndices{
                     r * C + c,
                     r * C + c + 1,
                     (r + 1) * C + c + 1,

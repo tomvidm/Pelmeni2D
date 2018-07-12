@@ -33,5 +33,13 @@ namespace p2d { namespace graphics {
     MeshQuads& MeshData2D::getMeshQuads() {
         return meshQuads;
     }
+
+    EdgeVertices MeshData2D::getVerticesForEdge(const size_t e) const {
+        EdgeIndices edgeIndices = meshEdges[e];
+        return EdgeVertices{
+            meshVertices[edgeIndices.v[0]],
+            meshVertices[edgeIndices.v[1]]
+        };
+    }
 } // namespace graphics
 } // namespace p2d
