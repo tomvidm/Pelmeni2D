@@ -18,6 +18,7 @@ set(TEST_SOURCES
     pelmeni/math/TestTransform.cpp
     pelmeni/math/TestVector2.cpp
     pelmeni/math/TestQuaternion.cpp
+    pelmeni/math/TestLineIntersection.cpp
 
     pelmeni/Helpers.cpp
     

@@ -10,6 +10,14 @@ namespace p2d { namespace graphics {
         ;
     } // constructor
 
+    MeshData2D::MeshData2D(const math::ConvexPolygon& convexPolygon) {
+        setMeshVertices(convexPolygon.getVertices());
+        for (size_t i = 0; i < meshVertices.size(); i++) {
+            const EdgeIndices edgeIndices = {i, (i + 1) % meshVertices.size()};
+            meshEdges.push_back(edgeIndices);
+        }
+    }
+
     void MeshData2D::setMeshVertices(const MeshVertices& mVecs) {
         meshVertices = mVecs;
     } // setMeshVectors

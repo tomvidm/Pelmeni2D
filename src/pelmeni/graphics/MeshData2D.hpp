@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 
+#include "math/ConvexPolygon.hpp"
 #include "math/Vector.hpp"
 
 namespace p2d { namespace graphics {
@@ -29,6 +30,7 @@ namespace p2d { namespace graphics {
     public:
         MeshData2D();
         MeshData2D(const MeshVertices& mVecs, const MeshEdges& mEdges, const MeshQuads& mQuads);
+        MeshData2D(const math::ConvexPolygon& convexPolygon);
 
         void setMeshVertices(const MeshVertices& mVecs);
         void setMeshEdges(const MeshEdges& mEdges);

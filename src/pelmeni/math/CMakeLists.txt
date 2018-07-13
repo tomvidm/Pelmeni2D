@@ -12,6 +12,7 @@ add_library(p2d-math
     GeometrySelection.cpp
     Radian.cpp
     Random.cpp
+    LineIntersection.cpp
     Transform.cpp
     Transform3.cpp
     Vector.cpp
